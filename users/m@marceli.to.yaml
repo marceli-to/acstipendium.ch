@@ -1,0 +1,115 @@
+name: 'Marcel Stadelmann'
+super: true
+id: c2f8321e-be41-4d83-b9ee-8136dba46b39
+password_hash: $2y$10$Zdrhut5CIb421pZciEeibOHqUVT9UAfotCS7Et9suX.2KUePL5aUm
+preferences:
+  locale: en
+  collections:
+    posts:
+      columns:
+        - date
+        - title
+        - author
+        - post_categories
+        - post_tags
+        - status
+      filters:
+        alle:
+          display: English
+          filters:
+            site:
+              site: en
+      per_page: 500
+    pages:
+      columns:
+        - title
+        - slug
+        - status
+        - site
+    team:
+      columns:
+        - firstname
+        - name
+        - position
+        - status
+    objects:
+      columns:
+        - title
+        - building
+        - type
+        - rooms
+        - floor
+        - price
+        - state
+    news:
+      columns:
+        - teaser_image
+        - title
+        - status
+    projects:
+      columns:
+        - title
+        - is_lighthouse
+        - category
+    agenda:
+      columns:
+        - agenda_date
+        - is_latest
+        - title
+        - slug
+        - status
+    press_reviews:
+      columns:
+        - title
+        - description
+        - tags
+    publications:
+      columns:
+        - title
+        - tags
+        - image
+    contact_form:
+      columns:
+        - date_submission
+        - firstname
+        - name
+        - email
+        - location
+    courses:
+      columns:
+        - course_date
+        - title
+        - level
+    course_registrations:
+      columns:
+        - title
+        - firstname
+        - name
+        - name_parents
+        - email
+        - location
+        - state
+  taxonomies:
+    project_categories:
+      columns:
+        - title
+        - slug
+    category:
+      columns:
+        - title
+        - slug
+        - order
+        - taxonomy
+      after_save: create_another
+  forms:
+    contact_form:
+      columns:
+        - datestamp
+        - firstname
+        - name
+        - email
+        - location
+  theme: light
+  assets:
+    assets:
+      per_page: 100

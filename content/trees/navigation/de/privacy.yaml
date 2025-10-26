@@ -1,0 +1,9 @@
+tree:
+  -
+    id: 72dc7b03-cad4-4f31-8cd0-37a397880774
+    title: Impressum
+    url: '/kontakt/#item-impressum'
+  -
+    id: bc2d8938-da33-4a69-8d2c-fafe7ea7d4ba
+    title: Datenschutz
+    url: '/en/contact/#item-datenschutz'

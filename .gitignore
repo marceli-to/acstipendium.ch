@@ -22,8 +22,9 @@ public/robots.txt
 public/.htaccess
 INSTALL.txt
 
-content/
-public/assets
-resources/users
-users
+# Commented out for development purposes
+# content/
+# public/assets
+# resources/users
+# users
 CLAUDE.md
