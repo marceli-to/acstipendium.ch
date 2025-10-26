@@ -29,20 +29,6 @@ tabs:
                     neues_set:
                       display: 'Neues Set'
                       fields: {  }
-  header:
-    display: Header
-    sections:
-      -
-        display: Header
-        fields:
-          -
-            handle: header_image
-            field:
-              max_files: 1
-              container: assets
-              type: assets
-              display: Bild
-              localizable: false
   seo:
     display: SEO
     sections:
