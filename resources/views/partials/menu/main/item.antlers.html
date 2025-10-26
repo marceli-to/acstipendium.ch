@@ -1,0 +1,9 @@
+<li class="text-right block">
+  <a 
+    href="{{ url }}" 
+    class="hover:text-navy transition-colors {{ is_current || is_parent ? '!text-navy' : 'text-white' }}"
+    target="{{ is_external ? '_blank' : '_self' }}"
+    title="{{ title }}">
+    {{ title }}
+  </a>
+</li>

@@ -1,0 +1,21 @@
+@import "typo/webfonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] { 
+  @apply !hidden;
+}
+
+main {
+  @apply flex-1;
+}
+
+.pill {
+  @apply bg-primary border border-primary text-white rounded-full px-14 lg:px-16 pt-2 pb-3 lg:py-2 w-auto inline-block transition-colors;
+}
+
+.pill--outline:hover {
+  @apply bg-transparent text-primary
+}

@@ -1,0 +1,14 @@
+title: Settings
+fields:
+  -
+    handle: template
+    field:
+      type: template
+      display: Template
+      localizable: false
+  -
+    handle: layout
+    field:
+      type: template
+      display: Layout
+      localizable: false

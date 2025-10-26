@@ -1,0 +1,20 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-d6140a30.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/css/fonts/BTCircuit-Regular.woff": {
+    "file": "assets/BTCircuit-Regular-9993113c.woff",
+    "src": "resources/css/fonts/BTCircuit-Regular.woff"
+  },
+  "resources/css/fonts/BTCircuit-Regular.woff2": {
+    "file": "assets/BTCircuit-Regular-095b3012.woff2",
+    "src": "resources/css/fonts/BTCircuit-Regular.woff2"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-b20f85cd.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}

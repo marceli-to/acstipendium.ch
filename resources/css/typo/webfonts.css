@@ -1,0 +1,12 @@
+/**
+ * Typography - Webfonts
+ * -----------------------------------------------------------------------------
+ */
+
+@font-face {
+  font-family: 'BTCircuit-Regular';
+  src: url('fonts/BTCircuit-Regular.woff2') format('woff2'), url('fonts/BTCircuit-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
