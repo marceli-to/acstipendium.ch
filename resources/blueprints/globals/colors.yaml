@@ -7,14 +7,12 @@ tabs:
           -
             handle: primary
             field:
-              prepend: '#'
-              type: text
+              type: color
               display: Primär
               localizable: false
           -
             handle: secondary
             field:
-              prepend: '#'
-              type: text
+              type: color
               display: Sekundär
               localizable: false
