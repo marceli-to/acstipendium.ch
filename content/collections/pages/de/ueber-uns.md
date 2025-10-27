@@ -4,7 +4,7 @@ blueprint: page
 title: 'Über uns'
 debug: false
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761607283
+updated_at: 1761608382
 blocks:
   -
     id: mh9crcaq

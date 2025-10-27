@@ -4,5 +4,6 @@ blueprint: page
 title: Stipendium
 debug: false
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761574406
+updated_at: 1761608375
+has_footer: true
 ---

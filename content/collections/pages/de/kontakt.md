@@ -77,8 +77,9 @@ blocks:
                 text: "Die Louise Aeschlimann und Margareta Corti Stiftung vergibt ausschliesslich das gleichnamige Stipendium.\_Weitere Förderanträge können nicht berücksichtigt werden."
         type: editors
         enabled: true
+    title_order: h2
 debug: false
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761584101
+updated_at: 1761608397
 has_footer: true
 ---
