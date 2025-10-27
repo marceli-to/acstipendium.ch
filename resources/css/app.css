@@ -12,6 +12,7 @@ main {
   @apply flex-1;
 }
 
+/* Pills */
 .pill {
   @apply bg-primary border border-primary text-white rounded-full px-14 lg:px-16 pt-2 pb-3 lg:py-2 w-auto inline-block transition-colors;
 }
