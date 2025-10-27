@@ -1,8 +1,21 @@
 <header 
-  class="bg-header-gradient sticky top-0 left-0 right-0 px-4 py-12 w-full min-h-90"
+  class="
+    bg-header-gradient 
+    sticky 
+    top-0 
+    left-0 
+    right-0
+    lg:right-auto
+    px-4 
+    lg:px-8 
+    py-12 
+    lg:py-16 
+    w-full 
+    min-h-90 
+    lg:min-h-135"
   :class="{ 'bg-secondary': menu }">
-  <div class="flex justify-between">
-    <a href="{{ site:short_locale == 'fr' ? '/fr' : '/' }}" class="block w-full text-white max-w-260">
+  <div class="flex justify-between lg:gap-x-16">
+    <a href="{{ site:short_locale == 'fr' ? '/fr' : '/' }}" class="block w-auto text-white max-w-260 lg:max-w-450">
       {{ partial:brands/stipendium class="w-full h-auto" }}
     </a>
     {{ partial:menu/main/buttons/show }}
