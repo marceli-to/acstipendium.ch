@@ -29,6 +29,17 @@ tabs:
                     neues_set:
                       display: 'Neues Set'
                       fields: {  }
+                special_elements:
+                  display: Spezialelemente
+                  icon: addon-boxes-stack
+                  sets:
+                    contact:
+                      display: Kontakt
+                      instructions: 'Kontakt hinzufügen'
+                      icon: form-address-field
+                      fields:
+                        -
+                          import: contact
   seo:
     display: SEO
     sections:

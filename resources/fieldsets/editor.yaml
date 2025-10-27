@@ -15,6 +15,7 @@ fields:
         - superscript
         - anchor
         - nobr
+        - pill
         - lead
       toolbar_mode: floating
       remove_empty_nodes: true

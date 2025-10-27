@@ -1,0 +1,10 @@
+title: Kontakt
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: Titel
+      localizable: false
+  -
+    import: editor

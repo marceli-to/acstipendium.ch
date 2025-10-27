@@ -14,9 +14,13 @@ main {
 
 /* Pills */
 .pill {
-  @apply bg-primary border border-primary text-white rounded-full px-14 lg:px-16 pt-2 pb-3 lg:py-2 w-auto inline-block transition-colors;
+  @apply bg-primary border lg:border-2 border-primary text-white rounded-full px-14 lg:px-16 pt-2 pb-3 lg:py-2 w-auto inline-block transition-colors;
 }
 
 .pill--outline:hover {
   @apply bg-transparent text-primary
+}
+
+p:has(.pill) {
+  @apply !mb-0;
 }

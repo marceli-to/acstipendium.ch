@@ -13,24 +13,24 @@ return [
 
     'styles' => [
 
-        'nobr' => [
-          'type' => 'span',
-          'name' => 'No Break',
-          'ident' => 'B',
-          'icon' => null,
-          'class' => 'nobr',
-          'cp_css' => 'white-space: nowrap',
-          'cp_badge' => false,
-        ],
+      'nobr' => [
+        'type' => 'span',
+        'name' => 'No Break',
+        'ident' => 'B',
+        'icon' => null,
+        'class' => 'nobr',
+        'cp_css' => 'white-space: nowrap',
+        'cp_badge' => false,
+      ],
 
-        'lead' => [
-          'type' => 'paragraph',
-          'name' => 'Lead',
-          'ident' => 'L',
-          'icon' => null,
-          'class' => 'font-feixen-sans-medium text-lg lg:text-2xl',
-          'cp_css' => 'font-size: 1.4rem; line-height: 2rem',
-          'cp_badge' => false,
+      'pill' => [
+        'type' => 'span',
+        'name' => 'Pill',
+        'ident' => 'P',
+        'icon' => null,
+        'class' => 'pill',
+        'cp_css' => 'border-radius: 9999px; border: 1px solid #1C2E36; padding: 2px 6px',
+        'cp_badge' => false,
       ],
       
     ],
