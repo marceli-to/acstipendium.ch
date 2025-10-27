@@ -1,7 +1,7 @@
 <button 
   x-show="menu"
   x-on:click="menu = !menu" 
-  title="Menü verbergen"
+  aria-label="{{ "Menü verbergen" | trans }}"
   class="flex items-center justify-center rounded-full bg-white px-21 py-7 w-64 h-36 lg:hidden">
   {{ partial:icons/cross class="w-22 h-22 text-primary" }}
 </button>
