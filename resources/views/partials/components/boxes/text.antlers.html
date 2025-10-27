@@ -1,0 +1,31 @@
+<article class="
+  col-span-{{ col_span_mobile }} 
+  col-start-{{ col_start_mobile }} 
+  lg:col-span-{{ col_span_desktop }}
+  lg:col-start-{{ col_start_desktop }} 
+  bg-{{ background_color }}
+  {{ background_color == 'secondary' ? 'border lg:border-2 border-white' : '' }}
+  mb-8
+  lg:mb-16
+  rounded-[1rem] 
+  px-14
+  lg:px-24
+  pt-11 
+  pb-14 
+  text-white
+  [&_.pill]:border-white 
+  [&_.pill]:mb-4
+  [&_p]:mb-14
+  [&_p]:lg:mb-16">
+
+  {{ partial:components/headings/h1 }}
+    {{ title }} 
+  {{ /partial:components/headings/h1 }}
+
+  <div class="flex flex-col gap-y-24 lg:gap-y-32">
+    {{ editors }}
+      {{ partial:components/editor/wrapper }}
+    {{ /editors }}
+  </div>
+
+</article>

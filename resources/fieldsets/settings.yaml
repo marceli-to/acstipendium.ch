@@ -12,3 +12,10 @@ fields:
       type: template
       display: Layout
       localizable: false
+  -
+    handle: has_footer
+    field:
+      default: true
+      type: toggle
+      display: 'Footer anzeigen?'
+      localizable: false

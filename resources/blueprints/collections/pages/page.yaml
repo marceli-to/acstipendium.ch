@@ -26,20 +26,24 @@ tabs:
                   display: Hauptelemente
                   icon: addon-boxes-stack
                   sets:
-                    neues_set:
-                      display: 'Neues Set'
-                      fields: {  }
+                    text_box:
+                      display: Textbox
+                      instructions: 'Textbox hinzfügen'
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: text_box
                 special_elements:
                   display: Spezialelemente
                   icon: addon-boxes-stack
                   sets:
-                    contact:
-                      display: Kontakt
-                      instructions: 'Kontakt hinzufügen'
-                      icon: form-address-field
+                    imprint:
+                      display: Impressum
+                      instructions: 'Impressum hinzufügen'
+                      icon: text-formatting-markdown
                       fields:
                         -
-                          import: contact
+                          import: imprint
   seo:
     display: SEO
     sections:
