@@ -1,27 +1,7 @@
 title: Text
 fields:
   -
-    handle: title
-    field:
-      type: text
-      display: Titel
-      localizable: true
-      width: 66
-  -
-    handle: title_order
-    field:
-      options:
-        -
-          key: h1
-          value: 'Überschrift 1'
-        -
-          key: h2
-          value: 'Überschrift 2'
-      default: h2
-      type: select
-      display: Ordnung
-      localizable: false
-      width: 33
+    import: title
   -
     handle: editors
     field:
@@ -57,7 +37,7 @@ fields:
         -
           key: secondary
           value: 'Sekundäre Farbe'
-      default: primary
+      default: secondary
       type: select
       display: Hintergrund
       localizable: false
@@ -85,7 +65,7 @@ fields:
         -
           key: 6
           value: '6'
-      default: '4'
+      default: '6'
       type: select
       display: 'Spaltenbreite (Mobile)'
       localizable: false

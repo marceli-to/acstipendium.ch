@@ -4,7 +4,7 @@ blueprint: page
 title: 'Über uns'
 debug: false
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761593143
+updated_at: 1761596678
 blocks:
   -
     id: mh9crcaq
@@ -154,5 +154,104 @@ blocks:
     type: text_box
     enabled: true
     title_order: h2
+  -
+    id: mh9knwof
+    title: Partnerinstitutionen
+    title_order: h2
+    partner:
+      -
+        id: mh9koa8y
+        title: 'Kunsthalle Bern'
+        title_order: h3
+        editors:
+          -
+            id: mh9kohh8
+            editor:
+              -
+                type: paragraph
+                content:
+                  -
+                    type: text
+                    text: 'Die 1918 gegründete Kunsthalle Bern zählt zu den ältesten Kunsthallen Europas. Mit jährlich wechselnden Einzel- und Gruppenausstellungen präsentiert sie zeitgenössische nationale und internationale Kunst. Als traditionsreiche Institution schafft sie Raum für inspirierende, kritische und experimentelle künstlerische Positionen, die durch ein vielfältiges Vermittlungsprogramm ergänzt werden.'
+            type: editors
+            enabled: true
+        background_color: secondary
+        col_span_mobile: 6
+        col_span_desktop: 8
+        col_start_mobile: '1'
+        col_start_desktop: 5
+        type: partner
+        enabled: true
+      -
+        id: mh9ktyvv
+        title: "Kunsthaus Biel \LCentre d'Art Bienne (KBCB)"
+        title_order: h3
+        editors:
+          -
+            id: mh9ku3v1
+            editor:
+              -
+                type: paragraph
+                content:
+                  -
+                    type: text
+                    text: 'Das KBvCB ist seit 1990 ein Haus für zeitgenössische Kunst, das den Dialog zwischen den Sprachregionen und kulturellen Sphären fördert. Es verbindet experimentelle Projekte mit historischen Ausstellungen und bezieht dabei die architektonische Vielfalt des Gebäudes mit ein. Zu sehen sind experimentelle Gegenwartspositionen, historische Ausstellungen und thematischen Sammlungspräsentationen.'
+            type: editors
+            enabled: true
+        background_color: secondary
+        col_span_mobile: 6
+        col_span_desktop: 8
+        col_start_mobile: '1'
+        col_start_desktop: 1
+        type: partner
+        enabled: true
+      -
+        id: mh9kz31s
+        title: 'Kunsthaus Langenthal'
+        title_order: h3
+        editors:
+          -
+            id: mh9kz583
+            editor:
+              -
+                type: paragraph
+                content:
+                  -
+                    type: text
+                    text: 'Das Kunsthaus Langenthal befindet sich seit 1992 im denkmalgeschützten „Choufhüsi” im Zentrum von Langenthal. Gezeigt werden Wechselausstellungen zeitgenössischer Kunst, die sich auf aktuelle Positionen aus der Schweiz konzentrieren. Thematische Gruppenausstellungen greifen gesellschaftliche Fragen auf und werden durch regelmässige Präsentationen historischer Fotografie ergänzt.'
+            type: editors
+            enabled: true
+        background_color: secondary
+        col_span_mobile: 6
+        col_span_desktop: 7
+        col_start_mobile: '1'
+        col_start_desktop: 5
+        type: partner
+        enabled: true
+      -
+        id: mh9l4l66
+        title: 'Kunstmuseum Thun'
+        title_order: h3
+        editors:
+          -
+            id: mh9l4pr5
+            editor:
+              -
+                type: paragraph
+                content:
+                  -
+                    type: text
+                    text: 'Das Kunstmuseum Thun ist seit 1948 im historischen Thunerhof beheimatet und widmet sich der zeitgenössischen Kunst. Neben thematischen und monografischen Sonderausstellungen wird die Sammlung aus neuen Perspektiven präsentiert. Mit seinem Programm aktueller nationaler und internationaler Positionen hat sich das Museum über die Region hinaus einen Namen gemacht.'
+            type: editors
+            enabled: true
+        background_color: secondary
+        col_span_mobile: '6'
+        col_span_desktop: '6'
+        col_start_mobile: '1'
+        col_start_desktop: '2'
+        type: partner
+        enabled: true
+    type: partners
+    enabled: true
 has_footer: true
 ---

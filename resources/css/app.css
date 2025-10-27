@@ -24,3 +24,16 @@ main {
 p:has(.pill) {
   @apply !mb-0;
 }
+
+/* Card styles */
+.card {
+  @apply mb-8 lg:mb-16 px-14 lg:px-24 pt-11 pb-14 lg:pt-16 lg:pb-24 text-white [&_.pill]:border-white [&_.pill]:mb-4 [&_p]:mb-14 [&_p]:lg:mb-16 [&_p:last-of-type]:!mb-0;
+}
+
+.card-rounded {
+  @apply rounded-[1rem] lg:rounded-[2rem];
+}
+
+.card-border {
+  @apply border lg:border-2 border-white;
+}

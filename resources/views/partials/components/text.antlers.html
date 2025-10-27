@@ -4,20 +4,10 @@
   lg:col-span-{{ col_span_desktop }}
   lg:col-start-{{ col_start_desktop }} 
   bg-{{ background_color }}
-  {{ background_color == 'secondary' ? 'border lg:border-2 border-white' : '' }}
-  mb-8
-  lg:mb-16
-  rounded-[1rem]
-  lg:rounded-[2rem]
-  px-14
-  lg:px-24
-  pt-11 
-  pb-14 
-  text-white
-  [&_.pill]:border-white 
-  [&_.pill]:mb-4
-  [&_p]:mb-14
-  [&_p]:lg:mb-16">
+  card
+  card-rounded
+  {{ background_color == 'secondary' ? 'card-border' : '' }}
+  {{ wrapperClass }}">
 
   {{ partial:components/headings/dynamic type="{{ title_order }}" }}
     {{ title }} 

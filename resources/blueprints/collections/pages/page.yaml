@@ -33,6 +33,13 @@ tabs:
                       fields:
                         -
                           import: text_box
+                    partners:
+                      display: Partnerinstitutionen
+                      instructions: 'Partnerinstitutionen hinzfügen'
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: partners
                 special_elements:
                   display: Spezialelemente
                   icon: addon-boxes-stack

@@ -1,0 +1,28 @@
+title: Titel
+fields:
+  -
+    handle: title
+    field:
+      type: text
+      display: Titel
+      localizable: true
+      width: 66
+  -
+    handle: title_order
+    field:
+      options:
+        -
+          key: h1
+          value: 'Überschrift 1'
+        -
+          key: h2
+          value: 'Überschrift 2'
+        -
+          key: h3
+          value: 'Überschrift 3'
+      max_items: 1
+      default: h2
+      type: select
+      display: Ordnung
+      localizable: false
+      width: 33

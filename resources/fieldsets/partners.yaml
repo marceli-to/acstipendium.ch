@@ -1,0 +1,22 @@
+title: Partnerinstitutionen
+fields:
+  -
+    import: title
+  -
+    handle: partner
+    field:
+      type: replicator
+      display: Partner
+      localizable: false
+      collapse: true
+      sets:
+        neue_setgruppe:
+          display: 'Neue Setgruppe'
+          sets:
+            partner:
+              display: Partner
+              instructions: 'Partner hinzufügen'
+              icon: text-formatting-initial-letter
+              fields:
+                -
+                  import: text_box
