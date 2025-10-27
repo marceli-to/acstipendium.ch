@@ -1,9 +1,22 @@
 <li class="block">
   <a 
     href="{{ url }}" 
-    class="inline-block rounded-full text-white border border-white px-16 py-6 text-xl text-center {{ is_current || is_parent ? '' : '' }}"
     title="{{ title }}"
-    aria-label="{{ title }}">
+    aria-label="{{ title }}"
+    class="
+      inline-block 
+      rounded-full 
+      border 
+      border-white 
+      px-16 
+      py-6 
+      text-xl 
+      text-center 
+      hover:bg-white 
+      hover:text-primary 
+      hover:shadow-[0_0_1.25rem_0.25rem_white]
+      transition-all
+      {{ is_current || is_parent ? 'bg-white text-primary shadow-[0_0_1.25rem_0.25rem_white]' : 'text-white ' }}">
     {{ title }}
   </a>
 </li>

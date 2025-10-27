@@ -4,14 +4,18 @@
         border-2 
         border-white 
         text-xl 
-        first:rounded-[3rem_0_0_3rem]
+        first:rounded-l-full
         first:pl-16
         first:pr-10
-        last:rounded-[0_3rem_3rem_0] 
+        last:rounded-r-full 
         last:pr-16
         last:pl-10
         py-6 
         uppercase
+      hover:bg-white 
+        hover:text-primary 
+        hover:shadow-[0_0_1.25rem_0.25rem_white]
+        transition-all
         {{ site:short_locale == locale:locale ? 'bg-white text-primary shadow-[0_0_1.25rem_0.25rem_white]' : 'text-white' }}">
         <a 
           href="{{ permalink }}" 
