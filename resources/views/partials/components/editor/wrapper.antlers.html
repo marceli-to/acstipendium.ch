@@ -4,6 +4,10 @@
     {{ if type == 'text' }}
       {{ text }}
     {{ /if }}
+
+    {{ if type == 'link' }}
+      {{ partial:components/editor/link }}
+    {{ /if }}
     
   {{ /editor }}
 </div>

@@ -1,0 +1,20 @@
+title: Teilnahme
+fields:
+  -
+    import: title
+  -
+    handle: editor_open
+    field: editor.editor
+    config:
+      display: 'Anmeldung offen'
+      instructions: 'Wird angezeigt wenn Anmeldung offen'
+      instructions_position: below
+  -
+    handle: editor_closed
+    field: editor.editor
+    config:
+      display: 'Anmeldung geschlossen'
+      instructions: 'Wird angezeigt wenn Anmeldung geschlossen'
+      instructions_position: below
+  -
+    import: box_settings

@@ -4,7 +4,7 @@ blueprint: page
 title: 'Über uns'
 debug: false
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761596678
+updated_at: 1761607283
 blocks:
   -
     id: mh9crcaq
@@ -144,6 +144,15 @@ blocks:
               -
                 type: text
                 text: 'Weitere Informationen, auch zur Mitgliedschaft, finden Sie unter:'
+          -
+            type: set
+            attrs:
+              id: mh9prccu
+              values:
+                type: link
+                link: 'https://kunstgesellschaft.ch'
+                link_text: kunstgesellschaft.ch
+                target: _blank
         type: editors
         enabled: true
     background_color: secondary
@@ -173,6 +182,15 @@ blocks:
                   -
                     type: text
                     text: 'Die 1918 gegründete Kunsthalle Bern zählt zu den ältesten Kunsthallen Europas. Mit jährlich wechselnden Einzel- und Gruppenausstellungen präsentiert sie zeitgenössische nationale und internationale Kunst. Als traditionsreiche Institution schafft sie Raum für inspirierende, kritische und experimentelle künstlerische Positionen, die durch ein vielfältiges Vermittlungsprogramm ergänzt werden.'
+              -
+                type: set
+                attrs:
+                  id: mh9ppt80
+                  values:
+                    type: link
+                    link: 'https://kunsthalle-bern.ch'
+                    link_text: kunsthalle-bern.ch
+                    target: _blank
             type: editors
             enabled: true
         background_color: secondary
@@ -196,6 +214,15 @@ blocks:
                   -
                     type: text
                     text: 'Das KBvCB ist seit 1990 ein Haus für zeitgenössische Kunst, das den Dialog zwischen den Sprachregionen und kulturellen Sphären fördert. Es verbindet experimentelle Projekte mit historischen Ausstellungen und bezieht dabei die architektonische Vielfalt des Gebäudes mit ein. Zu sehen sind experimentelle Gegenwartspositionen, historische Ausstellungen und thematischen Sammlungspräsentationen.'
+              -
+                type: set
+                attrs:
+                  id: mh9ps1v2
+                  values:
+                    type: link
+                    link: 'https://kbcb.ch'
+                    link_text: kbcb.ch
+                    target: _blank
             type: editors
             enabled: true
         background_color: secondary
@@ -219,6 +246,15 @@ blocks:
                   -
                     type: text
                     text: 'Das Kunsthaus Langenthal befindet sich seit 1992 im denkmalgeschützten „Choufhüsi” im Zentrum von Langenthal. Gezeigt werden Wechselausstellungen zeitgenössischer Kunst, die sich auf aktuelle Positionen aus der Schweiz konzentrieren. Thematische Gruppenausstellungen greifen gesellschaftliche Fragen auf und werden durch regelmässige Präsentationen historischer Fotografie ergänzt.'
+              -
+                type: set
+                attrs:
+                  id: mh9psgw0
+                  values:
+                    type: link
+                    link: 'https://kunsthauslangenthal.ch'
+                    link_text: kunsthauslangenthal.ch
+                    target: _blank
             type: editors
             enabled: true
         background_color: secondary
@@ -242,6 +278,15 @@ blocks:
                   -
                     type: text
                     text: 'Das Kunstmuseum Thun ist seit 1948 im historischen Thunerhof beheimatet und widmet sich der zeitgenössischen Kunst. Neben thematischen und monografischen Sonderausstellungen wird die Sammlung aus neuen Perspektiven präsentiert. Mit seinem Programm aktueller nationaler und internationaler Positionen hat sich das Museum über die Region hinaus einen Namen gemacht.'
+              -
+                type: set
+                attrs:
+                  id: mh9psui2
+                  values:
+                    type: link
+                    link: 'https://kunstmuseumthun.ch'
+                    link_text: kunstmuseumthun.ch
+                    target: _blank
             type: editors
             enabled: true
         background_color: secondary

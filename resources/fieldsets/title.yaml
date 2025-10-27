@@ -20,7 +20,6 @@ fields:
         -
           key: h3
           value: 'Überschrift 3'
-      max_items: 1
       default: h2
       type: select
       display: Ordnung

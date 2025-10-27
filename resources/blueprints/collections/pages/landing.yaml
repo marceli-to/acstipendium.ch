@@ -1,0 +1,70 @@
+title: Landing
+tabs:
+  main:
+    display: Content
+    sections:
+      -
+        display: Inhalt
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              localizable: true
+              validate:
+                - required
+          -
+            handle: blocks
+            field:
+              collapse: true
+              type: replicator
+              display: Inhaltselemente
+              localizable: true
+              sets:
+                elements:
+                  display: Elemente
+                  icon: addon-boxes-stack
+                  sets:
+                    participation:
+                      display: Teilnahme
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: participation
+  seo:
+    display: SEO
+    sections:
+      -
+        display: SEO
+        fields:
+          -
+            import: seo
+  settings:
+    display: Einstellungen
+    sections:
+      -
+        display: Einstellungen
+        fields:
+          -
+            import: settings
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true
