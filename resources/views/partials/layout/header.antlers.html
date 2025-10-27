@@ -1,3 +1,12 @@
-<header>
-
+<header 
+  class="bg-header-gradient sticky top-0 left-0 right-0 px-4 py-12 w-full min-h-90"
+  :class="{ 'bg-secondary': menu }">
+  <div class="flex justify-between">
+    <a href="{{ site:short_locale == 'fr' ? '/fr' : '/' }}" class="block w-full text-white max-w-260">
+      {{ partial:brands/stipendium class="w-full h-auto" }}
+    </a>
+    {{ partial:menu/main/buttons/show }}
+    {{ partial:menu/main/buttons/hide }}
+    {{ partial:menu/main/wrapper }}
+  </div>
 </header>

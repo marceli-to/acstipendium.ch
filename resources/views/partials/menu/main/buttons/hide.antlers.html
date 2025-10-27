@@ -1,7 +1,7 @@
-<a 
-  href="javascript:;" 
+<button 
+  x-show="menu"
   x-on:click="menu = !menu" 
-  title="Menü anzeigen"
-  class="block {{ class }}">
-  {{ partial:icons/cross class="w-full h-auto block" }}
-</a>
+  title="Menü verbergen"
+  class="flex items-center justify-center rounded-full bg-white px-21 py-7 w-64">
+  {{ partial:icons/cross class="w-20 h-20 text-primary" }}
+</button>

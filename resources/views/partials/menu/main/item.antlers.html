@@ -1,9 +1,9 @@
-<li class="text-right block">
+<li class="block">
   <a 
     href="{{ url }}" 
-    class="hover:text-navy transition-colors {{ is_current || is_parent ? '!text-navy' : 'text-white' }}"
-    target="{{ is_external ? '_blank' : '_self' }}"
-    title="{{ title }}">
+    class="inline-block rounded-full text-white border border-white px-16 py-6 text-xl text-center {{ is_current || is_parent ? '' : '' }}"
+    title="{{ title }}"
+    aria-label="{{ title }}">
     {{ title }}
   </a>
 </li>
