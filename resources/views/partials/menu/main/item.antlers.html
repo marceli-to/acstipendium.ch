@@ -1,6 +1,6 @@
 <li class="block">
   <a 
-    href="{{ child_url ?? url }}" 
+    href="{{ child_url ? child_url : url }}" 
     title="{{ title }}"
     aria-label="{{ title }}"
     class="
