@@ -6,9 +6,11 @@ tree:
     id: 61b923e5-f475-43d3-9ee6-b11bba6a94b2
     entry: 97b9d6c2-56d6-42a3-94d2-0715492c5023
   -
-    id: 5eb34196-2cc0-4f0a-856d-36044b95e7e7
+    id: da827fe7-b8c4-476b-a6b3-2c1afe71198f
+    entry: c8526a28-6279-46d6-8820-9bea7e61eeca
     title: Archives
-    url: /archives/expositions
+    data:
+      child_url: 'entry::c8526a28-6279-46d6-8820-9bea7e61eeca'
   -
     id: 8e044f97-9853-4f23-ad4c-3fb052ea5cb2
     entry: f154ffd5-6734-47d6-9deb-2d7777acfdf4

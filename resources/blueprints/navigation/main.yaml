@@ -3,4 +3,12 @@ tabs:
     display: Main
     sections:
       -
-        fields: []
+        fields:
+          -
+            handle: child_url
+            field:
+              collections:
+                - pages
+              type: link
+              display: Verweis
+              localizable: false
