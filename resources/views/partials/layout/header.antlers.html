@@ -1,4 +1,7 @@
 <header 
+  x-data="header"
+  x-bind:data-hidden="hidden"
+  :class="{ 'bg-secondary': menu }"
   class="
     bg-header-gradient 
     sticky 
@@ -18,15 +21,24 @@
     duration-500 
     ease-in-out
     data-[hidden=true]:-translate-y-full
-    data-[hidden=false]:translate-y-0"
-    :class="{ 'bg-secondary': menu }"
-    data-header>
+    data-[hidden=false]:translate-y-0">
   <div class="flex justify-between lg:gap-x-16">
-    <a href="{{ site:short_locale == 'fr' ? '/fr' : '/' }}" class="block w-auto text-white max-w-260 lg:max-w-450">
+
+    <a 
+      href="{{ site:short_locale == 'fr' ? '/fr' : '/' }}" 
+      class="
+        block 
+        w-auto 
+        text-white 
+        max-w-260 
+        lg:max-w-450">
       {{ partial:brands/stipendium class="w-full h-auto" }}
     </a>
+
     {{ partial:menu/main/buttons/show }}
     {{ partial:menu/main/buttons/hide }}
     {{ partial:menu/main/wrapper }}
+
   </div>
 </header>
+

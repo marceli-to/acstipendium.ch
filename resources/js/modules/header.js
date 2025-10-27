@@ -1,36 +1,40 @@
-// --- Hide header on scroll down, show on scroll up ---
-document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('[data-header]');
-  if (!header) return;
+document.addEventListener('alpine:init', () => {
+  window.Alpine.data('header', () => ({
+    menu: false,
+    hidden: false,
+    lastScrollY: 0,
+    ticking: false,
 
-  let lastScrollY = window.scrollY;
-  let ticking = false;
+    init() {
+      this.lastScrollY = window.scrollY;
 
-  const updateHeaderVisibility = () => {
-    const currentScrollY = window.scrollY;
+      window.addEventListener('scroll', () => {
+        if (!this.ticking) {
+          window.requestAnimationFrame(() => this.updateHeaderVisibility());
+          this.ticking = true;
+        }
+      });
+    },
 
-    // Only trigger after slight movement (prevents flicker)
-    if (Math.abs(currentScrollY - lastScrollY) < 10) {
-      ticking = false;
-      return;
-    }
+    updateHeaderVisibility() {
+      const currentScrollY = window.scrollY;
 
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-      // scrolling down
-      header.dataset.hidden = 'true';
-    } else {
-      // scrolling up
-      header.dataset.hidden = 'false';
-    }
+      // Ignore small scroll differences
+      if (Math.abs(currentScrollY - this.lastScrollY) < 10) {
+        this.ticking = false;
+        return;
+      }
 
-    lastScrollY = currentScrollY;
-    ticking = false;
-  };
+      // Hide when scrolling down (past 100px)
+      if (currentScrollY > this.lastScrollY && currentScrollY > 100) {
+        this.hidden = true;
+        this.menu = false; // close menu when header hides
+      } else {
+        this.hidden = false;
+      }
 
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(updateHeaderVisibility);
-      ticking = true;
-    }
-  });
+      this.lastScrollY = currentScrollY;
+      this.ticking = false;
+    },
+  }));
 });
