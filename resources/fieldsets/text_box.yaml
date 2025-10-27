@@ -6,12 +6,28 @@ fields:
       type: text
       display: Titel
       localizable: true
+      width: 66
+  -
+    handle: title_order
+    field:
+      options:
+        -
+          key: h1
+          value: 'Überschrift 1'
+        -
+          key: h2
+          value: 'Überschrift 2'
+      default: h2
+      type: select
+      display: Ordnung
+      localizable: false
+      width: 33
   -
     handle: editors
     field:
       type: replicator
       display: Inhalte
-      localizable: false
+      localizable: true
       sets:
         neue_setgruppe:
           display: 'Neue Setgruppe'

@@ -4,7 +4,7 @@ blueprint: page
 title: 'Über uns'
 debug: false
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761584585
+updated_at: 1761593143
 blocks:
   -
     id: mh9crcaq
@@ -124,6 +124,7 @@ blocks:
                 text: 'Thomas Schmutz, Kunsthistoriker und Kurator'
         type: editors
         enabled: true
+    title_order: h1
   -
     id: mh9dyeal
     title: 'Bernische Kunstgesellschaft'
@@ -152,5 +153,6 @@ blocks:
     col_start_desktop: 1
     type: text_box
     enabled: true
+    title_order: h2
 has_footer: true
 ---

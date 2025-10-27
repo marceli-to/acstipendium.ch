@@ -7,7 +7,8 @@
   {{ background_color == 'secondary' ? 'border lg:border-2 border-white' : '' }}
   mb-8
   lg:mb-16
-  rounded-[1rem] 
+  rounded-[1rem]
+  lg:rounded-[2rem]
   px-14
   lg:px-24
   pt-11 
@@ -18,9 +19,9 @@
   [&_p]:mb-14
   [&_p]:lg:mb-16">
 
-  {{ partial:components/headings/h1 }}
+  {{ partial:components/headings/dynamic type="{{ title_order }}" }}
     {{ title }} 
-  {{ /partial:components/headings/h1 }}
+  {{ /partial:components/headings/dynamic }}
 
   <div class="flex flex-col gap-y-24 lg:gap-y-32">
     {{ editors }}
