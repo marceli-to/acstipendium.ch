@@ -9,12 +9,15 @@ fields:
         - h3
         - bold
         - italic
+        - underline
         - unorderedlist
+        - orderedlist
         - removeformat
         - superscript
         - anchor
         - nobr
         - pill
+        - spacer
       toolbar_mode: floating
       remove_empty_nodes: true
       type: bard

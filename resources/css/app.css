@@ -121,7 +121,43 @@ p:has(.pill) {
 
 /* Cards */
 .card {
-  @apply mb-8 lg:mb-16 px-14 lg:px-24 pt-11 pb-14 lg:pt-16 lg:pb-24 text-white [&_.pill]:mb-4 [&_p]:mb-14 [&_p]:lg:mb-16 [&_p:last-of-type]:!mb-0;
+  @apply mb-8 lg:mb-16 px-14 lg:px-24 pt-11 pb-14 lg:pt-16 lg:pb-24 text-white;
+}
+
+.card .pill {
+  @apply mb-4;
+}
+
+.card p:not(:last-child) {
+  @apply mb-14 lg:mb-16;
+}
+
+.card > *:last-child {
+  @apply mb-0;
+}
+
+.card p:has(ul) {
+  @apply mb-14 lg:mb-16;
+}
+
+.card ul {
+  @apply mb-14 lg:mb-16 list-disc ml-16 lg:ml-20;
+}
+
+.card ul:last-child {
+  @apply mb-0;
+}
+
+.card ul li p {
+  @apply !mb-0;
+}
+
+.card ul li {
+  @apply pl-4 lg:pl-6;
+}
+
+.card ul li::marker {
+  font-size: .7em;
 }
 
 .card-rounded {
@@ -130,4 +166,47 @@ p:has(.pill) {
 
 .card-border {
   @apply border lg:border-2 border-white;
+}
+
+/* Ordered list */
+.card ol,
+.card ol ol {
+  @apply list-none
+}
+
+.card ol {
+  counter-reset: top;
+}
+
+.card ol > li {
+  @apply relative pl-28 lg:pl-40 mb-8 lg:mb-16;
+  counter-increment: top;
+}
+
+.card ol > li::before {
+  content: counter(top, decimal) ".";
+  @apply absolute -left-28 w-40 text-right;
+}
+
+.card ol > li > ol {
+  @apply mt-8 lg:mt-16;
+  counter-reset: sub;
+}
+
+.card ol > li > ol > li {
+  @apply relative pl-32;
+  counter-increment: sub;
+}
+
+.card ol > li > ol > li::before {
+  content: counter(sub, lower-alpha);
+  @apply absolute -left-32 lg:w-40 text-right;
+}
+
+.card u {
+  @apply underline decoration-1 underline-offset-2
+}
+
+.card ol p {
+  @apply inline m-0 p-0;
 }

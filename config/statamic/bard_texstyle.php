@@ -32,6 +32,16 @@ return [
         'cp_css' => 'border-radius: 9999px; border: 1px solid #1C2E36; padding: 2px 6px',
         'cp_badge' => false,
       ],
+
+      'spacer' => [
+        'type' => 'span',
+        'name' => 'Spacer',
+        'ident' => 'S',
+        'icon' => null,
+        'class' => 'block mt-12 lg:mt-16',
+        'cp_css' => '',
+        'cp_badge' => false,
+      ],
       
     ],
 
