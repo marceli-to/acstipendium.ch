@@ -21,4 +21,4 @@ fields:
                 -
                   import: editor
   -
-    import: box_settings
+    import: text_box_settings

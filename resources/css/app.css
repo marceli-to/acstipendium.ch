@@ -19,11 +19,11 @@
 
 /* Pill Sizes */
 .pill-sm {
-  @apply px-14 py-2 h-25 text-md lg:text-lg lg:px-16 lg:py-6 lg:h-36;
+  @apply px-14 py-2 min-h-25 text-md lg:text-lg lg:px-16 lg:py-6 lg:min-h-36;
 }
 
 .pill-lg {
-  @apply px-16 py-2 h-30 text-xl lg:text-2xl lg:px-20 lg:py-8 lg:h-48;
+  @apply px-16 py-2 min-h-30 text-xl lg:text-2xl lg:px-20 lg:py-8 lg:min-h-48;
 }
 
 /* Pill Variants */
@@ -135,6 +135,10 @@ p:has(.pill) {
 /* Card elements */
 .card .pill {
   @apply mb-4;
+}
+
+.card a:not(.pill) {
+  @apply underline decoration-1 underline-offset-2 hover:no-underline;
 }
 
 .card p:not(:last-child) {

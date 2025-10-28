@@ -1,0 +1,83 @@
+title: Informationen
+fields:
+  -
+    import: title
+  -
+    handle: main_elements
+    field:
+      collapse: true
+      type: replicator
+      display: Hauptspalte
+      localizable: true
+      sets:
+        neue_setgruppe:
+          display: 'Neue Setgruppe'
+          sets:
+            editor:
+              display: Text
+              instructions: 'Text hinzufügen'
+              icon: text-formatting-markdown
+              fields:
+                -
+                  handle: subtitle
+                  field:
+                    type: text
+                    display: Subtitel
+                    localizable: false
+                -
+                  import: editor
+            organisation_location:
+              display: 'Text Organisation/Ort'
+              instructions: 'Text für Organisation/Ort hinzufügen'
+              icon: dashboard-layout
+              fields:
+                -
+                  handle: title_organisation_location
+                  field:
+                    type: text
+                    display: Titel
+                    localizable: false
+                -
+                  handle: subtitle_organisation
+                  field:
+                    type: text
+                    display: Subtitel
+                    localizable: false
+                    width: 50
+                -
+                  handle: subtitle_location
+                  field:
+                    type: text
+                    display: Subtitel
+                    localizable: false
+                    width: 50
+                -
+                  handle: editor_organisation
+                  field: editor.editor
+                  config:
+                    display: Text
+                    width: 50
+                -
+                  handle: editor_location
+                  field: editor.editor
+                  config:
+                    display: Text
+                    width: 50
+  -
+    handle: sidebar_elements
+    field:
+      type: replicator
+      display: Seitenspalte
+      localizable: true
+      collapse: true
+      sets:
+        neue_setgruppe:
+          display: 'Neue Setgruppe'
+          sets:
+            sidebar_element:
+              display: Element
+              instructions: 'Sidebar Element hinzufügen'
+              icon: text-formatting-initial-letter
+              fields:
+                -
+                  import: form_information_sidebar_item

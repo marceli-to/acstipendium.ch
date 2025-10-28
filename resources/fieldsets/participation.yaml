@@ -17,4 +17,4 @@ fields:
       instructions: 'Wird angezeigt wenn Anmeldungen inaktiv'
       instructions_position: below
   -
-    import: box_settings
+    import: text_box_settings

@@ -1,0 +1,6 @@
+title: 'Informationen Sidebar Element'
+fields:
+  -
+    import: title
+  -
+    import: editor

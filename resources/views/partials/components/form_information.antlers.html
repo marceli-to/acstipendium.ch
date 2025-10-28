@@ -1,0 +1,87 @@
+<article class="
+  col-span-full
+  lg:col-span-8
+  bg-primary
+  card
+  card-rounded">
+  
+  {{ if title }}
+    {{ partial:components/headings/dynamic type="{{ title_order }}" }}
+      {{ title }}
+    {{ /partial:components/headings/dynamic }}
+  {{ /if }}
+
+  <div class="flex flex-col gap-y-8 lg:gap-y-16">
+    
+    {{ main_elements }}
+
+      {{ if type == "organisation_location" }}
+
+        <div class="flex justify-center">
+          <h3 class="pill pill-sm pill-static">
+            {{ title_organisation_location }}
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-2 gap-x-16">
+          <div>
+            <div class="card card-rounded border lg:border-2 !border-white">
+              <div class="flex justify-center mb-8 lg:mb-16">
+                <h3 class="pill pill-sm pill-static">
+                  {{ subtitle_organisation }}
+                </h3>
+              </div>
+              {{ partial:components/editor/wrapper :editor="editor_organisation" }}
+            </div>
+          </div>
+          <div>
+            <div class="card card-rounded border lg:border-2 !border-white">
+              <div class="flex justify-center mb-8 lg:mb-16">
+                <h3 class="pill pill-sm pill-static">
+                  {{ subtitle_location }}
+                </h3>
+              </div>
+              {{ partial:components/editor/wrapper :editor="editor_location" }}
+            </div>
+          </div>
+        </div>
+      {{ /if }}
+
+      {{ if type == "editor" }}
+
+        {{ if subtitle }}
+          <div class="flex justify-center">
+            <h3 class="pill pill-sm pill-static">
+              {{ subtitle }}
+            </h3>
+          </div>
+        {{ /if }}
+
+        {{ partial:components/editor/wrapper }}
+
+      {{ /if }}
+
+    {{ /main_elements }}
+  </div>
+
+</article>
+
+<aside class="col-span-full lg:col-span-4">
+
+  {{ sidebar_elements }}
+
+    <article class="card card-rounded card-border">
+      
+      {{ if title }}
+        {{ partial:components/headings/dynamic type="{{ title_order }}" }}
+          {{ title }} 
+        {{ /partial:components/headings/dynamic }}
+      {{ /if }}
+      
+      {{ partial:components/editor/wrapper }}
+
+    </article>
+
+  {{ /sidebar_elements }}
+
+</aside>
