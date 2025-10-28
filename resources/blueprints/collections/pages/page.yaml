@@ -40,6 +40,13 @@ tabs:
                       fields:
                         -
                           import: partners
+                    conditions:
+                      display: Teilnahmebedingungen
+                      instructions: 'Teilnahmebedingungen hinzufügen'
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: conditions
                 special_elements:
                   display: Spezialelemente
                   icon: addon-boxes-stack

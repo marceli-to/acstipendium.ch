@@ -1,2 +1,32 @@
 title: Teilnahmebedingungen
-fields: {  }
+fields:
+  -
+    import: title
+  -
+    import: editor
+  -
+    handle: condition_section
+    field:
+      collapse: true
+      type: replicator
+      display: Bedingung
+      localizable: true
+      sets:
+        neue_setgruppe:
+          display: 'Neue Setgruppe'
+          sets:
+            condition_section:
+              display: Bedingung
+              instructions: 'Bedingung hinzufügen'
+              icon: text-formatting-initial-letter
+              fields:
+                -
+                  handle: condition_section_title
+                  field:
+                    type: text
+                    display: Titel
+                    localizable: false
+                -
+                  import: editor
+  -
+    import: box_settings

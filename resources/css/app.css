@@ -124,6 +124,15 @@ p:has(.pill) {
   @apply mb-8 lg:mb-16 px-14 lg:px-24 pt-11 pb-14 lg:pt-16 lg:pb-24 text-white;
 }
 
+.card-rounded {
+  @apply rounded-[1rem] lg:rounded-[2rem];
+}
+
+.card-border {
+  @apply border lg:border-2 border-white;
+}
+
+/* Card elements */
 .card .pill {
   @apply mb-4;
 }
@@ -140,6 +149,7 @@ p:has(.pill) {
   @apply mb-14 lg:mb-16;
 }
 
+/* Unordered list */
 .card ul {
   @apply mb-14 lg:mb-16 list-disc ml-16 lg:ml-20;
 }
@@ -158,14 +168,6 @@ p:has(.pill) {
 
 .card ul li::marker {
   font-size: .7em;
-}
-
-.card-rounded {
-  @apply rounded-[1rem] lg:rounded-[2rem];
-}
-
-.card-border {
-  @apply border lg:border-2 border-white;
 }
 
 /* Ordered list */
@@ -200,11 +202,11 @@ p:has(.pill) {
 
 .card ol > li > ol > li::before {
   content: counter(sub, lower-alpha);
-  @apply absolute -left-32 lg:w-40 text-right;
+  @apply absolute -left-30 lg:w-40 text-right;
 }
 
 .card u {
-  @apply underline decoration-1 underline-offset-2
+  @apply inline underline decoration-1 underline-offset-2
 }
 
 .card ol p {

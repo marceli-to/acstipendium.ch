@@ -38,8 +38,8 @@ return [
         'name' => 'Spacer',
         'ident' => 'S',
         'icon' => null,
-        'class' => 'block mt-12 lg:mt-16',
-        'cp_css' => '',
+        'class' => 'inline-block mt-12 lg:mt-16',
+        'cp_css' => 'inline-block; margin-top: 12px;',
         'cp_badge' => false,
       ],
       

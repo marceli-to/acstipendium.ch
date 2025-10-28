@@ -1,0 +1,31 @@
+<article class="
+  col-span-{{ col_span_mobile }} 
+  col-start-{{ col_start_mobile }} 
+  lg:col-span-{{ col_span_desktop }}
+  lg:col-start-{{ col_start_desktop }} 
+  bg-{{ background_color }}
+  card
+  card-rounded
+  {{ background_color == 'secondary' ? 'card-border' : '' }}">
+  
+  {{ if title }}
+    {{ partial:components/headings/dynamic type="{{ title_order }}" }}
+      {{ title }} 
+    {{ /partial:components/headings/dynamic }}
+  {{ /if }}
+
+  {{ partial:components/editor/wrapper }}
+
+  {{ condition_section }}
+
+    <div class="flex justify-center my-8 lg:my-16">
+      <h3 class="pill pill-sm pill-static">
+        {{ condition_section_title }}
+      </h3>
+    </div>
+
+    {{ partial:components/editor/wrapper }}
+
+  {{ /condition_section }}
+
+</article>
