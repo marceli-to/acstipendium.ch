@@ -28,10 +28,25 @@ tabs:
                   sets:
                     participation:
                       display: Teilnahme
+                      instructions: 'Hinweis Teilnahme hinzufügen'
                       icon: text-formatting-initial-letter
                       fields:
                         -
                           import: participation
+                    award_exhibition:
+                      display: Vergabe/Ausstellung
+                      instructions: 'Hinweis Vergabe/Ausstellung hinzufügen'
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: award_exhibition
+                    text_box:
+                      display: Textbox
+                      instructions: 'Textbox hinzufügen'
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: text_box
   seo:
     display: SEO
     sections:

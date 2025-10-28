@@ -8,6 +8,9 @@
   @apply !hidden;
 }
 
+.nobr {
+  @apply whitespace-nowrap;
+}
 
 /* Pills */
 .pill {

@@ -1,0 +1,20 @@
+<article class="
+  col-span-{{ col_span_mobile }} 
+  col-start-{{ col_start_mobile }} 
+  lg:col-span-{{ col_span_desktop }}
+  lg:col-start-{{ col_start_desktop }}
+  card
+  card-rounded
+  {{ registration:is_active ? 'bg-primary' : 'bg-secondary card-border' }}">
+
+  {{ partial:components/headings/dynamic type="{{ title_order }}" }}
+    {{ title }} 
+  {{ /partial:components/headings/dynamic }}
+
+  {{ if registration:is_active }}
+    {{ partial:components/editor/wrapper :editor="editor_open" background_color="primary" }}
+  {{ else }}
+    {{ partial:components/editor/wrapper :editor="editor_closed" background_color="secondary" }}
+  {{ /if }}
+
+</article>

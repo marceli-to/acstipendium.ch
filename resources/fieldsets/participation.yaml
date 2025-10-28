@@ -6,15 +6,15 @@ fields:
     handle: editor_open
     field: editor.editor
     config:
-      display: 'Anmeldung offen'
-      instructions: 'Wird angezeigt wenn Anmeldung offen'
+      display: 'Text "Anmeldung aktiv"'
+      instructions: 'Wird angezeigt wenn Anmeldungen aktiv'
       instructions_position: below
   -
     handle: editor_closed
     field: editor.editor
     config:
-      display: 'Anmeldung geschlossen'
-      instructions: 'Wird angezeigt wenn Anmeldung geschlossen'
+      display: 'Text "Anmeldung inaktiv"'
+      instructions: 'Wird angezeigt wenn Anmeldungen inaktiv'
       instructions_position: below
   -
     import: box_settings

@@ -1,0 +1,14 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: is_active
+            field:
+              type: toggle
+              display: Aktiviert
+              localizable: false
+              instructions: 'Aktiviert die Buttons, das Anmeldeformular und zeigt die entsprechenden Textbausteine auf der Startseite.'
+              instructions_position: below

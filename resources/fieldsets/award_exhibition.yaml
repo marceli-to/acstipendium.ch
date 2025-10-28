@@ -1,0 +1,26 @@
+title: 'Hinweis Vergabe/Ausstellung'
+fields:
+  -
+    import: title
+  -
+    handle: location
+    field:
+      type: text
+      display: Ort
+      localizable: true
+  -
+    handle: date_award
+    field:
+      type: text
+      display: 'Datum Vergabe'
+      localizable: true
+  -
+    handle: periode_exhibition
+    field:
+      type: text
+      display: 'Zeitraum Ausstellung'
+      localizable: true
+  -
+    import: editor
+  -
+    import: box_settings
