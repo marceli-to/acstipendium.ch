@@ -12,13 +12,107 @@
   @apply whitespace-nowrap;
 }
 
-/* Pills */
+/* Pills - Interactive and non-interactive elements */
 .pill {
-  @apply bg-primary border lg:border-2 border-primary text-white rounded-full px-14 lg:px-16 pt-2 pb-3 lg:py-2 w-auto inline-block transition-colors;
+  @apply rounded-full inline-flex items-center justify-center transition-all border lg:border-2;
 }
 
-.pill--outline:hover {
-  @apply bg-transparent text-primary
+/* Pill Sizes */
+.pill-sm {
+  @apply px-14 py-2 h-25 text-md lg:text-lg lg:px-16 lg:py-6 lg:h-36;
+}
+
+.pill-lg {
+  @apply px-16 py-2 h-30 text-xl lg:text-2xl lg:px-20 lg:py-8 lg:h-48;
+}
+
+/* Pill Variants */
+.pill-solid-white {
+  @apply bg-white text-primary border-white;
+}
+
+.pill-solid-white:hover {
+  @apply shadow-[0_0_20px_4px_white];
+}
+
+.pill-solid-primary {
+  @apply bg-primary text-white border-primary;
+}
+
+.pill-solid-primary:hover {
+  @apply shadow-[0_0_20px_4px_white];
+}
+
+.pill-solid-primary-alt {
+  @apply bg-primary text-white border-primary;
+}
+
+.pill-solid-primary-alt:hover {
+  @apply bg-transparent text-primary border-primary;
+}
+
+.pill-outline-white {
+  @apply bg-transparent text-white border-white;
+}
+
+.pill-outline-white:hover {
+  @apply shadow-[0_0_20px_4px_white];
+}
+
+.pill-outline-primary {
+  @apply bg-transparent text-primary border-primary;
+}
+
+.pill-outline-primary:hover {
+  @apply shadow-[0_0_20px_4px_rgb(var(--color-primary))];
+}
+
+/* Pill Static (no hover) - for non-interactive labels */
+.pill-static {
+  @apply bg-transparent text-white border-white !shadow-none;
+}
+
+/* Pill Static with permanent glow */
+.pill-static-glow {
+  @apply bg-transparent text-white border-white shadow-[0_0_20px_4px_white];
+}
+
+.pill-static-glow:hover {
+  @apply shadow-[0_0_20px_4px_white];
+}
+
+/* Pill Icon Spacing */
+.pill-icon-sm {
+  @apply gap-4 lg:gap-8;
+}
+
+.pill-icon-sm svg {
+  @apply h-12 lg:h-24;
+}
+
+.pill-icon-lg {
+  @apply gap-6 lg:gap-4;
+}
+
+.pill-icon-lg svg {
+  @apply h-16 lg:h-24;
+}
+
+/* Glow Utility Classes */
+.glow-sm-white {
+  @apply shadow-[0_0_20px_4px_white];
+}
+
+.glow-sm-primary {
+  @apply shadow-[0_0_20px_4px_rgb(var(--color-primary))];
+}
+
+.glow-lg-white {
+  @apply shadow-[0_0_40px_24px_white];
+}
+
+.glow-lg-primary {
+  @apply shadow-[0_0_40px_24px_rgb(var(--color-primary))];
 }
 
 p:has(.pill) {
@@ -27,7 +121,7 @@ p:has(.pill) {
 
 /* Cards */
 .card {
-  @apply mb-8 lg:mb-16 px-14 lg:px-24 pt-11 pb-14 lg:pt-16 lg:pb-24 text-white [&_.pill]:border-white [&_.pill]:mb-4 [&_p]:mb-14 [&_p]:lg:mb-16 [&_p:last-of-type]:!mb-0;
+  @apply mb-8 lg:mb-16 px-14 lg:px-24 pt-11 pb-14 lg:pt-16 lg:pb-24 text-white [&_.pill]:mb-4 [&_p]:mb-14 [&_p]:lg:mb-16 [&_p:last-of-type]:!mb-0;
 }
 
 .card-rounded {

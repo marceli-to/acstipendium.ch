@@ -48,7 +48,36 @@ fields:
           value: '6'
       default: '6'
       type: select
-      display: 'Spaltenbreite (Mobile)'
+      display: 'Spaltenbreite Mobile'
+      localizable: false
+      width: 50
+      if:
+        show_settings: 'equals true'
+  -
+    handle: col_start_mobile
+    field:
+      options:
+        -
+          key: 1
+          value: '1'
+        -
+          key: 2
+          value: '2'
+        -
+          key: 3
+          value: '3'
+        -
+          key: 4
+          value: '4'
+        -
+          key: 5
+          value: '5'
+        -
+          key: 6
+          value: '6'
+      default: '1'
+      type: select
+      display: 'Startspalte Mobile'
       localizable: false
       width: 50
       if:
@@ -95,36 +124,7 @@ fields:
           value: '12'
       default: '6'
       type: select
-      display: 'Spaltenbreite (Desktop)'
-      localizable: false
-      width: 50
-      if:
-        show_settings: 'equals true'
-  -
-    handle: col_start_mobile
-    field:
-      options:
-        -
-          key: 1
-          value: '1'
-        -
-          key: 2
-          value: '2'
-        -
-          key: 3
-          value: '3'
-        -
-          key: 4
-          value: '4'
-        -
-          key: 5
-          value: '5'
-        -
-          key: 6
-          value: '6'
-      default: '1'
-      type: select
-      display: 'Startspalte (Mobile)'
+      display: 'Spaltenbreite Desktop'
       localizable: false
       width: 50
       if:
@@ -171,7 +171,7 @@ fields:
           value: '12'
       default: '1'
       type: select
-      display: 'Startspalte (Desktop)'
+      display: 'Startspalte Desktop'
       localizable: false
       width: 50
       if:

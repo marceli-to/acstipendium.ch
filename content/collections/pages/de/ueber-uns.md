@@ -4,7 +4,7 @@ blueprint: page
 title: 'Über uns'
 debug: false
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761608382
+updated_at: 1761656797
 blocks:
   -
     id: mh9crcaq
@@ -46,7 +46,7 @@ blocks:
                   -
                     type: btsSpan
                     attrs:
-                      class: pill
+                      class: 'pill pill-sm pill-static'
                 text: Präsidentin
           -
             type: paragraph
@@ -63,7 +63,7 @@ blocks:
                   -
                     type: btsSpan
                     attrs:
-                      class: pill
+                      class: 'pill pill-sm pill-static'
                 text: 'Co-Präsident BKG'
           -
             type: paragraph
@@ -80,7 +80,7 @@ blocks:
                   -
                     type: btsSpan
                     attrs:
-                      class: pill
+                      class: 'pill pill-sm pill-static'
                 text: 'Jurypräsidentin Stipendium'
           -
             type: paragraph
@@ -97,7 +97,7 @@ blocks:
                   -
                     type: btsSpan
                     attrs:
-                      class: pill
+                      class: 'pill pill-sm pill-static'
                 text: Kassier
           -
             type: paragraph
@@ -114,7 +114,7 @@ blocks:
                   -
                     type: btsSpan
                     attrs:
-                      class: pill
+                      class: 'pill pill-sm pill-static'
                 text: Stiftungsratmitglied
           -
             type: paragraph
@@ -122,6 +122,23 @@ blocks:
               -
                 type: text
                 text: 'Thomas Schmutz, Kunsthistoriker und Kurator'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                marks:
+                  -
+                    type: btsSpan
+                    attrs:
+                      class: 'pill pill-sm pill-static'
+                text: Test
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                text: 'Marcel Stadlemann'
         type: editors
         enabled: true
     title_order: h1

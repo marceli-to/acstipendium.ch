@@ -1,17 +1,9 @@
 <div class="mt-8 lg:mt-18">
-  <a 
+  <a
     href="{{ link }}"
     target="{{ target }}"
     aria-label="{{ link_text }}"
-    class="
-      pill 
-      {{ 
-        background_color == 'secondary' 
-        ? 
-          '!border-primary hover:!border-white hover:!bg-white hover:!text-primary' 
-        :
-          '!border-white !text-primary !bg-white hover:!border-white hover:!text-white hover:!bg-primary' 
-      }}">
+    class="pill pill-sm {{ background_color == 'secondary' ? 'pill-solid-primary' : 'pill-solid-white' }}">
     {{ link_text }}
   </a>
 </div>

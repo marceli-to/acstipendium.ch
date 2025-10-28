@@ -2,25 +2,43 @@
 <div class="col-span-full">
   {{ partial:components/meta is_imprint="true" }}
     <div class="
-      lg:grid 
-      lg:grid-cols-subgrid 
+      lg:grid
+      lg:grid-cols-subgrid
       lg:gap-x-16
       mt-24
       lg:mt-96
       text-primary
-      [&_.pill]:mb-4
-      [&_.pill]:lg:mb-8
-      hover:[&_.pill]:bg-transparent 
-      hover:[&_.pill]:text-primary
       [&_p]:mb-12
       [&_p]:lg:mb-16
-      [&_h2]:text-2xl 
-      [&_h2]:lg:text-3xl 
+      [&_h2]:text-2xl
+      [&_h2]:lg:text-3xl
       [&_h2]:uppercase
       [&_h2]:mb-8
       [&_h2]lg:mb-10
       [&_h2:not(:first-of-type)]:mt-32">
-      {{ partial:components/editor/wrapper class="lg:col-span-8 lg:col-start-3" }}
+
+      <div class="lg:col-span-8 lg:col-start-3">
+        {{ editor }}
+
+          {{ if type == 'text' }}
+            {{ text }}
+          {{ /if }}
+
+          {{ if type == 'link' }}
+            <div class="my-4 lg:my-8">
+                <a
+                  href="{{ link }}"
+                  target="{{ target }}"
+                  aria-label="{{ link_text }}"
+                  class="pill pill-sm pill-solid-primary-alt">
+                  {{ link_text }}
+                </a>
+            </div>
+          {{ /if }}
+          
+        {{ /editor }}
+      </div>
+
     </div>
   {{ /partial:components/meta }}
 </div>

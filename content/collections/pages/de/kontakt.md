@@ -26,7 +26,7 @@ blocks:
                   -
                     type: btsSpan
                     attrs:
-                      class: pill
+                      class: 'pill pill-sm pill-static'
                 text: 'Florian Brand'
           -
             type: paragraph

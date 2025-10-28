@@ -11,31 +11,31 @@
 
       <div class="flex flex-col items-start gap-y-4 lg:gap-y-6">
         {{ if footer:email }}
-          <a 
+          <a
             href="mailto:{{ footer:email }}"
             aria-label="{{ 'Schreiben Sie uns' | trans }}"
-            class="pill pill--outline">
+            class="pill pill-sm pill-solid-primary-alt">
             {{ footer:email }}
           </a>
         {{ /if }}
 
         {{ if footer:instagram }}
-          <a 
+          <a
             href="{{ footer:instagram }}"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="{{ 'Folgen Sie uns auf Instagram' | trans }}"
-            class="pill pill--outline">
+            class="pill pill-sm pill-solid-primary-alt">
             {{ 'Instagram' | trans }}
           </a>
         {{ /if }}
       </div>
 
       <div class="flex justify-end">
-        <a 
+        <a
           href="{{ '/impressum' | trans }}"
           aria-label="{{ 'Impressum' | trans }}"
-          class="pill {{ is_imprint ? 'shadow-[0_0_1.25rem_0.25rem_rgb(var(--color-primary))]': 'hover:shadow-[0_0_1.25rem_0.25rem_rgb(var(--color-primary))]' }}">
+          class="pill pill-sm pill-solid-primary-alt {{ is_imprint ? 'glow-sm-primary !bg-primary !text-white' : '' }}">
           {{ 'Impressum' | trans }}
         </a>
       </div>

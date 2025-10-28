@@ -28,7 +28,7 @@ return [
         'name' => 'Pill',
         'ident' => 'P',
         'icon' => null,
-        'class' => 'pill',
+        'class' => 'pill pill-sm pill-static',
         'cp_css' => 'border-radius: 9999px; border: 1px solid #1C2E36; padding: 2px 6px',
         'cp_badge' => false,
       ],

@@ -4,7 +4,7 @@ blueprint: page
 title: Impressum
 debug: false
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761608400
+updated_at: 1761659653
 blocks:
   -
     id: mh99rhx8
@@ -168,41 +168,25 @@ blocks:
             type: text
             text: '3007 Bern'
       -
-        type: paragraph
-        content:
-          -
-            type: text
-            marks:
-              -
-                type: link
-                attrs:
-                  href: 'mailto:info@bleifreitype.ch'
-                  rel: null
-                  target: null
-                  title: null
-              -
-                type: btsSpan
-                attrs:
-                  class: pill
-            text: info@bleifreitype.ch
+        type: set
+        attrs:
+          id: mhalsjif
+          values:
+            type: link
+            link: 'mailto:info@bleifreitype.ch'
+            link_text: info@bleifreitype.ch
+            target: _blank
+            css_class: 'pill pill-sm pill-solid-primary'
       -
-        type: paragraph
-        content:
-          -
-            type: text
-            marks:
-              -
-                type: link
-                attrs:
-                  href: 'https://www.bleifreitype.ch'
-                  rel: null
-                  target: _blank
-                  title: null
-              -
-                type: btsSpan
-                attrs:
-                  class: pill
-            text: www.bleifreitype.ch
+        type: set
+        attrs:
+          id: mhalvri0
+          values:
+            type: link
+            link: 'https://www.bleifreitype.ch'
+            link_text: www.bleifreitype.ch
+            target: _blank
+            css_class: 'pill pill-sm pill-solid-primary'
       -
         type: heading
         attrs:
@@ -228,40 +212,23 @@ blocks:
             type: text
             text: '8047 Zürich'
       -
-        type: paragraph
-        content:
-          -
-            type: text
-            marks:
-              -
-                type: link
-                attrs:
-                  href: 'mailto:m@marceli.to'
-                  rel: null
-                  target: null
-                  title: null
-              -
-                type: btsSpan
-                attrs:
-                  class: pill
-            text: m@marceli.to
-          -
-            type: hardBreak
-          -
-            type: text
-            marks:
-              -
-                type: link
-                attrs:
-                  href: 'https://www.marceli.to'
-                  rel: null
-                  target: _blank
-                  title: null
-              -
-                type: btsSpan
-                attrs:
-                  class: pill
-            text: www.marceli.to
+        type: set
+        attrs:
+          id: mhamgjmv
+          values:
+            type: link
+            link: 'mailto:m@marceli.to'
+            link_text: m@marceli.to
+            target: _blank
+      -
+        type: set
+        attrs:
+          id: mhamh38j
+          values:
+            type: link
+            link: 'https://www.marceli.to'
+            link_text: www.marceli.to
+            target: _blank
     type: imprint
     enabled: true
 has_footer: false

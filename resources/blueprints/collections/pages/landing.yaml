@@ -28,14 +28,14 @@ tabs:
                   sets:
                     participation:
                       display: Teilnahme
-                      instructions: 'Hinweis Teilnahme hinzufügen'
+                      instructions: 'Teilnahme hinzufügen'
                       icon: text-formatting-initial-letter
                       fields:
                         -
                           import: participation
                     award_exhibition:
                       display: Vergabe/Ausstellung
-                      instructions: 'Hinweis Vergabe/Ausstellung hinzufügen'
+                      instructions: 'Vergabe/Ausstellung hinzufügen'
                       icon: text-formatting-initial-letter
                       fields:
                         -

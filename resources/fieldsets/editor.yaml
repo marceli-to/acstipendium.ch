@@ -30,8 +30,8 @@ fields:
           icon: addon-boxes-stack
           sets:
             link:
-              display: 'Button / Link'
-              instructions: 'Button / Link hinzufügen'
+              display: Link
+              instructions: 'Link hinzufügen'
               icon: link
               fields:
                 -

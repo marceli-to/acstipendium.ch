@@ -1,0 +1,30 @@
+<article class="
+  col-span-{{ col_span_mobile }} 
+  col-start-{{ col_start_mobile }} 
+  lg:col-span-{{ col_span_desktop }}
+  lg:col-start-{{ col_start_desktop }}
+  card
+  card-rounded
+  {{ registration:is_active ? 'bg-secondary card-border' : 'bg-primary' }}">
+
+  {{ partial:components/headings/dynamic type="{{ title_order }}" }}
+    {{ title }} 
+  {{ /partial:components/headings/dynamic }}
+
+  <div class="flex flex-col items-center lg:gap-y-8 mb-8 lg:mb-16">
+    <div class="pill pill-lg pill-static-glow">
+      {{ location }}
+    </div>
+
+    <div class="pill pill-sm pill-outline-white pill-static">
+      {{ date_award }}
+    </div>
+
+    <div class="pill pill-sm pill-outline-white pill-static">
+      {{ periode_exhibition }}
+    </div>
+  </div>
+  
+  {{ partial:components/editor/wrapper }}
+
+</article>
