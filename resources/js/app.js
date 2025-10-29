@@ -4,5 +4,4 @@ import './modules/header.js'
 Alpine.start();
 
 import './bootstrap';
-// import './forms/contact/app.js';
-// import './forms/course/app.js';
+import './forms/application/app.js';

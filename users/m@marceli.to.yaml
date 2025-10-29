@@ -89,6 +89,13 @@ preferences:
         - email
         - location
         - state
+    applications:
+      columns:
+        - firstname
+        - name
+        - email
+        - location
+        - dob
   taxonomies:
     project_categories:
       columns:

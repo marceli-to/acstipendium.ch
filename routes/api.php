@@ -1,8 +1,7 @@
 <?php
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ContactController;
-use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +14,4 @@ use App\Http\Controllers\Api\CourseController;
 |
 */
 
-Route::post('/course/register', [CourseController::class, 'register']);
-Route::get('/course/{courseId}', [CourseController::class, 'get']);
-Route::post('/contact/submit', [ContactController::class, 'store']);
+Route::post('/application', [ApplicationController::class, 'store']);

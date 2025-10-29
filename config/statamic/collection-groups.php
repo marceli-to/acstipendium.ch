@@ -15,11 +15,7 @@
  * ]
  */
 return [
-  // 'Anmeldungen' => [
-  //   'Kurse' => 'course_registrations',
-  // ],
-  // 'Formulare' => [
-  //   'Kontakt' => 'contact_form',
-  // ],
-
+  'Daten' => [
+    'applications',
+  ],
 ];

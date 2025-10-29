@@ -1,0 +1,173 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: firstname
+            field:
+              type: text
+              display: Vorname
+              localizable: false
+              width: 50
+          -
+            handle: name
+            field:
+              type: text
+              display: Name
+              localizable: false
+              width: 50
+          -
+            handle: name_artist_group
+            field:
+              type: text
+              display: 'Name Künstlergruppe'
+              localizable: false
+          -
+            handle: street
+            field:
+              type: text
+              display: 'Strasse / Nr.'
+              localizable: false
+          -
+            handle: zip
+            field:
+              type: text
+              display: PLZ
+              localizable: false
+              width: 33
+          -
+            handle: location
+            field:
+              type: text
+              display: Ort
+              localizable: false
+              width: 66
+          -
+            handle: phone
+            field:
+              type: text
+              display: Telefon
+              localizable: false
+          -
+            handle: website
+            field:
+              type: text
+              display: Webseite
+              localizable: false
+          -
+            handle: email
+            field:
+              type: text
+              display: E-Mail
+              localizable: false
+          -
+            handle: dob
+            field:
+              type: date
+              display: Geburtsdatum
+              localizable: false
+              width: 33
+          -
+            handle: proof_dob
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: 'ID / Ausweis'
+              localizable: false
+              width: 66
+          -
+            handle: geographic_relation
+            field:
+              mode: stacked
+              type: grid
+              display: Bernbezug
+              localizable: false
+              fields:
+                -
+                  handle: geographic_relation_text
+                  field:
+                    type: textarea
+                    display: Text
+                    localizable: false
+                -
+                  handle: geographic_relation_proof
+                  field:
+                    container: assets
+                    type: assets
+                    display: Beleg
+                    localizable: false
+          -
+            handle: resume
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: Dossier
+              localizable: false
+          -
+            handle: works
+            field:
+              mode: stacked
+              type: grid
+              display: Werke
+              localizable: false
+              fields:
+                -
+                  handle: work_title
+                  field:
+                    type: text
+                    display: Titel
+                    localizable: false
+                -
+                  handle: work_year
+                  field:
+                    type: text
+                    display: Jahr
+                    localizable: false
+                -
+                  handle: work_dimensions
+                  field:
+                    type: text
+                    display: Grösse
+                    localizable: false
+                -
+                  handle: work_duration
+                  field:
+                    type: text
+                    display: Dauer
+                    localizable: false
+                -
+                  handle: technology
+                  field:
+                    type: textarea
+                    display: Technik
+                    localizable: false
+                -
+                  handle: remarks
+                  field:
+                    type: textarea
+                    display: Kommentar
+                    localizable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              localizable: false
+              validate:
+                - required
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+title: Bewerbungen
