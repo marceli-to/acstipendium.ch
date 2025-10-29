@@ -3,7 +3,7 @@ id: f773a18b-e09c-4e78-9a56-9af1634a8404
 blueprint: page
 title: Formular
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761718155
+updated_at: 1761718501
 has_footer: true
 blocks:
   -
@@ -49,6 +49,108 @@ blocks:
               -
                 type: text
                 text: '31. Januar 2025, 24 Uhr'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                marks:
+                  -
+                    type: btsSpan
+                    attrs:
+                      class: 'pill pill-sm pill-static'
+                text: 'Jurierung 1. Runde'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                text: '25. März 2026'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                marks:
+                  -
+                    type: btsSpan
+                    attrs:
+                      class: 'pill pill-sm pill-static'
+                text: 'Anlieferung der Werke'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                text: '18. Mai 2026, ab 9 Uhr'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                marks:
+                  -
+                    type: btsSpan
+                    attrs:
+                      class: 'pill pill-sm pill-static'
+                text: 'Jurierung 2. Runde'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                text: '21. Mai 2026'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                marks:
+                  -
+                    type: btsSpan
+                    attrs:
+                      class: 'pill pill-sm pill-static'
+                text: 'Eröffnung und Stipendienverleihung'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                text: '27. Mai 2026, ab 18 Uhr'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                marks:
+                  -
+                    type: btsSpan
+                    attrs:
+                      class: 'pill pill-sm pill-static'
+                text: 'Dauer der Ausstellung'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                text: '28. Mai – 28. Juni 2026'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                marks:
+                  -
+                    type: btsSpan
+                    attrs:
+                      class: 'pill pill-sm pill-static'
+                text: 'Rückgabe der Werke'
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                text: '28. Juni, ab 17 Uhr und 29. Juni 2026'
         type: sidebar_element
         enabled: true
       -
@@ -164,7 +266,20 @@ blocks:
             content:
               -
                 type: text
-                text: "Geschäftsführung AC-Stipendium\Linfo@ac-stipendium.ch"
+                text: 'Geschäftsführung AC-Stipendium'
+              -
+                type: hardBreak
+              -
+                type: text
+                marks:
+                  -
+                    type: link
+                    attrs:
+                      href: 'mailto:info@ac-stipendium.ch'
+                      rel: null
+                      target: null
+                      title: info@ac-stipendium.ch
+                text: info@ac-stipendium.ch
         type: sidebar_element
         enabled: true
     type: application_information
@@ -208,7 +323,18 @@ blocks:
             content:
               -
                 type: text
-                text: 'T +41 (0) 76 803 84 94'
+                text: 'T '
+              -
+                type: text
+                marks:
+                  -
+                    type: link
+                    attrs:
+                      href: 'tel:+41 (0) 76 803 84 94'
+                      rel: null
+                      target: null
+                      title: '+41 (0) 76 803 84 94'
+                text: '+41 (0) 76 803 84 94'
               -
                 type: hardBreak
               -
@@ -220,7 +346,7 @@ blocks:
                       href: 'mailto:ac@kunstgesellschaft.ch'
                       rel: null
                       target: null
-                      title: null
+                      title: ac@kunstgesellschaft.ch
                 text: ac@kunstgesellschaft.ch
               -
                 type: hardBreak
@@ -233,7 +359,7 @@ blocks:
                       href: 'https://www.kunstgesellschaft.ch'
                       rel: null
                       target: null
-                      title: null
+                      title: www.kunstgesellschaft.ch
                 text: www.kunstgesellschaft.ch
         editor_location:
           -
@@ -262,7 +388,18 @@ blocks:
             content:
               -
                 type: text
-                text: 'T +41 (0) 62 922 60 55'
+                text: 'T '
+              -
+                type: text
+                marks:
+                  -
+                    type: link
+                    attrs:
+                      href: 'tel:+41 (0) 62 922 60 55'
+                      rel: null
+                      target: null
+                      title: '+41 (0) 62 922 60 55'
+                text: '+41 (0) 62 922 60 55'
               -
                 type: hardBreak
               -
@@ -274,7 +411,7 @@ blocks:
                       href: 'mailto:info@kunsthauslangenthal.ch'
                       rel: null
                       target: null
-                      title: null
+                      title: info@kunsthauslangenthal.ch
                 text: info@kunsthauslangenthal.ch
               -
                 type: hardBreak
@@ -287,7 +424,7 @@ blocks:
                       href: 'https://www.kunsthauslangenthal.ch'
                       rel: null
                       target: null
-                      title: null
+                      title: www.kunsthauslangenthal.ch
                 text: www.kunsthauslangenthal.ch
         type: organisation_location
         enabled: true
