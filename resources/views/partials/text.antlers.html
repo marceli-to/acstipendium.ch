@@ -10,14 +10,14 @@
   {{ wrapperClass }}">
   
   {{ if title }}
-    {{ partial:components/headings/dynamic type="{{ title_order }}" }}
+    {{ partial:headings/dynamic type="{{ title_order }}" }}
       {{ title }} 
-    {{ /partial:components/headings/dynamic }}
+    {{ /partial:headings/dynamic }}
   {{ /if }}
 
   <div class="flex flex-col gap-y-24 lg:gap-y-32">
     {{ editors }}
-      {{ partial:components/editor/wrapper }}
+      {{ partial:editor/wrapper }}
     {{ /editors }}
   </div>
 

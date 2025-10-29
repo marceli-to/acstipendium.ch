@@ -7,14 +7,14 @@
   card-rounded
   {{ registration:is_active ? 'bg-primary' : 'bg-secondary card-border' }}">
 
-  {{ partial:components/headings/dynamic type="{{ title_order }}" }}
+  {{ partial:headings/dynamic type="{{ title_order }}" }}
     {{ title }} 
-  {{ /partial:components/headings/dynamic }}
+  {{ /partial:headings/dynamic }}
 
   {{ if registration:is_active }}
-    {{ partial:components/editor/wrapper :editor="editor_open" background_color="primary" }}
+    {{ partial:editor/wrapper :editor="editor_open" background_color="primary" }}
   {{ else }}
-    {{ partial:components/editor/wrapper :editor="editor_closed" background_color="secondary" }}
+    {{ partial:editor/wrapper :editor="editor_closed" background_color="secondary" }}
   {{ /if }}
 
 </article>

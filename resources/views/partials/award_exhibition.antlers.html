@@ -7,9 +7,9 @@
   card-rounded
   {{ registration:is_active ? 'bg-secondary card-border' : 'bg-primary' }}">
 
-  {{ partial:components/headings/dynamic type="{{ title_order }}" }}
+  {{ partial:headings/dynamic type="{{ title_order }}" }}
     {{ title }} 
-  {{ /partial:components/headings/dynamic }}
+  {{ /partial:headings/dynamic }}
 
   <div class="flex flex-col items-center lg:gap-y-8 mb-8 lg:mb-16">
     <div class="pill pill-lg pill-static-glow">
@@ -25,6 +25,6 @@
     </div>
   </div>
   
-  {{ partial:components/editor/wrapper }}
+  {{ partial:editor/wrapper }}
 
 </article>

@@ -9,12 +9,12 @@
   {{ background_color == 'secondary' ? 'card-border' : '' }}">
   
   {{ if title }}
-    {{ partial:components/headings/dynamic type="{{ title_order }}" }}
+    {{ partial:headings/dynamic type="{{ title_order }}" }}
       {{ title }} 
-    {{ /partial:components/headings/dynamic }}
+    {{ /partial:headings/dynamic }}
   {{ /if }}
 
-  {{ partial:components/editor/wrapper }}
+  {{ partial:editor/wrapper }}
 
   {{ condition_section }}
 
@@ -24,7 +24,7 @@
       </h3>
     </div>
 
-    {{ partial:components/editor/wrapper }}
+    {{ partial:editor/wrapper }}
 
   {{ /condition_section }}
 

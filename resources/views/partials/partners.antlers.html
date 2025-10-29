@@ -6,13 +6,13 @@
   lg:!px-12
   lg:!pb-16">
 
-  {{ partial:components/headings/dynamic type="{{ title_order }}" }}
+  {{ partial:headings/dynamic type="{{ title_order }}" }}
     {{ title }} 
-  {{ /partial:components/headings/dynamic }}
+  {{ /partial:headings/dynamic }}
 
   <div class="lg:grid lg:grid-cols-12 lg:gap-x-16">
     {{ partner }}
-      {{ partial:components/text wrapperClass="{{ last ? '!mb-0' : '' }}" }}
+      {{ partial:text wrapperClass="{{ last ? '!mb-0' : '' }}" }}
     {{ /partner }}
   </div>
 
