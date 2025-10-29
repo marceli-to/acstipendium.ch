@@ -3,7 +3,7 @@ id: f773a18b-e09c-4e78-9a56-9af1634a8404
 blueprint: page
 title: Formular
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761686242
+updated_at: 1761718155
 has_footer: true
 blocks:
   -
@@ -167,7 +167,7 @@ blocks:
                 text: "Geschäftsführung AC-Stipendium\Linfo@ac-stipendium.ch"
         type: sidebar_element
         enabled: true
-    type: form_information
+    type: application_information
     enabled: true
     title: 'Ausschreibung und Anmeldung'
     main_elements:
@@ -208,7 +208,9 @@ blocks:
             content:
               -
                 type: text
-                text: "T +41 (0) 76 803 84 94\L"
+                text: 'T +41 (0) 76 803 84 94'
+              -
+                type: hardBreak
               -
                 type: text
                 marks:
@@ -260,7 +262,9 @@ blocks:
             content:
               -
                 type: text
-                text: "T +41 (0) 62 922 60 55\L"
+                text: 'T +41 (0) 62 922 60 55'
+              -
+                type: hardBreak
               -
                 type: text
                 marks:

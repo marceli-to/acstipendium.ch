@@ -80,4 +80,4 @@ fields:
               icon: text-formatting-initial-letter
               fields:
                 -
-                  import: form_information_sidebar_item
+                  import: application_information_sidebar_item

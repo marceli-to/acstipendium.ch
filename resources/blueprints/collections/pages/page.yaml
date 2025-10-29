@@ -47,13 +47,13 @@ tabs:
                       fields:
                         -
                           import: conditions
-                    form_information:
+                    application_information:
                       display: 'Anmelde Informationen'
                       instructions: 'Anmelde Informationen hinzufügen'
                       icon: text-formatting-initial-letter
                       fields:
                         -
-                          import: form_information
+                          import: application_information
                 special_elements:
                   display: Spezialelemente
                   icon: addon-boxes-stack
