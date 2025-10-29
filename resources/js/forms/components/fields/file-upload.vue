@@ -7,7 +7,7 @@
     <div class="w-full pl-6 pr-8 lg:px-10 py-2 lg:py-6 bg-white text-primary rounded-full border-2 border-white flex items-center gap-4">
       <label
         :for="name"
-        class="pill pill-sm pill-solid-primary cursor-pointer whitespace-nowrap !mb-0 !text-sm lg:!text-md lg:!px-12 !leading-none">
+        class="pill pill-sm pill-solid-primary lg:!h-24 cursor-pointer whitespace-nowrap !mb-0 !text-sm lg:!text-md lg:!px-12 !leading-none">
         {{ trans('Datei auswählen') }}
       </label>
       <input
@@ -16,12 +16,12 @@
         :name="name"
         :multiple="allowMultiple"
         :accept="acceptedFileTypes"
-        :required="required"
         @change="handleFileChange"
         class="hidden"
       />
-      <span class="text-sm lg:text-md text-primary/50 truncate">
-        {{ fileLabel }}
+      <span class="text-sm lg:text-md truncate"
+        :class="error ? 'text-red-500' : 'text-primary/50'">
+        {{ error || fileLabel }}
       </span>
     </div>
   </div>
@@ -44,6 +44,10 @@ const props = defineProps({
     required: true
   },
   label: {
+    type: String,
+    default: ''
+  },
+  error: {
     type: String,
     default: ''
   },

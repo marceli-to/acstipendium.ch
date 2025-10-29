@@ -91,9 +91,7 @@ preferences:
         - state
     applications:
       columns:
-        - firstname
-        - name
-        - email
+        - title
         - location
         - dob
   taxonomies:

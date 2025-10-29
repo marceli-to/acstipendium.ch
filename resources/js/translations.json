@@ -18,7 +18,17 @@
   "Ungültiges Datum": "Date invalide",
   "Geburtsdatum kann nicht in der Zukunft liegen": "La date de naissance ne peut pas être dans le futur",
   "Das Höchstalter für die Teilnahme beträgt 40 Jahre (der 41. Geburtstag darf im Jahr der Jurierung noch nicht erreicht sein)": "L'âge maximum pour la participation est de 40 ans (le 41e anniversaire ne doit pas encore avoir eu lieu l'année du jury)",
+  "Das Höchstalter für die Teilnahme beträgt 40 Jahre (der 41. Geburtstag darf im Jahr der Jurierung noch nicht erreicht sein).": "L'âge maximum pour la participation est de 40 ans (le 41e anniversaire ne doit pas encore avoir eu lieu l'année du jury).",
   "Datei auswählen": "Choisir un fichier",
   "Keine Datei ausgewählt": "Aucun fichier sélectionné",
-  "Dateien ausgewählt": "fichiers sélectionnés"
+  "Dateien ausgewählt": "fichiers sélectionnés",
+  "Absenden": "Envoyer",
+  "Ein Bezug zum Kanton Bern ist Voraussetzung. Bitte lesen Sie die Teilnahmebedingungen.": "Un lien avec le canton de Berne est requis. Veuillez lire les conditions de participation.",
+  "Dein Bernbezug (max. 500 Zeichen)": "Votre lien avec Berne (max. 500 caractères)",
+  "Maxine": "Maxine",
+  "ID / Ausweis": "ID / Carte d'identité",
+  "Name Künstlergruppe": "Nom du groupe d'artistes",
+  "Website": "Site web",
+  "Belege": "Preuves",
+  "Weiteren Beleg hinzufügen": "Ajouter une autre preuve"
 }
