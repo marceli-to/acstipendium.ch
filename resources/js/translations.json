@@ -1,0 +1,20 @@
+{
+  "Vielen Dank für Ihre Anmeldung!": "Merci pour votre inscription!",
+  "Bitte überprüfen Sie die eingegebenen Daten.": "Veuillez vérifier les données saisies.",
+  "Formular": "Formulaire",
+  "Persönliche Angaben": "Informations personnelles",
+  "Vorname": "Prénom",
+  "Name": "Nom",
+  "Geburtsdatum": "Date de naissance",
+  "Adresse": "Adresse",
+  "PLZ/Ort": "NPA/Lieu",
+  "Telefon": "Téléphone",
+  "E-Mail": "E-mail",
+  "Mitteilungen": "Remarques",
+  "Anmelden": "S'inscrire",
+  "Bernbezug": "Lien avec Berne",
+  "Altersgrenze": "Limite d'âge",
+  "Ungültiges Datum": "Date invalide",
+  "Geburtsdatum kann nicht in der Zukunft liegen": "La date de naissance ne peut pas être dans le futur",
+  "Das Höchstalter für die Teilnahme beträgt 40 Jahre (der 41. Geburtstag darf im Jahr der Jurierung noch nicht erreicht sein)": "L'âge maximum pour la participation est de 40 ans (le 41e anniversaire ne doit pas encore avoir eu lieu l'année du jury)"
+}

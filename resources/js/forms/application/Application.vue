@@ -1,33 +1,34 @@
 <template>
   <template v-if="formSuccess">
     <success-alert>
-      Vielen Dank für Ihre Anmeldung!
+      {{ trans('Vielen Dank für Ihre Anmeldung!') }}
     </success-alert>
   </template>
   <template v-if="formError">
     <error-alert>
-      Bitte überprüfen Sie die eingegebenen Daten.
+      {{ trans('Bitte überprüfen Sie die eingegebenen Daten.') }}
     </error-alert>
   </template>
-  <h1 class="text-center text-2xl lg:text-3xl text-balance leading-[1] uppercase mb-8 lg:mb-16">
-    Formular
-  </h1>
+  <heading-1>
+    {{ trans('Formular') }}
+  </heading-1>
   <form 
     @submit.prevent="submitForm" 
     class="lg:grid lg:grid-cols-12 gap-8 lg:gap-16">
 
-    <div class="lg:col-span-6 card card-rounded border lg:border-2 border-white">
-      <h2 class="text-center text-2xl lg:text-3xl text-balance leading-[1] uppercase mb-8 lg:mb-16">
-        Persönliche Angaben
-      </h2>
+    <card class="lg:col-span-6">
+      <heading-2>
+        {{ trans('Persönliche Angaben') }}
+      </heading-2>
       <form-group>
         <form-text-field
           v-model="form.firstname"
           :error="errors.firstname"
           @update:error="errors.firstname = $event"
-          :placeholder="errors.firstname ? errors.firstname : 'Vorname *'"
-          label="Vorname"
-          aria-label="Vorname"
+          :placeholder="errors.firstname ? errors.firstname : trans('Vorname')"
+          :label="trans('Vorname')"
+          :aria-label="trans('Vorname')"
+          required
         />
       </form-group>
       <form-group>
@@ -35,20 +36,32 @@
           v-model="form.name"
           :error="errors.name"
           @update:error="errors.name = $event"
-          :placeholder="errors.name ? errors.name : 'Name *'"
-          label="Name"
-          aria-label="Name"
+          :placeholder="errors.name ? errors.name : trans('Name')"
+          :label="trans('Name')"
+          :aria-label="trans('Name')"
+          required
         />
       </form-group>
       <form-group>
-        <form-masked-text-field
+        <form-text-field
+          v-model="form.name_artist_group"
+          :error="errors.name_artist_group"
+          @update:error="errors.name_artist_group = $event"
+          :placeholder="errors.name_artist_group ? errors.name_artist_group : trans('Name Künstlergruppe')"
+          :label="trans('Name Künstlergruppe')"
+          :aria-label="trans('Name Künstlergruppe')"
+        />
+      </form-group>
+      <form-group>
+        <form-dob-field
           v-model="form.dob"
           :error="errors.dob"
           @update:error="errors.dob = $event"
-          :placeholder="errors.dob ? errors.dob : 'Geburtsdatum *'"
-          label="Geburtsdatum"
-          aria-label="Geburtsdatum"
-          mask="##.##.####"
+          :placeholder="errors.dob ? errors.dob : trans('Geburtsdatum')"
+          :label="trans('Geburtsdatum')"
+          :aria-label="trans('Geburtsdatum')"
+          :eligibility-year="eligibilityYear"
+          required
         />
       </form-group>
       <form-group>
@@ -57,9 +70,10 @@
           v-model="form.street"
           :error="errors.street"
           @update:error="errors.street = $event"
-          :placeholder="errors.street ? errors.street : 'Adresse *'"
-          label="Adresse"
-          aria-label="Adresse"
+          :placeholder="errors.street ? errors.street : trans('Adresse')"
+          :label="trans('Adresse')"
+          :aria-label="trans('Adresse')"
+          required
         />
       </form-group>
       <form-group>
@@ -68,9 +82,10 @@
           v-model="form.location"
           :error="errors.location"
           @update:error="errors.location = $event"
-          :placeholder="errors.location ? errors.location : 'PLZ/Ort *'"
-          label="PLZ/Ort"
-          aria-label="PLZ/Ort"
+          :placeholder="errors.location ? errors.location : trans('PLZ/Ort')"
+          :label="trans('PLZ/Ort')"
+          :aria-label="trans('PLZ/Ort')"
+          required
         />
       </form-group>
       <form-group>
@@ -79,9 +94,21 @@
           v-model="form.phone"
           :error="errors.phone"
           @update:error="errors.phone = $event"
-          :placeholder="errors.phone ? errors.phone : 'Telefon (für Notfälle) *'"
-          label="Telefon (für Notfälle)"
-          aria-label="Telefon (für Notfälle)"
+          :placeholder="errors.phone ? errors.phone : trans('Telefon')"
+          :label="trans('Telefon')"
+          :aria-label="trans('Telefon')"
+          required
+        />
+      </form-group>
+      <form-group>
+        <form-text-field
+          type="text"
+          v-model="form.website"
+          :error="errors.website"
+          @update:error="errors.website = $event"
+          :placeholder="errors.website ? errors.website : trans('Website')"
+          :label="trans('Website')"
+          :aria-label="trans('Website')"
         />
       </form-group>
       <form-group>
@@ -90,21 +117,41 @@
           v-model="form.email"
           :error="errors.email"
           @update:error="errors.email = $event"
-          :placeholder="errors.email ? errors.email : 'E-Mail *'"
-          label="E-Mail"
-          aria-label="E-Mail"
+          :placeholder="errors.email ? errors.email : trans('E-Mail')"
+          :label="trans('E-Mail')"
+          :aria-label="trans('E-Mail')"
+          required
         />
       </form-group>
-      <form-group>
-        <form-textarea-field
-          v-model="form.remarks"
-          :error="errors.remarks"
-          @update:error="errors.remarks = $event"
-          :placeholder="errors.remarks ? errors.remarks : 'Mitteilungen'"
-          label="Mitteilungen"
-          aria-label="Mitteilungen"
-        />
-      </form-group>
+    </card>
+
+    <div class="lg:col-span-6">
+
+      <card>
+        <heading-2>
+          {{ trans('Bernbezug') }}
+        </heading-2>
+        <p>
+          {{  trans('Ein Bezug zum Kanton Bern ist Voraussetzung. Bitte lesen Sie die Teilnahmebedingungen.')  }}
+        </p>
+        <form-group>
+          <form-textarea-field
+            v-model="form.geographic_relation_text"
+            :error="errors.geographic_relation_text"
+            @update:error="errors.geographic_relation_text = $event"
+            :placeholder="errors.geographic_relation_text ? errors.geographic_relation_text : trans('Maxine')"
+            :label="trans('Dein Bernbezug (max. 500 Zeichen)')"
+            :aria-label="trans('Dein Bernbezug (max. 500 Zeichen)')"
+          />
+        </form-group>
+      </card>
+
+      <card>
+        <heading-2>
+          {{ trans('Altersgrenze') }}
+        </heading-2>
+      </card>
+
     </div>
    
 
@@ -134,31 +181,42 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import FormGroup from '@/forms/components/fields/group.vue';
 import FormTextField from '@/forms/components/fields/text.vue';
-import FormMaskedTextField from '@/forms/components/fields/masked-text.vue';
+import FormDobField from '@/forms/components/fields/dob.vue';
 import FormTextareaField from '@/forms/components/fields/textarea.vue';
 import FormButton from '@/forms/components/fields/button.vue';
 import FormCheckbox from '@/forms/components/fields/checkbox.vue';
+import Card from '@/forms/components/card.vue';
 import SuccessAlert from '@/forms/components/alerts/success.vue';
 import ErrorAlert from '@/forms/components/alerts/error.vue';
+import Heading1 from '@/forms/components/headings/h1.vue';
+import Heading2 from '@/forms/components/headings/h2.vue';
 import { useFormScroll } from '@/composables/useFormScroll';
+import { useTranslations } from '@/composables/useTranslations';
+
+const props = defineProps({
+  eligibilityYear: {
+    type: Number,
+    default: () => new Date().getFullYear() + 1
+  }
+});
 
 const { scrollToForm } = useFormScroll();
+const { trans } = useTranslations();
 
 const isSubmitting = ref(false);
 const formSuccess = ref(false);
 const formError = ref(false);
 
-const hasOpenSeats = ref(false);
-
 const form = ref({
   name: null,
   firstname: null,
+  name_artist_group: null,
   dob: null,
   street: null,
   location: null,
   phone: null,
+  website: null,
   email: null,
-  remarks: null,
   privacy: false
 });
 
@@ -166,12 +224,10 @@ const errors = ref({
   name: '',
   firstname: '',
   dob: '',
-  name_parents: '',
   street: '',
   location: '',
   phone: '',
   email: '',
-  remarks: '',
   privacy: '',
 });
 
@@ -199,12 +255,13 @@ function handleSuccess() {
   form.value = {
     name: null,
     firstname: null,
+    name_artist_group: null,
     dob: null,
     street: null,
     location: null,
     phone: null,
+    website: null,
     email: null,
-    remarks: null,
     privacy: false
   };
 
@@ -216,7 +273,6 @@ function handleSuccess() {
     location: '',
     phone: '',
     email: '',
-    remarks: '',
     privacy: '',
   };
 

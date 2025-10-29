@@ -3,6 +3,14 @@ fields:
   -
     import: title
   -
+    handle: eligibility_year
+    field:
+      type: text
+      display: 'Jahr Jurierung'
+      instructions: 'Wird für die korrekte Berechung der Altersgrenze im Formular benötigt.'
+      localizable: false
+      instructions_position: below
+  -
     handle: main_elements
     field:
       collapse: true
