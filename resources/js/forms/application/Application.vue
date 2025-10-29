@@ -16,118 +16,120 @@
     @submit.prevent="submitForm" 
     class="lg:grid lg:grid-cols-12 gap-8 lg:gap-16">
 
-    <card class="lg:col-span-6">
-      <heading-2>
-        {{ trans('Persönliche Angaben') }}
-      </heading-2>
-      <form-group>
-        <form-text-field
-          v-model="form.firstname"
-          :error="errors.firstname"
-          @update:error="errors.firstname = $event"
-          :placeholder="errors.firstname ? errors.firstname : trans('Vorname')"
-          :label="trans('Vorname')"
-          :aria-label="trans('Vorname')"
-          required
-        />
-      </form-group>
-      <form-group>
-        <form-text-field
-          v-model="form.name"
-          :error="errors.name"
-          @update:error="errors.name = $event"
-          :placeholder="errors.name ? errors.name : trans('Name')"
-          :label="trans('Name')"
-          :aria-label="trans('Name')"
-          required
-        />
-      </form-group>
-      <form-group>
-        <form-text-field
-          v-model="form.name_artist_group"
-          :error="errors.name_artist_group"
-          @update:error="errors.name_artist_group = $event"
-          :placeholder="errors.name_artist_group ? errors.name_artist_group : trans('Name Künstlergruppe')"
-          :label="trans('Name Künstlergruppe')"
-          :aria-label="trans('Name Künstlergruppe')"
-        />
-      </form-group>
-      <form-group>
-        <form-text-field
-          type="text"
-          v-model="form.street"
-          :error="errors.street"
-          @update:error="errors.street = $event"
-          :placeholder="errors.street ? errors.street : trans('Adresse')"
-          :label="trans('Adresse')"
-          :aria-label="trans('Adresse')"
-          required
-        />
-      </form-group>
-      <div class="lg:grid lg:grid-cols-2 lg:gap-x-16">
+    <div class="lg:col-span-6">
+      <card>
+        <heading-2>
+          {{ trans('Persönliche Angaben') }}
+        </heading-2>
+        <form-group>
+          <form-text-field
+            v-model="form.firstname"
+            :error="errors.firstname"
+            @update:error="errors.firstname = $event"
+            :placeholder="errors.firstname ? errors.firstname : trans('Vorname')"
+            :label="trans('Vorname')"
+            :aria-label="trans('Vorname')"
+            required
+          />
+        </form-group>
+        <form-group>
+          <form-text-field
+            v-model="form.name"
+            :error="errors.name"
+            @update:error="errors.name = $event"
+            :placeholder="errors.name ? errors.name : trans('Name')"
+            :label="trans('Name')"
+            :aria-label="trans('Name')"
+            required
+          />
+        </form-group>
+        <form-group>
+          <form-text-field
+            v-model="form.name_artist_group"
+            :error="errors.name_artist_group"
+            @update:error="errors.name_artist_group = $event"
+            :placeholder="errors.name_artist_group ? errors.name_artist_group : trans('Name Künstlergruppe')"
+            :label="trans('Name Künstlergruppe')"
+            :aria-label="trans('Name Künstlergruppe')"
+          />
+        </form-group>
         <form-group>
           <form-text-field
             type="text"
-            v-model="form.zip"
-            :error="errors.zip"
-            @update:error="errors.zip = $event"
-            :placeholder="errors.zip ? errors.zip : trans('PLZ')"
-            :label="trans('PLZ')"
-            :aria-label="trans('PLZ')"
+            v-model="form.street"
+            :error="errors.street"
+            @update:error="errors.street = $event"
+            :placeholder="errors.street ? errors.street : trans('Adresse')"
+            :label="trans('Adresse')"
+            :aria-label="trans('Adresse')"
+            required
+          />
+        </form-group>
+        <div class="lg:grid lg:grid-cols-2 lg:gap-x-16">
+          <form-group>
+            <form-text-field
+              type="text"
+              v-model="form.zip"
+              :error="errors.zip"
+              @update:error="errors.zip = $event"
+              :placeholder="errors.zip ? errors.zip : trans('PLZ')"
+              :label="trans('PLZ')"
+              :aria-label="trans('PLZ')"
+              required
+            />
+          </form-group>
+          <form-group>
+            <form-text-field
+              type="text"
+              v-model="form.location"
+              :error="errors.location"
+              @update:error="errors.location = $event"
+              :placeholder="errors.location ? errors.location : trans('Ort')"
+              :label="trans('Ort')"
+              :aria-label="trans('Ort')"
+              required
+            />
+          </form-group>
+        </div>
+
+        <form-group>
+          <form-text-field
+            type="text"
+            v-model="form.phone"
+            :error="errors.phone"
+            @update:error="errors.phone = $event"
+            :placeholder="errors.phone ? errors.phone : trans('Telefon')"
+            :label="trans('Telefon')"
+            :aria-label="trans('Telefon')"
             required
           />
         </form-group>
         <form-group>
           <form-text-field
             type="text"
-            v-model="form.location"
-            :error="errors.location"
-            @update:error="errors.location = $event"
-            :placeholder="errors.location ? errors.location : trans('Ort')"
-            :label="trans('Ort')"
-            :aria-label="trans('Ort')"
+            v-model="form.website"
+            :error="errors.website"
+            @update:error="errors.website = $event"
+            :placeholder="errors.website ? errors.website : trans('Website')"
+            :label="trans('Website')"
+            :aria-label="trans('Website')"
+          />
+        </form-group>
+        <form-group>
+          <form-text-field
+            type="email"
+            v-model="form.email"
+            :error="errors.email"
+            @update:error="errors.email = $event"
+            :placeholder="errors.email ? errors.email : trans('E-Mail')"
+            :label="trans('E-Mail')"
+            :aria-label="trans('E-Mail')"
             required
           />
         </form-group>
-      </div>
-
-      <form-group>
-        <form-text-field
-          type="text"
-          v-model="form.phone"
-          :error="errors.phone"
-          @update:error="errors.phone = $event"
-          :placeholder="errors.phone ? errors.phone : trans('Telefon')"
-          :label="trans('Telefon')"
-          :aria-label="trans('Telefon')"
-          required
-        />
-      </form-group>
-      <form-group>
-        <form-text-field
-          type="text"
-          v-model="form.website"
-          :error="errors.website"
-          @update:error="errors.website = $event"
-          :placeholder="errors.website ? errors.website : trans('Website')"
-          :label="trans('Website')"
-          :aria-label="trans('Website')"
-        />
-      </form-group>
-      <form-group>
-        <form-text-field
-          type="email"
-          v-model="form.email"
-          :error="errors.email"
-          @update:error="errors.email = $event"
-          :placeholder="errors.email ? errors.email : trans('E-Mail')"
-          :label="trans('E-Mail')"
-          :aria-label="trans('E-Mail')"
-          required
-        />
-      </form-group>
-    </card>
-
+      </card>
+    </div>
+    
     <div class="lg:col-span-6">
 
       <card>
