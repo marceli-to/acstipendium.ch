@@ -300,11 +300,6 @@ const errors = ref({
   privacy: '',
 });
 
-
-onMounted(async () => {
-
-});
-
 function addGeographicRelationProofField() {
   const nextIndex = geographicRelationProofFields.value.length;
   geographicRelationProofFields.value.push(nextIndex);
@@ -411,7 +406,6 @@ function handleError(error) {
   if (error.response && error.response.data && typeof error.response.data.errors === 'object') {
     Object.keys(error.response.data.errors).forEach(key => {
       const errorValue = error.response.data.errors[key];
-      // Laravel returns errors as arrays, get the first message
       errors.value[key] = Array.isArray(errorValue) ? errorValue[0] : errorValue;
     });
   }
