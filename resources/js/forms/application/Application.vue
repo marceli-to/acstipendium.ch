@@ -138,6 +138,9 @@
         <heading-2>
           {{ trans('Altersgrenze') }}
         </heading-2>
+        <p>
+          {{ trans('Das Höchstalter für die Teilnahme beträgt 40 Jahre (der 41. Geburtstag darf im Jahr der Jurierung noch nicht erreicht sein).') }}
+        </p>
         <form-group>
           <form-dob-field
             v-model="form.dob"
@@ -154,9 +157,7 @@
           <file-upload
             v-model="form.age_verification_files"
             name="age_verification"
-            prefix="age-verification"
-            :label="trans('Altersnachweis')"
-            :allow-multiple="true"
+            :label="trans('ID / Ausweis')"
             required
           />
         </form-group>
@@ -174,15 +175,18 @@
         name="privacy"
         label="Ich habe die <a href='/datenschutz' class='decoration-1'>Datenschutzerklärung</a> gelesen und stimme dieser zu.*"
       />
-    </form-group>
-    <form-group>
-      <form-button 
-        type="submit" 
-        :label="'Anmelden'"
-        :disabled="isSubmitting"
-        :submitting="isSubmitting"
-      />
     </form-group> -->
+    <div class="col-span-full">
+      <form-group class="flex justify-center w-full">
+        <form-button 
+          type="submit" 
+          :label="trans('Absenden')"
+          :disabled="isSubmitting"
+          :submitting="isSubmitting"
+          class="pill pill-lg pill-solid-primary"
+        />
+      </form-group>
+    </div>
     
   </form>
 </template>
@@ -274,6 +278,7 @@ function handleSuccess() {
     phone: null,
     website: null,
     email: null,
+    age_verification_files: [],
     privacy: false
   };
 
