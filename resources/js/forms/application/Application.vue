@@ -53,18 +53,6 @@
         />
       </form-group>
       <form-group>
-        <form-dob-field
-          v-model="form.dob"
-          :error="errors.dob"
-          @update:error="errors.dob = $event"
-          :placeholder="errors.dob ? errors.dob : trans('Geburtsdatum')"
-          :label="trans('Geburtsdatum')"
-          :aria-label="trans('Geburtsdatum')"
-          :eligibility-year="eligibilityYear"
-          required
-        />
-      </form-group>
-      <form-group>
         <form-text-field
           type="text"
           v-model="form.street"
@@ -150,6 +138,28 @@
         <heading-2>
           {{ trans('Altersgrenze') }}
         </heading-2>
+        <form-group>
+          <form-dob-field
+            v-model="form.dob"
+            :error="errors.dob"
+            @update:error="errors.dob = $event"
+            :placeholder="errors.dob ? errors.dob : '01.01.2000'"
+            :label="trans('Geburtsdatum')"
+            :aria-label="trans('Geburtsdatum')"
+            :eligibility-year="eligibilityYear"
+            required
+          />
+        </form-group>
+        <form-group>
+          <file-upload
+            v-model="form.age_verification_files"
+            name="age_verification"
+            prefix="age-verification"
+            :label="trans('Altersnachweis')"
+            :allow-multiple="true"
+            required
+          />
+        </form-group>
       </card>
 
     </div>
@@ -185,6 +195,7 @@ import FormDobField from '@/forms/components/fields/dob.vue';
 import FormTextareaField from '@/forms/components/fields/textarea.vue';
 import FormButton from '@/forms/components/fields/button.vue';
 import FormCheckbox from '@/forms/components/fields/checkbox.vue';
+import FileUpload from '@/forms/components/fields/file-upload.vue';
 import Card from '@/forms/components/card.vue';
 import SuccessAlert from '@/forms/components/alerts/success.vue';
 import ErrorAlert from '@/forms/components/alerts/error.vue';
@@ -217,6 +228,7 @@ const form = ref({
   phone: null,
   website: null,
   email: null,
+  age_verification_files: [],
   privacy: false
 });
 

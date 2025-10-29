@@ -12,8 +12,15 @@
     "file": "assets/BTCircuit-Regular-095b3012.woff2",
     "src": "resources/css/fonts/BTCircuit-Regular.woff2"
   },
+  "resources/js/app.css": {
+    "file": "assets/app-95b111e4.css",
+    "src": "resources/js/app.css"
+  },
   "resources/js/app.js": {
-    "file": "assets/app-020ba10a.js",
+    "css": [
+      "assets/app-95b111e4.css"
+    ],
+    "file": "assets/app-55ea961d.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }
