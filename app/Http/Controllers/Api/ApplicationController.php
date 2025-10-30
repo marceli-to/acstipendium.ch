@@ -4,8 +4,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreApplicationRequest;
 use Illuminate\Support\Facades\Notification;
 use Statamic\Facades\Entry;
-use App\Notifications\Course\UserConfirmation;
-use App\Notifications\Course\OwnerInformation;
+use App\Notifications\Application\UserConfirmation;
+use App\Notifications\Application\OwnerInformation;
 
 class ApplicationController extends Controller
 {
