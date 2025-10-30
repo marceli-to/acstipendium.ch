@@ -11,6 +11,8 @@ export const AccordionItem = (index) => ({
       if (this.open) {
         setTimeout(() => {
           this.$refs.container.style.maxHeight = this.$refs.container.scrollHeight + 'px';
+          // Scroll the accordion item into view
+          this.$el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 10);
       } else {
         this.$refs.container.style.maxHeight = '0px';
@@ -19,6 +21,9 @@ export const AccordionItem = (index) => ({
   },
 
   toggle() {
+    // Tell header to ignore scroll BEFORE any changes happen
+    window.dispatchEvent(new CustomEvent('accordion-scrolling'));
+
     if (this.selected === index) {
       // Close current item
       this.selected = null;
