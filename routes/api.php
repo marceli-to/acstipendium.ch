@@ -2,7 +2,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApplicationController;
-use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +15,3 @@ use App\Http\Controllers\UploadController;
 */
 
 Route::post('/application', [ApplicationController::class, 'store']);
-
-Route::post('/upload', [UploadController::class, 'process']);
-Route::delete('/upload/revert', [UploadController::class, 'revert']);
