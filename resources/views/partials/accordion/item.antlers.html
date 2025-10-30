@@ -1,0 +1,22 @@
+<div
+  x-data="AccordionItem({{ index }})"
+  class="{{ class }}">
+
+  <button
+    type="button"
+    class="w-full flex items-center justify-center leading-none"
+    :class="open ? 'bg-white text-primary text-3xl rounded-tl-[1rem] rounded-tr-[1rem] rounded-bl-none rounded-br-none px-16 py-8' : 'bg-primary text-white text-md lg:text-lg px-16 py-8 lg:h-42 rounded-[1rem]'"
+    @click="toggle()">
+    {{ title }}
+  </button>
+
+  <div
+    x-ref="container"
+    class="overflow-hidden"
+    :class="open ? 'transition-all duration-200 ease-in-out' : ''"
+    style="max-height: 0px;">
+    <div class="bg-white rounded-bl-[1rem] rounded-br-[1rem] p-8">
+      {{ slot }}
+    </div>
+  </div>
+</div>
