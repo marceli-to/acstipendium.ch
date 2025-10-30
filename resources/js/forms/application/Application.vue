@@ -14,7 +14,7 @@
   </heading-1>
   <form 
     @submit.prevent="submitForm" 
-    class="lg:grid lg:grid-cols-12 gap-8 lg:gap-16">
+    class="lg:grid lg:grid-cols-12 gap-x-8 lg:gap-x-16">
 
     <div class="lg:col-span-6">
       <card>
@@ -204,26 +204,187 @@
       </card>
 
     </div>
-   
 
-    <!-- <form-group>
-      <form-checkbox
-        v-model="form.privacy"
-        :error="errors.privacy"
-        @update:error="errors.privacy = $event"
-        id="privacy-contact"
-        name="privacy"
-        label="Ich habe die <a href='/datenschutz' class='decoration-1'>Datenschutzerklärung</a> gelesen und stimme dieser zu.*"
-      />
-    </form-group> -->
-    <div class="col-span-full">
-      <form-group class="flex justify-center w-full">
+    <div class="col-span-full grid grid-cols-6 lg:grid-cols-12 gap-8 lg:gap-16">
+      <card
+        v-for="(work, index) in works"
+        :key="index"
+        :class="getWorkCardClass(index)"
+        class="relative col-span-full">
+        <form-button
+          v-if="index > 0"
+          type="button"
+          @click="removeWork(index)"
+          :label="trans('Löschen')"
+          class="pill pill-sm pill-solid-primary lg:!h-24 !text-sm lg:!text-md lg:!px-12 absolute top-16 right-14 lg:right-24 z-10"
+        />
+        <heading-2>
+          {{ trans('Werk') }} {{ index + 1 }}
+        </heading-2>
+
+        <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+          <form-group>
+            <form-text-field
+              v-model="work.title"
+              :error="errors[`works.${index}.title`]"
+              @update:error="errors[`works.${index}.title`] = $event"
+              :placeholder="errors[`works.${index}.title`] ? errors[`works.${index}.title`] : trans('Werktitel')"
+              :label="trans('Titel')"
+              :aria-label="trans('Titel')"
+              required
+            />
+          </form-group>
+          <form-group>
+            <form-text-field
+              v-model="work.year"
+              :error="errors[`works.${index}.year`]"
+              @update:error="errors[`works.${index}.year`] = $event"
+              :placeholder="errors[`works.${index}.year`] ? errors[`works.${index}.year`] : '2025'"
+              :label="trans('Jahr')"
+              :aria-label="trans('Jahr')"
+              required
+            />
+          </form-group>
+        </div>
+
+        <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+          <form-group>
+            <form-text-field
+              v-model="work.dimensions"
+              :error="errors[`works.${index}.dimensions`]"
+              @update:error="errors[`works.${index}.dimensions`] = $event"
+              :placeholder="errors[`works.${index}.dimensions`] ? errors[`works.${index}.dimensions`] : 'L x B x T'"
+              :label="trans('Grösse')"
+              :aria-label="trans('Grösse')"
+            />
+          </form-group>
+          <form-group>
+            <form-text-field
+              v-model="work.duration"
+              :error="errors[`works.${index}.duration`]"
+              @update:error="errors[`works.${index}.duration`] = $event"
+              :placeholder="errors[`works.${index}.duration`] ? errors[`works.${index}.duration`] : 'hh:mm:ss'"
+              :label="trans('Dauer')"
+              :aria-label="trans('Dauer')"
+            />
+          </form-group>
+        </div>
+
+        <form-group>
+          <form-textarea-field
+            v-model="work.technology"
+            :error="errors[`works.${index}.technology`]"
+            @update:error="errors[`works.${index}.technology`] = $event"
+            :placeholder="errors[`works.${index}.technology`] ? errors[`works.${index}.technology`] : trans('Text...')"
+            :label="trans('Technik (max. 500 Zeichen)')"
+            :aria-label="trans('Technik (max. 500 Zeichen)')"
+            required
+          />
+        </form-group>
+
+        <form-group>
+          <form-textarea-field
+            v-model="work.remarks"
+            :error="errors[`works.${index}.remarks`]"
+            @update:error="errors[`works.${index}.remarks`] = $event"
+            :placeholder="errors[`works.${index}.remarks`] ? errors[`works.${index}.remarks`] : trans('Text...')"
+            :label="trans('Kommentar (max. 500 Zeichen)')"
+            :aria-label="trans('Kommentar (max. 500 Zeichen)')"
+          />
+        </form-group>
+      </card>
+    </div>
+
+    <div class="col-span-full flex justify-center">
+      <form-button
+        type="button"
+        @click="addWork"
+        :label="trans('Weiteres Werk hinzufügen')"
+        class="pill pill-lg pill-solid-primary pill-icon-sm">
+        <svg class="w-16 lg:w-20" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.4403 12.5547V0H12.5497V12.5547H0V15.4453H12.5497V28H15.4403V15.4453H28V12.5547H15.4403Z" fill="white"/>
+        </svg>
+      </form-button>
+    </div>
+
+    <card class="col-span-full lg:col-span-6 lg:col-start-4 mt-8 lg:mt-16">
+      <heading-2>
+        {{ trans('Dossier') }}
+      </heading-2>
+      <p>
+        {{ trans('Maximale Dateigrösse: 20 MB') }}<br>
+        {{ trans('Datei-Format: PDF') }}
+      </p>
+      <form-group>
+        <file-upload
+          v-model="form.resume_files"
+          name="resume"
+          :label="trans('Dossier')"
+          :error="errors.resume_files"
+          required
+        />
+      </form-group>
+    </card>
+
+    <card class="col-span-full lg:col-span-8 lg:col-start-3">
+      <heading-2>
+        {{ trans('Abschluss') }}
+      </heading-2>
+      <div>
+        {{ trans('Mit dem Absenden dieser Anmeldung erkläre ich mich mit den Teilnahmebedingungen des AC-Stipendiums einverstanden. Der Upload kann einige Minuten dauern. Wenn der Upload geklappt hat, erhalten Sie im Anschluss ein Bestätigungs-E-Mail. Falls Sie dieses nicht bekommen, bitte nochmals versuchen.') }}
+      </div>
+
+      <div class="lg:grid lg:grid-cols-12 lg:gap-x-16 mt-14 lg:mt-32">
+        <form-group class="lg:col-span-6 text-sm lg:text-md">
+          <form-checkbox
+            v-model="form.privacy_truthful"
+            :error="errors.privacy_truthful"
+            @update:error="errors.privacy_truthful = $event"
+            id="privacy-truthful"
+            name="privacy_truthful"
+            :label="trans('Ich bestätige, dass meine Angaben wahrheitsgemäss und vollständig sind. Mir ist bewusst, dass falsche oder unvollständige Angaben zum Ausschluss führen können.')"
+            required />
+        </form-group>
+
+        <form-group class="lg:col-span-6 text-sm lg:text-md">
+          <form-checkbox
+            v-model="form.privacy_original_work"
+            :error="errors.privacy_original_work"
+            @update:error="errors.privacy_original_work = $event"
+            id="privacy-original-work"
+            name="privacy_original_work"
+            :label="trans('Ich bestätige, dass die eingereichten Arbeiten eigenständig und unabhängig entstanden sind, weder im Rahmen einer Ausbildung noch unter Anleitung Dritter.')"
+            required />
+        </form-group>
+
+        <form-group class="lg:col-span-6 text-sm lg:text-md">
+          <form-checkbox
+            v-model="form.privacy_ai"
+            :error="errors.privacy_ai"
+            @update:error="errors.privacy_ai = $event"
+            id="privacy-ai"
+            name="privacy_ai"
+            :label="trans('Ich bestätige, dass der Einsatz von Künstlicher Intelligenz (KI) oder ähnlichen Systemen in meinen Kunstwerken entsprechend gekennzeichnet ist.')"
+            required />
+        </form-group>
+
+        <form-group class="lg:col-span-6 text-sm lg:text-md">
+          <form-checkbox
+            v-model="form.privacy_data"
+            :error="errors.privacy_data"
+            @update:error="errors.privacy_data = $event"
+            id="privacy-data"
+            name="privacy_data"
+            :label="trans('Mit meiner Bewerbung bestätige ich, die Teilnahmebedingungen und Datenschutzerklärung akzeptiert zu haben.')"
+            required />
+        </form-group>
+      </div>
+      <form-group class="flex justify-center w-full mt-14 lg:mt-32">
         <form-button
           type="submit"
           :label="trans('Absenden')"
           :disabled="isSubmitting"
-          class="pill pill-lg pill-solid-primary"
-        >
+          class="pill pill-lg pill-solid-primary">
           <template v-if="isSubmitting">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12 relative">
               <path fill="currentColor" d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"><animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path>
@@ -231,7 +392,7 @@
           </template>
         </form-button>
       </form-group>
-    </div>
+    </card>
     
   </form>
 </template>
@@ -270,6 +431,18 @@ const formError = ref(false);
 // Track number of geographic relation proof fields
 const geographicRelationProofFields = ref([0]);
 
+// Track works
+const works = ref([
+  {
+    title: 'Digitale Landschaft',
+    year: '2024',
+    dimensions: '120 x 80 x 5',
+    duration: '00:03:45',
+    technology: 'Mixed Media, digitale Projektion auf Leinwand',
+    remarks: 'Teil der Serie "Urbane Transformationen"'
+  }
+]);
+
 const form = ref({
   name: 'Stadelmann',
   firstname: 'Marcel',
@@ -283,7 +456,11 @@ const form = ref({
   email: 'm@marceli.to',
   geographic_relation_proofs: [[]],
   age_verification_files: [],
-  privacy: true
+  resume_files: [],
+  privacy_truthful: false,
+  privacy_original_work: false,
+  privacy_ai: false,
+  privacy_data: false
 });
 
 const errors = ref({
@@ -297,13 +474,48 @@ const errors = ref({
   email: '',
   age_verification_files: '',
   geographic_relation_proofs: '',
-  privacy: '',
+  resume_files: '',
+  privacy_truthful: '',
+  privacy_original_work: '',
+  privacy_ai: '',
+  privacy_data: '',
 });
 
 function addGeographicRelationProofField() {
   const nextIndex = geographicRelationProofFields.value.length;
   geographicRelationProofFields.value.push(nextIndex);
   form.value.geographic_relation_proofs.push([]);
+}
+
+function addWork() {
+  works.value.push({
+    title: '',
+    year: '',
+    dimensions: '',
+    duration: '',
+    technology: '',
+    remarks: ''
+  });
+}
+
+function removeWork(index) {
+  if (index > 0) {
+    works.value.splice(index, 1);
+  }
+}
+
+function getWorkCardClass(index) {
+  const totalWorks = works.value.length;
+  const isLastItem = index === totalWorks - 1;
+  const isOddTotal = totalWorks % 2 === 1;
+
+  // If odd number of works and this is the last one: centered
+  if (isOddTotal && isLastItem) {
+    return 'lg:col-span-6 lg:col-start-4';
+  }
+
+  // All other cases: just col-span-6
+  return 'lg:col-span-6';
 }
 
 async function submitForm() {
@@ -326,12 +538,22 @@ async function submitForm() {
     formData.append('website', form.value.website || '');
     formData.append('email', form.value.email || '');
     formData.append('geographic_relation_text', form.value.geographic_relation_text || '');
-    formData.append('privacy', form.value.privacy ? '1' : '0');
+    formData.append('privacy_truthful', form.value.privacy_truthful ? '1' : '0');
+    formData.append('privacy_original_work', form.value.privacy_original_work ? '1' : '0');
+    formData.append('privacy_ai', form.value.privacy_ai ? '1' : '0');
+    formData.append('privacy_data', form.value.privacy_data ? '1' : '0');
 
     // Add age verification files
     if (form.value.age_verification_files && form.value.age_verification_files.length > 0) {
       form.value.age_verification_files.forEach((file, index) => {
         formData.append(`age_verification_files[${index}]`, file);
+      });
+    }
+
+    // Add resume files
+    if (form.value.resume_files && form.value.resume_files.length > 0) {
+      form.value.resume_files.forEach((file, index) => {
+        formData.append(`resume_files[${index}]`, file);
       });
     }
 
@@ -347,6 +569,16 @@ async function submitForm() {
         }
       });
     }
+
+    // Add works
+    works.value.forEach((work, index) => {
+      formData.append(`works[${index}][title]`, work.title || '');
+      formData.append(`works[${index}][year]`, work.year || '');
+      formData.append(`works[${index}][dimensions]`, work.dimensions || '');
+      formData.append(`works[${index}][duration]`, work.duration || '');
+      formData.append(`works[${index}][technology]`, work.technology || '');
+      formData.append(`works[${index}][remarks]`, work.remarks || '');
+    });
 
     const response = await axios.post('/api/application', formData, {
       headers: {
@@ -375,11 +607,27 @@ function handleSuccess() {
     geographic_relation_text: null,
     geographic_relation_proofs: [[]],
     age_verification_files: [],
-    privacy: false
+    resume_files: [],
+    privacy_truthful: false,
+    privacy_original_work: false,
+    privacy_ai: false,
+    privacy_data: false
   };
 
   // Reset geographic relation proof fields to just one
   geographicRelationProofFields.value = [0];
+
+  // Reset works to just one empty work
+  works.value = [
+    {
+      title: '',
+      year: '',
+      dimensions: '',
+      duration: '',
+      technology: '',
+      remarks: ''
+    }
+  ];
 
   errors.value = {
     name: '',
@@ -392,7 +640,11 @@ function handleSuccess() {
     email: '',
     age_verification_files: '',
     geographic_relation_proofs: '',
-    privacy: '',
+    resume_files: '',
+    privacy_truthful: '',
+    privacy_original_work: '',
+    privacy_ai: '',
+    privacy_data: '',
   };
 
   isSubmitting.value = false;

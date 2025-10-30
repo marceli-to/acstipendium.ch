@@ -1,7 +1,7 @@
 <template>
   <div :class="['checkboxes relative', classes]">
     <Error :error="error" class="!relative !mb-10" />
-    <div class="flex items-center gap-x-10 lg:gap-x-15">
+    <div class="flex items-start gap-x-16">
       <input 
         :id="id" 
         :name="name" 
@@ -71,3 +71,13 @@ function handleChange(event) {
   }
 }
 </script>
+
+<style scoped>
+input[type="checkbox"] {
+  @apply w-24 h-24 border-2 border-white rounded-[8px] cursor-pointer appearance-none bg-transparent;
+}
+
+input[type="checkbox"]:checked {
+  @apply bg-white;
+}
+</style>
