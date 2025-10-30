@@ -11,6 +11,13 @@ tree:
     data:
       link_to_first_child: true
       child_url: 'entry::b39c5f43-533d-4486-be85-ad9b203dd6fa'
+    children:
+      -
+        id: 7110f5a9-92fb-4822-827f-bfac8645aca0
+        entry: b39c5f43-533d-4486-be85-ad9b203dd6fa
+      -
+        id: 26c0f1c3-7e35-4c9d-91cf-f18871221e6a
+        entry: 6b6cda67-ef17-4777-9e54-dac55c9aa30b
   -
     id: 45c38d7b-0877-4bb9-a726-54bf00279556
     entry: 53dcd93c-2abb-4229-ba5a-528a19563e61

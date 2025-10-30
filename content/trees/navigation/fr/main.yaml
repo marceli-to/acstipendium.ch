@@ -11,6 +11,13 @@ tree:
     title: Archives
     data:
       child_url: 'entry::c8526a28-6279-46d6-8820-9bea7e61eeca'
+    children:
+      -
+        id: 264a0e24-214b-463d-86e5-918d4bffb9a1
+        entry: c8526a28-6279-46d6-8820-9bea7e61eeca
+      -
+        id: bf05650f-fef3-4ba4-8be4-50ab0e7854f2
+        entry: b2411147-4d84-4488-90da-60e0309a6cf6
   -
     id: 8e044f97-9853-4f23-ad4c-3fb052ea5cb2
     entry: f154ffd5-6734-47d6-9deb-2d7777acfdf4

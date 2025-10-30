@@ -2,8 +2,15 @@
   "Schreiben Sie uns": "Écrivez-nous",
   "Folgen Sie uns auf Instagram": "Suivez-nous sur Instagram",
   "Impressum": "Mentions légales",
-  "/impressum": "/fr/mentions-legales",
   "Menü verbergen": "Menü verbergen",
   "Menü anzeigen": "Menü anzeigen",
-  "Startseite": "Startseite"
+  "Startseite": "Startseite",
+  "Ausstellungen": "Expositions",
+  "Stipendiant:innen": "Boursiers",
+  "Inhalte": "Contenu",
+  "Sortieren": "Trier",
+  "Jahr": "Année",
+  "/impressum": "/fr/mentions-legales",
+  "/archiv/ausstellungen": "/fr/archives/expositions",
+  "/archiv/stipendianten": "/fr/archives/boursiers"
 }
