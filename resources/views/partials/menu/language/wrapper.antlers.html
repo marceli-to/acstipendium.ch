@@ -30,9 +30,9 @@
         uppercase
       hover:bg-white 
         hover:text-primary 
-        hover:shadow-[0_0_1.25rem_0.25rem_white]
+        hover:shadow-glow-sm-white
         transition-all
-        {{ site:short_locale == locale:locale ? 'bg-white text-primary shadow-[0_0_1.25rem_0.25rem_white]' : 'text-white' }}">
+        {{ site:short_locale == locale:locale ? 'bg-white text-primary shadow-glow-sm-white' : 'text-white' }}">
         <a 
           href="{{ permalink }}" 
           title="{{ locale:locale }}"

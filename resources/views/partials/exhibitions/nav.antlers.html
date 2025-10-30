@@ -5,7 +5,7 @@
   <div class="flex flex-col gap-y-4 lg:gap-8">
     <a 
       href="{{ "/archiv/ausstellungen" | trans }}"
-      class="pill pill-sm pill-solid-white glow-sm-white">
+      class="pill pill-sm pill-solid-white shadow-glow-sm-white">
       {{ "Ausstellungen" | trans }}
     </a>
     <a 
@@ -20,13 +20,13 @@
   {{ partial:headings/h3 class="text-xl lg:text-2xl mb-8 lg:mb-16" }}
     {{ "Sortieren" | trans }}
   {{ /partial:headings/h3 }}
-  <div class="flex flex-col gap-y-4 lg:gap-16">
-    <div class="pill pill-sm pill-solid-white glow-sm-white w-full">
+  <div class="flex flex-col lg:flex-row gap-y-4 lg:gap-x-8">
+    <div class="pill pill-sm pill-solid-white shadow-glow-sm-white w-full lg:w-auto">
       {{ "Jahr" | trans }}
     </div>
     <div class="flex gap-x-4 lg:gap-8">
-      {{ partial:buttons/up variant="solid" class="text-primary glow-sm-white" }}
-      {{ partial:buttons/down variant="solid" class="text-primary" }}
+      {{ partial:buttons/up variant="solid" class="text-primary shadow-glow-sm-white" }}
+      {{ partial:buttons/down variant="solid" class="text-primary hover:shadow-glow-sm-white" }}
     </div>
   </div>
 </div>

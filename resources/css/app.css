@@ -32,7 +32,7 @@
 }
 
 .pill-solid-white:hover {
-  @apply shadow-[0_0_20px_4px_white];
+  @apply shadow-glow-sm-white;
 }
 
 .pill-solid-primary {
@@ -40,7 +40,7 @@
 }
 
 .pill-solid-primary:hover {
-  @apply shadow-[0_0_20px_4px_white];
+  @apply shadow-glow-sm-white;
 }
 
 .pill-solid-primary-alt {
@@ -56,7 +56,7 @@
 }
 
 .pill-outline-white:hover {
-  @apply shadow-[0_0_20px_4px_white];
+  @apply shadow-glow-sm-white;
 }
 
 .pill-outline-primary {
@@ -64,7 +64,7 @@
 }
 
 .pill-outline-primary:hover {
-  @apply shadow-[0_0_20px_4px_rgb(var(--color-primary))];
+  @apply shadow-glow-sm-primary;
 }
 
 /* Pill Static (no hover) - for non-interactive labels */
@@ -74,11 +74,11 @@
 
 /* Pill Static with permanent glow */
 .pill-static-glow {
-  @apply bg-transparent text-white border-white shadow-[0_0_20px_4px_white];
+  @apply bg-transparent text-white border-white shadow-glow-sm-white;
 }
 
 .pill-static-glow:hover {
-  @apply shadow-[0_0_20px_4px_white];
+  @apply shadow-glow-sm-white;
 }
 
 /* Pill Icon Spacing */
@@ -100,19 +100,19 @@
 
 /* Glow Utility Classes */
 .glow-sm-white {
-  @apply shadow-[0_0_20px_4px_white];
+  @apply shadow-glow-sm-white;
 }
 
 .glow-sm-primary {
-  @apply shadow-[0_0_20px_4px_rgb(var(--color-primary))];
+  @apply shadow-glow-sm-primary;
 }
 
 .glow-lg-white {
-  @apply shadow-[0_0_40px_24px_white];
+  @apply shadow-glow-lg-white;
 }
 
 .glow-lg-primary {
-  @apply shadow-[0_0_40px_24px_rgb(var(--color-primary))];
+  @apply shadow-glow-lg-primary;
 }
 
 p:has(.pill) {

@@ -34,6 +34,13 @@ export default {
 
     extend: {
 
+      boxShadow: {
+        'glow-sm-white': '0 0 20px 4px white',
+        'glow-sm-primary': '0 0 20px 4px rgb(var(--color-primary))',
+        'glow-lg-white': '0 0 40px 24px white',
+        'glow-lg-primary': '0 0 40px 24px rgb(var(--color-primary))',
+      },
+
       screens: {
         'xs': '480px',
       },
