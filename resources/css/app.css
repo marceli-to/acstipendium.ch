@@ -67,6 +67,10 @@
   @apply shadow-glow-sm-primary;
 }
 
+.pill-outline-primary-static {
+  @apply !shadow-none;
+}
+
 /* Pill Static (no hover) - for non-interactive labels */
 .pill-static {
   @apply bg-transparent text-white border-white !shadow-none;
@@ -83,19 +87,19 @@
 
 /* Pill Icon Spacing */
 .pill-icon-sm {
-  @apply gap-4 lg:gap-8;
+  @apply gap-4 lg:gap-6 !pl-12;
 }
 
 .pill-icon-sm svg {
-  @apply h-12 lg:h-24;
+  @apply h-14 lg:h-16 w-auto;
 }
 
 .pill-icon-lg {
-  @apply gap-6 lg:gap-4;
+  @apply gap-8 lg:gap-10 pl-16;
 }
 
 .pill-icon-lg svg {
-  @apply h-16 lg:h-24;
+  @apply h-20 lg:h-24 w-auto;
 }
 
 /* Glow Utility Classes */

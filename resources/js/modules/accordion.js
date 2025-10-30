@@ -1,24 +1,30 @@
 // Accordion module for Alpine.js
 export const AccordionItem = (index) => ({
-  open: false,
-  isTransitioning: false,
+  
+  get open() {
+    return this.selected === index;
+  },
 
   init() {
-    this.open = this.selected === index;
+    // Watch for changes to selected
+    this.$watch('selected', () => {
+      if (this.open) {
+        setTimeout(() => {
+          this.$refs.container.style.maxHeight = this.$refs.container.scrollHeight + 'px';
+        }, 10);
+      } else {
+        this.$refs.container.style.maxHeight = '0px';
+      }
+    });
   },
 
   toggle() {
-    if (this.open) {
-      // Closing: change button and close content immediately (no transition)
-      this.open = false;
-      this.$refs.container.style.maxHeight = '0px';
+    if (this.selected === index) {
+      // Close current item
+      this.selected = null;
     } else {
-      // Opening: change button first, then open content
-      this.open = true;
-
-      setTimeout(() => {
-        this.$refs.container.style.maxHeight = this.$refs.container.scrollHeight + 'px';
-      }, 10);
+      // Open this item (closes others automatically)
+      this.selected = index;
     }
   }
 });

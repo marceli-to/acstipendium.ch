@@ -138,6 +138,12 @@ tabs:
                                     icon: link
                                     fields:
                                       -
+                                        handle: link_title
+                                        field:
+                                          type: text
+                                          display: Bezeichnung
+                                          localizable: false
+                                      -
                                         handle: link
                                         field:
                                           collections:
@@ -145,6 +151,20 @@ tabs:
                                           container: assets
                                           type: link
                                           display: Link
+                                          localizable: false
+                                      -
+                                        handle: target
+                                        field:
+                                          options:
+                                            -
+                                              key: _blank
+                                              value: 'Neues Fenster'
+                                            -
+                                              key: _self
+                                              value: 'Gleiches Fenster'
+                                          default: _blank
+                                          type: select
+                                          display: 'Öffnen in'
                                           localizable: false
   sidebar:
     display: Sidebar

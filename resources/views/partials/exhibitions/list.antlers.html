@@ -5,13 +5,25 @@
         index="{index}"
         title="{title}"
         class="" }}
-        <div>
+        <div class="flex flex-col gap-y-8">
           {{ content }}
+
             {{ if type == "information" }}
-              <p>{{ information_title }}</p>
-              <p>{{ information_location }}</p>
-              <p>{{ information_periode }}</p>
+              {{ partial:exhibitions/components/information }}
             {{ /if }}
+
+            {{ if type == 'artists' }}
+              {{ partial:exhibitions/components/artists }}
+            {{ /if }}
+
+            {{ if type == 'jury' }}
+              {{ partial:exhibitions/components/jury }}
+            {{ /if }}
+
+            {{ if type == 'downloads_links' }}
+              {{ partial:exhibitions/components/downloads_links }}
+            {{ /if }}
+
           {{ /content }}
         </div>
       {{ /partial:accordion/item }}
