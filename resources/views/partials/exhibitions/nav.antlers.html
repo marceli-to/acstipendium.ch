@@ -32,17 +32,18 @@
     </div>
 
     <div class="flex gap-x-4 lg:gap-8">
+      
       <button 
         @click="sortDirection = 'desc'" 
         :class="sortDirection === 'desc' ? 'shadow-glow-sm-white' : ''" 
-        class="w-25 h-25 lg:w-30 lg:h-30 flex items-center justify-center rounded-full bg-white text-primary">
+        class="w-25 h-25 lg:w-30 lg:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
         {{ partial:icons/arrow-down class="w-auto h-14 lg:h-18" }}
       </button>
 
       <button 
         @click="sortDirection = 'asc'" 
         :class="sortDirection === 'asc' ? 'shadow-glow-sm-white' : ''"
-        class="w-25 h-25 lg:w-30 lg:h-30 flex items-center justify-center rounded-full bg-white text-primary">
+        class="w-25 h-25 lg:w-30 lg:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
         {{ partial:icons/arrow-up class="w-auto h-14 lg:h-18" }}
       </button>
 
