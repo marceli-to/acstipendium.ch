@@ -5,6 +5,7 @@
   {{ /partial:headings/h2 }}
 
   <div class="flex flex-wrap gap-4 justify-center">
+
     {{ downloads_links }}
 
       {{ if type == 'download' }}
@@ -28,7 +29,9 @@
           {{ link_title }}
         </a>
       {{ /if }}
+
     {{ /downloads_links }}
+    
   </div>
 
 {{ /partial:exhibitions/components/card }}
