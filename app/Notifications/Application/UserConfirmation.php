@@ -43,7 +43,7 @@ class UserConfirmation extends Notification
         return (new MailMessage)
             ->from(env('MAIL_FROM_ADDRESS'))
             ->replyTo(env('MAIL_REPLY_TO_ADDRESS'))
-            ->subject('Bestätigung Ihrer Stipendium-Bewerbung')
+            ->subject('AC-Stipendium – Anmeldung erfolgreich / Inscription réussie')
             ->markdown('notifications.application.user-confirmation', ['data' => $this->data]);
     }
 
