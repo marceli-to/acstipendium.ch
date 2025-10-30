@@ -78,11 +78,11 @@ class ApplicationController extends Controller
     \Statamic\Facades\Stache::clear();
     \Illuminate\Support\Facades\Artisan::call('cache:clear');
 
-    // Notification::route('mail', $request->input('email'))
-    //   ->notify(new UserConfirmation($data));
+    Notification::route('mail', $request->input('email'))
+      ->notify(new UserConfirmation($data));
 
-    // Notification::route('mail', env('MAIL_TO'))
-    //   ->notify(new OwnerInformation($data));
+    Notification::route('mail', env('MAIL_TO'))
+      ->notify(new OwnerInformation($data));
 
     return response()->json(['message' => 'Store successful']);
   }
