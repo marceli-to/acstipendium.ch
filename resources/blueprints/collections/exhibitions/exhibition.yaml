@@ -1,0 +1,169 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              localizable: false
+              validate:
+                - required
+              display: Jahr
+          -
+            handle: images
+            field:
+              container: assets
+              folder: ausstellungen
+              type: assets
+              display: Bilder
+              localizable: false
+          -
+            handle: content
+            field:
+              collapse: true
+              type: replicator
+              display: Inhalte
+              localizable: false
+              sets:
+                elements:
+                  display: Elemente
+                  instructions: 'Elemente hinzufügen'
+                  icon: addon-boxes-stack
+                  sets:
+                    information:
+                      display: Informationen
+                      instructions: 'Informationen hinzufügen'
+                      icon: flash-bolt-lightning
+                      fields:
+                        -
+                          handle: information_title
+                          field:
+                            type: text
+                            display: Titel
+                            localizable: false
+                        -
+                          handle: information_location
+                          field:
+                            type: text
+                            display: Ort
+                            localizable: false
+                            width: 50
+                        -
+                          handle: information_periode
+                          field:
+                            type: text
+                            display: Zeitraum
+                            localizable: false
+                            width: 50
+                    artists:
+                      display: 'Künstler:innen'
+                      instructions: 'Künstler:innen hinzufügen'
+                      icon: user-multiple
+                      fields:
+                        -
+                          handle: artists_list
+                          field:
+                            type: grid
+                            display: 'Künstler:innen'
+                            localizable: false
+                            mode: stacked
+                            fields:
+                              -
+                                handle: artist_name
+                                field:
+                                  type: text
+                                  display: 'Vorname, Name'
+                                  localizable: false
+                    jury:
+                      display: Jury
+                      instructions: 'Jury hinzufügen'
+                      icon: user-multiple
+                      fields:
+                        -
+                          handle: jury_list
+                          field:
+                            type: grid
+                            display: Jury
+                            localizable: false
+                            fields:
+                              -
+                                handle: jury_name
+                                field:
+                                  type: text
+                                  display: 'Vorname, Name'
+                                  localizable: false
+                    downloads_links:
+                      display: 'Downloads / Links'
+                      instructions: 'Downloads / Links hinzufügen'
+                      icon: download-arrow-down
+                      fields:
+                        -
+                          handle: downloads_links
+                          field:
+                            collapse: true
+                            type: replicator
+                            display: 'Downloads / Link'
+                            localizable: false
+                            sets:
+                              neue_setgruppe:
+                                display: 'Neue Setgruppe'
+                                sets:
+                                  download:
+                                    display: Download
+                                    instructions: 'Download hinzufügen'
+                                    icon: download-arrow-down
+                                    fields:
+                                      -
+                                        handle: file_title
+                                        field:
+                                          type: text
+                                          display: Bezeichnung
+                                          localizable: false
+                                      -
+                                        handle: file
+                                        field:
+                                          max_files: 1
+                                          container: assets
+                                          folder: ausstellungen
+                                          type: assets
+                                          display: Datei
+                                          localizable: false
+                                  link:
+                                    display: Link
+                                    instructions: 'Link hinzufügen'
+                                    icon: link
+                                    fields:
+                                      -
+                                        handle: link
+                                        field:
+                                          collections:
+                                            - pages
+                                          container: assets
+                                          type: link
+                                          display: Link
+                                          localizable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - exhibitions
+              max_items: 1
+              listable: false
+              localizable: true
+title: Ausstellungen

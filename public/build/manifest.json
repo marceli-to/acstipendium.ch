@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-0a879d96.css",
+    "file": "assets/app-bfabf733.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -12,8 +12,15 @@
     "file": "assets/BTCircuit-Regular-095b3012.woff2",
     "src": "resources/css/fonts/BTCircuit-Regular.woff2"
   },
+  "resources/js/app.css": {
+    "file": "assets/app-718b73fe.css",
+    "src": "resources/js/app.css"
+  },
   "resources/js/app.js": {
-    "file": "assets/app-67c6446c.js",
+    "css": [
+      "assets/app-718b73fe.css"
+    ],
+    "file": "assets/app-f84e4013.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   }

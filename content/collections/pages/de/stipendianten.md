@@ -4,6 +4,11 @@ blueprint: page
 title: Stipendianten
 open_graph_title: 'Stipendianten • Archiv'
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761608393
+updated_at: 1761831141
 has_footer: true
+blocks:
+  -
+    id: mhdgrs3c
+    type: fellows
+    enabled: true
 ---

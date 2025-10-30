@@ -54,6 +54,16 @@ tabs:
                       fields:
                         -
                           import: application_information
+                    exhibitions:
+                      display: Ausstellungen
+                      instructions: 'Ausstellungen hinzufügen'
+                      icon: file-content-list
+                      fields: {  }
+                    fellows:
+                      display: 'Stipendiant:innen'
+                      instructions: 'Stipendiant:innen hinzufügen'
+                      icon: file-content-list
+                      fields: {  }
                 special_elements:
                   display: Spezialelemente
                   icon: addon-boxes-stack

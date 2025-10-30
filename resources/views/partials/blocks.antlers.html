@@ -32,3 +32,11 @@
   {{ partial:application_form }}
 {{ /if }}
 
+{{ if type == 'exhibitions' }}
+  {{ partial:exhibitions/wrapper }}
+{{ /if }}
+
+{{ if type == 'fellows' }}
+  {{ partial:fellows/wrapper }}
+{{ /if }}
+

@@ -1,5 +1,5 @@
 ---
-id: 08d60b51-02f2-4ed4-88ef-88261be586e2
+id: fc64b4db-cee5-4c9f-ad4e-52be306dd35d
 blueprint: application
 title: 'Marcel Stadelmann, m@marceli.to'
 name: Stadelmann
@@ -14,8 +14,16 @@ website: 'https://marceli.to'
 email: m@marceli.to
 geographic_relation:
   -
-    geographic_relation_text: asdfasdf
+    geographic_relation_text: fasdfasdf
     geographic_relation_proof:
-      - bewerbungen/stadelmann-marcel-m-at-marceli_to/geographic-relation-proof-SEsuc5Fq.pdf
-proof_dob: bewerbungen/stadelmann-marcel-m-at-marceli_to/age-verification-PC4zPKkM.pdf
+      - bewerbungen/stadelmann-marcel-m-at-marceli_to/marcel-stadelmann-bernbezug-vF6YsXfX.pdf
+proof_dob: bewerbungen/stadelmann-marcel-m-at-marceli_to/marcel-stadelmann-alters_verifikation-X32TNhW3.pdf
+works:
+  -
+    work_title: MTO
+    work_year: '2024'
+    work_dimensions: 100x20x40
+    work_duration: '03:12:00'
+    technology: 'asdf asdfasdfasdf'
+    remarks: asdfasdf
 ---
