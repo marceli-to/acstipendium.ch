@@ -20,10 +20,6 @@
     "@fancyapps/ui": "^5.0.36",
     "@vitejs/plugin-vue": "^4.6.2",
     "alpinejs": "^3.13.8",
-    "filepond": "^4.32.10",
-    "filepond-plugin-file-validate-size": "^2.2.8",
-    "filepond-plugin-file-validate-type": "^1.2.9",
-    "maska": "^3.2.0",
-    "vue-filepond": "^7.0.4"
+    "maska": "^3.2.0"
   }
 }
