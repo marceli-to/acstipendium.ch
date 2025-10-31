@@ -4,8 +4,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreApplicationRequest;
 use Illuminate\Support\Facades\Notification;
 use Statamic\Facades\Entry;
-use App\Notifications\Course\UserConfirmation;
-use App\Notifications\Course\OwnerInformation;
+use App\Notifications\Application\UserConfirmation;
+use App\Notifications\Application\OwnerInformation;
 
 class ApplicationController extends Controller
 {
@@ -78,11 +78,11 @@ class ApplicationController extends Controller
     \Statamic\Facades\Stache::clear();
     \Illuminate\Support\Facades\Artisan::call('cache:clear');
 
-    // Notification::route('mail', $request->input('email'))
-    //   ->notify(new UserConfirmation($data));
+    Notification::route('mail', $request->input('email'))
+      ->notify(new UserConfirmation($data));
 
-    // Notification::route('mail', env('MAIL_TO'))
-    //   ->notify(new OwnerInformation($data));
+    Notification::route('mail', env('MAIL_TO'))
+      ->notify(new OwnerInformation($data));
 
     return response()->json(['message' => 'Store successful']);
   }

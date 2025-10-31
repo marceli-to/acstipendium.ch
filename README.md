@@ -1,40 +1,142 @@
-<p align="center"><img src="https://statamic.com/assets/branding/Statamic-Logo+Wordmark-Rad.svg" width="400" alt="Statamic Logo" /></p>
+# AC Stipendium
 
-## About Statamic
+Official website for AC Stipendium, a scholarship program supporting emerging artists.
 
-Statamic is the flat-first, Laravel + Git powered CMS designed for building beautiful, easy to manage websites.
+## Tech Stack
 
-> **Note:** This repository contains the code for the Statamic application. To contribute to the core package, visit the [Statamic core package repository][cms-repo].
+- **CMS:** Statamic 5.x
+- **Framework:** Laravel 10.x
+- **Frontend:** Alpine.js, Tailwind CSS, Vue.js
+- **Build Tool:** Vite
+- **PHP:** 8.2+
 
+## Key Features
 
-## Learning Statamic
+- Bilingual content management (German/French)
+- Online application system for scholarship submissions
+- Exhibition archives with interactive accordion interface
+- Scholarship recipient showcase
+- Responsive design with custom header animations
+- Content export functionality
 
-Statamic has extensive [documentation][docs]. We dedicate a significant amount of time and energy every day to improving them, so if something is unclear, feel free to open issues for anything you find confusing or incomplete. We are happy to consider anything you feel will make the docs and CMS better.
+## Requirements
 
-## Support
+- PHP 8.2 or higher
+- Composer
+- Node.js & NPM
+- MySQL/PostgreSQL (or other supported database)
 
-We provide official developer support on [Statamic Pro](https://statamic.com/pricing) projects. Community-driven support is available on the [forum](https://statamic.com/forum) and in [Discord][discord].
+## Installation
 
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd acstipendium.ch
+```
 
-## Contributing
+2. Install PHP dependencies
+```bash
+composer install
+```
 
-Thank you for considering contributing to Statamic! We simply ask that you review the [contribution guide][contribution] before you open issues or send pull requests.
+3. Install JavaScript dependencies
+```bash
+npm install
+```
 
+4. Configure environment
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Code of Conduct
+5. Configure your database in `.env`
 
-In order to ensure that the Statamic community is welcoming to all and generally a rad place to belong, please review and abide by the [Code of Conduct](https://github.com/statamic/cms/wiki/Code-of-Conduct).
+6. Run migrations
+```bash
+php artisan migrate
+```
 
+7. Create a Statamic user
+```bash
+php please make:user
+```
 
-## Important Links
+## Development
 
-- [Statamic Main Site](https://statamic.com)
-- [Statamic Documentation][docs]
-- [Statamic Core Package Repo][cms-repo]
-- [Statamic Migrator](https://github.com/statamic/migrator)
-- [Statamic Discord][discord]
+Start the development server:
 
-[docs]: https://statamic.dev/
-[discord]: https://statamic.com/discord
-[contribution]: https://github.com/statamic/cms/blob/master/CONTRIBUTING.md
-[cms-repo]: https://github.com/statamic/cms
+```bash
+npm run dev
+```
+
+In a separate terminal, start the Laravel server:
+
+```bash
+php artisan serve
+```
+
+Visit `http://localhost:8000` in your browser.
+
+## Building for Production
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```
+├── app/
+│   └── Http/Controllers/
+│       └── Api/              # API controllers
+├── content/
+│   └── collections/          # Statamic collections
+│       ├── pages/            # Site pages (DE/FR)
+│       ├── exhibitions/      # Exhibition entries
+│       └── applications/     # Scholarship applications
+├── resources/
+│   ├── js/
+│   │   └── modules/          # Alpine.js modules
+│   │       ├── accordion.js  # Exhibition accordion
+│   │       └── header.js     # Animated header
+│   └── views/
+│       └── partials/         # Reusable Antlers templates
+└── routes/
+    └── api.php               # API routes
+```
+
+## Key Packages
+
+### PHP
+- `statamic/cms` - Flat-file CMS
+- `livewire/livewire` - Dynamic components
+- `jacksleight/statamic-bard-texstyle` - Text styling for Bard editor
+- `rias/statamic-collection-groups` - Collection organization
+
+### JavaScript
+- `alpinejs` - Lightweight reactive framework
+- `maska` - Input masking
+- `@vitejs/plugin-vue` - Vue 3 support
+
+## Content Management
+
+Access the Statamic control panel at `/cp` after creating a user.
+
+### Collections
+
+- **Pages:** Main site pages in German and French
+- **Exhibitions:** Annual exhibition archives
+- **Applications:** Scholarship application submissions
+
+## Deployment
+
+1. Ensure environment variables are configured for production
+2. Build assets: `npm run build`
+3. Optimize application: `php artisan optimize`
+4. Clear and cache config: `php artisan config:cache`
+5. Link storage: `php artisan storage:link`
+
+## License
+
+Proprietary - All rights reserved

@@ -15,6 +15,9 @@ export const AccordionItem = (index) => ({
 
         // dispatch event safely on document
         document.dispatchEvent(new CustomEvent('accordion-opened', { detail: container }));
+
+        // Scroll the accordion item into view
+        this.$el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
         this.$refs.container.style.maxHeight = '0px';
       }
@@ -22,7 +25,16 @@ export const AccordionItem = (index) => ({
   },
 
   toggle() {
-    this.selected = this.selected === index ? null : index;
+    // Tell header to ignore scroll BEFORE any changes happen
+    window.dispatchEvent(new CustomEvent('accordion-scrolling'));
+
+    if (this.selected === index) {
+      // Close current item
+      this.selected = null;
+    } else {
+      // Open this item (closes others automatically)
+      this.selected = index;
+    }
   }
 });
 

@@ -4,7 +4,7 @@ blueprint: page
 title: 'Über uns'
 debug: false
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761656797
+updated_at: 1761863585
 blocks:
   -
     id: mh9crcaq
@@ -122,23 +122,6 @@ blocks:
               -
                 type: text
                 text: 'Thomas Schmutz, Kunsthistoriker und Kurator'
-          -
-            type: paragraph
-            content:
-              -
-                type: text
-                marks:
-                  -
-                    type: btsSpan
-                    attrs:
-                      class: 'pill pill-sm pill-static'
-                text: Test
-          -
-            type: paragraph
-            content:
-              -
-                type: text
-                text: 'Marcel Stadlemann'
         type: editors
         enabled: true
     title_order: h1

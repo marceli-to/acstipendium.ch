@@ -1,7 +1,7 @@
 <?php
-namespace App\Notifications\Course;
+namespace App\Notifications\Application;
+
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -23,11 +23,11 @@ class OwnerInformation extends Notification
 
     public function toMail($notifiable)
     {
-      return (new MailMessage)
-        ->from(env('MAIL_FROM_ADDRESS'))
-        ->replyTo(env('MAIL_REPLY_TO_ADDRESS'))
-        ->subject('Neue Anmeldung: ' . $this->data['title'])
-        ->markdown('notifications.course.owner-information', ['data' => $this->data]);
+        return (new MailMessage)
+            ->from(env('MAIL_FROM_ADDRESS'))
+            ->replyTo($this->data['email'])
+            ->subject('Neue Stipendium-Bewerbung: ' . $this->data['firstname'] . ' ' . $this->data['name'])
+            ->markdown('notifications.application.owner-information', ['data' => $this->data]);
     }
 
     public function toArray($notifiable)
