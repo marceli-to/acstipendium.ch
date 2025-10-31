@@ -39,3 +39,28 @@ export const AccordionItem = (index) => ({
 });
 
 window.AccordionItem = AccordionItem;
+
+// Handle hash-based accordion opening on page load
+document.addEventListener('alpine:initialized', () => {
+  if (window.location.hash) {
+    const hash = window.location.hash.substring(1);
+    const targetElement = document.getElementById(hash);
+
+    if (targetElement && targetElement.hasAttribute('x-data')) {
+      // Find the parent accordion wrapper
+      const wrapper = targetElement.closest('[x-data*="selected"]');
+
+      if (wrapper) {
+        // Get all accordion items within this wrapper
+        const allItems = Array.from(wrapper.querySelectorAll('[x-data*="AccordionItem"]'));
+        const targetIndex = allItems.findIndex(item => item === targetElement);
+
+        if (targetIndex !== -1) {
+          // Get the Alpine component and set selected
+          const alpineComponent = Alpine.$data(wrapper);
+          alpineComponent.selected = targetIndex;
+        }
+      }
+    }
+  }
+});

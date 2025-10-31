@@ -67,6 +67,7 @@
          btnClass="!px-0"
          :index="index"
          :title="title"
+         :id="slug"
          data-fellow="1"
          data-name="{name}"
          data-scholarship="{scholarship_type}"
@@ -105,7 +106,7 @@
         <div class="lg:grid lg:grid-cols-9 lg:gap-x-16">
 
           {{ if portrait_image }}
-            <div class="lg:col-span-3">
+            <div class="lg:col-span-3 mb-8 lg:mb-0">
               {{ partial:media/image
                 :image="portrait_image"
                 :sizes="['lg', 'xl', '2xl']"
