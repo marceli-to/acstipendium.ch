@@ -32,28 +32,28 @@
       <button
         @click="sortBy = 'name'"
         :class="sortBy === 'name' ? 'shadow-glow-sm-white' : ''"
-        class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all">
+        class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full lg:!w-auto">
         {{ "Name" | trans }}
       </button>
 
       <button
         @click="sortBy = 'scholarship'"
         :class="sortBy === 'scholarship' ? 'shadow-glow-sm-white' : ''"
-        class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all">
+        class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !hidden lg:!inline-flex">
         {{ "Stipendium" | trans }}
       </button>
 
       <button
         @click="sortBy = 'amount'"
         :class="sortBy === 'amount' ? 'shadow-glow-sm-white' : ''"
-        class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all">
+        class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full lg:!w-auto !hidden lg:!inline-flex">
         {{ "Förderbeitrag" | trans }}
       </button>
 
       <button
         @click="sortBy = 'year'"
         :class="sortBy === 'year' ? 'shadow-glow-sm-white' : ''"
-        class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all">
+        class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full lg:!w-auto">
         {{ "Jahr" | trans }}
       </button>
     </div>
