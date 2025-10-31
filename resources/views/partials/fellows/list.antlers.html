@@ -46,16 +46,16 @@
 
   <header class="flex justify-between w-full items-center mb-4 lg:mb-8 text-primary text-md lg:text-lg">
     <span class="flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 w-[calc(100%_-_64px)] lg:w-[calc(39%_-_3px)] xl:w-[calc(41%_-_3px)] mr-4">
-      Name
+      {{ "Name" | trans }}
     </span>
     <span class="hidden lg:flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 lg:w-[calc(26%_-_3px)] mr-4">
-      Stipendium
+      {{ "Stipendium" | trans }}
     </span>
     <span class="hidden lg:flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 lg:w-[calc(24%_-_3px)] mr-4">
-      Förderbeitrag
+      {{ "Förderbeitrag" | trans }}
     </span>
     <span class="flex items-center justify-end leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 w-[64px] lg:w-[calc(11%_-_3px)] xl:w-[calc(9%_-_3px)]">
-      Jahr
+      {{ "Jahr" | trans }}
     </span>
   </header>
   
@@ -90,10 +90,10 @@
                   {{ "Förderstipendium" | trans }}
                 {{ /if }}
               </span>
-              <span 
-                class="hidden lg:flex items-center leading-none lg:w-[calc(24%_-_3px)] mr-4 px-16" 
+              <span
+                class="hidden lg:flex items-center leading-none lg:w-[calc(24%_-_3px)] mr-4 px-16"
                 x-show="!open">
-                {{ amount }}
+                {{ amount | format_number:0:".":"’" }}
               </span>
               <span 
                 class="flex items-center justify-end leading-none w-[64px] lg:w-[calc(11%_-_3px)] xl:w-[calc(9%_-_3px)] px-16" 

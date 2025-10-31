@@ -73,10 +73,14 @@ Neue Stipendium-Bewerbung
 </div>
 <br>
 @endif
-@if ($data['remarks'])
+@if (isset($data['zip_file']) && $data['zip_file'] && isset($data['entry_id']))
 <div class="text-base">
-<strong>Bemerkungen</strong><br>
-{!! nl2br($data['remarks']) !!}
+  <strong>Dokumente</strong><br>
+  <a
+    href="{{ route('applications.download-zip', $data['entry_id']) }}"
+    class="btn">
+    Herunterladen (ZIP)
+  </a>
 </div>
 <br>
 @endif

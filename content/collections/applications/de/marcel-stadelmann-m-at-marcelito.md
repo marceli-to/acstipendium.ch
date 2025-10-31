@@ -1,5 +1,5 @@
 ---
-id: fc64b4db-cee5-4c9f-ad4e-52be306dd35d
+id: de5ac814-386c-4f35-9ff2-0efda9fa0337
 blueprint: application
 title: 'Marcel Stadelmann, m@marceli.to'
 name: Stadelmann
@@ -14,16 +14,18 @@ website: 'https://marceli.to'
 email: m@marceli.to
 geographic_relation:
   -
-    geographic_relation_text: fasdfasdf
+    geographic_relation_text: asdfa
     geographic_relation_proof:
-      - bewerbungen/stadelmann-marcel-m-at-marceli_to/marcel-stadelmann-bernbezug-vF6YsXfX.pdf
-proof_dob: bewerbungen/stadelmann-marcel-m-at-marceli_to/marcel-stadelmann-alters_verifikation-X32TNhW3.pdf
+      - bewerbungen/marcel-stadelmann-31-10-2025-23-39-49/marcel-stadelmann-bernbezug-xYZsT0Xu.pdf
+proof_dob: bewerbungen/marcel-stadelmann-31-10-2025-23-39-49/marcel-stadelmann-alters_verifikation-uyYEqTXL.pdf
+resume: bewerbungen/marcel-stadelmann-31-10-2025-23-39-49/marcel-stadelmann-dossier-7BJUDkfR.pdf
 works:
   -
-    work_title: MTO
+    work_title: 'Digitale Landschaft'
     work_year: '2024'
-    work_dimensions: 100x20x40
-    work_duration: '03:12:00'
-    technology: 'asdf asdfasdfasdf'
-    remarks: asdfasdf
+    work_dimensions: '120 x 80 x 5'
+    work_duration: '00:03:45'
+    technology: 'Mixed Media, digitale Projektion auf Leinwand'
+    remarks: 'Teil der Serie "Urbane Transformationen"'
+zip_file: bewerbungen/marcel-stadelmann-31-10-2025-23-39-49/marcel-stadelmann-bewerbung-2025-10-31_23-39-49.zip
 ---

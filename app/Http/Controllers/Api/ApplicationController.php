@@ -3,9 +3,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreApplicationRequest;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Statamic\Facades\Entry;
 use App\Notifications\Application\UserConfirmation;
 use App\Notifications\Application\OwnerInformation;
+use ZipArchive;
 
 class ApplicationController extends Controller
 {
@@ -48,6 +51,9 @@ class ApplicationController extends Controller
       ];
     }
 
+    // Create ZIP file with all uploaded files
+    $zipPath = $this->createApplicationZip($request, $proof_dob, $resume, $geographic_relation_proof);
+
     // Build data
     $data = [
       'title' => $title,
@@ -66,13 +72,18 @@ class ApplicationController extends Controller
       'resume' => $resume,
       'works' => $works_data,
       'remarks' => $request->input('remarks') ?? null,
+      'zip_file' => $zipPath,
     ];
 
     $entry = Entry::make()
       ->collection('applications')
       ->slug($title)
-      ->data($data)
-      ->save();
+      ->data($data);
+
+    $entry->save();
+
+    // Add entry ID to data for notifications
+    $data['entry_id'] = $entry->id();
 
     // Clear Statamic caches
     \Statamic\Facades\Stache::clear();
@@ -122,7 +133,7 @@ class ApplicationController extends Controller
       $filename = sprintf(
         '%s-%s.%s',
         $filePrefix,
-        \Illuminate\Support\Str::random(8),
+        Str::random(8),
         $file->getClientOriginalExtension()
       );
 
@@ -142,17 +153,12 @@ class ApplicationController extends Controller
    */
   protected function generateUserFolderName(StoreApplicationRequest $request): string
   {
-    // Create URL-safe email for folder name
-    $email = $request->input('email');
-    $emailSafe = str_replace('@', '-at-', $email);
-    $emailSafe = preg_replace('/\.([a-z]{2,})$/i', '_$1', $emailSafe);
-
-    // Create folder name: name-firstname-email
+    // Create folder name: firstname-name-datetime
     return sprintf(
       '%s-%s-%s',
-      \Illuminate\Support\Str::slug($request->input('name')),
-      \Illuminate\Support\Str::slug($request->input('firstname')),
-      $emailSafe
+      Str::slug($request->input('firstname')),
+      Str::slug($request->input('name')),
+      date('d-m-Y-H-i-s')
     );
   }
 
@@ -166,8 +172,62 @@ class ApplicationController extends Controller
   {
     return sprintf(
       '%s-%s-',
-      \Illuminate\Support\Str::slug($request->input('firstname')),
-      \Illuminate\Support\Str::slug($request->input('name'))
+      Str::slug($request->input('firstname')),
+      Str::slug($request->input('name'))
     );
+  }
+
+  /**
+   * Create a ZIP file containing all uploaded application files
+   *
+   * @param StoreApplicationRequest $request
+   * @param string|null $proof_dob
+   * @param string|null $resume
+   * @param array $geographic_relation_proof
+   * @return string|null The path to the created ZIP file
+   */
+  protected function createApplicationZip(StoreApplicationRequest $request, ?string $proof_dob, ?string $resume, array $geographic_relation_proof): ?string
+  {
+    // Collect all file paths
+    $filePaths = array_filter([
+      $proof_dob,
+      $resume,
+      ...$geographic_relation_proof
+    ]);
+
+    // If no files, return null
+    if (empty($filePaths)) {
+      return null;
+    }
+
+    $folderName = $this->generateUserFolderName($request);
+    $filenamePrefix = $this->generateFilenamePrefix($request);
+
+    // Create ZIP filename
+    $zipFilename = sprintf(
+      '%sbewerbung-%s.zip',
+      $filenamePrefix,
+      date('Y-m-d_H-i-s')
+    );
+
+    $zipPath = 'bewerbungen/' . $folderName . '/' . $zipFilename;
+    $zipFullPath = Storage::disk('assets')->path($zipPath);
+
+    // Create ZIP archive
+    $zip = new ZipArchive();
+
+    if ($zip->open($zipFullPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
+      foreach ($filePaths as $filePath) {
+        $fullPath = Storage::disk('assets')->path($filePath);
+        if (file_exists($fullPath)) {
+          $zip->addFile($fullPath, basename($filePath));
+        }
+      }
+      $zip->close();
+
+      return $zipPath;
+    }
+
+    return null;
   }
 }

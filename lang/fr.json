@@ -11,9 +11,16 @@
   "Sortieren": "Trier",
   "Jahr": "Année",
   "Ausstellende Künstler:innen": "Artistes",
-  "Jurymitglieder": "Jurymitglieder",
+  "Jurymitglieder": "Membres du jury",
   "Downloads / Links": "Downloads / Liens",
-  
+  "Name": "Nom",
+  "Stipendium": "Bourse",
+  "Förderbeitrag": "Montant de la bourse",
+  "Hauptstipendium": "Bourse principale",
+  "Förderstipendium": "Bourse de promotion",
+  "Jahrgang": "Promotion",
+  "Fr.": "Fr.",
+
   "/impressum": "/fr/mentions-legales",
   "/archiv/ausstellungen": "/fr/archives/expositions",
   "/archiv/stipendianten": "/fr/archives/boursiers"

@@ -205,7 +205,7 @@
 
     </div>
 
-    <div class="col-span-full grid grid-cols-6 lg:grid-cols-12 gap-8 lg:gap-16">
+    <div class="col-span-full grid grid-cols-6 lg:grid-cols-12 gap-8 lg:gap-16 mt-8 lg:mt-16">
       <card
         v-for="(work, index) in works"
         :key="index"
@@ -295,7 +295,7 @@
       </card>
     </div>
 
-    <div class="col-span-full flex justify-center">
+    <div class="col-span-full flex justify-center mt-8 lg:mt-16">
       <form-button
         type="button"
         @click="addWork"
