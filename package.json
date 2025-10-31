@@ -10,21 +10,15 @@
     "autoprefixer": "^10.4.19",
     "axios": "^1.6.8",
     "laravel-vite-plugin": "^0.7.2",
-    "nprogress": "^0.2.0",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.3",
     "vite": "^4.5.2",
     "vue-axios": "^3.4.1"
   },
   "dependencies": {
-    "@fancyapps/ui": "^5.0.36",
     "@vitejs/plugin-vue": "^4.6.2",
     "alpinejs": "^3.13.8",
-    "filepond": "^4.32.10",
-    "filepond-plugin-file-validate-size": "^2.2.8",
-    "filepond-plugin-file-validate-type": "^1.2.9",
     "maska": "^3.2.0",
-    "swiper": "^12.0.3",
-    "vue-filepond": "^7.0.4"
+    "swiper": "^12.0.3"
   }
 }
