@@ -87,12 +87,16 @@ const initSwiper = (element) => {
     return swiperInstances.get(element);
   }
 
-  // Find navigation buttons in parent container
+  // Find navigation buttons - they're siblings to the swiper element
+  // The browse partial is rendered after the swiper div
   const container = element.parentElement;
-  const captionEl = container?.querySelector('.swiper-caption');
+  const browseEl = element.nextElementSibling;
+  const captionEl = browseEl?.querySelector('.swiper-caption');
+  const navPrev = browseEl?.querySelector('.swiper-nav-prev');
+  const navNext = browseEl?.querySelector('.swiper-nav-next');
 
   // Setup caption toggle behavior
-  const captionToggle = setupCaptionToggle(container);
+  const captionToggle = setupCaptionToggle(browseEl);
 
   const swiper = new Swiper(element, {
     modules: [Navigation],
@@ -103,8 +107,8 @@ const initSwiper = (element) => {
 
     // Navigation arrows - scoped to this swiper instance
     navigation: {
-      nextEl: container?.querySelector('.swiper-nav-next'),
-      prevEl: container?.querySelector('.swiper-nav-prev'),
+      nextEl: navNext,
+      prevEl: navPrev,
     },
 
     on: {

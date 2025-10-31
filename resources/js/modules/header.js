@@ -20,13 +20,13 @@ document.addEventListener('alpine:init', () => {
       });
 
       // Listen for accordion scroll events
-      window.addEventListener('accordion-scrolling', () => {
-        this.ignoreScroll = true;
-        // Re-enable after scroll animation completes (1 second to be safe)
-        setTimeout(() => {
-          this.ignoreScroll = false;
-        }, 500);
-      });
+      // window.addEventListener('accordion-scrolling', () => {
+      //   this.ignoreScroll = true;
+      //   // Re-enable after scroll animation completes (1 second to be safe)
+      //   setTimeout(() => {
+      //     this.ignoreScroll = false;
+      //   }, 500);
+      // });
     },
 
     updateHeaderVisibility() {
