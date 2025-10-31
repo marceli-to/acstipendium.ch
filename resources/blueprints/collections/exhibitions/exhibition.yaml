@@ -59,6 +59,27 @@ tabs:
                             display: Zeitraum
                             localizable: false
                             width: 50
+                    fellows:
+                      display: 'Stipendiant:innen'
+                      instructions: 'Stipendiant:innen hinzufügen'
+                      icon: user-multiple
+                      fields:
+                        -
+                          handle: main_scholarship
+                          field:
+                            collections:
+                              - fellows
+                            type: entries
+                            display: Hauptstipendium
+                            localizable: false
+                        -
+                          handle: promote_scholarship
+                          field:
+                            collections:
+                              - fellows
+                            type: entries
+                            display: Förderstipendium
+                            localizable: false
                     artists:
                       display: 'Künstler:innen'
                       instructions: 'Künstler:innen hinzufügen'

@@ -1,0 +1,33 @@
+{{ partial:exhibitions/components/card }}
+
+  {{ partial:headings/h2 class="text-center leading-none mb-12" }}
+    {{ "Hauptstipendium" | trans }}
+  {{ /partial:headings/h2 }}
+
+  <div class="flex flex-wrap gap-4 items-center justify-center">
+    {{ main_scholarship }}
+      <a 
+        href="{{ site:short_locale == 'fr' ? '/fr/archives/boursiers' : '/archiv/stipendianten' }}#{{slug}}"
+        class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary"
+        aria-label="{{ firstname }} {{ name }}">
+        {{ firstname }} {{ name }}
+      </a>
+    {{ /main_scholarship }}
+  </div>
+
+  {{ partial:headings/h2 class="text-center leading-none mb-12 mt-12" }}
+    {{ "Förderstipendium" | trans }}
+  {{ /partial:headings/h2 }}
+
+  <div class="flex flex-wrap gap-4 items-center justify-center">
+      {{ promote_scholarship }}
+        <a 
+          href="{{ site:short_locale == 'fr' ? '/fr/archives/boursiers' : '/archiv/stipendianten' }}#{{slug}}"
+          class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary"
+          aria-label="{{ firstname }} {{ name }}">
+          {{ firstname }} {{ name }}
+        </a>
+      {{ /promote_scholarship }}
+  </div>
+  
+{{ /partial:exhibitions/components/card }}

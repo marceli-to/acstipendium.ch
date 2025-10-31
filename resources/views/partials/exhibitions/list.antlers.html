@@ -33,6 +33,10 @@
               {{ partial:exhibitions/components/information }}
             {{ /if }}
 
+            {{ if type == 'fellows' }}
+              {{ partial:exhibitions/components/fellows }}
+            {{ /if }}
+
             {{ if type == 'artists' }}
               {{ partial:exhibitions/components/artists }}
             {{ /if }}
