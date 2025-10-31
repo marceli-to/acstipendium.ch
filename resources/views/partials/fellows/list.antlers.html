@@ -38,7 +38,10 @@
       });
     }
   }"
-  x-init="$watch('sortBy', () => sortFellows()); $watch('sortDirection', () => sortFellows()); sortFellows()">
+  x-init="
+    $watch('sortBy', () => sortFellows()); 
+    $watch('sortDirection', () => sortFellows()); 
+    sortFellows()">
 
   {{ partial:accordion/wrapper class="flex flex-col gap-y-4 lg:gap-y-8" }}
 
