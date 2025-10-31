@@ -43,26 +43,27 @@
     $watch('sortDirection', () => sortFellows()); 
     sortFellows()">
 
-  <header class="flex justify-between w-full items-center gap-4 mb-4 lg:mb-8 text-primary text-md lg:text-lg">
-    <span class="flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 w-[calc(100%_-_64px)] lg:w-[calc(38%_-_3px)]">
-      {{ "Name" | trans }}
+  <header class="flex justify-between w-full items-center mb-4 lg:mb-8 text-primary text-md lg:text-lg">
+    <span class="flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 w-[calc(100%_-_64px)] lg:w-[calc(38%_-_3px)] mr-4">
+      Name
     </span>
-    <span class="hidden lg:flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 lg:w-[calc(26%_-_3px)]">
-      {{ "Stipendium" | trans }}
+    <span class="hidden lg:flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 lg:w-[calc(26%_-_3px)] mr-4">
+      Stipendium
     </span>
-    <span class="hidden lg:flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 lg:w-[calc(24%_-_3px)]">
-      {{ "Förderbeitrag" | trans }}
+    <span class="hidden lg:flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 lg:w-[calc(24%_-_3px)] mr-4">
+      Förderbeitrag
     </span>
     <span class="flex items-center justify-end leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 w-[64px] lg:w-[calc(12%_-_3px)]">
-      {{ "Jahr" | trans }}
+      Jahr
     </span>
   </header>
-
+  
   {{ partial:accordion/wrapper class="flex flex-col gap-y-4 lg:gap-y-8" }}
 
     {{ collection:fellows }}
 
       {{ partial:accordion/item
+         btnClass="!px-0"
          :index="index"
          :title="title"
          data-fellow="1"
@@ -72,21 +73,21 @@
          data-year="{year}" }}
 
           {{ slot:title }}
-            <span class="flex justify-between w-full items-center gap-4">
-              <span class="flex items-center leading-none pr-16" :class="open ? 'justify-center w-full' : 'w-[calc(100%_-_64px)] lg:w-[calc(38%_-_4px)]'">
+            <span class="flex justify-between w-full items-center">
+              <span class="flex items-center leading-none mr-4 px-16" :class="open ? 'justify-center w-full' : 'w-[calc(100%_-_64px)] lg:w-[calc(38%_-_3px)]'">
                 {{ title }}
               </span>
-              <span class="hidden lg:flex items-center leading-none lg:w-[calc(26%_-_4px)] lg:px-8" x-show="!open">
+              <span class="hidden lg:flex items-center leading-none lg:w-[calc(26%_-_3px)] mr-4 px-16" x-show="!open">
                 {{ if scholarship_type == 'main_scholarship' }}
                   {{ "Hauptstipendium" | trans }}
                 {{ elseif scholarship_type == 'promote_scholarship' }}
                   {{ "Förderstipendium" | trans }}
                 {{ /if }}
               </span>
-              <span class="hidden lg:flex items-center leading-none lg:w-[calc(24%_-_4px)] lg:px-16" x-show="!open">
+              <span class="hidden lg:flex items-center leading-none lg:w-[calc(24%_-_3px)] mr-4 px-16" x-show="!open">
                 {{ amount }} Fr.
               </span>
-              <span class="flex items-center justify-end leading-none w-[64px] lg:w-[calc(12%_-_4px)] lg:pl-16" x-show="!open">
+              <span class="flex items-center justify-end leading-none w-[64px] lg:w-[calc(12%_-_3px)] px-16" x-show="!open">
                 {{ year }}
               </span>
             </span>

@@ -9,7 +9,7 @@
 
   <button
     type="button"
-    class="w-full flex items-center justify-center leading-none"
+    class="w-full flex items-center justify-center leading-none {{ btnClass }}"
     :class="open ? 'bg-white text-primary text-3xl rounded-tl-16 rounded-tr-16 lg:rounded-tl-32 lg:rounded-tr-32 px-16 py-8' : 'bg-primary text-white text-md lg:text-lg px-16 py-8 lg:h-42 rounded-16 lg:rounded-32'"
     @click="toggle()">
     {{ if {slot:title} }}
