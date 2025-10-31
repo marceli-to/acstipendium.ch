@@ -1,34 +1,36 @@
-{{ partial:fellows/components/card }}
+{{ if downloads_links }}
+  {{ partial:fellows/components/card }}
 
-  {{ partial:headings/h2 class="text-center leading-none mb-12" }}
-    {{ "Downloads / Links" | trans }}
-  {{ /partial:headings/h2 }}
+    {{ partial:headings/h2 class="text-center leading-none mb-12" }}
+      {{ "Downloads / Links" | trans }}
+    {{ /partial:headings/h2 }}
 
-  <div class="flex flex-wrap gap-4 justify-center">
-    {{ downloads_links }}
+    <div class="flex flex-wrap gap-4 justify-center">
+      {{ downloads_links }}
 
-      {{ if type == 'download' }}
-        <a
-          href="{{ file }}"
-          aria-label="{{ file_title }}"
-          target="_blank"
-          class="pill pill-sm pill-solid-primary pill-icon-sm hover:shadow-glow-sm-primary">
-          {{ partial:icons/download }}
-          {{ file_title }}
-        </a>
-      {{ /if }}
+        {{ if type == 'download' }}
+          <a
+            href="{{ file }}"
+            aria-label="{{ file_title }}"
+            target="_blank"
+            class="pill pill-sm pill-solid-primary pill-icon-sm hover:shadow-glow-sm-primary">
+            {{ partial:icons/download }}
+            {{ file_title }}
+          </a>
+        {{ /if }}
 
-      {{ if type == 'link' }}
-        <a
-          href="{{ link }}"
-          aria-label="{{ link_title }}"
-          target="{{ target }}"
-          class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary">
-          {{ link_title }}
-        </a>
-      {{ /if }}
+        {{ if type == 'link' }}
+          <a
+            href="{{ link }}"
+            aria-label="{{ link_title }}"
+            target="{{ target }}"
+            class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary">
+            {{ link_title }}
+          </a>
+        {{ /if }}
 
-    {{ /downloads_links }}
-  </div>
-  
-{{ /partial:fellows/components/card }}
+      {{ /downloads_links }}
+    </div>
+    
+  {{ /partial:fellows/components/card }}
+{{ /if }}

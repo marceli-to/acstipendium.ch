@@ -1,44 +1,44 @@
 <div class="rounded-16 lg:rounded-32 lg:border-2 lg:border-white lg:px-12 lg:py-16"
-     x-data="{
-       sortFellows() {
-         const items = Array.from(this.$el.querySelectorAll('[data-fellow]'));
-         const sorted = items.sort((a, b) => {
-           let valueA, valueB;
+  x-data="{
+    sortFellows() {
+      const items = Array.from(this.$el.querySelectorAll('[data-fellow]'));
+      const sorted = items.sort((a, b) => {
+        let valueA, valueB;
 
-           switch(sortBy) {
-             case 'name':
-               valueA = a.dataset.name.toLowerCase();
-               valueB = b.dataset.name.toLowerCase();
-               return sortDirection === 'asc'
-                 ? valueA.localeCompare(valueB)
-                 : valueB.localeCompare(valueA);
+        switch(sortBy) {
+          case 'name':
+            valueA = a.dataset.name.toLowerCase();
+            valueB = b.dataset.name.toLowerCase();
+            return sortDirection === 'asc'
+              ? valueA.localeCompare(valueB)
+              : valueB.localeCompare(valueA);
 
-             case 'scholarship':
-               valueA = a.dataset.scholarship;
-               valueB = b.dataset.scholarship;
-               return sortDirection === 'asc'
-                 ? valueA.localeCompare(valueB)
-                 : valueB.localeCompare(valueA);
+          case 'scholarship':
+            valueA = a.dataset.scholarship;
+            valueB = b.dataset.scholarship;
+            return sortDirection === 'asc'
+              ? valueA.localeCompare(valueB)
+              : valueB.localeCompare(valueA);
 
-             case 'amount':
-               valueA = parseInt(a.dataset.amount);
-               valueB = parseInt(b.dataset.amount);
-               return sortDirection === 'asc' ? valueA - valueB : valueB - valueA;
+          case 'amount':
+            valueA = parseInt(a.dataset.amount);
+            valueB = parseInt(b.dataset.amount);
+            return sortDirection === 'asc' ? valueA - valueB : valueB - valueA;
 
-             case 'year':
-             default:
-               valueA = parseInt(a.dataset.year);
-               valueB = parseInt(b.dataset.year);
-               return sortDirection === 'asc' ? valueA - valueB : valueB - valueA;
-           }
-         });
+          case 'year':
+          default:
+            valueA = parseInt(a.dataset.year);
+            valueB = parseInt(b.dataset.year);
+            return sortDirection === 'asc' ? valueA - valueB : valueB - valueA;
+        }
+      });
 
-         sorted.forEach((item, index) => {
-           item.style.order = index;
-         });
-       }
-     }"
-     x-init="$watch('sortBy', () => sortFellows()); $watch('sortDirection', () => sortFellows()); sortFellows()">
+      sorted.forEach((item, index) => {
+        item.style.order = index;
+      });
+    }
+  }"
+  x-init="$watch('sortBy', () => sortFellows()); $watch('sortDirection', () => sortFellows()); sortFellows()">
 
   {{ partial:accordion/wrapper class="flex flex-col gap-y-4 lg:gap-y-8" }}
 
@@ -56,6 +56,7 @@
         <div class="lg:grid lg:grid-cols-9 lg:gap-x-16">
 
           {{ if portrait_image }}
+
             <div class="lg:col-span-3">
               {{ partial:media/image
                 :image="portrait_image"
@@ -63,26 +64,20 @@
                 wrapperClass="rounded-14 lg:rounded-24 overflow-hidden"
                 class="w-full h-full object-cover" }}
             </div>
+
           {{ /if }}
 
-
           <div class="lg:col-span-6">
+
             <div class="flex flex-col gap-y-8">
-
               {{ partial:fellows/components/scholarship }}
-
-              {{ if downloads_links }}
-                {{ partial:fellows/components/download_links }}
-              {{ /if }}
-
-              {{ if images }}
-                {{ partial:fellows/components/images }}
-              {{ /if }}
-
+              {{ partial:fellows/components/download_links }}
+              {{ partial:fellows/components/images }}
             </div>
-          </div>
-        </div>
 
+          </div>
+
+        </div>
 
       {{ /partial:accordion/item }}
 

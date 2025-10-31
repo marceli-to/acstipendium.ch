@@ -9,20 +9,24 @@ import 'swiper/css/pagination';
 
 // Store swiper instances
 const swiperInstances = new WeakMap();
+// Keep track of all swiper elements for resize handling
+const allSwiperElements = new Set();
 
 /**
  * Update caption text for swiper
  */
 const updateCaption = (swiper, captionEl) => {
-  if (!captionEl) return;
+  if (!captionEl) return false;
 
   const activeSlide = swiper.slides[swiper.activeIndex];
   const img = activeSlide?.querySelector('img');
 
   if (img && img.alt) {
     captionEl.textContent = img.alt;
+    return true; // Has caption
   } else {
     captionEl.textContent = '';
+    return false; // No caption
   }
 };
 
@@ -37,7 +41,14 @@ const setupCaptionToggle = (container) => {
 
   let hideTimeout = null;
 
-  const showCaptionWithAutoHide = () => {
+  const showCaptionWithAutoHide = (hasCaption) => {
+    // Only show if there's actually a caption
+    if (!hasCaption) {
+      captionEl.classList.add('hidden');
+      infoBtn.classList.add('hidden');
+      return;
+    }
+
     captionEl.classList.remove('hidden');
     infoBtn.classList.add('hidden');
 
@@ -113,23 +124,24 @@ const initSwiper = (element) => {
 
     on: {
       init: function() {
-        updateCaption(this, captionEl);
+        const hasCaption = updateCaption(this, captionEl);
         // Show caption initially with auto-hide after 2 seconds
         if (captionToggle) {
-          captionToggle.showCaptionWithAutoHide();
+          captionToggle.showCaptionWithAutoHide(hasCaption);
         }
       },
       slideChange: function() {
-        updateCaption(this, captionEl);
+        const hasCaption = updateCaption(this, captionEl);
         // Show caption when slide changes with auto-hide after 2 seconds
         if (captionToggle) {
-          captionToggle.showCaptionWithAutoHide();
+          captionToggle.showCaptionWithAutoHide(hasCaption);
         }
       }
     }
   });
 
   swiperInstances.set(element, swiper);
+  allSwiperElements.add(element);
   return swiper;
 };
 
@@ -168,6 +180,23 @@ document.addEventListener('accordion-opened', (event) => {
     const safety = Math.max(500, (maxDur * 1000) + 50);
     setTimeout(() => { if (!initialized) initAll(); }, safety);
   }
+});
+
+// Handle window resize - update all active swiper instances
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  // Debounce resize events
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    allSwiperElements.forEach((element) => {
+      const swiper = swiperInstances.get(element);
+      if (swiper && !swiper.destroyed) {
+        // Update the width parameter and force recalculation
+        swiper.params.width = element.offsetWidth;
+        swiper.update();
+      }
+    });
+  }, 50);
 });
 
 // Export for manual initialization if needed
