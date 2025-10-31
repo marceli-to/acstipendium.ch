@@ -1,4 +1,5 @@
-<div class="rounded-16 lg:rounded-32 lg:border-2 lg:border-white lg:px-12 lg:py-16"
+<div 
+  class="rounded-16 lg:rounded-32 lg:border-2 lg:border-white lg:px-12 lg:py-16"
   x-data="{
     sortFellows() {
       const items = Array.from(this.$el.querySelectorAll('[data-fellow]'));
@@ -104,7 +105,6 @@
         <div class="lg:grid lg:grid-cols-9 lg:gap-x-16">
 
           {{ if portrait_image }}
-
             <div class="lg:col-span-3">
               {{ partial:media/image
                 :image="portrait_image"
@@ -112,17 +112,14 @@
                 wrapperClass="rounded-14 lg:rounded-24 overflow-hidden"
                 class="w-full h-full object-cover" }}
             </div>
-
           {{ /if }}
 
           <div class="lg:col-span-6">
-
             <div class="flex flex-col gap-y-8">
               {{ partial:fellows/components/scholarship }}
               {{ partial:fellows/components/download_links }}
               {{ partial:fellows/components/images }}
             </div>
-
           </div>
 
         </div>
