@@ -1,4 +1,5 @@
-data: {  }
+data:
+  alt: 'Aenean commodo ligula eget dolor. Aenean massa.'
 size: 953049
 last_modified: 1761830423
 width: 1532

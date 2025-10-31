@@ -73,7 +73,14 @@ export default {
         '2xl': '2rem',      // 32px
         '3xl': '3rem',      // 48px
       },
-      
+
+      borderRadius: {
+        '14': '0.875rem',  // 14px
+        '16': '1rem',      // 16px
+        '24': '1.5rem',    // 24px
+        '32': '2rem',      // 32px
+      },
+
       zIndex: {
         '60': 60,
         '70': 70,

@@ -129,7 +129,7 @@ p:has(.pill) {
 }
 
 .card-rounded {
-  @apply rounded-[1rem] lg:rounded-[2rem];
+  @apply rounded-16 lg:rounded-32;
 }
 
 .card-border {

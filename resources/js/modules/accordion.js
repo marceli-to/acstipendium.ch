@@ -1,17 +1,20 @@
 // Accordion module for Alpine.js
 export const AccordionItem = (index) => ({
-  
   get open() {
     return this.selected === index;
   },
 
   init() {
-    // Watch for changes to selected
-    this.$watch('selected', () => {
+    this.$watch('selected', async () => {
       if (this.open) {
-        setTimeout(() => {
-          this.$refs.container.style.maxHeight = this.$refs.container.scrollHeight + 'px';
-        }, 10);
+        await this.$nextTick(); // wait for DOM update
+
+        // now container is real and measurable
+        const container = this.$refs.container;
+        container.style.maxHeight = container.scrollHeight + 'px';
+
+        // dispatch event safely on document
+        document.dispatchEvent(new CustomEvent('accordion-opened', { detail: container }));
       } else {
         this.$refs.container.style.maxHeight = '0px';
       }
@@ -19,15 +22,8 @@ export const AccordionItem = (index) => ({
   },
 
   toggle() {
-    if (this.selected === index) {
-      // Close current item
-      this.selected = null;
-    } else {
-      // Open this item (closes others automatically)
-      this.selected = index;
-    }
+    this.selected = this.selected === index ? null : index;
   }
 });
 
-// Make it globally accessible for Alpine.js
 window.AccordionItem = AccordionItem;
