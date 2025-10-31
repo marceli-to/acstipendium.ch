@@ -1,0 +1,11 @@
+{{ if images }}
+  <div class="relative">
+    {{ partial:swiper/wrapper class="rounded-14 lg:rounded-24" }}
+      {{ images }}
+        {{ partial:swiper/item class="aspect-[3/2] bg-primary rounded-14 lg:rounded-24" }}
+          {{ partial:swiper/image :image="id" :sizes="['lg', 'xl', '2xl']" }}
+        {{ /partial:swiper/item }}
+      {{ /images }}
+    {{ /partial:swiper/wrapper }}
+  </div>
+{{ /if }}

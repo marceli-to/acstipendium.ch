@@ -1,0 +1,168 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: firstname
+            field:
+              type: text
+              display: Vorname
+              localizable: false
+              validate:
+                - required
+          -
+            handle: name
+            field:
+              type: text
+              display: Name
+              localizable: false
+              validate:
+                - required
+          -
+            handle: portrait_image
+            field:
+              max_files: 1
+              container: assets
+              folder: stipendiantinnen
+              type: assets
+              display: Portrait
+              localizable: false
+          -
+            handle: scholarship_type
+            field:
+              options:
+                -
+                  key: main_scholarship
+                  value: Hauptstipendium
+                -
+                  key: promote_scholarship
+                  value: Förderstipendium
+              default: main_scholarship
+              type: select
+              display: Stipendium
+              localizable: false
+              width: 50
+          -
+            handle: year
+            field:
+              type: text
+              display: Jahr
+              localizable: false
+              width: 50
+          -
+            handle: amount
+            field:
+              type: text
+              display: Betrag
+              localizable: false
+              width: 50
+          -
+            handle: year_group
+            field:
+              type: text
+              display: Jahrgang
+              localizable: false
+              width: 50
+          -
+            handle: images
+            field:
+              container: assets
+              folder: stipendianten
+              type: assets
+              display: Bilder
+              localizable: false
+          -
+            handle: downloads_links
+            field:
+              collapse: true
+              type: replicator
+              display: 'Downloads / Links'
+              localizable: true
+              sets:
+                neue_setgruppe:
+                  display: 'Neue Setgruppe'
+                  sets:
+                    download:
+                      display: Download
+                      instructions: 'Download hinzufügen'
+                      icon: download-arrow-down
+                      fields:
+                        -
+                          handle: file_title
+                          field:
+                            type: text
+                            display: Bezeichnung
+                            localizable: false
+                        -
+                          handle: file
+                          field:
+                            max_files: 1
+                            container: assets
+                            folder: stipendianten
+                            type: assets
+                            display: Datei
+                            localizable: false
+                    link:
+                      display: Link
+                      instructions: 'Link hinzufügen'
+                      icon: link
+                      fields:
+                        -
+                          handle: link_title
+                          field:
+                            type: text
+                            display: Bezeichnung
+                            localizable: false
+                        -
+                          handle: link
+                          field:
+                            collections:
+                              - pages
+                            container: assets
+                            type: link
+                            display: Link
+                            localizable: false
+                        -
+                          handle: target
+                          field:
+                            options:
+                              -
+                                key: _blank
+                                value: 'Neues Fenster'
+                              -
+                                key: _self
+                                value: 'Gleiches Fenster'
+                            default: _blank
+                            type: select
+                            display: 'Öffnen in'
+                            localizable: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: false
+              localizable: false
+              visibility: hidden
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - fellows
+              max_items: 1
+              listable: false
+              localizable: true
+title: 'Stipendiant:innen'

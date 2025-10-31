@@ -1,7 +1,11 @@
 <div
   x-data="AccordionItem({{ index }})"
   class="{{ class }} scroll-mt-[100px] lg:scroll-mt-[145px]"
-  data-year="{{ data-year }}">
+  data-year="{{ data-year }}"
+  {{ if data-fellow }}data-fellow="{{ data-fellow }}"{{ /if }}
+  {{ if data-name }}data-name="{{ data-name }}"{{ /if }}
+  {{ if data-scholarship }}data-scholarship="{{ data-scholarship }}"{{ /if }}
+  {{ if data-amount }}data-amount="{{ data-amount }}"{{ /if }}>
 
   <button
     type="button"

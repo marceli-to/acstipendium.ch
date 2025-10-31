@@ -7,7 +7,9 @@
       "Bash(grep:*)",
       "Bash(npm run build:*)",
       "Bash(npm install:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix swiper caption toggle to be scoped per accordion item\n\n- Each swiper now finds its own browse element (nextElementSibling)\n- Caption, info button, and navigation are scoped to specific swiper instance\n- Prevents caption/info button state from being shared globally across accordions\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push)"
     ],
     "deny": []
   },

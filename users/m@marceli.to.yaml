@@ -94,6 +94,12 @@ preferences:
         - title
         - location
         - dob
+    fellows:
+      columns:
+        - title
+        - year_group
+        - year
+        - scholarship_type
   taxonomies:
     project_categories:
       columns:

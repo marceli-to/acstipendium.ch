@@ -1,0 +1,35 @@
+{{ partial:fellows/components/card }}
+
+  {{ partial:headings/h2 class="text-center leading-none mb-12" }}
+    {{ "Förderbeitrag" | trans }}
+  {{ /partial:headings/h2 }}
+
+  <div class="flex flex-wrap gap-4 justify-center">
+    {{ if scholarship_type == 'main_scholarship' }}
+      <div class="pill pill-sm pill-solid-primary">
+        {{ "Hauptstipendium" | trans }} {{ year }}
+      </div>
+    {{ elseif scholarship_type == 'promote_scholarship' }}
+      <div class="pill pill-sm pill-solid-primary">
+        {{ "Förderstipendium" | trans }} {{ year }}
+      </div>
+    {{ /if }}
+
+    {{ if amount }}
+      <div class="pill pill-sm pill-outline-primary pill-outline-primary-static">
+        {{ amount }} Fr.
+      </div>
+    {{ /if }}
+  </div>
+
+  {{ partial:headings/h2 class="text-center leading-none mb-12 mt-12" }}
+    {{ "Jahrgang" | trans }}
+  {{ /partial:headings/h2 }}
+
+  <div class="flex justify-center">
+    <div class="pill pill-sm pill-outline-primary pill-outline-primary-static">
+      {{ year_group }}
+    </div>
+  </div>
+
+{{ /partial:fellows/components/card }}
