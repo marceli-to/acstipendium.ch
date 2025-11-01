@@ -17,7 +17,7 @@ export const AccordionItem = (index) => ({
         await this.$nextTick(); // wait for DOM update
 
         // Mark this accordion as open for resize handler
-        this.$el.classList.add('accordion-item-open');
+        this.$el.dataset.accordionOpen = 'true';
 
         // now container is real and measurable
         this.updateHeight();
@@ -29,7 +29,7 @@ export const AccordionItem = (index) => ({
         this.$el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
       else {
-        this.$el.classList.remove('accordion-item-open');
+        delete this.$el.dataset.accordionOpen;
         this.$refs.container.style.maxHeight = '0px';
       }
     });
@@ -57,7 +57,7 @@ window.addEventListener('resize', () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(() => {
     // Only find open accordion items
-    const openAccordionItems = document.querySelectorAll('.accordion-item-open');
+    const openAccordionItems = document.querySelectorAll('[data-accordion-open]');
 
     openAccordionItems.forEach((element) => {
       // Get the Alpine component and update height
