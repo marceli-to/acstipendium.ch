@@ -66,7 +66,7 @@ window.addEventListener('resize', () => {
         component.updateHeight();
       }
     });
-  }, 150);
+  }, 100);
 });
 
 // Handle hash-based accordion opening on page load

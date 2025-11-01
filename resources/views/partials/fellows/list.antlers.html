@@ -74,34 +74,34 @@
          data-amount="{amount}"
          data-year="{year}" }}
 
-          {{ slot:title }}
-            <span class="flex justify-between w-full items-center">
-              <span 
-                class="flex items-center leading-none mr-4 px-16" 
-                :class="open ? 'justify-center w-full' : 'w-[calc(100%_-_64px)] lg:w-[calc(39%_-_3px)] xl:w-[calc(41%_-_3px)]'">
-                {{ title }}
-              </span>
-              <span 
-                class="hidden lg:flex items-center leading-none lg:w-[calc(26%_-_3px)] mr-4 px-16" 
-                x-show="!open">
-                {{ if scholarship_type == 'main_scholarship' }}
-                  {{ "Hauptstipendium" | trans }}
-                {{ elseif scholarship_type == 'promote_scholarship' }}
-                  {{ "Förderstipendium" | trans }}
-                {{ /if }}
-              </span>
-              <span
-                class="hidden lg:flex items-center leading-none lg:w-[calc(24%_-_3px)] mr-4 px-16"
-                x-show="!open">
-                {{ amount | format_number:0:".":"’" }}
-              </span>
-              <span 
-                class="flex items-center justify-end leading-none w-[64px] lg:w-[calc(11%_-_3px)] xl:w-[calc(9%_-_3px)] px-16" 
-                x-show="!open">
-                {{ year }}
-              </span>
+        {{ slot:title }}
+          <span class="flex justify-between w-full items-center">
+            <span 
+              class="flex items-center leading-none mr-4 px-16" 
+              :class="open ? 'justify-center w-full' : 'w-[calc(100%_-_64px)] lg:w-[calc(39%_-_3px)] xl:w-[calc(41%_-_3px)]'">
+              {{ title }}
             </span>
-          {{ /slot:title }}
+            <span 
+              class="hidden lg:flex items-center leading-none lg:w-[calc(26%_-_3px)] mr-4 px-16" 
+              x-show="!open">
+              {{ if scholarship_type == 'main_scholarship' }}
+                {{ "Hauptstipendium" | trans }}
+              {{ elseif scholarship_type == 'promote_scholarship' }}
+                {{ "Förderstipendium" | trans }}
+              {{ /if }}
+            </span>
+            <span
+              class="hidden lg:flex items-center leading-none lg:w-[calc(24%_-_3px)] mr-4 px-16"
+              x-show="!open">
+              {{ amount | format_number:0:".":"’" }}
+            </span>
+            <span 
+              class="flex items-center justify-end leading-none w-[64px] lg:w-[calc(11%_-_3px)] xl:w-[calc(9%_-_3px)] px-16" 
+              x-show="!open">
+              {{ year }}
+            </span>
+          </span>
+        {{ /slot:title }}
 
         <div class="lg:grid lg:grid-cols-9 lg:gap-x-16">
 
