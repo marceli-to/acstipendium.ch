@@ -1,7 +1,7 @@
 <div
   x-data="AccordionItem({{ index }})"
   class="{{ class }} scroll-mt-[100px] lg:scroll-mt-[145px]"
-  {{ if id }}id="{{ id }}"{{ /if }}
+  {{ if data-slug }}data-slug="{{ data-slug }}"{{ /if }}
   data-year="{{ data-year }}"
   {{ if data-fellow }}data-fellow="{{ data-fellow }}"{{ /if }}
   {{ if data-name }}data-name="{{ data-name }}"{{ /if }}

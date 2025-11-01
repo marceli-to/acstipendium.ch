@@ -18,7 +18,8 @@ export const AccordionItem = (index) => ({
 
         // Scroll the accordion item into view
         this.$el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
+      } 
+      else {
         this.$refs.container.style.maxHeight = '0px';
       }
     });
@@ -44,7 +45,7 @@ window.AccordionItem = AccordionItem;
 document.addEventListener('alpine:initialized', () => {
   if (window.location.hash) {
     const hash = window.location.hash.substring(1);
-    const targetElement = document.getElementById(hash);
+    const targetElement = document.querySelector(`[data-slug="${hash}"]`);
 
     if (targetElement && targetElement.hasAttribute('x-data')) {
       // Find the parent accordion wrapper

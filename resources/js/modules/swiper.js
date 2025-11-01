@@ -44,29 +44,29 @@ const setupCaptionToggle = (container) => {
   const showCaptionWithAutoHide = (hasCaption) => {
     // Only show if there's actually a caption
     if (!hasCaption) {
-      captionEl.classList.add('hidden');
-      infoBtn.classList.add('hidden');
+      captionEl.classList.add('opacity-0');
+      infoBtn.classList.add('opacity-0');
       return;
     }
 
-    captionEl.classList.remove('hidden');
-    infoBtn.classList.add('hidden');
+    captionEl.classList.remove('opacity-0');
+    infoBtn.classList.add('opacity-0');
 
     // Clear existing timeout
     if (hideTimeout) {
       clearTimeout(hideTimeout);
     }
 
-    // Hide caption after 2 seconds
+    // Hide caption after 3 seconds
     hideTimeout = setTimeout(() => {
-      captionEl.classList.add('hidden');
-      infoBtn.classList.remove('hidden');
+      captionEl.classList.add('opacity-0');
+      infoBtn.classList.remove('opacity-0');
     }, 3000);
   };
 
   const showCaptionPermanent = () => {
-    captionEl.classList.remove('hidden');
-    infoBtn.classList.add('hidden');
+    captionEl.classList.remove('opacity-0');
+    infoBtn.classList.add('opacity-0');
 
     // Clear any existing timeout
     if (hideTimeout) {
@@ -79,8 +79,8 @@ const setupCaptionToggle = (container) => {
     if (hideTimeout) {
       clearTimeout(hideTimeout);
     }
-    captionEl.classList.add('hidden');
-    infoBtn.classList.remove('hidden');
+    captionEl.classList.add('opacity-0');
+    infoBtn.classList.remove('opacity-0');
   };
 
   // Info button click shows caption permanently (no auto-hide)
