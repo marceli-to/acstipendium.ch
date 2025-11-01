@@ -4,21 +4,27 @@ export const AccordionItem = (index) => ({
     return this.selected === index;
   },
 
+  updateHeight() {
+    if (this.open) {
+      const container = this.$refs.container;
+      container.style.maxHeight = container.scrollHeight + 'px';
+    }
+  },
+
   init() {
     this.$watch('selected', async () => {
       if (this.open) {
         await this.$nextTick(); // wait for DOM update
 
         // now container is real and measurable
-        const container = this.$refs.container;
-        container.style.maxHeight = container.scrollHeight + 'px';
+        this.updateHeight();
 
         // dispatch event safely on document
-        document.dispatchEvent(new CustomEvent('accordion-opened', { detail: container }));
+        document.dispatchEvent(new CustomEvent('accordion-opened', { detail: this.$refs.container }));
 
         // Scroll the accordion item into view
         this.$el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } 
+      }
       else {
         this.$refs.container.style.maxHeight = '0px';
       }
@@ -40,6 +46,26 @@ export const AccordionItem = (index) => ({
 });
 
 window.AccordionItem = AccordionItem;
+
+// Handle window resize - update all open accordion heights
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    // Find all accordion items
+    const allAccordionItems = document.querySelectorAll('[x-data*="AccordionItem"]');
+
+    allAccordionItems.forEach((element) => {
+      // Get the Alpine component
+      const component = Alpine.$data(element);
+
+      // Update height if this item is open
+      if (component && component.updateHeight) {
+        component.updateHeight();
+      }
+    });
+  }, 150);
+});
 
 // Handle hash-based accordion opening on page load
 document.addEventListener('alpine:initialized', () => {
