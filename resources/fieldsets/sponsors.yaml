@@ -1,0 +1,46 @@
+title: Sponsoren
+fields:
+  -
+    import: title
+  -
+    import: text_box
+  -
+    handle: logos
+    field:
+      type: grid
+      display: Logos
+      localizable: false
+      mode: stacked
+      fields:
+        -
+          handle: logo
+          field:
+            max_files: 1
+            container: assets
+            folder: sponsoren
+            type: assets
+            display: Logo
+            localizable: false
+        -
+          handle: link
+          field:
+            type: link
+            display: Link
+            localizable: false
+        -
+          handle: height
+          field:
+            options:
+              -
+                key: 24
+                value: '24 Pixel'
+              -
+                key: 36
+                value: '36 Pixel'
+              -
+                key: 48
+                value: '48 Pixel'
+            default: '24'
+            type: select
+            display: Höhe
+            localizable: false

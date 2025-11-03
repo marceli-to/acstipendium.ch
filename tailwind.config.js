@@ -28,6 +28,8 @@ export default {
     { pattern: /^col-span-(1[0-2]|[1-9])$/ , variants: ['lg'] },
     { pattern: /^col-start-(1[0-2]|[1-9])$/ , variants: ['lg'] },
     { pattern: /^bg-(primary|secondary)$/ , variants: ['lg'] },
+    { pattern: /^h-(24|36|48)$/, variants: ['lg'] },
+    { pattern: /^!h-(24|36|48)$/, variants: ['lg'] },
   ],
 
   theme: {

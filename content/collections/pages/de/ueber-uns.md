@@ -4,7 +4,7 @@ blueprint: page
 title: 'Über uns'
 debug: false
 updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761863585
+updated_at: 1762161594
 blocks:
   -
     id: mh9crcaq
@@ -298,5 +298,49 @@ blocks:
         enabled: true
     type: partners
     enabled: true
+  -
+    id: mhiwjgkf
+    title: "Förder:innen \Lund Sponsor:innen"
+    title_order: h2
+    editors:
+      -
+        id: mhiwjuv3
+        editor:
+          -
+            type: paragraph
+            content:
+              -
+                type: text
+                text: 'Die Vergabe der Aeschlimann Corti-Stipendien sowie die begleitenden Ausstellungen sind nur dank zusätzlicher Unterstützung durch öffentliche Stellen, Stiftungen und private Förderer möglich.'
+        type: editors
+        enabled: true
+    background_color: secondary
+    col_span_mobile: '6'
+    col_start_mobile: '1'
+    col_span_desktop: 8
+    col_start_desktop: 5
+    type: sponsors
+    enabled: true
+    logos:
+      -
+        id: mhiwrjhi
+        logo: sponsoren/logo-sl_ktbe_kultur_d.svg
+        height: 36
+      -
+        id: mhiwr7yt
+        logo: sponsoren/logo-bgb.svg
+        height: 36
+      -
+        id: mhiwrbtc
+        logo: sponsoren/logo-hmsl.svg
+        height: 24
+      -
+        id: mhiwro5p
+        logo: sponsoren/logo-temperatio.svg
+        height: 48
+      -
+        id: mhiwp27t
+        logo: sponsoren/logo-bekb_forderfonds_2020_d.svg
+        height: 36
 has_footer: true
 ---

@@ -64,10 +64,6 @@ tabs:
                       instructions: 'Stipendiant:innen hinzufügen'
                       icon: file-content-list
                       fields: {  }
-                special_elements:
-                  display: Spezialelemente
-                  icon: addon-boxes-stack
-                  sets:
                     imprint:
                       display: Impressum
                       instructions: 'Impressum hinzufügen'
@@ -75,6 +71,13 @@ tabs:
                       fields:
                         -
                           import: imprint
+                    sponsors:
+                      display: "Förder:innen \Lund Sponsor:innen"
+                      instructions: "Förder:innen \Lund Sponsor:innen hinzufügen"
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: sponsors
   seo:
     display: SEO
     sections:

@@ -1,0 +1,31 @@
+<article class="
+  col-span-{{ col_span_mobile }} 
+  col-start-{{ col_start_mobile }} 
+  lg:col-span-{{ col_span_desktop }}
+  lg:col-start-{{ col_start_desktop }} 
+  bg-{{ background_color }}
+  card
+  card-rounded
+  {{ background_color == 'secondary' ? 'card-border' : '' }}
+  {{ wrapperClass }}">
+  
+  {{ if title }}
+    {{ partial:headings/dynamic type="{{ title_order }}" }}
+      {{ title }} 
+    {{ /partial:headings/dynamic }}
+  {{ /if }}
+
+  <div class="flex flex-col gap-y-24 lg:gap-y-32">
+    {{ editors }}
+      {{ partial:editor/wrapper }}
+    {{ /editors }}
+  </div>
+
+  {{ if logos }}
+  <div class="grid grid-cols-2 gap-32 items-center justify-center lg:justify-start lg:flex lg:flex-wrap lg:gap-x-32 mt-16">
+    {{ logos }}
+      <img src="{{ logo }}" class="w-full h-auto lg:w-auto lg:h-{{ height }}" />
+    {{ /logos }}
+  </div>
+  {{ /if }}
+</article>
