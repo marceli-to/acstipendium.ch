@@ -10,7 +10,7 @@ Si des questions devaient survenir lors de l'examen de vos documents, nous prend
 Nous vous remercions de l'intérêt que vous portez à la bourse AC et vous souhaitons, d'ici là, nos meilleurs vœux de réussite.<br><br>
 Freundliche Grüsse / Cordialement<br><br>
 <div style="padding-bottom: 8px">
-<img src="{{ asset('img/logo.png') }}" alt="Louise Aeschlimann und Margareta Corti Stiftung" style="width: 350px; height: auto; display: block;">
+<img src="{{ asset('img/logo.png') }}" alt="Louise Aeschlimann und Margareta Corti Stiftung" width="380" height="53" style="width: 380px; height: auto; display: block;">
 </div>
 Louise Aeschlimann und Margareta Corti Stiftung<br>
 Hodlerstrasse 8–12<br>
