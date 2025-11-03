@@ -6,6 +6,7 @@
     <textarea
       :value="modelValue"
       :placeholder="placeholder"
+      :maxlength="maxlength"
       @input="$emit('update:modelValue', $event.target.value)"
       @focus="$emit('update:error', '')"
       :aria-label="ariaLabel"
@@ -15,10 +16,16 @@
         { '!border-red-700 placeholder:!text-red-700': error },
       ]">
     </textarea>
+    <div
+      v-if="maxlength"
+      class="mt-4 text-xs lg:text-sm text-right">
+      {{ characterCount }}/{{ maxlength }}
+    </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import FormLabel from './label.vue';
 
 const props = defineProps({
@@ -45,7 +52,15 @@ const props = defineProps({
   error: {
     type: String,
     default: ''
+  },
+  maxlength: {
+    type: Number,
+    default: null
   }
+});
+
+const characterCount = computed(() => {
+  return props.modelValue ? props.modelValue.length : 0;
 });
 
 defineEmits(['update:modelValue', 'update:error']);

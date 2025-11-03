@@ -147,6 +147,7 @@
             :placeholder="errors.geographic_relation_text ? errors.geographic_relation_text : trans('Maxine')"
             :label="trans('Dein Bernbezug (max. 500 Zeichen)')"
             :aria-label="trans('Dein Bernbezug (max. 500 Zeichen)')"
+            :maxlength="500"
             required
           />
         </form-group>
@@ -278,6 +279,7 @@
             :placeholder="errors[`works.${index}.technology`] ? errors[`works.${index}.technology`] : trans('Text...')"
             :label="trans('Technik (max. 500 Zeichen)')"
             :aria-label="trans('Technik (max. 500 Zeichen)')"
+            :maxlength="500"
             required
           />
         </form-group>
@@ -290,6 +292,7 @@
             :placeholder="errors[`works.${index}.remarks`] ? errors[`works.${index}.remarks`] : trans('Text...')"
             :label="trans('Kommentar (max. 500 Zeichen)')"
             :aria-label="trans('Kommentar (max. 500 Zeichen)')"
+            :maxlength="500"
           />
         </form-group>
       </card>
@@ -422,7 +425,7 @@ const props = defineProps({
 });
 
 const { scrollToForm } = useFormScroll();
-const { trans } = useTranslations();
+const { trans, getLocale } = useTranslations();
 
 const isSubmitting = ref(false);
 const formSuccess = ref(false);
@@ -649,7 +652,14 @@ function handleSuccess() {
 
   isSubmitting.value = false;
   formSuccess.value = true;
-  scrollToForm();
+
+  // Redirect to success page based on locale
+  const locale = getLocale();
+  const successUrl = locale === 'fr'
+    ? '/fr/bourse/inscription-reussie'
+    : '/stipendium/anmeldung-erfolgreich';
+
+  window.location.href = successUrl;
 }
 
 function handleError(error) {
