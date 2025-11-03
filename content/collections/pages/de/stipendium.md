@@ -447,7 +447,7 @@ blocks:
         enabled: true
       -
         id: mhaw79s4
-        condition_section_title: 'Allgmeine Erklärung zum Datenschutz'
+        condition_section_title: 'Allgemeine Erklärung zum Datenschutz'
         editor:
           -
             type: paragraph
