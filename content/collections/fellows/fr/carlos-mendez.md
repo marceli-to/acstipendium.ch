@@ -1,15 +1,13 @@
 ---
-id: 86ae8d80-767a-4e67-9d75-ac53eae892f0
+id: b2c3d4e5-f6a1-4b2c-9d1e-2f3a4b5c6d7e
 blueprint: fellow
-firstname: Florence
-name: Jung
+firstname: Carlos
+name: Méndez
 scholarship_type: main_scholarship
-year: '2023'
+year: '2024'
 amount: '20000'
-year_group: '1999'
-title: 'Florence Jung'
-updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761921777
+year_group: '2001'
+title: 'Carlos Méndez'
 portrait_image: stipendiantinnen/portrait-florence-jung.jpg
 images:
   - stipendiantinnen/ausstellung-dummy-1.jpg

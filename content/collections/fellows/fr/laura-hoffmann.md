@@ -1,15 +1,13 @@
 ---
-id: 86ae8d80-767a-4e67-9d75-ac53eae892f0
+id: c3d4e5f6-a1b2-4c6d-7e8f-9a0b1c2d3e4f
 blueprint: fellow
-firstname: Florence
-name: Jung
-scholarship_type: main_scholarship
-year: '2023'
-amount: '20000'
-year_group: '1999'
-title: 'Florence Jung'
-updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761921777
+firstname: Laura
+name: Hoffmann
+scholarship_type: promote_scholarship
+year: '2022'
+amount: '15000'
+year_group: '2004'
+title: 'Laura Hoffmann'
 portrait_image: stipendiantinnen/portrait-florence-jung.jpg
 images:
   - stipendiantinnen/ausstellung-dummy-1.jpg

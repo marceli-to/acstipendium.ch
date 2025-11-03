@@ -1,15 +1,13 @@
 ---
-id: 86ae8d80-767a-4e67-9d75-ac53eae892f0
+id: f6a1b2c3-d4e5-4f3a-4b5c-6d7e8f9a0b1c
 blueprint: fellow
-firstname: Florence
-name: Jung
-scholarship_type: main_scholarship
+firstname: Lukas
+name: Becker
+scholarship_type: promote_scholarship
 year: '2023'
-amount: '20000'
-year_group: '1999'
-title: 'Florence Jung'
-updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761921777
+amount: '15000'
+year_group: '1996'
+title: 'Lukas Becker'
 portrait_image: stipendiantinnen/portrait-florence-jung.jpg
 images:
   - stipendiantinnen/ausstellung-dummy-1.jpg

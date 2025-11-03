@@ -1,15 +1,13 @@
 ---
-id: 86ae8d80-767a-4e67-9d75-ac53eae892f0
+id: a1b2c3d4-e5f6-4a4b-5c6d-7e8f9a0b1c2d
 blueprint: fellow
-firstname: Florence
-name: Jung
+firstname: Sophie
+name: Schneider
 scholarship_type: main_scholarship
 year: '2023'
 amount: '20000'
-year_group: '1999'
-title: 'Florence Jung'
-updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761921777
+year_group: '2003'
+title: 'Sophie Schneider'
 portrait_image: stipendiantinnen/portrait-florence-jung.jpg
 images:
   - stipendiantinnen/ausstellung-dummy-1.jpg

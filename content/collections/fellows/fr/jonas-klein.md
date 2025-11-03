@@ -1,15 +1,13 @@
 ---
-id: 86ae8d80-767a-4e67-9d75-ac53eae892f0
+id: d4e5f6a1-b2c3-4d7e-8f9a-0b1c2d3e4f5a
 blueprint: fellow
-firstname: Florence
-name: Jung
+firstname: Jonas
+name: Klein
 scholarship_type: main_scholarship
-year: '2023'
+year: '2022'
 amount: '20000'
-year_group: '1999'
-title: 'Florence Jung'
-updated_by: c2f8321e-be41-4d83-b9ee-8136dba46b39
-updated_at: 1761921777
+year_group: '1994'
+title: 'Jonas Klein'
 portrait_image: stipendiantinnen/portrait-florence-jung.jpg
 images:
   - stipendiantinnen/ausstellung-dummy-1.jpg
