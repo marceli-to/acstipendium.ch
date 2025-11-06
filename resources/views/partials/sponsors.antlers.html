@@ -22,10 +22,10 @@
   </div>
 
   {{ if logos }}
-  <div class="grid grid-cols-2 gap-32 items-center justify-center lg:justify-start lg:flex lg:flex-wrap lg:gap-x-32 mt-16">
-    {{ logos }}
-      <img src="{{ logo }}" class="w-full h-auto lg:w-auto lg:h-{{ height }}" />
-    {{ /logos }}
-  </div>
+    <div class="flex flex-wrap justify-center gap-y-8 mt-16">
+      {{ logos }}
+        <img src="{{ logo }}" class="w-auto h-auto max-w-[50%] lg:max-w-[33%]" />
+      {{ /logos }}
+    </div>
   {{ /if }}
 </article>

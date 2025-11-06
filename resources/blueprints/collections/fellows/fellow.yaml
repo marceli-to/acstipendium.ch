@@ -52,6 +52,18 @@ tabs:
               localizable: false
               width: 50
           -
+            handle: exhibition
+            field:
+              max_items: 1
+              create: false
+              collections:
+                - exhibitions
+              type: entries
+              display: Ausstellung
+              instructions: 'Mit Ausstellung verknüpfen'
+              localizable: false
+              instructions_position: below
+          -
             handle: amount
             field:
               type: text

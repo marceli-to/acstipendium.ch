@@ -41,32 +41,45 @@ const setupCaptionToggle = (container) => {
 
   let hideTimeout = null;
 
+  // Make caption clickable
+  captionEl.style.cursor = 'pointer';
+
   const showCaptionWithAutoHide = (hasCaption) => {
     // Only show if there's actually a caption
     if (!hasCaption) {
       captionEl.classList.add('opacity-0');
+      captionEl.style.pointerEvents = 'none';
       infoBtn.classList.add('opacity-0');
+      infoBtn.style.pointerEvents = 'none';
       return;
     }
 
     captionEl.classList.remove('opacity-0');
+    captionEl.style.pointerEvents = 'auto';
     infoBtn.classList.add('opacity-0');
+    infoBtn.style.pointerEvents = 'none';
 
     // Clear existing timeout
     if (hideTimeout) {
       clearTimeout(hideTimeout);
+      hideTimeout = null;
     }
 
     // Hide caption after 3 seconds
     hideTimeout = setTimeout(() => {
       captionEl.classList.add('opacity-0');
+      captionEl.style.pointerEvents = 'none';
       infoBtn.classList.remove('opacity-0');
+      infoBtn.style.pointerEvents = 'auto';
+      hideTimeout = null;
     }, 3000);
   };
 
   const showCaptionPermanent = () => {
     captionEl.classList.remove('opacity-0');
+    captionEl.style.pointerEvents = 'auto';
     infoBtn.classList.add('opacity-0');
+    infoBtn.style.pointerEvents = 'none';
 
     // Clear any existing timeout
     if (hideTimeout) {
@@ -76,15 +89,25 @@ const setupCaptionToggle = (container) => {
   };
 
   const hideCaption = () => {
+    // Clear any existing timeout
     if (hideTimeout) {
       clearTimeout(hideTimeout);
+      hideTimeout = null;
     }
     captionEl.classList.add('opacity-0');
+    captionEl.style.pointerEvents = 'none';
     infoBtn.classList.remove('opacity-0');
+    infoBtn.style.pointerEvents = 'auto';
   };
 
   // Info button click shows caption permanently (no auto-hide)
   infoBtn.addEventListener('click', showCaptionPermanent);
+
+  // Caption click hides it
+  captionEl.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent click from reaching the info button below
+    hideCaption();
+  });
 
   return { showCaptionWithAutoHide, showCaptionPermanent, hideCaption };
 };

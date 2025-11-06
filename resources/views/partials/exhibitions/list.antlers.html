@@ -21,7 +21,7 @@
 
     {{ collection:exhibitions sort="title:desc" }}
 
-      {{ partial:accordion/item :index="index" class="" data-year="{title}" }}
+      {{ partial:accordion/item :index="index" class="" data-slug="{slug}" data-year="{title}" }}
 
         {{ slot:title }}
           <span>{{ title }}</span>

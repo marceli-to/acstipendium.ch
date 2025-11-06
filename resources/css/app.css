@@ -43,6 +43,10 @@
   @apply shadow-glow-sm-white;
 }
 
+.pill-solid-primary-static {
+  @apply !shadow-none;
+}
+
 .pill-solid-primary-alt {
   @apply bg-primary text-white border-primary;
 }

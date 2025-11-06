@@ -9,6 +9,14 @@ fields:
       display: Ort
       localizable: true
   -
+    handle: location_link
+    field:
+      type: link
+      display: Link
+      localizable: true
+      instructions: 'Vergabeort verknüpfen'
+      instructions_position: below
+  -
     handle: date_award
     field:
       type: text

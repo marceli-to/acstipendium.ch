@@ -5,14 +5,18 @@
   {{ /partial:headings/h2 }}
 
   <div class="flex flex-wrap gap-4 justify-center">
-    {{ if scholarship_type == 'main_scholarship' }}
-      <div class="pill pill-sm pill-solid-primary">
-        {{ "Hauptstipendium" | trans }} {{ year }}
-      </div>
-    {{ elseif scholarship_type == 'promote_scholarship' }}
-      <div class="pill pill-sm pill-solid-primary">
-        {{ "Förderstipendium" | trans }} {{ year }}
-      </div>
+    {{ if exhibition }}
+      <a 
+        href="{{ site:short_locale == 'fr' ? '/fr/archives/expositions' : '/archiv/ausstellungen' }}#{{ exhibition:slug }}"
+        class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary">
+        {{ (scholarship_type == 'main_scholarship' ? 'Hauptstipendium' : 'Förderstipendium') | trans }} {{ year }}
+      </a>
+    {{ else }}
+      {{ if scholarship_type }}
+        <div class="pill pill-sm pill-solid-primary">
+          {{ (scholarship_type == 'main_scholarship' ? 'Hauptstipendium' : 'Förderstipendium') | trans }} {{ year }}
+        </div>
+      {{ /if }}
     {{ /if }}
 
     {{ if amount }}
