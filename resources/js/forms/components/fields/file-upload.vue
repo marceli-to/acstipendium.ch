@@ -2,12 +2,20 @@
   <div class="relative">
     <form-label
       :label="label"
-      :required="required" />
+      :required="required"
+      :error="error" />
 
-    <div class="w-full pl-6 pr-8 lg:px-10 py-2 lg:py-6 bg-white text-primary rounded-full border-2 border-white flex items-center gap-4">
+    <div
+      :class="[
+        'w-full pl-6 pr-8 lg:px-10 py-2 lg:py-6 bg-white text-primary rounded-full border-2 flex items-center gap-4',
+        error ? 'border-danger' : 'border-white'
+      ]">
       <label
         :for="name"
-        class="pill pill-sm pill-solid-primary lg:!h-24 cursor-pointer whitespace-nowrap !mb-0 !text-sm lg:!text-md lg:!px-12 !leading-none">
+        :class="[
+          'pill pill-sm lg:!h-24 cursor-pointer whitespace-nowrap !mb-0 !text-sm lg:!text-md lg:!px-12 !leading-none',
+          error ? 'bg-danger text-white border-danger' : 'pill-solid-primary'
+        ]">
         {{ trans('Datei auswählen') }}
       </label>
       <input
@@ -20,7 +28,7 @@
         class="hidden"
       />
       <span class="text-sm lg:text-md truncate"
-        :class="error ? 'text-red-500' : 'text-primary/50'">
+        :class="error ? 'text-danger/50' : 'text-primary/50'">
         {{ error || fileLabel }}
       </span>
     </div>
@@ -61,7 +69,7 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'update:error']);
 
 const acceptedFileTypes = 'image/png,image/jpeg,image/jpg,application/pdf,application/zip';
 
@@ -79,5 +87,9 @@ const fileLabel = computed(() => {
 const handleFileChange = (event) => {
   const files = Array.from(event.target.files || []);
   emit('update:modelValue', files);
+  // Clear error when files are selected
+  if (files.length > 0) {
+    emit('update:error', '');
+  }
 };
 </script>

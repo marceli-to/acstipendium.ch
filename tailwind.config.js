@@ -60,6 +60,7 @@ export default {
       colors: {
         primary: 'rgb(var(--color-primary) / <alpha-value>)',
         secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+        danger: '#C83D3D',
       },
 
       fontFamily: {

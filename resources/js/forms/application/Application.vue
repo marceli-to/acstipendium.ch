@@ -161,6 +161,7 @@
             :label="index === 0 ? trans('Belege') : ''"
             :required="index === 0"
             :error="index === 0 ? errors.geographic_relation_proofs : ''"
+            @update:error="errors.geographic_relation_proofs = $event"
           />
         </form-group>
         <form-button
@@ -199,6 +200,7 @@
             name="age_verification"
             :label="trans('ID / Ausweis')"
             :error="errors.age_verification_files"
+            @update:error="errors.age_verification_files = $event"
             required
           />
         </form-group>
@@ -212,13 +214,6 @@
         :key="index"
         :class="getWorkCardClass(index)"
         class="relative col-span-full">
-        <form-button
-          v-if="index > 0"
-          type="button"
-          @click="removeWork(index)"
-          :label="trans('Löschen')"
-          class="pill pill-sm pill-solid-primary lg:!h-24 !text-sm lg:!text-md lg:!px-12 absolute top-16 right-14 lg:right-24 z-10"
-        />
         <heading-2>
           {{ trans('Werk') }} {{ index + 1 }}
         </heading-2>
@@ -284,7 +279,7 @@
           />
         </form-group>
 
-        <form-group>
+        <form-group class="!mb-10 lg:!mb-12">
           <form-textarea-field
             v-model="work.remarks"
             :error="errors[`works.${index}.remarks`]"
@@ -295,6 +290,16 @@
             :maxlength="500"
           />
         </form-group>
+
+        <div class="flex justify-center">
+          <form-button
+            v-if="index > 0"
+            type="button"
+            @click="removeWork(index)"
+            :label="trans('löschen')"
+            class="pill pill-sm pill-solid-primary lg:!h-24 !text-sm lg:!text-md lg:!px-12" />
+        </div>
+
       </card>
     </div>
 
@@ -324,6 +329,7 @@
           name="resume"
           :label="trans('Dossier')"
           :error="errors.resume_files"
+          @update:error="errors.resume_files = $event"
           required
         />
       </form-group>
@@ -345,8 +351,7 @@
             @update:error="errors.privacy_truthful = $event"
             id="privacy-truthful"
             name="privacy_truthful"
-            :label="trans('Ich bestätige, dass meine Angaben wahrheitsgemäss und vollständig sind. Mir ist bewusst, dass falsche oder unvollständige Angaben zum Ausschluss führen können.')"
-            required />
+            :label="trans('Ich bestätige, dass meine Angaben wahrheitsgemäss und vollständig sind. Mir ist bewusst, dass falsche oder unvollständige Angaben zum Ausschluss führen können.')" />
         </form-group>
 
         <form-group class="lg:col-span-6 text-sm lg:text-md">
@@ -356,8 +361,7 @@
             @update:error="errors.privacy_original_work = $event"
             id="privacy-original-work"
             name="privacy_original_work"
-            :label="trans('Ich bestätige, dass die eingereichten Arbeiten eigenständig und unabhängig entstanden sind, weder im Rahmen einer Ausbildung noch unter Anleitung Dritter.')"
-            required />
+            :label="trans('Ich bestätige, dass die eingereichten Arbeiten eigenständig und unabhängig entstanden sind, weder im Rahmen einer Ausbildung noch unter Anleitung Dritter.')" />
         </form-group>
 
         <form-group class="lg:col-span-6 text-sm lg:text-md">
@@ -367,8 +371,7 @@
             @update:error="errors.privacy_ai = $event"
             id="privacy-ai"
             name="privacy_ai"
-            :label="trans('Ich bestätige, dass der Einsatz von Künstlicher Intelligenz (KI) oder ähnlichen Systemen in meinen Kunstwerken entsprechend gekennzeichnet ist.')"
-            required />
+            :label="trans('Ich bestätige, dass der Einsatz von Künstlicher Intelligenz (KI) oder ähnlichen Systemen in meinen Kunstwerken entsprechend gekennzeichnet ist.')" />
         </form-group>
 
         <form-group class="lg:col-span-6 text-sm lg:text-md">
@@ -378,10 +381,10 @@
             @update:error="errors.privacy_data = $event"
             id="privacy-data"
             name="privacy_data"
-            :label="trans('Mit meiner Bewerbung bestätige ich, die Teilnahmebedingungen und Datenschutzerklärung akzeptiert zu haben.')"
-            required />
+            :label="trans('Mit meiner Bewerbung bestätige ich, die Teilnahmebedingungen und Datenschutzerklärung akzeptiert zu haben.')" />
         </form-group>
       </div>
+
       <form-group class="flex justify-center w-full mt-14 lg:mt-32">
         <form-button
           type="submit"
@@ -395,6 +398,7 @@
           </template>
         </form-button>
       </form-group>
+
     </card>
     
   </form>
@@ -437,26 +441,27 @@ const geographicRelationProofFields = ref([0]);
 // Track works
 const works = ref([
   {
-    title: 'Digitale Landschaft',
-    year: '2024',
-    dimensions: '120 x 80 x 5',
-    duration: '00:03:45',
-    technology: 'Mixed Media, digitale Projektion auf Leinwand',
-    remarks: 'Teil der Serie "Urbane Transformationen"'
+    title: '',
+    year: '',
+    dimensions: '',
+    duration: '',
+    technology: '',
+    remarks: ''
   }
 ]);
 
 const form = ref({
-  name: 'Stadelmann',
-  firstname: 'Marcel',
-  name_artist_group: 'MTO KG',
-  dob: '07.04.1977',
-  street: 'Lindenhofstrasse 1',
-  zip: '4052',
-  location: 'Basel',
-  phone: '078 749 74 09',
-  website: 'https://marceli.to',
-  email: 'm@marceli.to',
+  name: '',
+  firstname: '',
+  name_artist_group: '',
+  dob: '',
+  street: '',
+  zip: '',
+  location: '',
+  phone: '',
+  website: '',
+  email: '',
+  geographic_relation_text: '',
   geographic_relation_proofs: [[]],
   age_verification_files: [],
   resume_files: [],
@@ -597,17 +602,17 @@ async function submitForm() {
 function handleSuccess() {
   // Reset form
   form.value = {
-    name: null,
-    firstname: null,
-    name_artist_group: null,
-    dob: null,
-    street: null,
-    zip: null,
-    location: null,
-    phone: null,
-    website: null,
-    email: null,
-    geographic_relation_text: null,
+    name: '',
+    firstname: '',
+    name_artist_group: '',
+    dob: '',
+    street: '',
+    zip: '',
+    location: '',
+    phone: '',
+    website: '',
+    email: '',
+    geographic_relation_text: '',
     geographic_relation_proofs: [[]],
     age_verification_files: [],
     resume_files: [],

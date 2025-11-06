@@ -14,7 +14,7 @@
       :required="required"
       :class="[
         'w-full px-12 lg:px-16 py-8 bg-white text-primary text-sm lg:text-md rounded-full !border-none !ring-0 focus:!ring-0 focus:!outline-none placeholder:text-sm placeholder:lg:text-md placeholder:text-primary/50 leading-none',
-        { '!border-red-700 placeholder:!text-red-700': error },
+        { '!border-danger placeholder:!text-danger': error },
       ]"
     >
   </div>

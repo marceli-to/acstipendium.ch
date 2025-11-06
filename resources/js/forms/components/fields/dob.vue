@@ -2,33 +2,36 @@
   <div class="relative">
     <form-label
       :label="label"
-      :required="required" />
+      :required="required"
+      :error="error || validationError" />
     <input
       type="text"
       v-maska="'##.##.####'"
       :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="handleInput"
       @blur="validateAge"
-      @focus="$emit('update:error', '')"
+      @focus="handleFocus"
       :placeholder="placeholder"
       :aria-label="ariaLabel"
-      :required="required"
       :class="[
-        'w-full px-12 lg:px-16 py-8 bg-white text-primary text-sm lg:text-md rounded-full !border-none !ring-0 focus:!ring-0 focus:!outline-none placeholder:text-sm placeholder:lg:text-md placeholder:text-primary/50 leading-none',
-        { '!border-red-700 placeholder:!text-red-700': error },
+        'w-full px-12 lg:px-16 py-6 bg-white text-primary text-sm lg:text-md rounded-full border-2 border-white !ring-0 focus:!ring-0 focus:!outline-none placeholder:text-sm placeholder:lg:text-md placeholder:text-primary/50 leading-none',
+        { '!border-2 !border-danger placeholder:!text-danger/50': error || validationError },
       ]"
     >
-    <form-error :error="error" />
+    <form-error :error="validationError" />
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { vMaska } from "maska/vue"
 import FormLabel from './label.vue';
 import FormError from './error.vue';
 import { useTranslations } from '@/composables/useTranslations';
 
 const { trans } = useTranslations();
+
+const validationError = ref('');
 
 const props = defineProps({
   modelValue: {
@@ -67,6 +70,15 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'update:error']);
 
+const handleInput = (event) => {
+  emit('update:modelValue', event.target.value);
+};
+
+const handleFocus = () => {
+  emit('update:error', '');
+  validationError.value = '';
+};
+
 const validateAge = () => {
   if (!props.modelValue || props.modelValue.length < 10) {
     return;
@@ -84,7 +96,7 @@ const validateAge = () => {
 
   // Validate the date parts
   if (isNaN(day) || isNaN(month) || isNaN(year)) {
-    emit('update:error', trans('Ungültiges Datum'));
+    validationError.value = trans('Ungültiges Datum');
     return;
   }
 
@@ -93,13 +105,13 @@ const validateAge = () => {
 
   // Check if the date is valid
   if (birthDate.getDate() !== day || birthDate.getMonth() !== month - 1 || birthDate.getFullYear() !== year) {
-    emit('update:error', trans('Ungültiges Datum'));
+    validationError.value = trans('Ungültiges Datum');
     return;
   }
 
   // Check if the birth date is in the future
   if (birthDate > new Date()) {
-    emit('update:error', trans('Geburtsdatum kann nicht in der Zukunft liegen'));
+    validationError.value = trans('Geburtsdatum kann nicht in der Zukunft liegen');
     return;
   }
 
@@ -110,11 +122,11 @@ const validateAge = () => {
 
   // If (maxAge + 1)th birthday is on or before Dec 31st of eligibility year, they're too old
   if (maxAgeBirthday <= referenceDate) {
-    emit('update:error', trans(`Das Höchstalter für die Teilnahme beträgt 40 Jahre (der 41. Geburtstag darf im Jahr der Jurierung ${props.eligibilityYear} noch nicht erreicht sein)`));
+    validationError.value = trans(`Das Höchstalter für die Teilnahme beträgt 40 Jahre (der 41. Geburtstag darf im Jahr der Jurierung ${props.eligibilityYear} noch nicht erreicht sein)`);
     return;
   }
 
   // Clear any previous errors
-  emit('update:error', '');
+  validationError.value = '';
 };
 </script>

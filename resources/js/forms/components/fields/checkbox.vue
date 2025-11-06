@@ -1,6 +1,5 @@
 <template>
   <div :class="['checkboxes relative', classes]">
-    <Error :error="error" class="!relative !mb-10" />
     <div class="flex items-start gap-x-16">
       <input 
         :id="id" 
@@ -13,7 +12,7 @@
         @change="handleChange"
         class="mt-2 shrink-0"
         :class="[
-          { '!border-red-500': error },
+          { '!border-danger': error },
         ]"
       />
       <label :for="id" v-html="label"></label>

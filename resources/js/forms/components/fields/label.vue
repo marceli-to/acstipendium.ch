@@ -2,7 +2,10 @@
   <label
     v-if="label"
     :for="id"
-    class="block py-2 text-sm lg:text-md ml-8 lg:ml-12">
+    :class="[
+      'block py-2 text-sm lg:text-md ml-8 lg:ml-12',
+      { 'text-danger': error }
+    ]">
     {{ label }}<span v-if="required">*</span>
   </label>
 </template>
@@ -20,6 +23,10 @@ const props = defineProps({
   required: {
     type: Boolean,
     default: false
+  },
+  error: {
+    type: String,
+    default: ''
   }
 });
 </script>
