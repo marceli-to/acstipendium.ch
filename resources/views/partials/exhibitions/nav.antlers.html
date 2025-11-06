@@ -4,16 +4,16 @@
     {{ "Inhalte" | trans }}
   {{ /partial:headings/h3 }}
 
-  <div class="flex flex-col gap-y-4 lg:gap-8">
-    <a 
-      href="{{ "/archiv/ausstellungen" | trans }}"
-      class="pill pill-sm pill-solid-white shadow-glow-sm-white">
-      {{ "Ausstellungen" | trans }}
-    </a>
+  <div class="flex flex-col lg:flex-row flex-wrap gap-y-4 lg:gap-8">
     <a 
       href="{{ "/archiv/stipendianten" | trans }}"
-      class="pill pill-sm pill-solid-white">
+      class="pill pill-sm pill-solid-white lg:!w-auto">
       {{ "Stipendiant:innen" | trans }}
+    </a>
+    <a 
+      href="{{ "/archiv/ausstellungen" | trans }}"
+      class="pill pill-sm pill-solid-white shadow-glow-sm-white lg:!w-auto">
+      {{ "Ausstellungen" | trans }}
     </a>
   </div>
 

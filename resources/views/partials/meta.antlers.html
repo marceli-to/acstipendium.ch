@@ -1,6 +1,6 @@
-  <div class="bg-white p-14 lg:p-24 card-rounded">
+  <div class="bg-white py-14 lg:py-24 card-rounded">
     
-    <div class="flex flex-wrap justify-between items-start gap-y-24 md:gap-y-0">
+    <div class="flex flex-wrap justify-between items-start gap-y-24 md:gap-y-0 px-14 lg:px-24">
 
       <a 
         href="{{ site:short_locale == 'fr' ? '/fr' : '/' }}" 
@@ -14,7 +14,7 @@
           <a
             href="mailto:{{ footer:email }}"
             aria-label="{{ 'Schreiben Sie uns' | trans }}"
-            class="pill pill-sm pill-solid-primary-alt">
+            class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary">
             {{ footer:email }}
           </a>
         {{ /if }}
@@ -25,7 +25,7 @@
             target="_blank"
             rel="noopener noreferrer"
             aria-label="{{ 'Folgen Sie uns auf Instagram' | trans }}"
-            class="pill pill-sm pill-solid-primary-alt">
+            class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary">
             {{ 'Instagram' | trans }}
           </a>
         {{ /if }}
@@ -35,7 +35,7 @@
         <a
           href="{{ '/impressum' | trans }}"
           aria-label="{{ 'Impressum' | trans }}"
-          class="pill pill-sm pill-solid-primary-alt {{ is_imprint ? 'glow-sm-primary !bg-primary !text-white' : '' }}">
+          class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary {{ is_imprint ? 'glow-sm-primary !bg-primary !text-white' : '' }}">
           {{ 'Impressum' | trans }}
         </a>
       </div>

@@ -18,6 +18,12 @@ class ApplicationController extends Controller
     {
         $title = $request->input('firstname').' '.$request->input('name').', '.$request->input('email');
 
+        // Normalize website URL - add https:// if no protocol present
+        $website = $request->input('website');
+        if ($website && ! preg_match('/^https?:\/\//', $website)) {
+          $website = 'https://'.$website;
+        }
+
         // Generate filename prefix from user data
         $filenamePrefix = $this->generateFilenamePrefix($request);
 
@@ -67,7 +73,7 @@ class ApplicationController extends Controller
             'zip' => $request->input('zip'),
             'location' => $request->input('location'),
             'phone' => $request->input('phone'),
-            'website' => $request->input('website') ?? null,
+            'website' => $website,
             'email' => $request->input('email'),
             'geographic_relation' => $geographic_relation_data,
             'proof_dob' => $proof_dob,

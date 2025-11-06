@@ -2,14 +2,21 @@
 <div class="col-span-full">
   {{ partial:meta is_imprint="true" }}
     <div class="
+      px-14
+      lg:px-0
       lg:grid
-      lg:grid-cols-subgrid
+      lg:grid-cols-12
       lg:gap-x-16
       mt-24
       lg:mt-96
       text-primary
+      [&_a]:underline
+      [&_a]:decoration-1
+      [&_a]:underline-offset-2
+      hover:[&_a]:no-underline
       [&_p]:mb-12
       [&_p]:lg:mb-16
+      [&_p]:max-w-prose
       [&_h2]:text-2xl
       [&_h2]:lg:text-3xl
       [&_h2]:uppercase

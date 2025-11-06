@@ -49,10 +49,11 @@ export default {
 
       maxWidth: {
         'container': '90rem', // 1440px
+        'prose': '70ch', // 70 characters
       },
 
       backgroundImage: {
-        'header-gradient': 'linear-gradient(180deg, rgb(var(--color-secondary) / 1) 40%, rgb(var(--color-secondary) / 0) 100%)',
+        'header-gradient': 'linear-gradient(180deg, rgb(var(--color-secondary) / 1) 60%, rgb(var(--color-secondary) / 0) 100%)',
         'menu-gradient': 'linear-gradient(180deg, rgb(var(--color-secondary) / 1) 40%, rgb(var(--color-secondary) / 0) 100%)',
       },
      

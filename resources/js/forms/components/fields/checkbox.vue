@@ -78,6 +78,6 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-  @apply bg-white;
+  @apply bg-white shadow-glow-sm-white;
 }
 </style>

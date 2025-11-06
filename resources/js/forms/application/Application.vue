@@ -145,8 +145,8 @@
             :error="errors.geographic_relation_text"
             @update:error="errors.geographic_relation_text = $event"
             :placeholder="errors.geographic_relation_text ? errors.geographic_relation_text : trans('Maxine')"
-            :label="trans('Dein Bernbezug (max. 500 Zeichen)')"
-            :aria-label="trans('Dein Bernbezug (max. 500 Zeichen)')"
+            :label="trans('Dein Bernbezug')"
+            :aria-label="trans('Dein Bernbezug')"
             :maxlength="500"
             required
           />
@@ -276,9 +276,9 @@
             v-model="work.technology"
             :error="errors[`works.${index}.technology`]"
             @update:error="errors[`works.${index}.technology`] = $event"
-            :placeholder="errors[`works.${index}.technology`] ? errors[`works.${index}.technology`] : trans('Text...')"
-            :label="trans('Technik (max. 500 Zeichen)')"
-            :aria-label="trans('Technik (max. 500 Zeichen)')"
+            :placeholder="errors[`works.${index}.technology`] ? errors[`works.${index}.technology`] : trans('Technik')"
+            :label="trans('Technik')"
+            :aria-label="trans('Technik')"
             :maxlength="500"
             required
           />
@@ -289,9 +289,9 @@
             v-model="work.remarks"
             :error="errors[`works.${index}.remarks`]"
             @update:error="errors[`works.${index}.remarks`] = $event"
-            :placeholder="errors[`works.${index}.remarks`] ? errors[`works.${index}.remarks`] : trans('Text...')"
-            :label="trans('Kommentar (max. 500 Zeichen)')"
-            :aria-label="trans('Kommentar (max. 500 Zeichen)')"
+            :placeholder="errors[`works.${index}.remarks`] ? errors[`works.${index}.remarks`] : trans('Kommentar')"
+            :label="trans('Kommentar')"
+            :aria-label="trans('Kommentar')"
             :maxlength="500"
           />
         </form-group>
@@ -387,9 +387,9 @@
           type="submit"
           :label="trans('Absenden')"
           :disabled="isSubmitting"
-          class="pill pill-lg pill-solid-primary pill-icon-sm">
+          class="pill pill-lg pill-solid-primary pill-icon-lg">
           <template v-if="isSubmitting">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12 relative">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="!w-16 !h-16 lg:!w-20 lg:!h-20 relative">
               <path fill="currentColor" d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"><animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path>
             </svg>
           </template>
