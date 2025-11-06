@@ -129,7 +129,7 @@ p:has(.pill) {
 
 /* Cards */
 .card {
-  @apply mb-8 lg:mb-16 last:mb-0 px-14 lg:px-24 pt-11 pb-14 lg:pt-16 lg:pb-24 text-white;
+  @apply mb-8 lg:mb-16 last:mb-0 px-14 md:px-24 pt-11 pb-14 md:pt-16 md:pb-24 text-white;
 }
 
 .card-rounded {

@@ -25,11 +25,9 @@ export default {
   ],
 
   safelist: [
-    { pattern: /^col-span-(1[0-2]|[1-9])$/ , variants: ['lg'] },
-    { pattern: /^col-start-(1[0-2]|[1-9])$/ , variants: ['lg'] },
-    { pattern: /^bg-(primary|secondary)$/ , variants: ['lg'] },
-    { pattern: /^h-(24|36|48)$/, variants: ['lg'] },
-    { pattern: /^!h-(24|36|48)$/, variants: ['lg'] },
+    { pattern: /^col-span-(1[0-2]|[1-9])$/ , variants: ['md', 'lg'] },
+    { pattern: /^col-start-(1[0-2]|[1-9])$/ , variants: ['md', 'lg'] },
+    { pattern: /^bg-(primary|secondary)$/ , variants: ['md', 'lg'] },
   ],
 
   theme: {
@@ -44,7 +42,8 @@ export default {
       },
 
       screens: {
-        'xs': '480px',
+        'md': '56.25rem',  // 900px
+        'lg': '78.125rem', // 1250px
       },
 
       maxWidth: {

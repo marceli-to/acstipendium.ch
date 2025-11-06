@@ -14,7 +14,7 @@
   </heading-1>
   <form 
     @submit.prevent="submitForm" 
-    class="lg:grid lg:grid-cols-12 gap-x-8 lg:gap-x-16">
+    class="lg:grid md:grid-cols-12 gap-x-8 lg:gap-x-16">
 
     <div class="lg:col-span-6">
       <card>
@@ -208,7 +208,7 @@
 
     </div>
 
-    <div class="col-span-full grid grid-cols-6 lg:grid-cols-12 gap-8 lg:gap-16 mt-8 lg:mt-16">
+    <div class="col-span-full grid grid-cols-6 md:grid-cols-12 gap-8 lg:gap-16 mt-8 lg:mt-16">
       <card
         v-for="(work, index) in works"
         :key="index"
@@ -343,7 +343,7 @@
         {{ trans('Mit dem Absenden dieser Anmeldung erkläre ich mich mit den Teilnahmebedingungen des AC-Stipendiums einverstanden. Der Upload kann einige Minuten dauern. Wenn der Upload geklappt hat, erhalten Sie im Anschluss ein Bestätigungs-E-Mail. Falls Sie dieses nicht bekommen, bitte nochmals versuchen.') }}
       </div>
 
-      <div class="lg:grid lg:grid-cols-12 lg:gap-x-16 mt-14 lg:mt-32">
+      <div class="lg:grid md:grid-cols-12 lg:gap-x-16 mt-14 lg:mt-32">
         <form-group class="lg:col-span-6 text-sm lg:text-md">
           <form-checkbox
             v-model="form.privacy_truthful"
