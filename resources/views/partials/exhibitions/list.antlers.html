@@ -11,6 +11,12 @@
      }"
      x-effect="sortedItems.forEach((item, index) => { item.style.order = index; })">
 
+  <header class="flex justify-center w-full items-center mb-4 lg:mb-8 text-primary text-md lg:text-lg">
+    <span class="flex items-center justify-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 w-full">
+      {{ "Jahr" | trans }}
+    </span>
+  </header>
+
   {{ partial:accordion/wrapper class="flex flex-col gap-y-4 lg:gap-y-8" }}
 
     {{ collection:exhibitions sort="title:desc" }}

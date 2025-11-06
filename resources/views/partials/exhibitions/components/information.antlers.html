@@ -6,13 +6,33 @@
 
   <div class="flex flex-col gap-y-4 items-center">
 
-    <span class="pill pill-sm pill-outline-primary pill-outline-primary-static">
-      {{ information_location }}
-    </span>
+    {{ if information_location }}
 
-    <span class="pill pill-sm pill-outline-primary pill-outline-primary-static">
-      {{ information_periode }}
-    </span>
+      {{ if information_link }}
+
+        <a
+          href="{{ information_link }}"
+          class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary"
+          target="_blank"
+          aria-label="{{ information_location }}">
+          {{ information_location }}
+        </a>
+
+      {{ else }}
+
+        <span class="pill pill-sm pill-outline-primary pill-outline-primary-static">
+          {{ information_location }}
+        </span>
+
+      {{ /if  }}
+
+    {{ /if }}
+
+    {{ if information_periode }}
+      <span class="pill pill-sm pill-outline-primary pill-outline-primary-static">
+        {{ information_periode }}
+      </span>
+    {{ /if }}
 
   </div>
   

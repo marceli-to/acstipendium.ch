@@ -1,55 +1,59 @@
-<div class="col-span-3 card card-rounded card-border">
-  
-  {{ partial:headings/h3 class="text-xl lg:text-2xl mb-8 lg:mb-16" }}
-    {{ "Inhalte" | trans }}
-  {{ /partial:headings/h3 }}
+<div class="grid grid-cols-2 gap-x-8 lg:flex lg:flex-col">
 
-  <div class="flex flex-col lg:flex-row flex-wrap gap-y-4 lg:gap-8">
-    <a 
-      href="{{ "/archiv/stipendianten" | trans }}"
-      class="pill pill-sm pill-solid-white lg:!w-auto">
-      {{ "Stipendiant:innen" | trans }}
-    </a>
-    <a 
-      href="{{ "/archiv/ausstellungen" | trans }}"
-      class="pill pill-sm pill-solid-white shadow-glow-sm-white lg:!w-auto">
-      {{ "Ausstellungen" | trans }}
-    </a>
-  </div>
+  <div class="col-span-3 card card-rounded card-border">
+    
+    {{ partial:headings/h3 class="text-xl lg:text-2xl mb-8 lg:mb-16" }}
+      {{ "Inhalte" | trans }}
+    {{ /partial:headings/h3 }}
 
-</div>
-
-<div class="col-span-3 card card-rounded card-border">
-  
-  {{ partial:headings/h3 class="text-xl lg:text-2xl mb-8 lg:mb-16" }}
-    {{ "Sortieren" | trans }}
-  {{ /partial:headings/h3 }}
-
-  <div class="flex flex-col lg:flex-row gap-y-4 lg:gap-x-8">
-
-    <div class="pill pill-sm pill-solid-white shadow-glow-sm-white w-full lg:w-auto">
-      {{ "Jahr" | trans }}
-    </div>
-
-    <div class="flex gap-x-4 lg:gap-8">
-      
-      <button 
-        @click="sortDirection = 'desc'" 
-        :class="sortDirection === 'desc' ? 'shadow-glow-sm-white' : ''" 
-        class="w-25 h-25 lg:w-30 lg:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
-        {{ partial:icons/arrow-down class="w-auto h-14 lg:h-18" }}
-      </button>
-
-      <button 
-        @click="sortDirection = 'asc'" 
-        :class="sortDirection === 'asc' ? 'shadow-glow-sm-white' : ''"
-        class="w-25 h-25 lg:w-30 lg:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
-        {{ partial:icons/arrow-up class="w-auto h-14 lg:h-18" }}
-      </button>
-
+    <div class="flex flex-col lg:flex-row flex-wrap gap-y-4 lg:gap-8">
+      <a 
+        href="{{ "/archiv/stipendianten" | trans }}"
+        class="pill pill-sm pill-solid-white lg:!w-auto">
+        {{ "Stipendiant:innen" | trans }}
+      </a>
+      <a 
+        href="{{ "/archiv/ausstellungen" | trans }}"
+        class="pill pill-sm pill-solid-white shadow-glow-sm-white lg:!w-auto">
+        {{ "Ausstellungen" | trans }}
+      </a>
     </div>
 
   </div>
 
+  <div class="col-span-3 card card-rounded card-border">
+    
+    {{ partial:headings/h3 class="text-xl lg:text-2xl mb-8 lg:mb-16" }}
+      {{ "Sortieren" | trans }}
+    {{ /partial:headings/h3 }}
+
+    <div class="flex flex-col lg:flex-row gap-y-4 lg:gap-x-8">
+
+      <div class="pill pill-sm pill-solid-white shadow-glow-sm-white w-full lg:w-auto">
+        {{ "Jahr" | trans }}
+      </div>
+
+      <div class="flex gap-x-4 lg:gap-8">
+        
+        <button 
+          @click="sortDirection = 'desc'" 
+          :class="sortDirection === 'desc' ? 'shadow-glow-sm-white' : ''" 
+          class="w-25 h-25 lg:w-30 lg:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
+          {{ partial:icons/arrow-down class="w-auto h-14 lg:h-18" }}
+        </button>
+
+        <button 
+          @click="sortDirection = 'asc'" 
+          :class="sortDirection === 'asc' ? 'shadow-glow-sm-white' : ''"
+          class="w-25 h-25 lg:w-30 lg:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
+          {{ partial:icons/arrow-up class="w-auto h-14 lg:h-18" }}
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+  
 </div>
 

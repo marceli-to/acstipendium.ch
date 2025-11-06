@@ -59,6 +59,14 @@ tabs:
                             display: Zeitraum
                             localizable: false
                             width: 50
+                        -
+                          handle: information_link
+                          field:
+                            collections:
+                              - pages
+                            type: link
+                            display: Link
+                            localizable: false
                     fellows:
                       display: 'Stipendiant:innen'
                       instructions: 'Stipendiant:innen hinzufügen'
