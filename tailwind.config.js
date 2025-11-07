@@ -43,6 +43,7 @@ export default {
 
       screens: {
         'md': '56.25rem',  // 900px
+        'md-wide': '65.625rem', // 1050px
         'lg': '78.125rem', // 1250px
       },
 
