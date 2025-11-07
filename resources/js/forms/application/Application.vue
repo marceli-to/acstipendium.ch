@@ -308,14 +308,14 @@
         type="button"
         @click="addWork"
         :label="trans('Weiteres Werk hinzufügen')"
-        class="pill pill-lg pill-solid-primary pill-icon-sm">
+        class="pill pill-lg pill-solid-primary pill-icon-sm !mb-0">
         <svg class="w-16 md:w-20" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M15.4403 12.5547V0H12.5497V12.5547H0V15.4453H12.5497V28H15.4403V15.4453H28V12.5547H15.4403Z" fill="white"/>
         </svg>
       </form-button>
     </div>
 
-    <card class="col-span-full md:col-span-6 md:col-start-4 mt-8 md:mt-16">
+    <card class="col-span-full md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 mt-8 md:mt-16">
       <heading-2>
         {{ trans('Dossier') }}
       </heading-2>
@@ -335,7 +335,7 @@
       </form-group>
     </card>
 
-    <card class="col-span-full md:col-span-8 md:col-start-3">
+    <card class="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
       <heading-2>
         {{ trans('Abschluss') }}
       </heading-2>
@@ -519,7 +519,7 @@ function getWorkCardClass(index) {
 
   // If odd number of works and this is the last one: centered
   if (isOddTotal && isLastItem) {
-    return 'md:col-span-6 md:col-start-4';
+    return 'md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4';
   }
 
   // All other cases: just col-span-6

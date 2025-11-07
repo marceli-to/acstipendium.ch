@@ -89,3 +89,29 @@ fields:
               fields:
                 -
                   import: application_information_sidebar_item
+            application_information_deadlines:
+              display: Termine
+              instructions: 'Termine hinzufügen'
+              icon: text-formatting-initial-letter
+              fields:
+                -
+                  import: title
+                -
+                  import: editor
+            application_information_jury:
+              display: Jury
+              icon: text-formatting-initial-letter
+              fields:
+                -
+                  import: title
+                -
+                  import: editor
+            application_information_further:
+              display: 'Weitere Auskünfte'
+              instructions: 'Weitere Auskünfte hinzufügen'
+              icon: text-formatting-initial-letter
+              fields:
+                -
+                  import: title
+                -
+                  import: editor

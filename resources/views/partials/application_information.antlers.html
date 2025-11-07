@@ -1,6 +1,7 @@
 <article class="
   col-span-full
-  md:col-span-8
+  md:col-span-10
+  lg:col-span-8
   bg-primary
   card
   card-rounded">
@@ -66,22 +67,54 @@
 
 </article>
 
-<aside class="col-span-full md:col-span-4">
+{{ if sidebar_elements }}
 
-  {{ sidebar_elements }}
+  <aside class="col-span-full lg:col-span-4 md:grid md:grid-cols-12 md:gap-x-16 md:mb-16">
 
-    <article class="card card-rounded card-border">
-      
-      {{ if title }}
-        {{ partial:headings/dynamic type="{{ title_order }}" }}
-          {{ title }} 
-        {{ /partial:headings/dynamic }}
+    {{ sidebar_elements }}
+
+      {{ if type == 'application_information_deadlines' }}
+
+        <article class="card card-rounded card-border md:col-span-6 lg:col-span-12">
+          
+          {{ if title }}
+            {{ partial:headings/dynamic type="{{ title_order }}" }}
+              {{ title }} 
+            {{ /partial:headings/dynamic }}
+          {{ /if }}
+          
+          {{ partial:editor/wrapper }}
+
+        </article>
+
       {{ /if }}
-      
-      {{ partial:editor/wrapper }}
 
-    </article>
+    {{ /sidebar_elements }}
 
-  {{ /sidebar_elements }}
+    <div class="md:col-span-6 lg:col-span-12">
 
-</aside>
+      {{ sidebar_elements }}
+
+        {{ if type != 'application_information_deadlines' }}
+
+          <article class="card card-rounded card-border">
+            
+            {{ if title }}
+              {{ partial:headings/dynamic type="{{ title_order }}" }}
+                {{ title }} 
+              {{ /partial:headings/dynamic }}
+            {{ /if }}
+            
+            {{ partial:editor/wrapper }}
+
+          </article>
+        
+        {{ /if }}
+
+      {{ /sidebar_elements }}
+
+    </div>
+
+  </aside>
+
+{{ /if }}
