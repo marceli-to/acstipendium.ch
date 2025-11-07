@@ -1,14 +1,16 @@
 <template>
-  <template v-if="formSuccess">
-    <success-alert>
-      {{ trans('Vielen Dank für Ihre Anmeldung!') }}
-    </success-alert>
-  </template>
-  <template v-if="formError">
-    <error-alert>
-      {{ trans('Bitte überprüfen Sie die eingegebenen Daten.') }}
-    </error-alert>
-  </template>
+  <div id="form-alerts" class="scroll-mt-100 md:scroll-mt-150 lg:scroll-mt-200">
+    <template v-if="formSuccess">
+      <success-alert>
+        {{ trans('Vielen Dank für Ihre Anmeldung!') }}
+      </success-alert>
+    </template>
+    <template v-if="formError">
+      <error-alert>
+        {{ trans('Bitte überprüfen Sie die eingegebenen Daten.') }}
+      </error-alert>
+    </template>
+  </div>
   <heading-1>
     {{ trans('Formular') }}
   </heading-1>
@@ -16,7 +18,7 @@
     @submit.prevent="submitForm"
     class="md:grid md:grid-cols-12 gap-x-8 md:gap-x-16">
 
-    <div class="md:col-span-6">
+    <div class="mb-8 md:mb-0 md:col-span-6">
       <card>
         <heading-2>
           {{ trans('Persönliche Angaben') }}
@@ -428,7 +430,7 @@ const props = defineProps({
   }
 });
 
-const { scrollToForm } = useFormScroll();
+const { scrollToForm } = useFormScroll('#form-alerts');
 const { trans, getLocale } = useTranslations();
 
 const isSubmitting = ref(false);
