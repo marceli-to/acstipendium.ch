@@ -7,7 +7,11 @@
   lg:col-start-{{ col_start_desktop }}
   card
   card-rounded
-  {{ registration:is_active ? 'bg-primary' : 'bg-secondary card-border' }}">
+  {{ registration:is_active ? 'bg-primary relative mt-200 md:!mt-0' : 'bg-secondary card-border' }}">
+
+  {{ if registration:is_active }}
+    {{ partial:buttons/cta url="" class="-rotate-[30deg] origin-bottom-right absolute -right-8 -top-205 md:hidden" }}
+  {{ /if }}
 
   {{ partial:headings/dynamic type="{{ title_order }}" }}
     {{ title }} 
@@ -21,6 +25,3 @@
 
 </article>
 
-<!-- <div class="col-span-3 h-full relative">
-  <span class="pill pill-sm pill-solid-primary glow-sm-white h-30 absolute bg-red-50 w-[140%] rotate-45 origin-bottom-left -left-20">Jetzt bewerben</span>
-</div> -->

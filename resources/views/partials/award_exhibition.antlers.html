@@ -7,7 +7,11 @@
   lg:col-start-{{ col_start_desktop }}
   card
   card-rounded
-  {{ registration:is_active ? 'bg-secondary card-border' : 'bg-primary' }}">
+  {{ registration:is_active ? 'relative bg-secondary card-border' : 'bg-primary' }}">
+
+  {{ if registration:is_active }}
+    {{ partial:buttons/cta url="" class="hidden md:flex md:rotate-[50deg] lg:rotate-[15deg] origin-bottom-right absolute -right-40 lg:-right-70 md:-top-35" }}
+  {{ /if }}
 
   {{ partial:headings/dynamic type="{{ title_order }}" }}
     {{ title }}

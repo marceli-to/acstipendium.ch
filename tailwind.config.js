@@ -94,6 +94,17 @@ export default {
         '150': 150,
         '200': 200,
       },
+
+      keyframes: {
+        'glow-pulse': {
+          '0%, 100%': { boxShadow: '0 0 20px 4px white' },
+          '50%': { boxShadow: '0 0 20px 4px rgba(255, 255, 255, 0.3)' },
+        },
+      },
+
+      animation: {
+        'glow-pulse': 'glow-pulse 1.5s ease-in-out infinite',
+      },
     },
 
     spacing
