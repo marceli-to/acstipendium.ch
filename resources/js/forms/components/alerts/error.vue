@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-danger text-sm lg:text-md text-white text-center rounded-full py-4 lg:py-8 px-8 lg:px-16 mb-8 lg:mb-16">
+  <div class="bg-danger text-sm md:text-md text-white text-center rounded-full py-4 md:py-8 px-8 md:px-16 mb-8 md:mb-16">
     <slot></slot>
   </div>
 </template>

@@ -1,5 +1,5 @@
-<div 
-  class="rounded-16 lg:rounded-32 lg:border-2 lg:border-white lg:px-12 lg:py-16"
+<div
+  class="rounded-16 md:rounded-32 md:border-2 md:border-white md:px-12 md:py-16"
   x-data="{
     sortFellows() {
       const items = Array.from(this.$el.querySelectorAll('[data-fellow]'));
@@ -44,22 +44,22 @@
     $watch('sortDirection', () => sortFellows()); 
     sortFellows()">
 
-  <header class="flex justify-between w-full items-center mb-4 lg:mb-8 text-primary text-md lg:text-lg">
-    <span class="flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 w-[calc(100%_-_64px)] lg:w-[calc(39%_-_3px)] xl:w-[calc(41%_-_3px)] mr-4">
+  <header class="flex justify-between w-full items-center mb-4 md:mb-8 text-primary text-md md:text-lg">
+    <span class="flex items-center leading-none bg-white px-16 py-8 md:py-11 rounded-16 md:rounded-32 w-[calc(100%_-_64px)] md:w-[calc(39%_-_3px)] xl:w-[calc(41%_-_3px)] mr-4">
       {{ "Name" | trans }}
     </span>
-    <span class="hidden lg:flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 lg:w-[calc(26%_-_3px)] mr-4">
+    <span class="hidden md:flex items-center leading-none bg-white px-16 py-8 md:py-11 rounded-16 md:rounded-32 md:w-[calc(26%_-_3px)] mr-4">
       {{ "Stipendium" | trans }}
     </span>
-    <span class="hidden lg:flex items-center leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 lg:w-[calc(24%_-_3px)] mr-4">
+    <span class="hidden md:flex items-center leading-none bg-white px-16 py-8 md:py-11 rounded-16 md:rounded-32 md:w-[calc(24%_-_3px)] mr-4">
       {{ "Förderbeitrag" | trans }}
     </span>
-    <span class="flex items-center justify-end leading-none bg-white px-16 py-8 lg:py-11 rounded-16 lg:rounded-32 w-[64px] lg:w-[calc(11%_-_3px)] xl:w-[calc(9%_-_3px)]">
+    <span class="flex items-center justify-end leading-none bg-white px-16 py-8 md:py-11 rounded-16 md:rounded-32 w-[64px] md:w-[calc(11%_-_3px)] xl:w-[calc(9%_-_3px)]">
       {{ "Jahr" | trans }}
     </span>
   </header>
-  
-  {{ partial:accordion/wrapper class="flex flex-col gap-y-4 lg:gap-y-8" }}
+
+  {{ partial:accordion/wrapper class="flex flex-col gap-y-4 md:gap-y-8" }}
 
     {{ collection:fellows }}
 
@@ -76,13 +76,13 @@
 
         {{ slot:title }}
           <span class="flex justify-between w-full items-center">
-            <span 
-              class="flex items-center leading-none mr-4 px-16" 
-              :class="open ? 'justify-center w-full' : 'w-[calc(100%_-_64px)] lg:w-[calc(39%_-_3px)] xl:w-[calc(41%_-_3px)]'">
+            <span
+              class="flex items-center leading-none mr-4 px-16"
+              :class="open ? 'justify-center w-full' : 'w-[calc(100%_-_64px)] md:w-[calc(39%_-_3px)] xl:w-[calc(41%_-_3px)]'">
               {{ title }}
             </span>
-            <span 
-              class="hidden lg:flex items-center leading-none lg:w-[calc(26%_-_3px)] mr-4 px-16" 
+            <span
+              class="hidden md:flex items-center leading-none md:w-[calc(26%_-_3px)] mr-4 px-16"
               x-show="!open">
               {{ if scholarship_type == 'main_scholarship' }}
                 {{ "Hauptstipendium" | trans }}
@@ -91,31 +91,31 @@
               {{ /if }}
             </span>
             <span
-              class="hidden lg:flex items-center leading-none lg:w-[calc(24%_-_3px)] mr-4 px-16"
+              class="hidden md:flex items-center leading-none md:w-[calc(24%_-_3px)] mr-4 px-16"
               x-show="!open">
-              {{ amount | format_number:0:".":"’" }}
+              {{ amount | format_number:0:".":"'" }}
             </span>
-            <span 
-              class="flex items-center justify-end leading-none w-[64px] lg:w-[calc(11%_-_3px)] xl:w-[calc(9%_-_3px)] px-16" 
+            <span
+              class="flex items-center justify-end leading-none w-[64px] md:w-[calc(11%_-_3px)] xl:w-[calc(9%_-_3px)] px-16"
               x-show="!open">
               {{ year }}
             </span>
           </span>
         {{ /slot:title }}
 
-        <div class="lg:grid lg:grid-cols-9 lg:gap-x-16">
+        <div class="md:grid md:grid-cols-9 md:gap-x-16">
 
           {{ if portrait_image }}
-            <div class="lg:col-span-3 mb-8 lg:mb-0">
+            <div class="md:col-span-3 mb-8 md:mb-0">
               {{ partial:fellows/components/portrait
                 :image="portrait_image"
                 :sizes="['lg', 'xl', '2xl']"
-                wrapperClass="rounded-14 lg:rounded-24 overflow-hidden"
+                wrapperClass="rounded-14 md:rounded-24 overflow-hidden"
                 class="w-full h-full object-cover" }}
             </div>
           {{ /if }}
 
-          <div class="{{ portrait_image ? 'lg:col-span-6' : 'lg:col-span-9' }}">
+          <div class="{{ portrait_image ? 'md:col-span-6' : 'md:col-span-9' }}">
             <div class="flex flex-col gap-y-8">
               {{ partial:fellows/components/scholarship }}
               {{ partial:fellows/components/download_links }}

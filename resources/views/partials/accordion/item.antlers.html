@@ -1,6 +1,6 @@
 <div
   x-data="AccordionItem({{ index }})"
-  class="{{ class }} scroll-mt-[100px] lg:scroll-mt-[145px]"
+  class="{{ class }} scroll-mt-[100px] md:scroll-mt-[145px]"
   {{ if data-slug }}data-slug="{{ data-slug }}"{{ /if }}
   data-year="{{ data-year }}"
   {{ if data-fellow }}data-fellow="{{ data-fellow }}"{{ /if }}
@@ -11,7 +11,7 @@
   <button
     type="button"
     class="w-full flex items-center justify-center leading-none {{ btnClass }}"
-    :class="open ? 'bg-white text-primary text-2xl lg:text-3xl rounded-tl-16 rounded-tr-16 lg:rounded-tl-32 lg:rounded-tr-32 px-16 py-8' : 'bg-primary text-white text-md lg:text-lg px-16 py-8 lg:h-42 rounded-16 lg:rounded-32'"
+    :class="open ? 'bg-white text-primary text-2xl md:text-3xl rounded-tl-16 rounded-tr-16 md:rounded-tl-32 md:rounded-tr-32 px-16 py-8' : 'bg-primary text-white text-md md:text-lg px-16 py-8 md:h-42 rounded-16 md:rounded-32'"
     @click="toggle()">
     {{ if {slot:title} }}
       {{ slot:title }}
@@ -25,7 +25,7 @@
     class="overflow-hidden"
     :class="open ? 'transition-all duration-300 ease-in-out' : ''"
     style="max-height: 0px;">
-    <div class="bg-white rounded-bl-16 rounded-br-16 lg:rounded-bl-32 lg:rounded-br-32 p-8 lg:p-16 !pt-8">
+    <div class="bg-white rounded-bl-16 rounded-br-16 md:rounded-bl-32 md:rounded-br-32 p-8 md:p-16 !pt-8">
       {{ slot }}
     </div>
   </div>

@@ -1,5 +1,5 @@
-<div 
-  class="relative" 
+<div
+  class="relative"
   x-data="{ showCaption: false }">
   {{ partial:media/image
     :image="image"
@@ -8,13 +8,13 @@
     :class="class" }}
 
   {{ if image:alt }}
-    <div class="absolute z-1 bottom-24 left-0 right-0 z-40 flex items-center justify-center px-10 lg:px-16">
+    <div class="absolute z-1 bottom-24 left-0 right-0 z-40 flex items-center justify-center px-10 md:px-16">
       <div class="relative flex items-center justify-center flex-1">
         <div
           x-show="showCaption"
           x-transition.opacity
           @click="showCaption = false"
-          class="cursor-pointer absolute text-center text-balance text-primary text-xxs lg:text-xs rounded-full pt-2 pb-4 lg:py-4 px-16 bg-white transition-opacity duration-300">
+          class="cursor-pointer absolute text-center text-balance text-primary text-xxs md:text-xs rounded-full pt-2 pb-4 md:py-4 px-16 bg-white transition-opacity duration-300">
           {{ image:alt }}
         </div>
 

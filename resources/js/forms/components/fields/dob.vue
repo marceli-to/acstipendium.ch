@@ -14,7 +14,7 @@
       :placeholder="placeholder"
       :aria-label="ariaLabel"
       :class="[
-        'w-full px-12 lg:px-16 py-6 bg-white text-primary text-sm lg:text-md rounded-full border-2 border-white !ring-0 focus:!ring-0 focus:!outline-none placeholder:text-sm placeholder:lg:text-md placeholder:text-primary/50 leading-none',
+        'w-full px-12 md:px-16 py-6 bg-white text-primary text-sm md:text-md rounded-full border-2 border-white !ring-0 focus:!ring-0 focus:!outline-none placeholder:text-sm placeholder:md:text-md placeholder:text-primary/50 leading-none',
         { '!border-2 !border-danger placeholder:!text-danger/50': error || validationError },
       ]"
     >

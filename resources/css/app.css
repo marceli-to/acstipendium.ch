@@ -14,16 +14,16 @@
 
 /* Pills - Interactive and non-interactive elements */
 .pill {
-  @apply rounded-full inline-flex items-center justify-center transition-all border lg:border-2;
+  @apply rounded-full inline-flex items-center justify-center transition-all border md:border-2;
 }
 
 /* Pill Sizes */
 .pill-sm {
-  @apply px-14 py-2 lg:py-0 min-h-25 text-md lg:text-lg lg:px-16 lg:min-h-32;
+  @apply px-14 py-2 md:py-0 min-h-25 text-md md:text-lg md:px-16 md:min-h-32;
 }
 
 .pill-lg {
-  @apply px-16 min-h-36 text-xl lg:text-2xl lg:px-20 lg:py-8 lg:h-48;
+  @apply px-16 min-h-36 text-xl md:text-2xl md:px-20 md:py-8 md:h-48;
 }
 
 /* Pill Variants */
@@ -91,19 +91,19 @@
 
 /* Pill Icon Spacing */
 .pill-icon-sm {
-  @apply gap-4 lg:gap-6 !pl-12;
+  @apply gap-4 md:gap-6 !pl-12;
 }
 
 .pill-icon-sm svg {
-  @apply h-14 lg:h-16 w-auto;
+  @apply h-14 md:h-16 w-auto;
 }
 
 .pill-icon-lg {
-  @apply gap-8 lg:gap-10 pl-16;
+  @apply gap-8 md:gap-10 pl-16;
 }
 
 .pill-icon-lg svg {
-  @apply h-20 lg:h-24 w-auto;
+  @apply h-20 md:h-24 w-auto;
 }
 
 /* Glow Utility Classes */
@@ -129,15 +129,15 @@ p:has(.pill) {
 
 /* Cards */
 .card {
-  @apply mb-8 lg:mb-16 last:mb-0 px-14 md:px-24 pt-11 pb-14 md:pt-16 md:pb-24 text-white;
+  @apply mb-8 md:mb-16 last:mb-0 px-14 md:px-24 pt-11 pb-14 md:pt-16 md:pb-24 text-white;
 }
 
 .card-rounded {
-  @apply rounded-16 lg:rounded-32;
+  @apply rounded-16 md:rounded-32;
 }
 
 .card-border {
-  @apply border lg:border-2 border-white;
+  @apply border md:border-2 border-white;
 }
 
 /* Card elements */
@@ -150,7 +150,7 @@ p:has(.pill) {
 }
 
 .card p:not(:last-child) {
-  @apply mb-14 lg:mb-16;
+  @apply mb-14 md:mb-16;
 }
 
 .card > *:last-child {
@@ -158,12 +158,12 @@ p:has(.pill) {
 }
 
 .card p:has(ul) {
-  @apply mb-14 lg:mb-16;
+  @apply mb-14 md:mb-16;
 }
 
 /* Unordered list */
 .card ul {
-  @apply mb-14 lg:mb-16 list-disc ml-16 lg:ml-20;
+  @apply mb-14 md:mb-16 list-disc ml-16 md:ml-20;
 }
 
 .card ul:last-child {
@@ -175,7 +175,7 @@ p:has(.pill) {
 }
 
 .card ul li {
-  @apply pl-4 lg:pl-6;
+  @apply pl-4 md:pl-6;
 }
 
 .card ul li::marker {
@@ -193,7 +193,7 @@ p:has(.pill) {
 }
 
 .card ol > li {
-  @apply relative pl-28 lg:pl-40 mb-8 lg:mb-16;
+  @apply relative pl-28 md:pl-40 mb-8 md:mb-16;
   counter-increment: top;
 }
 
@@ -203,7 +203,7 @@ p:has(.pill) {
 }
 
 .card ol > li > ol {
-  @apply mt-8 lg:mt-16;
+  @apply mt-8 md:mt-16;
   counter-reset: sub;
 }
 
@@ -214,7 +214,7 @@ p:has(.pill) {
 
 .card ol > li > ol > li::before {
   content: counter(sub, lower-alpha);
-  @apply absolute -left-30 lg:w-40 text-right;
+  @apply absolute -left-30 md:w-40 text-right;
 }
 
 .card u {

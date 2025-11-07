@@ -1,20 +1,20 @@
-<div class="grid grid-cols-2 gap-x-8 lg:flex lg:flex-col">
+<div class="grid grid-cols-2 gap-x-8 md:flex md:flex-col">
 
   <div class="card card-rounded card-border">
 
-    {{ partial:headings/h3 class="text-xl lg:text-2xl mb-8 lg:mb-16" }}
+    {{ partial:headings/h3 class="text-xl md:text-2xl mb-8 md:mb-16" }}
       {{ "Inhalte" | trans }}
     {{ /partial:headings/h3 }}
 
-    <div class="flex flex-col lg:flex-row flex-wrap gap-y-4 lg:gap-8">
+    <div class="flex flex-col md:flex-row flex-wrap gap-y-4 md:gap-8">
       <a
         href="{{ "/archiv/stipendianten" | trans }}"
-        class="pill pill-sm pill-solid-white shadow-glow-sm-white lg:w-auto">
+        class="pill pill-sm pill-solid-white shadow-glow-sm-white md:w-auto">
         {{ "Stipendiant:innen" | trans }}
       </a>
       <a
         href="{{ "/archiv/ausstellungen" | trans }}"
-        class="pill pill-sm pill-solid-white lg:w-auto">
+        class="pill pill-sm pill-solid-white md:w-auto">
         {{ "Ausstellungen" | trans }}
       </a>
     </div>
@@ -23,7 +23,7 @@
 
   <div class="card card-rounded card-border">
 
-    {{ partial:headings/h3 class="text-xl lg:text-2xl mb-8 lg:mb-16" }}
+    {{ partial:headings/h3 class="text-xl md:text-2xl mb-8 md:mb-16" }}
       {{ "Sortieren" | trans }}
     {{ /partial:headings/h3 }}
 
@@ -34,46 +34,46 @@
         <button
           @click="sortBy = 'name'"
           :class="sortBy === 'name' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full lg:!w-auto">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto">
           {{ "Name" | trans }}
         </button>
 
         <button
           @click="sortBy = 'scholarship'"
           :class="sortBy === 'scholarship' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !hidden lg:!inline-flex">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !hidden md:!inline-flex">
           {{ "Stipendium" | trans }}
         </button>
 
         <button
           @click="sortBy = 'amount'"
           :class="sortBy === 'amount' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full lg:!w-auto !hidden lg:!inline-flex">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto !hidden md:!inline-flex">
           {{ "Förderbeitrag" | trans }}
         </button>
 
         <button
           @click="sortBy = 'year'"
           :class="sortBy === 'year' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full lg:!w-auto">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto">
           {{ "Jahr" | trans }}
         </button>
       </div>
 
       {{# Sort direction buttons #}}
-      <div class="flex gap-x-4 lg:gap-8">
+      <div class="flex gap-x-4 md:gap-8">
         <button
           @click="sortDirection = 'desc'"
           :class="sortDirection === 'desc' ? 'shadow-glow-sm-white' : ''"
-          class="w-25 h-25 lg:w-30 lg:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
-          {{ partial:icons/arrow-down class="w-auto h-14 lg:h-18" }}
+          class="w-25 h-25 md:w-30 md:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
+          {{ partial:icons/arrow-down class="w-auto h-14 md:h-18" }}
         </button>
 
         <button
           @click="sortDirection = 'asc'"
           :class="sortDirection === 'asc' ? 'shadow-glow-sm-white' : ''"
-          class="w-25 h-25 lg:w-30 lg:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
-          {{ partial:icons/arrow-up class="w-auto h-14 lg:h-18" }}
+          class="w-25 h-25 md:w-30 md:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
+          {{ partial:icons/arrow-up class="w-auto h-14 md:h-18" }}
         </button>
       </div>
 

@@ -8,7 +8,7 @@
 const props = defineProps({
   classes: {
     type: String,
-    default: 'mb-14 lg:mb-16'
+    default: 'mb-14 md:mb-16'
   }
 });
 </script>

@@ -1,12 +1,12 @@
-<picture 
+<picture
   class="
-    w-full 
-    h-full 
-    flex 
-    items-center 
-    justify-center 
+    w-full
+    h-full
+    flex
+    items-center
+    justify-center
     rounded-14
-    lg:rounded-24 
+    md:rounded-24
     overflow-hidden">
   {{ if (sizes | in_array('2xl')) }}
     <source media="(min-width: 1280px)" srcset="{{ glide:image preset="{{ preset ? '{{ preset }}-2xl-webp' : '2xl-webp' }}" }}" type="image/webp">

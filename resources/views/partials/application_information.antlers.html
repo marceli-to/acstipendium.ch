@@ -1,17 +1,17 @@
 <article class="
   col-span-full
-  lg:col-span-8
+  md:col-span-8
   bg-primary
   card
   card-rounded">
-  
+
   {{ if title }}
     {{ partial:headings/dynamic type="{{ title_order }}" }}
       {{ title }}
     {{ /partial:headings/dynamic }}
   {{ /if }}
 
-  <div class="flex flex-col gap-y-8 lg:gap-y-16">
+  <div class="flex flex-col gap-y-8 md:gap-y-16">
     
     {{ main_elements }}
 
@@ -23,10 +23,10 @@
           </h3>
         </div>
 
-        <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 lg:gap-x-16">
+        <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-x-16">
           <div>
-            <div class="card card-rounded border lg:border-2 !border-white">
-              <div class="flex justify-center mb-8 lg:mb-16">
+            <div class="card card-rounded border md:border-2 !border-white">
+              <div class="flex justify-center mb-8 md:mb-16">
                 <h3 class="pill pill-sm pill-static">
                   {{ subtitle_organisation }}
                 </h3>
@@ -35,8 +35,8 @@
             </div>
           </div>
           <div>
-            <div class="card card-rounded border lg:border-2 !border-white">
-              <div class="flex justify-center mb-8 lg:mb-16">
+            <div class="card card-rounded border md:border-2 !border-white">
+              <div class="flex justify-center mb-8 md:mb-16">
                 <h3 class="pill pill-sm pill-static">
                   {{ subtitle_location }}
                 </h3>
@@ -66,7 +66,7 @@
 
 </article>
 
-<aside class="col-span-full lg:col-span-4">
+<aside class="col-span-full md:col-span-4">
 
   {{ sidebar_elements }}
 

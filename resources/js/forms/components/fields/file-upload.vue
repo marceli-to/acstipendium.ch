@@ -7,13 +7,13 @@
 
     <div
       :class="[
-        'w-full pl-6 pr-8 lg:px-10 py-2 lg:py-6 bg-white text-primary rounded-full border-2 flex items-center gap-4',
+        'w-full pl-6 pr-8 md:px-10 py-2 md:py-6 bg-white text-primary rounded-full border-2 flex items-center gap-4',
         error ? 'border-danger' : 'border-white'
       ]">
       <label
         :for="name"
         :class="[
-          'pill pill-sm lg:!h-24 cursor-pointer whitespace-nowrap !mb-0 !text-sm lg:!text-md lg:!px-12 !leading-none',
+          'pill pill-sm md:!h-24 cursor-pointer whitespace-nowrap !mb-0 !text-sm md:!text-md md:!px-12 !leading-none',
           error ? 'bg-danger text-white border-danger' : 'pill-solid-primary'
         ]">
         {{ trans('Datei auswählen') }}
@@ -27,7 +27,7 @@
         @change="handleFileChange"
         class="hidden"
       />
-      <span class="text-sm lg:text-md truncate"
+      <span class="text-sm md:text-md truncate"
         :class="error ? 'text-danger/50' : 'text-primary/50'">
         {{ error || fileLabel }}
       </span>

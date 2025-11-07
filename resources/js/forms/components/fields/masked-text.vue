@@ -13,7 +13,7 @@
       :aria-label="ariaLabel"
       :required="required"
       :class="[
-        'w-full px-12 lg:px-16 py-8 bg-white text-primary text-sm lg:text-md rounded-full !border-none !ring-0 focus:!ring-0 focus:!outline-none placeholder:text-sm placeholder:lg:text-md placeholder:text-primary/50 leading-none',
+        'w-full px-12 md:px-16 py-8 bg-white text-primary text-sm md:text-md rounded-full !border-none !ring-0 focus:!ring-0 focus:!outline-none placeholder:text-sm placeholder:md:text-md placeholder:text-primary/50 leading-none',
         { '!border-danger placeholder:!text-danger': error },
       ]"
     >

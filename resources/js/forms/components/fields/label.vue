@@ -3,7 +3,7 @@
     v-if="label"
     :for="id"
     :class="[
-      'block py-2 text-sm lg:text-md ml-8 lg:ml-12',
+      'block py-2 text-sm md:text-md ml-8 md:ml-12',
       { 'text-danger': error }
     ]">
     {{ label }}<span v-if="required">*</span>

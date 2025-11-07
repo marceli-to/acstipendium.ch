@@ -8,7 +8,7 @@
       <div
         v-if="maxlength"
         :class="[
-          'text-xs lg:text-sm text-right mr-8 lg:mr-12',
+          'text-xs md:text-sm text-right mr-8 md:mr-12',
           { 'text-danger': error }
         ]">
         {{ characterCount }}/{{ maxlength }}
@@ -22,7 +22,7 @@
       @focus="$emit('update:error', '')"
       :aria-label="ariaLabel"
       :class="[
-        'w-full min-h-80 lg:min-h-120 px-12 lg:px-16 py-6 lg:py-10 bg-white text-primary text-sm lg:text-md rounded-16 lg:rounded-24 border-2 border-white !ring-0 focus:!ring-0 focus:!outline-none placeholder:text-sm placeholder:lg:text-md placeholder:text-primary/50 [field-sizing:content]',
+        'w-full min-h-80 md:min-h-120 px-12 md:px-16 py-6 md:py-10 bg-white text-primary text-sm md:text-md rounded-16 md:rounded-24 border-2 border-white !ring-0 focus:!ring-0 focus:!outline-none placeholder:text-sm placeholder:md:text-md placeholder:text-primary/50 [field-sizing:content]',
         { '!border-2 !border-danger placeholder:!text-danger/50': error },
       ]">
     </textarea>

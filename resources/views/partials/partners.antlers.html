@@ -1,16 +1,16 @@
 <div class="
-  card 
-  card-rounded 
+  card
+  card-rounded
   card-border
   col-span-full
-  lg:!px-12
-  lg:!pb-16">
+  md:!px-12
+  md:!pb-16">
 
   {{ partial:headings/dynamic type="{{ title_order }}" }}
-    {{ title }} 
+    {{ title }}
   {{ /partial:headings/dynamic }}
 
-  <div class="lg:grid md:grid-cols-12 lg:gap-x-16">
+  <div class="md:grid md:grid-cols-12 md:gap-x-16">
     {{ partner }}
       {{ partial:text wrapperClass="{{ last ? '!mb-0' : '' }}" }}
     {{ /partner }}

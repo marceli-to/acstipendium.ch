@@ -12,11 +12,11 @@
   <heading-1>
     {{ trans('Formular') }}
   </heading-1>
-  <form 
-    @submit.prevent="submitForm" 
-    class="lg:grid md:grid-cols-12 gap-x-8 lg:gap-x-16">
+  <form
+    @submit.prevent="submitForm"
+    class="md:grid md:grid-cols-12 gap-x-8 md:gap-x-16">
 
-    <div class="lg:col-span-6">
+    <div class="md:col-span-6">
       <card>
         <heading-2>
           {{ trans('Persönliche Angaben') }}
@@ -65,7 +65,7 @@
             required
           />
         </form-group>
-        <div class="lg:grid lg:grid-cols-2 lg:gap-x-16">
+        <div class="md:grid md:grid-cols-2 md:gap-x-16">
           <form-group>
             <form-text-field
               type="text"
@@ -129,8 +129,8 @@
         </form-group>
       </card>
     </div>
-    
-    <div class="lg:col-span-6">
+
+    <div class="md:col-span-6">
 
       <card>
         <heading-2>
@@ -208,7 +208,7 @@
 
     </div>
 
-    <div class="col-span-full grid grid-cols-6 md:grid-cols-12 gap-8 lg:gap-16 mt-8 lg:mt-16">
+    <div class="col-span-full grid grid-cols-6 md:grid-cols-12 gap-8 md:gap-16 mt-8 md:mt-16">
       <card
         v-for="(work, index) in works"
         :key="index"
@@ -218,7 +218,7 @@
           {{ trans('Werk') }} {{ index + 1 }}
         </heading-2>
 
-        <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+        <div class="md:grid md:grid-cols-2 md:gap-16">
           <form-group>
             <form-text-field
               v-model="work.title"
@@ -243,7 +243,7 @@
           </form-group>
         </div>
 
-        <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+        <div class="md:grid md:grid-cols-2 md:gap-16">
           <form-group>
             <form-text-field
               v-model="work.dimensions"
@@ -279,7 +279,7 @@
           />
         </form-group>
 
-        <form-group class="!mb-10 lg:!mb-12">
+        <form-group class="!mb-10 md:!mb-12">
           <form-textarea-field
             v-model="work.remarks"
             :error="errors[`works.${index}.remarks`]"
@@ -297,25 +297,25 @@
             type="button"
             @click="removeWork(index)"
             :label="trans('löschen')"
-            class="pill pill-sm pill-solid-primary lg:!h-24 !text-sm lg:!text-md lg:!px-12" />
+            class="pill pill-sm pill-solid-primary md:!h-24 !text-sm md:!text-md md:!px-12" />
         </div>
 
       </card>
     </div>
 
-    <div class="col-span-full flex justify-center mt-8 lg:mt-16">
+    <div class="col-span-full flex justify-center mt-8 md:mt-16">
       <form-button
         type="button"
         @click="addWork"
         :label="trans('Weiteres Werk hinzufügen')"
         class="pill pill-lg pill-solid-primary pill-icon-sm">
-        <svg class="w-16 lg:w-20" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="w-16 md:w-20" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M15.4403 12.5547V0H12.5497V12.5547H0V15.4453H12.5497V28H15.4403V15.4453H28V12.5547H15.4403Z" fill="white"/>
         </svg>
       </form-button>
     </div>
 
-    <card class="col-span-full lg:col-span-6 lg:col-start-4 mt-8 lg:mt-16">
+    <card class="col-span-full md:col-span-6 md:col-start-4 mt-8 md:mt-16">
       <heading-2>
         {{ trans('Dossier') }}
       </heading-2>
@@ -335,7 +335,7 @@
       </form-group>
     </card>
 
-    <card class="col-span-full lg:col-span-8 lg:col-start-3">
+    <card class="col-span-full md:col-span-8 md:col-start-3">
       <heading-2>
         {{ trans('Abschluss') }}
       </heading-2>
@@ -343,8 +343,8 @@
         {{ trans('Mit dem Absenden dieser Anmeldung erkläre ich mich mit den Teilnahmebedingungen des AC-Stipendiums einverstanden. Der Upload kann einige Minuten dauern. Wenn der Upload geklappt hat, erhalten Sie im Anschluss ein Bestätigungs-E-Mail. Falls Sie dieses nicht bekommen, bitte nochmals versuchen.') }}
       </div>
 
-      <div class="lg:grid md:grid-cols-12 lg:gap-x-16 mt-14 lg:mt-32">
-        <form-group class="lg:col-span-6 text-sm lg:text-md">
+      <div class="md:grid md:grid-cols-12 md:gap-x-16 mt-14 md:mt-32">
+        <form-group class="md:col-span-6 text-sm md:text-md">
           <form-checkbox
             v-model="form.privacy_truthful"
             :error="errors.privacy_truthful"
@@ -354,7 +354,7 @@
             :label="trans('Ich bestätige, dass meine Angaben wahrheitsgemäss und vollständig sind. Mir ist bewusst, dass falsche oder unvollständige Angaben zum Ausschluss führen können.')" />
         </form-group>
 
-        <form-group class="lg:col-span-6 text-sm lg:text-md">
+        <form-group class="md:col-span-6 text-sm md:text-md">
           <form-checkbox
             v-model="form.privacy_original_work"
             :error="errors.privacy_original_work"
@@ -364,7 +364,7 @@
             :label="trans('Ich bestätige, dass die eingereichten Arbeiten eigenständig und unabhängig entstanden sind, weder im Rahmen einer Ausbildung noch unter Anleitung Dritter.')" />
         </form-group>
 
-        <form-group class="lg:col-span-6 text-sm lg:text-md">
+        <form-group class="md:col-span-6 text-sm md:text-md">
           <form-checkbox
             v-model="form.privacy_ai"
             :error="errors.privacy_ai"
@@ -374,7 +374,7 @@
             :label="trans('Ich bestätige, dass der Einsatz von Künstlicher Intelligenz (KI) oder ähnlichen Systemen in meinen Kunstwerken entsprechend gekennzeichnet ist.')" />
         </form-group>
 
-        <form-group class="lg:col-span-6 text-sm lg:text-md">
+        <form-group class="md:col-span-6 text-sm md:text-md">
           <form-checkbox
             v-model="form.privacy_data"
             :error="errors.privacy_data"
@@ -385,14 +385,14 @@
         </form-group>
       </div>
 
-      <form-group class="flex justify-center w-full mt-14 lg:mt-32">
+      <form-group class="flex justify-center w-full mt-14 md:mt-32">
         <form-button
           type="submit"
           :label="trans('Absenden')"
           :disabled="isSubmitting"
           class="pill pill-lg pill-solid-primary pill-icon-lg">
           <template v-if="isSubmitting">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="!w-16 !h-16 lg:!w-20 lg:!h-20 relative">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="!w-16 !h-16 md:!w-20 md:!h-20 relative">
               <path fill="currentColor" d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"><animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path>
             </svg>
           </template>
@@ -519,11 +519,11 @@ function getWorkCardClass(index) {
 
   // If odd number of works and this is the last one: centered
   if (isOddTotal && isLastItem) {
-    return 'lg:col-span-6 lg:col-start-4';
+    return 'md:col-span-6 md:col-start-4';
   }
 
   // All other cases: just col-span-6
-  return 'lg:col-span-6';
+  return 'md:col-span-6';
 }
 
 async function submitForm() {
