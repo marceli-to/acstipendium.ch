@@ -1,0 +1,8 @@
+title: Stipendium
+fields:
+  -
+    import: title
+  -
+    import: editor
+  -
+    import: text_box_settings

@@ -10,7 +10,10 @@
   {{ registration:is_active ? 'relative bg-secondary card-border' : 'bg-primary' }}">
 
   {{ if registration:is_active }}
-    {{ partial:buttons/cta url="" class="hidden md:flex md:rotate-[50deg] lg:rotate-[15deg] origin-bottom-right absolute -right-40 lg:-right-70 md:-top-35" }}
+    {{ partial:buttons/cta 
+        url="{{ "/stipendium/anmeldung" | trans }}" 
+        title="{{ "Jetzt Gesuch einreichen" | trans }}"
+        class="hidden md:flex md:rotate-[55deg] lg:rotate-[15deg] origin-bottom-left absolute md:-right-212 md:-top-370 lg:-right-120 lg:-top-145" }}
   {{ /if }}
 
   {{ partial:headings/dynamic type="{{ title_order }}" }}

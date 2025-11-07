@@ -23,5 +23,6 @@
 
   "/impressum": "/fr/mentions-legales",
   "/archiv/ausstellungen": "/fr/archives/expositions",
-  "/archiv/stipendianten": "/fr/archives/boursiers"
+  "/archiv/stipendianten": "/fr/archives/boursiers",
+  "/stipendium/anmeldung": "/fr/bourse/inscription"
 }

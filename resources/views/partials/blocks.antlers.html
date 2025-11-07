@@ -11,6 +11,18 @@
   {{ partial:text }}
 {{ /if }}
 
+{{ if type == 'scholarship' }}
+  {{ partial:scholarship }}
+{{ /if }}
+
+{{ if type == 'jury' }}
+  {{ partial:jury }}
+{{ /if }}
+
+{{ if type == 'input_information' }}
+  {{ partial:input_information }}
+{{ /if }}
+
 {{ if type == 'partners' }}
   {{ partial:partners }}
 {{ /if }}

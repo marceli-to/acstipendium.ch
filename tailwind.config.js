@@ -100,10 +100,15 @@ export default {
           '0%, 100%': { boxShadow: '0 0 20px 4px white' },
           '50%': { boxShadow: '0 0 20px 4px rgba(255, 255, 255, 0.3)' },
         },
+        'glow-pulse-lg': {
+          '0%, 100%': { boxShadow: '0 0 40px 24px white' },
+          '50%': { boxShadow: '0 0 40px 24px rgba(255, 255, 255, 0.3)' },
+        },
       },
 
       animation: {
         'glow-pulse': 'glow-pulse 1.5s ease-in-out infinite',
+        'glow-pulse-lg': 'glow-pulse-lg 1.5s ease-in-out infinite',
       },
     },
 

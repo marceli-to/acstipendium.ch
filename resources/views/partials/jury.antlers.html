@@ -1,0 +1,32 @@
+<article class="
+  col-span-{{ col_span_mobile }} 
+  col-start-{{ col_start_mobile }}
+  md:col-span-{{ col_span_tablet }}
+  md:col-start-{{ col_start_tablet }}
+  lg:col-span-{{ col_span_desktop }}
+  lg:col-start-{{ col_start_desktop }} 
+  bg-{{ background_color }}
+  card
+  card-rounded
+  {{ background_color == 'secondary' ? 'card-border' : '' }}">
+  
+  {{ if title }}
+    {{ partial:headings/dynamic type="{{ title_order }}" }}
+      {{ title }} 
+    {{ /partial:headings/dynamic }}
+  {{ /if }}
+
+  <div class="flex flex-col gap-y-24 md:gap-y-32">
+    {{ partial:editor/wrapper }}
+  </div>
+
+</article>
+
+{{ if registration:is_active }}
+  <div class="col-span-full min-h-185 relative md:hidden">
+  {{ partial:buttons/cta 
+    url="{{ "/stipendium/anmeldung" | trans }}" 
+    title="{{ "Jetzt Gesuch einreichen" | trans }}"
+    class="-rotate-[30deg] origin-bottom-right absolute left-8 bottom-160" }}
+  </div>
+{{ /if }}

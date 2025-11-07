@@ -33,6 +33,27 @@ tabs:
                       fields:
                         -
                           import: text_box
+                    scholarship:
+                      display: Stipendium
+                      instructions: 'Stipendium hinzufügen'
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: scholarship
+                    input_information:
+                      display: 'Eingabe Informationen'
+                      instructions: 'Eingabe Informationen hinzufügen'
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: input_information
+                    jury:
+                      display: Jury
+                      instructions: 'Jury Informationen hinzufügen'
+                      icon: text-formatting-initial-letter
+                      fields:
+                        -
+                          import: jury
                     partners:
                       display: Partnerinstitutionen
                       instructions: 'Partnerinstitutionen hinzfügen'

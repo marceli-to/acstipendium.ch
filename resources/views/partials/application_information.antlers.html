@@ -4,7 +4,15 @@
   lg:col-span-8
   bg-primary
   card
-  card-rounded">
+  card-rounded
+  {{ registration:is_active ? 'relative mt-200 md:mt-160 lg:!mt-0' : '' }}">
+
+  {{ if registration:is_active }}
+    {{ partial:buttons/cta 
+        url="#application-form" 
+        title="{{ "Anmeldeformular" | trans }}"
+        class="rotate-[30deg] origin-bottom-left absolute -left-8 md:left-auto md:-right-190 -top-175 md:-top-140 lg:hidden" }}
+  {{ /if }}
 
   {{ if title }}
     {{ partial:headings/dynamic type="{{ title_order }}" }}
@@ -75,7 +83,20 @@
 
       {{ if type == 'application_information_deadlines' }}
 
-        <article class="card card-rounded card-border md:col-span-6 lg:col-span-12">
+        <article class="
+          card
+          card-rounded
+          card-border
+          md:col-span-6
+          lg:col-span-12
+          {{ registration:is_active ? 'lg:relative lg:mt-400' : '' }}">
+
+          {{ if registration:is_active }}
+            {{ partial:buttons/cta 
+              url="#application-form"  
+              title="{{ "Anmeldeformular" | trans }}"
+              class="hidden lg:flex lg:-rotate-[15deg] origin-bottom-right absolute lg:left-30 lg:-top-150" }}
+          {{ /if }}
           
           {{ if title }}
             {{ partial:headings/dynamic type="{{ title_order }}" }}
