@@ -38,7 +38,7 @@ return [
     */
 
     'widgets' => [
-        // [ 
+        // [
         //   'type' => 'collection',
         //   'collection' => 'publications',
         //   'limit' => 5,
@@ -46,13 +46,13 @@ return [
         //   'width' => 100,
         //   'sort' => 'order',
         // ],
-        [ 
-          'type' => 'collection',
-          'collection' => 'pages',
-          'limit' => 15,
-          'title' => 'Seiten',
-          'width' => 100,
-          'sort' => 'order',
+        [
+            'type' => 'collection',
+            'collection' => 'pages',
+            'limit' => 15,
+            'title' => 'Seiten',
+            'width' => 100,
+            'sort' => 'order',
         ],
     ],
 

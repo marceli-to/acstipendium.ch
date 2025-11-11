@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DownloadController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +16,6 @@ use App\Http\Controllers\DownloadController;
 
 // Authenticated route for downloading application ZIP files
 Route::middleware('statamic.cp.authenticated')->group(function () {
-  Route::get('/applications/{id}/download-zip', [DownloadController::class, 'downloadZip'])
-    ->name('applications.download-zip');
+    Route::get('/applications/{id}/download-zip', [DownloadController::class, 'downloadZip'])
+        ->name('applications.download-zip');
 });

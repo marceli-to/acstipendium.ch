@@ -21,7 +21,7 @@ class ApplicationController extends Controller
         // Normalize website URL - add https:// if no protocol present
         $website = $request->input('website');
         if ($website && ! preg_match('/^https?:\/\//', $website)) {
-          $website = 'https://'.$website;
+            $website = 'https://'.$website;
         }
 
         // Generate filename prefix from user data
@@ -111,11 +111,42 @@ class ApplicationController extends Controller
         // Clear Statamic Stache to ensure the new entry is immediately available
         \Statamic\Facades\Stache::clear();
 
-        Notification::route('mail', $request->input('email'))
-            ->notify(new UserConfirmation($data));
+        // Try to send user confirmation email
+        try {
+            Notification::route('mail', $request->input('email'))
+                ->notify(new UserConfirmation($data));
+        } catch (\Exception $e) {
+            \Log::error('Failed to send user confirmation email', [
+                'email' => $request->input('email'),
+                'error' => $e->getMessage(),
+                'entry_id' => $entry->id(),
+            ]);
 
-        Notification::route('mail', env('MAIL_TO'))
-            ->notify(new OwnerInformation($data));
+            // Notify admin about the failed email
+            try {
+                Notification::route('mail', env('MAIL_TO'))
+                    ->notify(new \App\Notifications\Application\EmailDeliveryFailed([
+                        'recipient_email' => $request->input('email'),
+                        'user_name' => $request->input('firstname').' '.$request->input('name'),
+                        'error_message' => $e->getMessage(),
+                    ]));
+            } catch (\Exception $adminNotificationException) {
+                \Log::error('Failed to send admin notification about email failure', [
+                    'error' => $adminNotificationException->getMessage(),
+                ]);
+            }
+        }
+
+        // Send owner information email
+        try {
+            Notification::route('mail', env('MAIL_TO'))
+                ->notify(new OwnerInformation($data));
+        } catch (\Exception $e) {
+            \Log::error('Failed to send owner information email', [
+                'error' => $e->getMessage(),
+                'entry_id' => $entry->id(),
+            ]);
+        }
 
         return response()->json(['message' => 'Store successful']);
     }

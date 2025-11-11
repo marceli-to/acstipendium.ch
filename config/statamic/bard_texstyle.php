@@ -13,36 +13,36 @@ return [
 
     'styles' => [
 
-      'nobr' => [
-        'type' => 'span',
-        'name' => 'No Break',
-        'ident' => 'B',
-        'icon' => null,
-        'class' => 'nobr',
-        'cp_css' => 'white-space: nowrap',
-        'cp_badge' => false,
-      ],
+        'nobr' => [
+            'type' => 'span',
+            'name' => 'No Break',
+            'ident' => 'B',
+            'icon' => null,
+            'class' => 'nobr',
+            'cp_css' => 'white-space: nowrap',
+            'cp_badge' => false,
+        ],
 
-      'pill' => [
-        'type' => 'span',
-        'name' => 'Pill',
-        'ident' => 'P',
-        'icon' => null,
-        'class' => 'pill pill-sm pill-static',
-        'cp_css' => 'border-radius: 9999px; border: 1px solid #1C2E36; padding: 2px 6px',
-        'cp_badge' => false,
-      ],
+        'pill' => [
+            'type' => 'span',
+            'name' => 'Pill',
+            'ident' => 'P',
+            'icon' => null,
+            'class' => 'pill pill-sm pill-static',
+            'cp_css' => 'border-radius: 9999px; border: 1px solid #1C2E36; padding: 2px 6px',
+            'cp_badge' => false,
+        ],
 
-      'spacer' => [
-        'type' => 'span',
-        'name' => 'Spacer',
-        'ident' => 'S',
-        'icon' => null,
-        'class' => 'inline-block mt-12 lg:mt-16',
-        'cp_css' => 'inline-block; margin-top: 12px;',
-        'cp_badge' => false,
-      ],
-      
+        'spacer' => [
+            'type' => 'span',
+            'name' => 'Spacer',
+            'ident' => 'S',
+            'icon' => null,
+            'class' => 'inline-block mt-12 lg:mt-16',
+            'cp_css' => 'inline-block; margin-top: 12px;',
+            'cp_badge' => false,
+        ],
+
     ],
 
     /*

@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserConfirmation extends Notification
+class EmailDeliveryFailed extends Notification
 {
     use Queueable;
 
@@ -14,8 +14,6 @@ class UserConfirmation extends Notification
 
     /**
      * Create a new notification instance.
-     *
-     * @return void
      */
     public function __construct($data)
     {
@@ -43,9 +41,15 @@ class UserConfirmation extends Notification
     {
         return (new MailMessage)
             ->from(env('MAIL_FROM_ADDRESS'))
-            ->replyTo(env('MAIL_REPLY_TO_ADDRESS'))
-            ->subject('AC-Stipendium – Anmeldung erfolgreich / Inscription réussie')
-            ->markdown('notifications.application.user-confirmation', ['data' => $this->data]);
+            ->subject('Bestätigungs-E-Mail konnte nicht zugestellt werden')
+            ->line('Die Bestätigungs-E-Mail für folgende Bewerbung konnte nicht zugestellt werden:')
+            ->line('')
+            ->line('**Bewerber:** '.$this->data['user_name'])
+            ->line('**E-Mail-Adresse:** '.$this->data['recipient_email'])
+            ->line('')
+            ->line('**Fehler:** '.$this->data['error_message'])
+            ->line('')
+            ->line('Die Bewerbung wurde trotzdem erfolgreich gespeichert. Bitte kontaktieren Sie den Bewerber auf einem anderen Weg, um die Bewerbung zu bestätigen.');
     }
 
     /**

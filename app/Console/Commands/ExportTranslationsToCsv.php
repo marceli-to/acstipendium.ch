@@ -37,12 +37,13 @@ class ExportTranslationsToCsv extends Command
             $langTranslations = json_decode(File::get($jsonPath), true);
 
             if (json_last_error() !== JSON_ERROR_NONE) {
-                $this->error("Invalid JSON in lang file: " . json_last_error_msg());
+                $this->error('Invalid JSON in lang file: '.json_last_error_msg());
+
                 return Command::FAILURE;
             }
 
             $allTranslations = array_merge($allTranslations, $langTranslations);
-            $this->info("✓ Loaded " . count($langTranslations) . " translations from lang/{$locale}.json");
+            $this->info('✓ Loaded '.count($langTranslations)." translations from lang/{$locale}.json");
         } else {
             $this->warn("Translation file not found: {$jsonPath}");
         }
@@ -52,19 +53,21 @@ class ExportTranslationsToCsv extends Command
             $jsTranslations = json_decode(File::get($jsTranslationsPath), true);
 
             if (json_last_error() !== JSON_ERROR_NONE) {
-                $this->error("Invalid JSON in JS translations file: " . json_last_error_msg());
+                $this->error('Invalid JSON in JS translations file: '.json_last_error_msg());
+
                 return Command::FAILURE;
             }
 
             $allTranslations = array_merge($allTranslations, $jsTranslations);
-            $this->info("✓ Loaded " . count($jsTranslations) . " translations from resources/js/translations.json");
+            $this->info('✓ Loaded '.count($jsTranslations).' translations from resources/js/translations.json');
         } else {
             $this->warn("JS translation file not found: {$jsTranslationsPath}");
         }
 
         // Check if we have any translations
         if (empty($allTranslations)) {
-            $this->error("No translations found to export!");
+            $this->error('No translations found to export!');
+
             return Command::FAILURE;
         }
 
@@ -78,6 +81,7 @@ class ExportTranslationsToCsv extends Command
 
         if ($handle === false) {
             $this->error("Could not create CSV file at: {$csvPath}");
+
             return Command::FAILURE;
         }
 
@@ -91,9 +95,9 @@ class ExportTranslationsToCsv extends Command
 
         fclose($handle);
 
-        $this->info("✓ Translations exported successfully!");
+        $this->info('✓ Translations exported successfully!');
         $this->line("File: {$csvPath}");
-        $this->line("Total entries: " . count($allTranslations));
+        $this->line('Total entries: '.count($allTranslations));
 
         return Command::SUCCESS;
     }

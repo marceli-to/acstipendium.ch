@@ -3,8 +3,8 @@
 namespace App\Tags;
 
 use Carbon\Carbon;
-use Statamic\Tags\Tags;
 use Statamic\Facades\Entry;
+use Statamic\Tags\Tags;
 
 class LatestEvent extends Tags
 {
@@ -14,7 +14,7 @@ class LatestEvent extends Tags
     public function index()
     {
         $now = Carbon::now();
-        
+
         // Get all agenda entries
         $latestEvent = Entry::query()
             ->where('collection', 'agenda')
@@ -39,7 +39,7 @@ class LatestEvent extends Tags
         $eventTime = $entry->get('agenda_time');
         $eventTimeEnd = $entry->get('agenda_time_end');
 
-        if (!$eventDate) {
+        if (! $eventDate) {
             return false;
         }
 
@@ -47,19 +47,21 @@ class LatestEvent extends Tags
         $eventDateTime = Carbon::parse($eventDate);
 
         // Rule 1: No times set - show until event date at 23:59
-        if (!$eventTime && !$eventTimeEnd) {
+        if (! $eventTime && ! $eventTimeEnd) {
             return $now->lte($eventDateTime->endOfDay());
         }
 
         // Rule 3: End time is set - show until end time
         if ($eventTimeEnd) {
             $endDateTime = $eventDateTime->copy()->setTimeFromTimeString($eventTimeEnd);
+
             return $now->lte($endDateTime);
         }
 
         // Rule 2: Only start time is set - show until start time
         if ($eventTime) {
             $startDateTime = $eventDateTime->copy()->setTimeFromTimeString($eventTime);
+
             return $now->lte($startDateTime);
         }
 

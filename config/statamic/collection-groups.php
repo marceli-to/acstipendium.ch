@@ -15,7 +15,7 @@
  * ]
  */
 return [
-  'Daten' => [
-    'applications',
-  ],
+    'Daten' => [
+        'applications',
+    ],
 ];

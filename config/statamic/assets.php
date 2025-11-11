@@ -99,49 +99,47 @@ return [
 
         'presets' => [
 
-          // Standard images
-          'md-webp' => ['w' => 768, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
-          'lg-webp' => ['w' => 1280, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
-          'xl-webp' => ['w' => 1440, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
-          '2xl-webp' => ['w' => 1680, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
-          'md' => ['w' => 768, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
-          'lg' => ['w' => 1280, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
-          'xl' => ['w' => 1440, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
-          '2xl' => ['w' => 1680, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
+            // Standard images
+            'md-webp' => ['w' => 768, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
+            'lg-webp' => ['w' => 1280, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
+            'xl-webp' => ['w' => 1440, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
+            '2xl-webp' => ['w' => 1680, 'h' => 10000, 'q' => 90, 'fit' => 'contain', 'fm' => 'webp'],
+            'md' => ['w' => 768, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
+            'lg' => ['w' => 1280, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
+            'xl' => ['w' => 1440, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
+            '2xl' => ['w' => 1680, 'h' => 10000, 'q' => 90, 'fit' => 'contain'],
 
-          // Header images with 16:8 aspect ratio
-          'header-md-webp' => ['w' => 768, 'h' => 384, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
-          'header-lg-webp' => ['w' => 1280, 'h' => 640, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
-          'header-xl-webp' => ['w' => 1440, 'h' => 720, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
-          'header-2xl-webp' => ['w' => 1680, 'h' => 840, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
-          'header-md' => ['w' => 768, 'h' => 384, 'q' => 90, 'fit' => 'crop_focal'],
-          'header-lg' => ['w' => 1280, 'h' => 640, 'q' => 90, 'fit' => 'crop_focal'],
-          'header-xl' => ['w' => 1440, 'h' => 720, 'q' => 90, 'fit' => 'crop_focal'],
-          'header-2xl' => ['w' => 1680, 'h' => 840, 'q' => 90, 'fit' => 'crop_focal'],
+            // Header images with 16:8 aspect ratio
+            'header-md-webp' => ['w' => 768, 'h' => 384, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'header-lg-webp' => ['w' => 1280, 'h' => 640, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'header-xl-webp' => ['w' => 1440, 'h' => 720, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'header-2xl-webp' => ['w' => 1680, 'h' => 840, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'header-md' => ['w' => 768, 'h' => 384, 'q' => 90, 'fit' => 'crop_focal'],
+            'header-lg' => ['w' => 1280, 'h' => 640, 'q' => 90, 'fit' => 'crop_focal'],
+            'header-xl' => ['w' => 1440, 'h' => 720, 'q' => 90, 'fit' => 'crop_focal'],
+            'header-2xl' => ['w' => 1680, 'h' => 840, 'q' => 90, 'fit' => 'crop_focal'],
 
-          // Hero images with 16:9 aspect ratio
-          'hero-md-webp' => ['w' => 768, 'h' => 432, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
-          'hero-lg-webp' => ['w' => 1280, 'h' => 720, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
-          'hero-xl-webp' => ['w' => 1440, 'h' => 810, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
-          'hero-2xl-webp' => ['w' => 1680, 'h' => 945, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
-          'hero-md' => ['w' => 768, 'h' => 432, 'q' => 90, 'fit' => 'crop_focal'],
-          'hero-lg' => ['w' => 1280, 'h' => 720, 'q' => 90, 'fit' => 'crop_focal'],
-          'hero-xl' => ['w' => 1440, 'h' => 810, 'q' => 90, 'fit' => 'crop_focal'],
-          'hero-2xl' => ['w' => 1680, 'h' => 945, 'q' => 90, 'fit' => 'crop_focal'],
+            // Hero images with 16:9 aspect ratio
+            'hero-md-webp' => ['w' => 768, 'h' => 432, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'hero-lg-webp' => ['w' => 1280, 'h' => 720, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'hero-xl-webp' => ['w' => 1440, 'h' => 810, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'hero-2xl-webp' => ['w' => 1680, 'h' => 945, 'q' => 90, 'fit' => 'crop_focal', 'fm' => 'webp'],
+            'hero-md' => ['w' => 768, 'h' => 432, 'q' => 90, 'fit' => 'crop_focal'],
+            'hero-lg' => ['w' => 1280, 'h' => 720, 'q' => 90, 'fit' => 'crop_focal'],
+            'hero-xl' => ['w' => 1440, 'h' => 810, 'q' => 90, 'fit' => 'crop_focal'],
+            'hero-2xl' => ['w' => 1680, 'h' => 945, 'q' => 90, 'fit' => 'crop_focal'],
 
+            // Teaeser images with 4:3 aspect ratio
+            'teaser-md-webp' => ['w' => 768, 'h' => 576, 'q' => 90, 'fit' => 'crop', 'fm' => 'webp'],
+            'teaser-lg-webp' => ['w' => 1280, 'h' => 960, 'q' => 90, 'fit' => 'crop', 'fm' => 'webp'],
+            'teaser-xl-webp' => ['w' => 1440, 'h' => 1080, 'q' => 90, 'fit' => 'crop', 'fm' => 'webp'],
+            'teaser-2xl-webp' => ['w' => 1680, 'h' => 1260, 'q' => 90, 'fit' => 'crop', 'fm' => 'webp'],
+            'teaser-md' => ['w' => 768, 'h' => 576, 'q' => 90, 'fit' => 'crop'],
+            'teaser-lg' => ['w' => 1280, 'h' => 960, 'q' => 90, 'fit' => 'crop'],
+            'teaser-xl' => ['w' => 1440, 'h' => 1080, 'q' => 90, 'fit' => 'crop'],
+            'teaser-2xl' => ['w' => 1680, 'h' => 1260, 'q' => 90, 'fit' => 'crop'],
 
-          // Teaeser images with 4:3 aspect ratio
-          'teaser-md-webp' => ['w' => 768, 'h' => 576, 'q' => 90, 'fit' => 'crop', 'fm' => 'webp'],
-          'teaser-lg-webp' => ['w' => 1280, 'h' => 960, 'q' => 90, 'fit' => 'crop', 'fm' => 'webp'],
-          'teaser-xl-webp' => ['w' => 1440, 'h' => 1080, 'q' => 90, 'fit' => 'crop', 'fm' => 'webp'],
-          'teaser-2xl-webp' => ['w' => 1680, 'h' => 1260, 'q' => 90, 'fit' => 'crop', 'fm' => 'webp'],
-          'teaser-md' => ['w' => 768, 'h' => 576, 'q' => 90, 'fit' => 'crop'],
-          'teaser-lg' => ['w' => 1280, 'h' => 960, 'q' => 90, 'fit' => 'crop'],
-          'teaser-xl' => ['w' => 1440, 'h' => 1080, 'q' => 90, 'fit' => 'crop'],
-          'teaser-2xl' => ['w' => 1680, 'h' => 1260, 'q' => 90, 'fit' => 'crop'],
-
-          'max_upload_size' => ['w' => 4000, 'h' => 4000, 'fit' => 'max'],
-
+            'max_upload_size' => ['w' => 4000, 'h' => 4000, 'fit' => 'max'],
 
         ],
 
