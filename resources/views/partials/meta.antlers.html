@@ -31,15 +31,20 @@
         {{ /if }}
       </div>
 
-      <div class="flex justify-end">
+      <div class="flex flex-col items-start md:items-end justify-end gap-y-4 md:gap-y-6">
         <a
           href="{{ '/impressum' | trans }}"
           aria-label="{{ 'Impressum' | trans }}"
           class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary {{ is_imprint ? 'glow-sm-primary !bg-primary !text-white' : '' }}">
           {{ 'Impressum' | trans }}
         </a>
+        <a
+          href="{{ '/datenschutz' | trans }}"
+          aria-label="{{ 'Datenschutz' | trans }}"
+          class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary {{ is_privacy ? 'glow-sm-primary !bg-primary !text-white' : '' }}">
+          {{ 'Datenschutz' | trans }}
+        </a>
       </div>
-
     </div>
 
     {{ slot }}

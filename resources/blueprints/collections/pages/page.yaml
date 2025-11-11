@@ -85,13 +85,6 @@ tabs:
                       instructions: 'Stipendiant:innen hinzufügen'
                       icon: file-content-list
                       fields: {  }
-                    imprint:
-                      display: Impressum
-                      instructions: 'Impressum hinzufügen'
-                      icon: text-formatting-markdown
-                      fields:
-                        -
-                          import: imprint
                     sponsors:
                       display: "Förder:innen \Lund Sponsor:innen"
                       instructions: "Förder:innen \Lund Sponsor:innen hinzufügen"
@@ -99,6 +92,24 @@ tabs:
                       fields:
                         -
                           import: sponsors
+                special_elements:
+                  display: Spezialelemente
+                  icon: addon-boxes-stack
+                  sets:
+                    privacy:
+                      display: Datenschutz
+                      instructions: 'Datenschutz hinzufügen'
+                      icon: text-formatting-markdown
+                      fields:
+                        -
+                          import: privacy
+                    imprint:
+                      display: Impressum
+                      instructions: 'Impressum hinzufügen'
+                      icon: text-formatting-markdown
+                      fields:
+                        -
+                          import: imprint
   seo:
     display: SEO
     sections:

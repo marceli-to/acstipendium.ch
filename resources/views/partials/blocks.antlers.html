@@ -7,6 +7,10 @@
   {{ partial:imprint }}
 {{ /if }}
 
+{{ if type == 'privacy' }}
+  {{ partial:privacy }}
+{{ /if }}
+
 {{ if type == 'text_box' }}
   {{ partial:text }}
 {{ /if }}

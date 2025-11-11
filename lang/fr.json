@@ -2,6 +2,7 @@
   "Schreiben Sie uns": "Écrivez-nous",
   "Folgen Sie uns auf Instagram": "Suivez-nous sur Instagram",
   "Impressum": "Mentions légales",
+  "Datenschutz": "Protection des données",
   "Menü verbergen": "Menü verbergen",
   "Menü anzeigen": "Menü anzeigen",
   "Startseite": "Startseite",
@@ -22,6 +23,7 @@
   "Fr.": "Fr.",
 
   "/impressum": "/fr/mentions-legales",
+  "/datenschutz": "/fr/protection-des-donnees",
   "/archiv/ausstellungen": "/fr/archives/expositions",
   "/archiv/stipendianten": "/fr/archives/boursiers",
   "/stipendium/anmeldung": "/fr/bourse/inscription"

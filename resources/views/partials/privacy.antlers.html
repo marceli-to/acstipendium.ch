@@ -1,0 +1,55 @@
+<div class="col-span-full">
+  {{ partial:meta is_privacy="true"  }}
+    <div class="
+      px-14
+      md:px-0
+      md:grid
+      md:grid-cols-12
+      md:gap-x-16
+      mt-24
+      md:mt-96
+      text-primary
+      [&_a]:underline
+      [&_a]:decoration-1
+      [&_a]:underline-offset-2
+      hover:[&_a]:no-underline
+      [&_p]:mb-12
+      [&_p]:md:mb-16
+      [&_p]:max-w-prose
+      [&_h1]:text-2xl
+      [&_h1]:md:text-3xl
+      [&_h1]:uppercase
+      [&_h1]:mb-8
+      [&_h1]md:mb-10
+      [&_h2]:text-2xl
+      [&_h2]:md:text-3xl
+      [&_h2]:uppercase
+      [&_h2]:mb-8
+      [&_h2]md:mb-10
+      [&_h2:not(:first-of-type)]:mt-32">
+
+      <div class="md:col-span-8 md:col-start-3">
+        {{ editor }}
+
+          {{ if type == 'text' }}
+            {{ text }}
+          {{ /if }}
+
+          {{ if type == 'link' }}
+            <div class="my-4 md:my-8">
+                <a
+                  href="{{ link }}"
+                  target="{{ target }}"
+                  aria-label="{{ link_text }}"
+                  class="pill pill-sm pill-solid-primary-alt">
+                  {{ link_text }}
+                </a>
+            </div>
+          {{ /if }}
+          
+        {{ /editor }}
+      </div>
+
+    </div>
+  {{ /partial:meta }}
+</div>
