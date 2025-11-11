@@ -470,7 +470,7 @@ const form = ref({
   location: 'Bern',
   phone: '+41 31 123 45 67',
   website: 'https://www.anna-mueller-art.ch',
-  email: 'anna.mueller@example.ch',
+  email: 'marcel.stadelmann@gmail.com',
   geographic_relation_text: 'Ich bin in Bern geboren und aufgewachsen. Meine künstlerische Ausbildung habe ich an der Hochschule der Künste Bern absolviert. Seit 10 Jahren arbeite ich in meinem Atelier in der Berner Altstadt und bin aktives Mitglied der lokalen Kunstszene.',
   geographic_relation_proofs: [[]],
   age_verification_files: [],
