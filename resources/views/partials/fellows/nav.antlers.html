@@ -1,6 +1,6 @@
-<div class="grid grid-cols-2 gap-x-8 md:flex md:flex-col">
+<div class="grid grid-cols-2 items-start gap-x-8 md:flex md:flex-col">
 
-  <div class="card card-rounded card-border">
+  <div class="card card-xs card-rounded card-border">
 
     {{ partial:headings/h3 class="text-xl md:text-2xl mb-8 md:mb-16" }}
       {{ "Inhalte" | trans }}
@@ -9,19 +9,19 @@
     <div class="flex flex-col md:flex-row flex-wrap gap-y-4 md:gap-8">
       <a
         href="{{ "/archiv/stipendianten" | trans }}"
-        class="pill pill-sm pill-solid-white shadow-glow-sm-white  !w-full md:!w-auto">
+        class="pill pill-sm pill-solid-white shadow-glow-sm-white !w-full md:!w-auto !px-[0.4rem] md:!px-16">
         {{ "Stipendiant:innen" | trans }}
       </a>
       <a
         href="{{ "/archiv/ausstellungen" | trans }}"
-        class="pill pill-sm pill-solid-white  !w-full md:!w-auto">
+        class="pill pill-sm pill-solid-white !w-full md:!w-auto !px-[0.4rem] md:!px-16">
         {{ "Ausstellungen" | trans }}
       </a>
     </div>
 
   </div>
 
-  <div class="card card-rounded card-border">
+  <div class="card card-xs card-rounded card-border">
 
     {{ partial:headings/h3 class="text-xl md:text-2xl mb-8 md:mb-16" }}
       {{ "Sortieren" | trans }}
@@ -34,28 +34,28 @@
         <button
           @click="sortBy = 'name'"
           :class="sortBy === 'name' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto !px-[0.4rem] md:!px-16">
           {{ "Name" | trans }}
         </button>
 
         <button
           @click="sortBy = 'scholarship'"
           :class="sortBy === 'scholarship' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !hidden md:!inline-flex">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !hidden md:!inline-flex !px-[0.4rem] md:!px-16">
           {{ "Stipendium" | trans }}
         </button>
 
         <button
           @click="sortBy = 'amount'"
           :class="sortBy === 'amount' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto !hidden md:!inline-flex">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto !hidden md:!inline-flex !px-[0.4rem] md:!px-16">
           {{ "Förderbeitrag" | trans }}
         </button>
 
         <button
           @click="sortBy = 'year'"
           :class="sortBy === 'year' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto !px-[0.4rem] md:!px-16">
           {{ "Jahr" | trans }}
         </button>
       </div>
@@ -79,6 +79,10 @@
 
     </div>
 
+  </div>
+
+  <div class="card card-xs card-rounded card-border col-span-2 md:!py-24">
+    <p>{{ "Die Inhalte zu vergangenen Ausstellungen und Stipendiant:innen werden fortlaufend ergänzt." | trans }}</p>
   </div>
   
 </div>

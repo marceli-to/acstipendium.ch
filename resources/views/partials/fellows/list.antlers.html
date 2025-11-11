@@ -45,7 +45,7 @@
     sortFellows()">
 
   <header class="flex justify-between w-full items-center mb-4 md:mb-8 text-primary text-md md:text-lg">
-    <span class="flex items-center leading-none bg-white px-16 py-8 md:py-11 rounded-16 md:rounded-32 w-[calc(100%_-_64px)] md:w-[calc(39%_-_3px)] xl:w-[calc(41%_-_3px)] mr-4">
+    <span class="flex items-center leading-none bg-white px-16 py-8 md:py-11 rounded-16 md:rounded-32 w-[calc(100%_-_68px)] md:w-[calc(39%_-_3px)] xl:w-[calc(40%_-_3px)] mr-4">
       {{ "Name" | trans }}
     </span>
     <span class="hidden md:flex items-center leading-none bg-white px-16 py-8 md:py-11 rounded-16 md:rounded-32 md:w-[calc(26%_-_3px)] mr-4">
@@ -54,7 +54,7 @@
     <span class="hidden md:flex items-center leading-none bg-white px-16 py-8 md:py-11 rounded-16 md:rounded-32 md:w-[calc(24%_-_3px)] mr-4">
       {{ "Förderbeitrag" | trans }}
     </span>
-    <span class="flex items-center justify-end leading-none bg-white px-16 py-8 md:py-11 rounded-16 md:rounded-32 w-[64px] md:w-[calc(11%_-_3px)] xl:w-[calc(9%_-_3px)]">
+    <span class="flex items-center justify-end leading-none bg-white px-16 py-8 md:py-11 rounded-16 md:rounded-32 w-[68px] md:w-[calc(11%_-_3px)] xl:w-[calc(10%_-_3px)]">
       {{ "Jahr" | trans }}
     </span>
   </header>
@@ -78,7 +78,7 @@
           <span class="flex justify-between w-full items-center">
             <span
               class="flex items-center leading-none mr-4 px-16"
-              :class="open ? 'justify-center w-full' : 'w-[calc(100%_-_64px)] md:w-[calc(39%_-_3px)] xl:w-[calc(41%_-_3px)]'">
+              :class="open ? 'justify-center w-full' : 'w-[calc(100%_-_68px)] md:w-[calc(39%_-_3px)] xl:w-[calc(40%_-_3px)]'">
               {{ title }}
             </span>
             <span
@@ -96,7 +96,7 @@
               {{ amount | format_number:0:".":"'" }}
             </span>
             <span
-              class="flex items-center justify-end leading-none w-[64px] md:w-[calc(11%_-_3px)] xl:w-[calc(9%_-_3px)] px-16"
+              class="flex items-center justify-end leading-none w-[68px] md:w-[calc(11%_-_3px)] xl:w-[calc(10%_-_3px)] px-16"
               x-show="!open">
               {{ year }}
             </span>

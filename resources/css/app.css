@@ -132,6 +132,10 @@ p:has(.pill) {
   @apply mb-8 md:mb-16 last:mb-0 px-14 md:px-24 pt-11 pb-14 md:pt-16 md:pb-24 text-white;
 }
 
+.card-xs {
+  @apply !px-[0.5rem] md:!px-24 !pt-[0.4rem] !pb-[0.5rem] md:!pt-16 md:!pb-24
+}
+
 .card-rounded {
   @apply rounded-16 md:rounded-32;
 }
