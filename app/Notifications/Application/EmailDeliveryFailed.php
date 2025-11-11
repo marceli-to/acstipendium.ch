@@ -42,14 +42,7 @@ class EmailDeliveryFailed extends Notification
         return (new MailMessage)
             ->from(env('MAIL_FROM_ADDRESS'))
             ->subject('Bestätigungs-E-Mail konnte nicht zugestellt werden')
-            ->line('Die Bestätigungs-E-Mail für folgende Bewerbung konnte nicht zugestellt werden:')
-            ->line('')
-            ->line('**Bewerber:** '.$this->data['user_name'])
-            ->line('**E-Mail-Adresse:** '.$this->data['recipient_email'])
-            ->line('')
-            ->line('**Fehler:** '.$this->data['error_message'])
-            ->line('')
-            ->line('Die Bewerbung wurde trotzdem erfolgreich gespeichert. Bitte kontaktieren Sie den Bewerber auf einem anderen Weg, um die Bewerbung zu bestätigen.');
+            ->markdown('notifications.application.email-delivery-failed', ['data' => $this->data]);
     }
 
     /**
