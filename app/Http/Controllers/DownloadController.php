@@ -28,7 +28,7 @@ class DownloadController extends Controller
       abort(404, 'ZIP file not found for this application');
     }
 
-    $fullPath = Storage::disk('assets')->path($zipPath);
+    $fullPath = Storage::path($zipPath);
 
     if (!file_exists($fullPath)) {
       abort(404, 'ZIP file does not exist on server');

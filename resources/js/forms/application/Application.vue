@@ -305,7 +305,7 @@
       </card>
     </div>
 
-    <div class="col-span-full flex justify-center mt-8 md:mt-16">
+    <div v-if="works.length < 3" class="col-span-full flex justify-center mt-8 md:mt-16">
       <form-button
         type="button"
         @click="addWork"
@@ -443,34 +443,42 @@ const geographicRelationProofFields = ref([0]);
 // Track works
 const works = ref([
   {
-    title: '',
-    year: '',
-    dimensions: '',
+    title: 'Urbane Räume',
+    year: '2024',
+    dimensions: '120 x 90 x 5 cm',
     duration: '',
-    technology: '',
-    remarks: ''
+    technology: 'Mischtechnik auf Leinwand, Acryl und Ölfarben mit integrierten Holzelementen',
+    remarks: 'Teil der Serie "Stadtlandschaften" - thematisiert die Transformation urbaner Räume'
+  },
+  {
+    title: 'Zeitfragmente',
+    year: '2023',
+    dimensions: '',
+    duration: '00:04:30',
+    technology: 'Videoinstallation, HD, Mehrkanal-Audio',
+    remarks: 'Experimentelle Videoarbeit mit found footage Material aus Berner Archiven'
   }
 ]);
 
 const form = ref({
-  name: '',
-  firstname: '',
-  name_artist_group: '',
-  dob: '',
-  street: '',
-  zip: '',
-  location: '',
-  phone: '',
-  website: '',
-  email: '',
-  geographic_relation_text: '',
+  name: 'Müller',
+  firstname: 'Anna',
+  name_artist_group: 'Kunstkollektiv Bern',
+  dob: '15.03.1990',
+  street: 'Bärenplatz 12',
+  zip: '3011',
+  location: 'Bern',
+  phone: '+41 31 123 45 67',
+  website: 'https://www.anna-mueller-art.ch',
+  email: 'anna.mueller@example.ch',
+  geographic_relation_text: 'Ich bin in Bern geboren und aufgewachsen. Meine künstlerische Ausbildung habe ich an der Hochschule der Künste Bern absolviert. Seit 10 Jahren arbeite ich in meinem Atelier in der Berner Altstadt und bin aktives Mitglied der lokalen Kunstszene.',
   geographic_relation_proofs: [[]],
   age_verification_files: [],
   resume_files: [],
-  privacy_truthful: false,
-  privacy_original_work: false,
-  privacy_ai: false,
-  privacy_data: false
+  privacy_truthful: true,
+  privacy_original_work: true,
+  privacy_ai: true,
+  privacy_data: true
 });
 
 const errors = ref({
@@ -498,14 +506,16 @@ function addGeographicRelationProofField() {
 }
 
 function addWork() {
-  works.value.push({
-    title: '',
-    year: '',
-    dimensions: '',
-    duration: '',
-    technology: '',
-    remarks: ''
-  });
+  if (works.value.length < 3) {
+    works.value.push({
+      title: '',
+      year: '',
+      dimensions: '',
+      duration: '',
+      technology: '',
+      remarks: ''
+    });
+  }
 }
 
 function removeWork(index) {

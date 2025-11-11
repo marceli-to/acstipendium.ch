@@ -68,89 +68,139 @@ tabs:
               type: date
               display: Geburtsdatum
               localizable: false
-              width: 33
           -
-            handle: proof_dob
+            handle: geographic_relation_text
             field:
-              max_files: 1
-              container: assets
-              type: assets
-              display: 'ID / Ausweis'
-              localizable: false
-              width: 66
-          -
-            handle: geographic_relation
-            field:
-              mode: stacked
-              type: grid
+              type: textarea
               display: Bernbezug
               localizable: false
-              fields:
-                -
-                  handle: geographic_relation_text
-                  field:
-                    type: textarea
-                    display: Text
-                    localizable: false
-                -
-                  handle: geographic_relation_proof
-                  field:
-                    container: assets
-                    type: assets
-                    display: Beleg
-                    localizable: false
           -
-            handle: resume
+            handle: work_1_title
             field:
-              max_files: 1
-              container: assets
-              type: assets
-              display: Dossier
+              type: text
+              display: 'Werk 1 - Titel'
+              localizable: false
+              width: 50
+          -
+            handle: work_1_year
+            field:
+              type: text
+              display: 'Werk 1 - Jahr'
+              localizable: false
+              width: 50
+          -
+            handle: work_1_dimensions
+            field:
+              type: text
+              display: 'Werk 1 - Grösse'
+              localizable: false
+              width: 50
+          -
+            handle: work_1_duration
+            field:
+              type: text
+              display: 'Werk 1 - Dauer'
+              localizable: false
+              width: 50
+          -
+            handle: work_1_technology
+            field:
+              type: textarea
+              display: 'Werk 1 - Technik'
               localizable: false
           -
-            handle: works
+            handle: work_1_remarks
             field:
-              mode: stacked
-              type: grid
-              display: Werke
+              type: textarea
+              display: 'Werk 1 - Kommentar'
               localizable: false
-              fields:
-                -
-                  handle: work_title
-                  field:
-                    type: text
-                    display: Titel
-                    localizable: false
-                -
-                  handle: work_year
-                  field:
-                    type: text
-                    display: Jahr
-                    localizable: false
-                -
-                  handle: work_dimensions
-                  field:
-                    type: text
-                    display: Grösse
-                    localizable: false
-                -
-                  handle: work_duration
-                  field:
-                    type: text
-                    display: Dauer
-                    localizable: false
-                -
-                  handle: technology
-                  field:
-                    type: textarea
-                    display: Technik
-                    localizable: false
-                -
-                  handle: remarks
-                  field:
-                    type: textarea
-                    display: Kommentar
-                    localizable: false
+          -
+            handle: work_2_title
+            field:
+              type: text
+              display: 'Werk 2 - Titel'
+              localizable: false
+              width: 50
+          -
+            handle: work_2_year
+            field:
+              type: text
+              display: 'Werk 2 - Jahr'
+              localizable: false
+              width: 50
+          -
+            handle: work_2_dimensions
+            field:
+              type: text
+              display: 'Werk 2 - Grösse'
+              localizable: false
+              width: 50
+          -
+            handle: work_2_duration
+            field:
+              type: text
+              display: 'Werk 2 - Dauer'
+              localizable: false
+              width: 50
+          -
+            handle: work_2_technology
+            field:
+              type: textarea
+              display: 'Werk 2 - Technik'
+              localizable: false
+          -
+            handle: work_2_remarks
+            field:
+              type: textarea
+              display: 'Werk 2 - Kommentar'
+              localizable: false
+          -
+            handle: work_3_title
+            field:
+              type: text
+              display: 'Werk 3 - Titel'
+              localizable: false
+              width: 50
+          -
+            handle: work_3_year
+            field:
+              type: text
+              display: 'Werk 3 - Jahr'
+              localizable: false
+              width: 50
+          -
+            handle: work_3_dimensions
+            field:
+              type: text
+              display: 'Werk 3 - Grösse'
+              localizable: false
+              width: 50
+          -
+            handle: work_3_duration
+            field:
+              type: text
+              display: 'Werk 3 - Dauer'
+              localizable: false
+              width: 50
+          -
+            handle: work_3_technology
+            field:
+              type: textarea
+              display: 'Werk 3 - Technik'
+              localizable: false
+          -
+            handle: work_3_remarks
+            field:
+              type: textarea
+              display: 'Werk 3 - Kommentar'
+              localizable: false
+          -
+            handle: document_url
+            field:
+              type: text
+              display: Unterlagen
+              localizable: false
+              visibility: read_only
   sidebar:
     display: Sidebar
     sections:
@@ -164,10 +214,21 @@ tabs:
               localizable: false
               validate:
                 - required
+              visibility: computed
           -
             handle: slug
             field:
               type: slug
               localizable: true
               validate: 'max:200'
+              visibility: computed
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - applications
+              max_items: 1
+              listable: false
+              localizable: true
 title: Bewerbungen

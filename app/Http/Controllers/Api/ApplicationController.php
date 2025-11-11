@@ -27,43 +27,55 @@ class ApplicationController extends Controller
         // Generate filename prefix from user data
         $filenamePrefix = $this->generateFilenamePrefix($request);
 
-        // Upload files and get file path
-        $proof_dob = $this->uploadFiles($request, 'age_verification_files', $filenamePrefix.'alters_verifikation');
+        // Upload all files for ZIP archive
+        $age_verification_files = $this->uploadMultipleFiles($request, 'age_verification_files', $filenamePrefix.'alters_verifikation');
+        $resume_files = $this->uploadMultipleFiles($request, 'resume_files', $filenamePrefix.'dossier');
+        $geographic_relation_files = $this->uploadMultipleFiles($request, 'geographic_relation_proofs', $filenamePrefix.'bernbezug');
 
-        // Upload resume/dossier
-        $resume = $this->uploadFiles($request, 'resume_files', $filenamePrefix.'dossier');
+        // Map works array to individual fields (max 3 works)
+        $works = $request->input('works', []);
+        $work_1_data = [];
+        $work_2_data = [];
+        $work_3_data = [];
 
-        // Upload geographic relation proofs and build grid structure
-        $geographic_relation_proof = $this->uploadMultipleFiles($request, 'geographic_relation_proofs', $filenamePrefix.'bernbezug');
-
-        // Build geographic_relation grid field
-        $geographic_relation_data = [];
-        if ($request->input('geographic_relation_text') || ! empty($geographic_relation_proof)) {
-            $geographic_relation_data[] = [
-                'geographic_relation_text' => $request->input('geographic_relation_text') ?? null,
-                'geographic_relation_proof' => $geographic_relation_proof,
+        if (isset($works[0])) {
+            $work_1_data = [
+                'work_1_title' => $works[0]['title'] ?? null,
+                'work_1_year' => $works[0]['year'] ?? null,
+                'work_1_dimensions' => $works[0]['dimensions'] ?? null,
+                'work_1_duration' => $works[0]['duration'] ?? null,
+                'work_1_technology' => $works[0]['technology'] ?? null,
+                'work_1_remarks' => $works[0]['remarks'] ?? null,
             ];
         }
 
-        // Build works grid field
-        $works_data = [];
-        $works = $request->input('works', []);
-        foreach ($works as $work) {
-            $works_data[] = [
-                'work_title' => $work['title'] ?? null,
-                'work_year' => $work['year'] ?? null,
-                'work_dimensions' => $work['dimensions'] ?? null,
-                'work_duration' => $work['duration'] ?? null,
-                'technology' => $work['technology'] ?? null,
-                'remarks' => $work['remarks'] ?? null,
+        if (isset($works[1])) {
+            $work_2_data = [
+                'work_2_title' => $works[1]['title'] ?? null,
+                'work_2_year' => $works[1]['year'] ?? null,
+                'work_2_dimensions' => $works[1]['dimensions'] ?? null,
+                'work_2_duration' => $works[1]['duration'] ?? null,
+                'work_2_technology' => $works[1]['technology'] ?? null,
+                'work_2_remarks' => $works[1]['remarks'] ?? null,
+            ];
+        }
+
+        if (isset($works[2])) {
+            $work_3_data = [
+                'work_3_title' => $works[2]['title'] ?? null,
+                'work_3_year' => $works[2]['year'] ?? null,
+                'work_3_dimensions' => $works[2]['dimensions'] ?? null,
+                'work_3_duration' => $works[2]['duration'] ?? null,
+                'work_3_technology' => $works[2]['technology'] ?? null,
+                'work_3_remarks' => $works[2]['remarks'] ?? null,
             ];
         }
 
         // Create ZIP file with all uploaded files
-        $zipPath = $this->createApplicationZip($request, $proof_dob, $resume, $geographic_relation_proof);
+        $zipPath = $this->createApplicationZip($request, $age_verification_files, $resume_files, $geographic_relation_files);
 
-        // Build data
-        $data = [
+        // Build data (without creating entry yet - we need the ID for the URL)
+        $data = array_merge([
             'title' => $title,
             'name' => $request->input('name'),
             'firstname' => $request->input('firstname'),
@@ -75,13 +87,10 @@ class ApplicationController extends Controller
             'phone' => $request->input('phone'),
             'website' => $website,
             'email' => $request->input('email'),
-            'geographic_relation' => $geographic_relation_data,
-            'proof_dob' => $proof_dob,
-            'resume' => $resume,
-            'works' => $works_data,
+            'geographic_relation_text' => $request->input('geographic_relation_text') ?? null,
             'remarks' => $request->input('remarks') ?? null,
             'zip_file' => $zipPath,
-        ];
+        ], $work_1_data, $work_2_data, $work_3_data);
 
         $entry = Entry::make()
             ->collection('applications')
@@ -90,8 +99,14 @@ class ApplicationController extends Controller
 
         $entry->save();
 
-        // Add entry ID to data for notifications
+        // Generate ZIP download URL and update entry
+        $documentUrl = route('applications.download-zip', ['id' => $entry->id()]);
+        $entry->set('document_url', $documentUrl);
+        $entry->save();
+
+        // Add entry ID and document_url to data for notifications
         $data['entry_id'] = $entry->id();
+        $data['document_url'] = $documentUrl;
 
         // Clear Statamic Stache to ensure the new entry is immediately available
         \Statamic\Facades\Stache::clear();
@@ -143,8 +158,8 @@ class ApplicationController extends Controller
                 $file->getClientOriginalExtension()
             );
 
-            // Store in bewerbungen/{folderName} relative to assets disk
-            $path = $file->storeAs('bewerbungen/'.$folderName, $filename, 'assets');
+            // Store in applications/{folderName} in private storage (storage/app/applications)
+            $path = $file->storeAs('applications/'.$folderName, $filename);
             $uploadedFiles[] = $path;
         }
 
@@ -182,13 +197,13 @@ class ApplicationController extends Controller
      *
      * @return string|null The path to the created ZIP file
      */
-    protected function createApplicationZip(StoreApplicationRequest $request, ?string $proof_dob, ?string $resume, array $geographic_relation_proof): ?string
+    protected function createApplicationZip(StoreApplicationRequest $request, array $age_verification_files, array $resume_files, array $geographic_relation_files): ?string
     {
         // Collect all file paths
         $filePaths = array_filter([
-            $proof_dob,
-            $resume,
-            ...$geographic_relation_proof,
+            ...$age_verification_files,
+            ...$resume_files,
+            ...$geographic_relation_files,
         ]);
 
         // If no files, return null
@@ -206,15 +221,15 @@ class ApplicationController extends Controller
             date('Y-m-d_H-i-s')
         );
 
-        $zipPath = 'bewerbungen/'.$folderName.'/'.$zipFilename;
-        $zipFullPath = Storage::disk('assets')->path($zipPath);
+        $zipPath = 'applications/'.$folderName.'/'.$zipFilename;
+        $zipFullPath = Storage::path($zipPath);
 
         // Create ZIP archive
         $zip = new ZipArchive;
 
         if ($zip->open($zipFullPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
             foreach ($filePaths as $filePath) {
-                $fullPath = Storage::disk('assets')->path($filePath);
+                $fullPath = Storage::path($filePath);
                 if (file_exists($fullPath)) {
                     $zip->addFile($fullPath, basename($filePath));
                 }
