@@ -228,3 +228,24 @@ p:has(.pill) {
 .card ol p {
   @apply inline m-0 p-0;
 }
+
+/* Privacy */
+.privacy ul {
+  @apply mb-14 md:mb-16 list-disc ml-16 md:ml-20;
+}
+
+.privacy ul:last-child {
+  @apply mb-0;
+}
+
+.privacy ul li p {
+  @apply !mb-0;
+}
+
+.privacy ul li {
+  @apply pl-4 md:pl-6;
+}
+
+.privacy ul li::marker {
+  font-size: .7em;
+}
