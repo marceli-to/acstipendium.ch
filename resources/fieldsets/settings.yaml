@@ -1,6 +1,13 @@
 title: Settings
 fields:
   -
+    handle: has_footer
+    field:
+      default: true
+      type: toggle
+      display: 'Footer anzeigen?'
+      localizable: false
+  -
     handle: template
     field:
       type: template
@@ -11,11 +18,4 @@ fields:
     field:
       type: template
       display: Layout
-      localizable: false
-  -
-    handle: has_footer
-    field:
-      default: true
-      type: toggle
-      display: 'Footer anzeigen?'
       localizable: false
