@@ -23,7 +23,11 @@
   <source srcset="{{ glide:image preset="{{ preset ? '{{ preset }}-md-webp' : 'md-webp' }}" }}" />
   <img
     src="{{ glide:image preset="{{ preset ? '{{ preset }}-md' : 'md' }}" }}"
-    alt="{{ alt }}"
+    {{ if site:short_locale == 'de' }}
+      alt="{{ alt_de }}"
+    {{ else }}
+      alt="{{ alt_fr }}"
+    {{ /if }}
     height="{{ height }}"
     width="{{ width }}"
     class="block {{ if width > height }} w-full h-auto {{ else }} h-full w-auto {{ /if }} object-cover"

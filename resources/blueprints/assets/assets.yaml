@@ -13,3 +13,15 @@ tabs:
               type: text
               display: Alt-Text
               localizable: false
+          -
+            handle: alt_de
+            field:
+              type: text
+              display: 'Alt-Text (DE)'
+              localizable: false
+          -
+            handle: alt_fr
+            field:
+              type: text
+              display: 'Alt-Text (FR)'
+              localizable: false
