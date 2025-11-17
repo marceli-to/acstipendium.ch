@@ -26,7 +26,17 @@
   {{ if logos }}
     <div class="flex flex-wrap justify-center gap-y-8 mt-16">
       {{ logos }}
-        <img src="{{ logo }}" class="w-auto h-auto max-w-[50%] sm:max-w-[33%]" />
+        {{ if link }}
+          <a 
+            href="{{ link }}" 
+            class="block w-auto h-auto max-w-[50%] sm:max-w-[33%]"¨
+            rel="noopener noreferrer"
+            target="_blank">
+             <img src="{{ logo }}" class="w-full h-auto" />
+          </a>
+        {{ else }}
+          <img src="{{ logo }}" class="w-auto h-auto max-w-[50%] sm:max-w-[33%]" />
+        {{ /if }}
       {{ /logos }}
     </div>
   {{ /if }}
