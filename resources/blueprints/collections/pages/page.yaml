@@ -75,16 +75,6 @@ tabs:
                       fields:
                         -
                           import: application_information
-                    exhibitions:
-                      display: Ausstellungen
-                      instructions: 'Ausstellungen hinzufügen'
-                      icon: file-content-list
-                      fields: {  }
-                    fellows:
-                      display: 'Stipendiant:innen'
-                      instructions: 'Stipendiant:innen hinzufügen'
-                      icon: file-content-list
-                      fields: {  }
                     sponsors:
                       display: "Förder:innen \Lund Sponsor:innen"
                       instructions: "Förder:innen \Lund Sponsor:innen hinzufügen"
@@ -96,6 +86,16 @@ tabs:
                   display: Spezialelemente
                   icon: addon-boxes-stack
                   sets:
+                    exhibitions:
+                      display: Ausstellungen
+                      instructions: 'Ausstellungen hinzufügen'
+                      icon: file-content-list
+                      fields: {  }
+                    fellows:
+                      display: 'Stipendiant:innen'
+                      instructions: 'Stipendiant:innen hinzufügen'
+                      icon: file-content-list
+                      fields: {  }
                     privacy:
                       display: Datenschutz
                       instructions: 'Datenschutz hinzufügen'
