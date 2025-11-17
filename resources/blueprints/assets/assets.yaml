@@ -13,6 +13,7 @@ tabs:
               type: text
               display: Alt-Text
               localizable: false
+              visibility: hidden
           -
             handle: alt_de
             field:
