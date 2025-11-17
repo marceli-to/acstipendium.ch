@@ -38,18 +38,26 @@ return [
     */
 
     'widgets' => [
-        // [
-        //   'type' => 'collection',
-        //   'collection' => 'publications',
-        //   'limit' => 5,
-        //   'title' => 'Publikationen',
-        //   'width' => 100,
-        //   'sort' => 'order',
-        // ],
+        [
+            'type' => 'collection',
+            'collection' => 'fellows',
+            'limit' => 10,
+            'title' => 'Stipendiant:innen',
+            'width' => 50,
+            'sort' => 'order',
+        ],
+        [
+            'type' => 'collection',
+            'collection' => 'exhibitions',
+            'limit' => 10,
+            'title' => 'Ausstellungen',
+            'width' => 50,
+            'sort' => 'order',
+        ],
         [
             'type' => 'collection',
             'collection' => 'pages',
-            'limit' => 15,
+            'limit' => 10,
             'title' => 'Seiten',
             'width' => 100,
             'sort' => 'order',
