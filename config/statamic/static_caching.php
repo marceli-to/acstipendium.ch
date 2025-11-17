@@ -76,28 +76,28 @@ return [
     */
 
     'invalidation' => [
-        'class' => null,
-        'rules' => 'all', 
 
-        // 'rules' => [
-        //     'collections' => [
-        //       'pages' => [
-        //         'urls' => [
-        //           '/*',
-        //         ]
-        //       ],
-        //       'exhibitions' => [
-        //         'urls' => [
-        //           '/*',
-        //         ]
-        //       ],
-        //       'fellows' => [
-        //         'urls' => [
-        //           '/',
-        //         ]
-        //       ],
-        //     ],
-        // ],
+        'class' => null,
+
+        'rules' => [
+            'collections' => [
+              'pages' => [
+                'urls' => [
+                  '/*',
+                ]
+              ],
+              'exhibitions' => [
+                'urls' => [
+                  '/*',
+                ]
+              ],
+              'fellows' => [
+                'urls' => [
+                  '/',
+                ]
+              ],
+            ],
+        ],
 
     ],
 
