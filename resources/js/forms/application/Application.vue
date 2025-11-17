@@ -163,6 +163,7 @@
             :label="index === 0 ? trans('Belege') : ''"
             :required="index === 0"
             :error="errors[`geographic_relation_proofs.${index}`] || ''"
+            accept="image/png,image/jpeg,image/jpg,application/pdf"
             :deletable="index > 0"
             @update:error="errors[`geographic_relation_proofs.${index}`] = $event"
             @delete="removeGeographicRelationProofField(index)"
@@ -204,6 +205,7 @@
             name="age_verification"
             :label="trans('ID / Ausweis')"
             :error="errors['age_verification_files.0'] || ''"
+            accept="image/png,image/jpeg,image/jpg,application/pdf"
             @update:error="errors['age_verification_files.0'] = $event"
             required
           />
@@ -333,6 +335,7 @@
           name="resume"
           :label="trans('Dossier')"
           :error="errors['resume_files.0'] || ''"
+          accept="application/pdf"
           @update:error="errors['resume_files.0'] = $event"
           required
         />

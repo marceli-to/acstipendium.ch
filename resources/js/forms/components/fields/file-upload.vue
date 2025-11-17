@@ -23,7 +23,7 @@
         type="file"
         :name="name"
         :multiple="allowMultiple"
-        :accept="acceptedFileTypes"
+        :accept="accept"
         @change="handleFileChange"
         class="hidden"
       />
@@ -44,7 +44,7 @@
 
     <div
       v-if="error"
-      class="text-danger text-sm md:text-md ml-8 md:ml-12 mt-2">
+      class="text-danger text-sm md:text-md ml-8 md:ml-12 mt-2 lg:mt-4">
       {{ error }}
     </div>
   </div>
@@ -85,12 +85,14 @@ const props = defineProps({
   deletable: {
     type: Boolean,
     default: false
+  },
+  accept: {
+    type: String,
+    default: 'image/png,image/jpeg,image/jpg,application/pdf'
   }
 });
 
 const emit = defineEmits(['update:modelValue', 'update:error', 'delete']);
-
-const acceptedFileTypes = 'image/png,image/jpeg,image/jpg,application/pdf,application/zip';
 
 const fileLabel = computed(() => {
   const files = props.modelValue || [];
