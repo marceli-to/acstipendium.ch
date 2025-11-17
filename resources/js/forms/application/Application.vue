@@ -686,7 +686,11 @@ function handleError(error) {
   if (error.response && error.response.data && typeof error.response.data.errors === 'object') {
     Object.keys(error.response.data.errors).forEach(key => {
       const errorValue = error.response.data.errors[key];
-      errors.value[key] = Array.isArray(errorValue) ? errorValue[0] : errorValue;
+      const errorMessage = Array.isArray(errorValue) ? errorValue[0] : errorValue;
+
+      // Map array-indexed errors (e.g., "resume_files.0") to base field name (e.g., "resume_files")
+      const baseKey = key.replace(/\.\d+$/, '');
+      errors.value[baseKey] = errorMessage;
     });
   }
   scrollToForm();
