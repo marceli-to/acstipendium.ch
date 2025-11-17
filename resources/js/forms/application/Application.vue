@@ -448,34 +448,34 @@ const geographicRelationProofFields = ref([0]);
 // Track works
 const works = ref([
   {
-    title: 'Urbane Reflexionen',
-    year: '2024',
-    dimensions: '120 x 80 x 5 cm',
+    title: '',
+    year: '',
+    dimensions: '',
     duration: '',
-    technology: 'Acryl auf Leinwand, Mixed Media mit recycelten Materialien aus der Stadt Bern',
-    remarks: 'Diese Arbeit entstand im Rahmen meiner Auseinandersetzung mit urbanen Lebensräumen und deren soziale Dynamiken.'
+    technology: '',
+    remarks: ''
   }
 ]);
 
 const form = ref({
-  name: 'Müller',
-  firstname: 'Anna',
-  name_artist_group: 'Kunstkollektiv Bern',
-  dob: '15.03.1990',
-  street: 'Bundesplatz 12',
-  zip: '3011',
-  location: 'Bern',
-  phone: '+41 31 123 45 67',
-  website: 'www.anna-mueller-art.ch',
-  email: 'anna.mueller@example.com',
-  geographic_relation_text: 'Ich bin in Bern geboren und aufgewachsen. Seit 2015 betreibe ich mein Atelier im Mattequartier und bin aktives Mitglied der Berner Kunstszene. Meine Werke wurden bereits mehrfach im Kunstmuseum Bern ausgestellt.',
+  name: '',
+  firstname: '',
+  name_artist_group: '',
+  dob: '',
+  street: '',
+  zip: '',
+  location: '',
+  phone: '',
+  website: '',
+  email: '',
+  geographic_relation_text: '',
   geographic_relation_proofs: [[]],
   age_verification_files: [],
   resume_files: [],
-  privacy_truthful: true,
-  privacy_original_work: true,
-  privacy_ai: true,
-  privacy_data: true
+  privacy_truthful: false,
+  privacy_original_work: false,
+  privacy_ai: false,
+  privacy_data: false
 });
 
 const errors = ref({
