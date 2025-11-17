@@ -165,6 +165,13 @@
             :error="index === 0 ? errors.geographic_relation_proofs : ''"
             @update:error="errors.geographic_relation_proofs = $event"
           />
+          <div v-if="index > 0" class="flex justify-end mt-4">
+            <form-button
+              type="button"
+              @click="removeGeographicRelationProofField(index)"
+              :label="trans('löschen')"
+              class="pill pill-sm pill-solid-primary md:!h-24 !text-sm md:!text-md md:!px-12" />
+          </div>
         </form-group>
         <form-button
           type="button"
@@ -495,6 +502,13 @@ function addGeographicRelationProofField() {
   const nextIndex = geographicRelationProofFields.value.length;
   geographicRelationProofFields.value.push(nextIndex);
   form.value.geographic_relation_proofs.push([]);
+}
+
+function removeGeographicRelationProofField(index) {
+  if (index > 0) {
+    geographicRelationProofFields.value.splice(index, 1);
+    form.value.geographic_relation_proofs.splice(index, 1);
+  }
 }
 
 function addWork() {
