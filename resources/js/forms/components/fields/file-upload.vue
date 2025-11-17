@@ -27,10 +27,20 @@
         @change="handleFileChange"
         class="hidden"
       />
-      <span class="text-sm md:text-md truncate"
+      <span class="text-sm md:text-md truncate flex-1"
         :class="error ? 'text-danger/50' : 'text-primary/50'">
         {{ error || fileLabel }}
       </span>
+      <button
+        v-if="deletable"
+        type="button"
+        @click="handleDelete"
+        :class="[
+          'pill pill-sm md:!h-24 whitespace-nowrap !mb-0 !text-sm md:!text-md md:!px-12 !leading-none',
+          error ? 'bg-danger text-white border-danger' : 'pill-solid-primary'
+        ]">
+        {{ trans('löschen') }}
+      </button>
     </div>
   </div>
 </template>
@@ -66,10 +76,14 @@ const props = defineProps({
   allowMultiple: {
     type: Boolean,
     default: false
+  },
+  deletable: {
+    type: Boolean,
+    default: false
   }
 });
 
-const emit = defineEmits(['update:modelValue', 'update:error']);
+const emit = defineEmits(['update:modelValue', 'update:error', 'delete']);
 
 const acceptedFileTypes = 'image/png,image/jpeg,image/jpg,application/pdf,application/zip';
 
@@ -91,5 +105,9 @@ const handleFileChange = (event) => {
   if (files.length > 0) {
     emit('update:error', '');
   }
+};
+
+const handleDelete = () => {
+  emit('delete');
 };
 </script>
