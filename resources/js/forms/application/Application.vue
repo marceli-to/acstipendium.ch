@@ -162,9 +162,9 @@
             :name="`geographic_relation_proof_${index}`"
             :label="index === 0 ? trans('Belege') : ''"
             :required="index === 0"
-            :error="index === 0 ? errors.geographic_relation_proofs : ''"
+            :error="errors[`geographic_relation_proofs.${index}`] || ''"
             :deletable="index > 0"
-            @update:error="errors.geographic_relation_proofs = $event"
+            @update:error="errors[`geographic_relation_proofs.${index}`] = $event"
             @delete="removeGeographicRelationProofField(index)"
           />
         </form-group>
@@ -203,8 +203,8 @@
             v-model="form.age_verification_files"
             name="age_verification"
             :label="trans('ID / Ausweis')"
-            :error="errors.age_verification_files"
-            @update:error="errors.age_verification_files = $event"
+            :error="errors['age_verification_files.0'] || ''"
+            @update:error="errors['age_verification_files.0'] = $event"
             required
           />
         </form-group>
@@ -332,8 +332,8 @@
           v-model="form.resume_files"
           name="resume"
           :label="trans('Dossier')"
-          :error="errors.resume_files"
-          @update:error="errors.resume_files = $event"
+          :error="errors['resume_files.0'] || ''"
+          @update:error="errors['resume_files.0'] = $event"
           required
         />
       </form-group>
@@ -688,9 +688,8 @@ function handleError(error) {
       const errorValue = error.response.data.errors[key];
       const errorMessage = Array.isArray(errorValue) ? errorValue[0] : errorValue;
 
-      // Map array-indexed errors (e.g., "resume_files.0") to base field name (e.g., "resume_files")
-      const baseKey = key.replace(/\.\d+$/, '');
-      errors.value[baseKey] = errorMessage;
+      // Keep the full key including array indices for proper error mapping
+      errors.value[key] = errorMessage;
     });
   }
   scrollToForm();
