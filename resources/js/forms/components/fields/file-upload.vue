@@ -27,9 +27,8 @@
         @change="handleFileChange"
         class="hidden"
       />
-      <span class="text-sm md:text-md truncate flex-1"
-        :class="error ? 'text-danger/50' : 'text-primary/50'">
-        {{ error || fileLabel }}
+      <span class="text-sm md:text-md truncate flex-1 text-primary/50">
+        {{ fileLabel }}
       </span>
       <button
         v-if="deletable"
@@ -41,6 +40,12 @@
         ]">
         {{ trans('löschen') }}
       </button>
+    </div>
+
+    <div
+      v-if="error"
+      class="text-danger text-sm md:text-md ml-8 md:ml-12 mt-2">
+      {{ error }}
     </div>
   </div>
 </template>
