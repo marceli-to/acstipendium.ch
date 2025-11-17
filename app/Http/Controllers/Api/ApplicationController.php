@@ -71,8 +71,8 @@ class ApplicationController extends Controller
             ];
         }
 
-        // Create ZIP file with all uploaded files
-        $zipPath = $this->createApplicationZip($request, $age_verification_files, $resume_files, $geographic_relation_files);
+        // Create ZIP file with age verification and geographic relation files only (exclude resume)
+        $zipPath = $this->createApplicationZip($request, $age_verification_files, $geographic_relation_files);
 
         // Build data (without creating entry yet - we need the ID for the URL)
         $data = array_merge([
@@ -90,6 +90,7 @@ class ApplicationController extends Controller
             'geographic_relation_text' => $request->input('geographic_relation_text') ?? null,
             'remarks' => $request->input('remarks') ?? null,
             'zip_file' => $zipPath,
+            'resume_file' => ! empty($resume_files) ? $resume_files[0] : null,
         ], $work_1_data, $work_2_data, $work_3_data);
 
         $entry = Entry::make()
@@ -99,14 +100,18 @@ class ApplicationController extends Controller
 
         $entry->save();
 
-        // Generate ZIP download URL and update entry
-        $documentUrl = route('applications.download-zip', ['id' => $entry->id()]);
+        // Generate download URLs and update entry
+        $documentUrl = route('applications.download-zip-protected', ['id' => $entry->id()]);
+        $resumeUrl = ! empty($resume_files) ? route('applications.download-resume-public', ['id' => $entry->id()]) : null;
+
         $entry->set('document_url', $documentUrl);
+        $entry->set('resume_url', $resumeUrl);
         $entry->save();
 
-        // Add entry ID and document_url to data for notifications
+        // Add entry ID, document_url, and resume_url to data for notifications
         $data['entry_id'] = $entry->id();
         $data['document_url'] = $documentUrl;
+        $data['resume_url'] = $resumeUrl;
 
         // Clear Statamic Stache to ensure the new entry is immediately available
         \Statamic\Facades\Stache::clear();
@@ -224,16 +229,15 @@ class ApplicationController extends Controller
     }
 
     /**
-     * Create a ZIP file containing all uploaded application files
+     * Create a ZIP file containing age verification and geographic relation files (excludes resume)
      *
      * @return string|null The path to the created ZIP file
      */
-    protected function createApplicationZip(StoreApplicationRequest $request, array $age_verification_files, array $resume_files, array $geographic_relation_files): ?string
+    protected function createApplicationZip(StoreApplicationRequest $request, array $age_verification_files, array $geographic_relation_files): ?string
     {
-        // Collect all file paths
+        // Collect all file paths (excluding resume files)
         $filePaths = array_filter([
             ...$age_verification_files,
-            ...$resume_files,
             ...$geographic_relation_files,
         ]);
 

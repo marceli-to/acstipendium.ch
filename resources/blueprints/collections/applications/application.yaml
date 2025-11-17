@@ -195,10 +195,17 @@ tabs:
               display: 'Werk 3 - Kommentar'
               localizable: false
           -
+            handle: resume_url
+            field:
+              type: text
+              display: 'Download Dossier'
+              localizable: false
+              visibility: read_only
+          -
             handle: document_url
             field:
               type: text
-              display: Unterlagen
+              display: 'Download Unterlagen'
               localizable: false
               visibility: read_only
   sidebar:

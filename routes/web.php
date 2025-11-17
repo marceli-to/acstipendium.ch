@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Authenticated route for downloading application ZIP files
+// Public route for downloading application resume/dossier files
+Route::get('/applications/{id}/download-resume', [DownloadController::class, 'downloadPublicResume'])
+    ->name('applications.download-resume-public');
+
+// Protected route for downloading application ZIP files (authenticated users only)
 Route::middleware('statamic.cp.authenticated')->group(function () {
-    Route::get('/applications/{id}/download-zip', [DownloadController::class, 'downloadZip'])
-        ->name('applications.download-zip');
+    Route::get('/applications/{id}/download-zip', [DownloadController::class, 'downloadProtectedZip'])
+        ->name('applications.download-zip-protected');
 });

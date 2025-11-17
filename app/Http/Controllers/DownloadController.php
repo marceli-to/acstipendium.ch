@@ -13,7 +13,7 @@ class DownloadController extends Controller
      * @param  string  $id  The application entry ID
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse|\Illuminate\Http\JsonResponse
      */
-    public function downloadZip(string $id)
+    public function downloadProtectedZip(string $id)
     {
         // Find the application entry
         $entry = Entry::find($id);
@@ -37,6 +37,43 @@ class DownloadController extends Controller
         // Get a friendly download filename
         $downloadName = sprintf(
             '%s-%s-bewerbung.zip',
+            $entry->get('firstname') ?? 'applicant',
+            $entry->get('name') ?? 'unknown'
+        );
+
+        return response()->download($fullPath, $downloadName);
+    }
+
+    /**
+     * Download resume PDF file (publicly accessible)
+     *
+     * @param  string  $id  The application entry ID
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse|\Illuminate\Http\JsonResponse
+     */
+    public function downloadPublicResume(string $id)
+    {
+        // Find the application entry
+        $entry = Entry::find($id);
+
+        if (! $entry || $entry->collection()->handle() !== 'applications') {
+            abort(404, 'Application not found');
+        }
+
+        $resumePath = $entry->get('resume_file');
+
+        if (! $resumePath) {
+            abort(404, 'Resume file not found for this application');
+        }
+
+        $fullPath = Storage::path($resumePath);
+
+        if (! file_exists($fullPath)) {
+            abort(404, 'Resume file does not exist on server');
+        }
+
+        // Get a friendly download filename
+        $downloadName = sprintf(
+            '%s-%s-dossier.pdf',
             $entry->get('firstname') ?? 'applicant',
             $entry->get('name') ?? 'unknown'
         );
