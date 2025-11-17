@@ -146,7 +146,7 @@
             v-model="form.geographic_relation_text"
             :error="errors.geographic_relation_text"
             @update:error="errors.geographic_relation_text = $event"
-            :placeholder="errors.geographic_relation_text ? errors.geographic_relation_text : trans('Maxine')"
+            :placeholder="errors.geographic_relation_text ? errors.geographic_relation_text : trans('Dein Bernbezug')"
             :label="trans('Dein Bernbezug')"
             :aria-label="trans('Dein Bernbezug')"
             :maxlength="500"
@@ -162,10 +162,10 @@
             :name="`geographic_relation_proof_${index}`"
             :label="index === 0 ? trans('Belege') : ''"
             :required="index === 0"
-            :error="errors[`geographic_relation_proofs.${index}`] || ''"
+            :error="errors[`geographic_relation_proofs.${index}`] || (index === 0 ? errors['geographic_relation_proofs'] : '') || ''"
             accept="image/png,image/jpeg,image/jpg,application/pdf"
             :deletable="index > 0"
-            @update:error="errors[`geographic_relation_proofs.${index}`] = $event"
+            @update:error="errors[`geographic_relation_proofs.${index}`] = $event; if (index === 0) errors['geographic_relation_proofs'] = $event"
             @delete="removeGeographicRelationProofField(index)"
           />
         </form-group>
@@ -204,9 +204,9 @@
             v-model="form.age_verification_files"
             name="age_verification"
             :label="trans('ID / Ausweis')"
-            :error="errors['age_verification_files.0'] || ''"
+            :error="errors['age_verification_files.0'] || errors['age_verification_files'] || ''"
             accept="image/png,image/jpeg,image/jpg,application/pdf"
-            @update:error="errors['age_verification_files.0'] = $event"
+            @update:error="errors['age_verification_files.0'] = $event; errors['age_verification_files'] = $event"
             required
           />
         </form-group>
@@ -334,9 +334,9 @@
           v-model="form.resume_files"
           name="resume"
           :label="trans('Dossier')"
-          :error="errors['resume_files.0'] || ''"
+          :error="errors['resume_files.0'] || errors['resume_files'] || ''"
           accept="application/pdf"
-          @update:error="errors['resume_files.0'] = $event"
+          @update:error="errors['resume_files.0'] = $event; errors['resume_files'] = $event"
           required
         />
       </form-group>
