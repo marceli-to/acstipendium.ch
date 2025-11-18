@@ -26,7 +26,6 @@ class OwnerInformation extends Notification
     {
         return (new MailMessage)
             ->from(env('MAIL_FROM_ADDRESS'))
-            ->replyTo($this->data['email'])
             ->subject('Neue Stipendium-Bewerbung: '.$this->data['firstname'].' '.$this->data['name'])
             ->markdown('notifications.application.owner-information', ['data' => $this->data]);
     }
