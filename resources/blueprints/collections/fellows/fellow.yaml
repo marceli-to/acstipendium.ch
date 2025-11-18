@@ -160,7 +160,7 @@ tabs:
             field:
               type: text
               required: false
-              localizable: false
+              localizable: true
           -
             handle: slug
             field:
