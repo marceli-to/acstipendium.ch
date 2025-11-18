@@ -27,5 +27,9 @@
   "/datenschutz": "/fr/protection-des-donnees",
   "/archiv/ausstellungen": "/fr/archives/expositions",
   "/archiv/stipendianten": "/fr/archives/boursiers",
-  "/stipendium/anmeldung": "/fr/bourse/inscription"
+  "/stipendium/anmeldung": "/fr/bourse/inscription",
+
+  "Anmeldeformular": "",
+  "Instagram": "",
+  "Jetzt Gesuch einreichen": ""
 }
