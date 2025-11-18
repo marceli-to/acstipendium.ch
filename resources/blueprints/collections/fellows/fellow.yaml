@@ -161,7 +161,6 @@ tabs:
               type: text
               required: false
               localizable: false
-              visibility: hidden
           -
             handle: slug
             field:
