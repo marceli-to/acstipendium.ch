@@ -1,4 +1,6 @@
 // Accordion module for Alpine.js
+
+// Individual Item Component
 export const AccordionItem = (index) => ({
   get open() {
     return this.selected === index;
@@ -15,6 +17,9 @@ export const AccordionItem = (index) => ({
     this.$watch('selected', async () => {
       if (this.open) {
         await this.$nextTick(); // wait for DOM update
+
+        // Check if still open after wait to avoid race condition
+        if (!this.open) return;
 
         // Mark this accordion as open for resize handler
         this.$el.dataset.accordionOpen = 'true';
@@ -49,9 +54,48 @@ export const AccordionItem = (index) => ({
   }
 });
 
-window.AccordionItem = AccordionItem;
+// Group/Wrapper Component
+export const AccordionGroup = () => ({
+  selected: null,
 
-// Handle window resize - update all open accordion heights
+  init() {
+    // Handle hash-based opening scoped to this group
+    if (window.location.hash) {
+      this.checkHash();
+    }
+  },
+
+  checkHash() {
+    const hash = window.location.hash.substring(1);
+    if (!hash) return;
+
+    // Escape the hash to prevent selector errors
+    const safeHash = CSS.escape(hash);
+    
+    // Search only within this group
+    const targetElement = this.$el.querySelector(`[data-slug="${safeHash}"]`);
+
+    if (targetElement && targetElement.hasAttribute('x-data')) {
+      // Get the index from the Alpine component or infer it
+      // Since we are in the group, we need to find which child index this element corresponds to.
+      // However, AccordionItem(index) sets the index.
+      // We can find the index by getting all items and finding the index of the match.
+      const allItems = Array.from(this.$el.querySelectorAll('[x-data*="AccordionItem"]'));
+      const targetIndex = allItems.findIndex(item => item === targetElement);
+
+      if (targetIndex !== -1) {
+        this.selected = targetIndex;
+      }
+    }
+  }
+});
+
+// Register on window for Alpine
+window.AccordionItem = AccordionItem;
+window.AccordionGroup = AccordionGroup;
+
+// Handle window resize - update all open accordion heights globally
+// This is kept global for performance (one listener instead of N)
 let resizeTimeout;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimeout);
@@ -61,35 +105,13 @@ window.addEventListener('resize', () => {
 
     openAccordionItems.forEach((element) => {
       // Get the Alpine component and update height
+      const Alpine = window.Alpine;
+      if (!Alpine) return;
+
       const component = Alpine.$data(element);
       if (component && component.updateHeight) {
         component.updateHeight();
       }
     });
   }, 100);
-});
-
-// Handle hash-based accordion opening on page load
-document.addEventListener('alpine:initialized', () => {
-  if (window.location.hash) {
-    const hash = window.location.hash.substring(1);
-    const targetElement = document.querySelector(`[data-slug="${hash}"]`);
-
-    if (targetElement && targetElement.hasAttribute('x-data')) {
-      // Find the parent accordion wrapper
-      const wrapper = targetElement.closest('[x-data*="selected"]');
-
-      if (wrapper) {
-        // Get all accordion items within this wrapper
-        const allItems = Array.from(wrapper.querySelectorAll('[x-data*="AccordionItem"]'));
-        const targetIndex = allItems.findIndex(item => item === targetElement);
-
-        if (targetIndex !== -1) {
-          // Get the Alpine component and set selected
-          const alpineComponent = Alpine.$data(wrapper);
-          alpineComponent.selected = targetIndex;
-        }
-      }
-    }
-  }
 });

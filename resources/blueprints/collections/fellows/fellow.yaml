@@ -9,7 +9,7 @@ tabs:
             field:
               type: text
               display: Vorname
-              localizable: false
+              localizable: true
               validate:
                 - required
           -
@@ -17,7 +17,7 @@ tabs:
             field:
               type: text
               display: Name
-              localizable: false
+              localizable: true
               validate:
                 - required
           -
@@ -200,8 +200,7 @@ tabs:
             field:
               type: text
               required: false
-              localizable: false
-              visibility: hidden
+              localizable: true
           -
             handle: slug
             field:
