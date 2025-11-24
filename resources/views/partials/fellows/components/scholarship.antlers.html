@@ -4,7 +4,35 @@
     {{ "Förderbeitrag" | trans }}
   {{ /partial:headings/h2 }}
 
-  <div class="flex flex-wrap gap-4 justify-center">
+  {{ if scholarships }}
+    <div class="flex flex-col gap-4">
+      {{ scholarships }}
+        <div class="flex flex-wrap gap-4 justify-center">
+          {{ if link_exhibition }}
+            <a 
+              href="{{ site:short_locale == 'fr' ? '/fr/archives/expositions' : '/archiv/ausstellungen' }}#{{ link_exhibition:slug }}"
+              class="pill pill-sm pill-solid-primary hover:shadow-glow-sm-primary">
+              {{ (scholarship_type == 'main_scholarship' ? 'Hauptstipendium' : 'Förderstipendium') | trans }} {{ year }}
+            </a>
+          {{ else }}
+            {{ if scholarship_type }}
+              <div class="pill pill-sm pill-solid-primary">
+                {{ (scholarship_type == 'main_scholarship' ? 'Hauptstipendium' : 'Förderstipendium') | trans }} {{ year }}
+              </div>
+            {{ /if }}
+          {{ /if }}
+
+          {{ if amount }}
+            <div class="pill pill-sm pill-outline-primary pill-outline-primary-static">
+              {{ amount | format_number:0:".":"’" }} {{ "Fr." | trans }}
+            </div>
+          {{ /if }}
+        </div>
+      {{ /scholarships }}
+    </div>
+  {{ /if }}
+
+  <!-- <div class="flex flex-wrap gap-4 justify-center">
     {{ if exhibition }}
       <a 
         href="{{ site:short_locale == 'fr' ? '/fr/archives/expositions' : '/archiv/ausstellungen' }}#{{ exhibition:slug }}"
@@ -16,15 +44,16 @@
         <div class="pill pill-sm pill-solid-primary">
           {{ (scholarship_type == 'main_scholarship' ? 'Hauptstipendium' : 'Förderstipendium') | trans }} {{ year }}
         </div>
+        {{ scholarships }}
       {{ /if }}
     {{ /if }}
 
     {{ if amount }}
       <div class="pill pill-sm pill-outline-primary pill-outline-primary-static">
-         {{ amount | format_number:0:".":"’" }} {{ "Fr." | trans }}
+        {{ amount | format_number:0:".":"’" }} {{ "Fr." | trans }}
       </div>
     {{ /if }}
-  </div>
+  </div> -->
 
   {{ partial:headings/h2 class="text-center leading-none mb-12 mt-12" }}
     {{ "Jahrgang" | trans }}

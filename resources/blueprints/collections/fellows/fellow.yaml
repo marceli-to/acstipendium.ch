@@ -30,6 +30,48 @@ tabs:
               display: Portrait
               localizable: false
           -
+            handle: scholarships
+            field:
+              type: grid
+              display: Stipendien
+              localizable: false
+              fields:
+                -
+                  handle: scholarship_type
+                  field:
+                    options:
+                      -
+                        key: main_scholarship
+                        value: Hauptstipendium
+                      -
+                        key: promote_scholarship
+                        value: Förderstipendium
+                    default: main_scholarship
+                    type: select
+                    display: Stipendium
+                    localizable: false
+                -
+                  handle: year
+                  field:
+                    type: text
+                    display: Jahr
+                    localizable: false
+                -
+                  handle: amount
+                  field:
+                    type: text
+                    display: Betrag
+                    localizable: false
+                -
+                  handle: link_exhibition
+                  field:
+                    max_items: 1
+                    collections:
+                      - exhibitions
+                    type: entries
+                    display: Ausstellung
+                    localizable: false
+          -
             handle: scholarship_type
             field:
               options:
@@ -69,14 +111,12 @@ tabs:
               type: text
               display: Betrag
               localizable: false
-              width: 50
           -
             handle: year_group
             field:
               type: text
               display: Jahrgang
               localizable: false
-              width: 50
           -
             handle: images
             field:

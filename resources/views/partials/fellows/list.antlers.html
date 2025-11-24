@@ -81,20 +81,27 @@
               :class="open ? 'justify-center w-full' : 'w-[calc(100%_-_68px)] md:w-[calc(39%_-_3px)] xl:w-[calc(40%_-_3px)]'">
               {{ title }}
             </span>
-            <span
-              class="hidden md:flex items-center leading-none md:w-[calc(26%_-_3px)] mr-4 px-16"
-              x-show="!open">
-              {{ if scholarship_type == 'main_scholarship' }}
-                {{ "Hauptstipendium" | trans }}
-              {{ elseif scholarship_type == 'promote_scholarship' }}
-                {{ "Förderstipendium" | trans }}
+            {{ if scholarships }}
+            {{ scholarships }}
+              {{ if first }}
+                <span
+                  class="hidden md:flex items-center leading-none md:w-[calc(26%_-_3px)] mr-4 px-16"
+                  x-show="!open">
+                  {{ if scholarship_type == 'main_scholarship' }}
+                    {{ "Hauptstipendium" | trans }}
+                  {{ elseif scholarship_type == 'promote_scholarship' }}
+                    {{ "Förderstipendium" | trans }}
+                  {{ /if }}
+                </span>
+                <span
+                  class="hidden md:flex items-center leading-none md:w-[calc(24%_-_3px)] mr-4 px-16"
+                  x-show="!open">
+                  {{ amount | format_number:0:".":"'" }}
+                </span>
               {{ /if }}
-            </span>
-            <span
-              class="hidden md:flex items-center leading-none md:w-[calc(24%_-_3px)] mr-4 px-16"
-              x-show="!open">
-              {{ amount | format_number:0:".":"'" }}
-            </span>
+            {{ /scholarships }}
+            {{ /if }}
+  
             <span
               class="flex items-center justify-end leading-none w-[68px] md:w-[calc(11%_-_3px)] xl:w-[calc(10%_-_3px)] px-16"
               x-show="!open">

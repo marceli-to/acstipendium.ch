@@ -30,6 +30,6 @@
     {{ /if }}
     height="{{ height }}"
     width="{{ width }}"
-    class="block {{ if width > height }} w-full h-auto {{ else }} h-full w-auto {{ /if }} object-cover"
+    class="block {{ if width > height }} w-full h-full {{ else }} h-full w-auto {{ /if }} object-cover"
     loading="{{ eager ? 'eager' : 'lazy' }}">
 </picture>
