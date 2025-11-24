@@ -5,16 +5,18 @@ export function useTranslations() {
     return document.documentElement.lang || 'de';
   };
 
-  const trans = (key) => {
+  const trans = (key, replacements = {}) => {
     const locale = getLocale();
 
-    // If locale is German or translation doesn't exist, return the key (German text)
-    if (locale === 'de' || !translations[key]) {
-      return key;
-    }
+    // If locale is German or translation doesn't exist, use the key (German text)
+    let text = (locale === 'de' || !translations[key]) ? key : translations[key];
 
-    // Return the French translation
-    return translations[key];
+    // Replace placeholders like :year with actual values
+    Object.keys(replacements).forEach(placeholder => {
+      text = text.replace(new RegExp(`:${placeholder}`, 'g'), replacements[placeholder]);
+    });
+
+    return text;
   };
 
   return {

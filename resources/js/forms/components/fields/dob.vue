@@ -122,7 +122,7 @@ const validateAge = () => {
 
   // If (maxAge + 1)th birthday is on or before Dec 31st of eligibility year, they're too old
   if (maxAgeBirthday <= referenceDate) {
-    validationError.value = trans(`Das Höchstalter für die Teilnahme beträgt 40 Jahre (der 41. Geburtstag darf im Jahr der Jurierung ${props.eligibilityYear} noch nicht erreicht sein)`);
+    validationError.value = trans('Das Höchstalter für die Teilnahme beträgt 40 Jahre (der 41. Geburtstag darf im Jahr der Jurierung :year noch nicht erreicht sein).', { year: props.eligibilityYear });
     return;
   }
 

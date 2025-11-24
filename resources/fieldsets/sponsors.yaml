@@ -17,7 +17,7 @@ fields:
           field:
             max_files: 1
             container: assets
-            folder: sponsoren
+            folder: sponsor_innen
             type: assets
             display: Logo
             localizable: false
