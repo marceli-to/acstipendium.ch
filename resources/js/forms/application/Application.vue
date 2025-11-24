@@ -691,8 +691,8 @@ function handleError(error) {
       const errorValue = error.response.data.errors[key];
       const errorMessage = Array.isArray(errorValue) ? errorValue[0] : errorValue;
 
-      // Keep the full key including array indices for proper error mapping
-      errors.value[key] = errorMessage;
+      // Translate the error message and keep the full key including array indices for proper error mapping
+      errors.value[key] = trans(errorMessage);
     });
   }
   scrollToForm();
