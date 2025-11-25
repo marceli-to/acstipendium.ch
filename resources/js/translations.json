@@ -47,10 +47,10 @@
   "Datei-Format: PDF": "Format de fichier: PDF",
   "Abschluss": "Conclusion",
   "Mit dem Absenden dieser Anmeldung erkläre ich mich mit den Teilnahmebedingungen des AC-Stipendiums einverstanden. Der Upload kann einige Minuten dauern. Wenn der Upload geklappt hat, erhalten Sie im Anschluss ein Bestätigungs-E-Mail. Falls Sie dieses nicht bekommen, bitte nochmals versuchen.": "En soumettant ma candidature, je déclare accepter les conditions de participation à la bourse AC. Le téléversement peut prendre quelques minutes. Si le téléversement a réussi, vous recevrez un e-mail de confirmation. Si vous ne le recevez pas, veuillez réessayer.",
-  "Ich bestätige, dass meine Angaben wahrheitsgemäss und vollständig sind. Mir ist bewusst, dass falsche oder unvollständige Angaben zum Ausschluss führen können.": "Je certifie que les informations me concernant sont véridiques et complètes. Je suis conscient(e) que des informations fausses ou incomplètes peuvent entraîner mon exclusion du concours.",
-  "Ich bestätige, dass die eingereichten Arbeiten eigenständig und unabhängig entstanden sind, weder im Rahmen einer Ausbildung noch unter Anleitung Dritter.": "Je certifie que les travaux soumis ont été réalisés de manière autonome et indépendante, ni dans le cadre d'une formation ni sous la direction de tiers.",
-  "Ich bestätige, dass der Einsatz von Künstlicher Intelligenz (KI) oder ähnlichen Systemen in meinen Kunstwerken entsprechend gekennzeichnet ist.": "Je certifie que l'utilisation de l'intelligence artificielle (IA) ou de systèmes similaires dans mes œuvres d'art est dûment indiquée.",
-  "Mit meiner Bewerbung bestätige ich, die Teilnahmebedingungen und Datenschutzerklärung akzeptiert zu haben.": "Avec ma candidature, j'atteste avoir accepté les conditions de participation et la déclaration de protection des données.",
+  "Ich bestätige, dass meine Angaben wahrheitsgemäss und vollständig sind. Mir ist bewusst, dass falsche oder unvollständige Angaben zum Ausschluss führen können.": "J’atteste que les informations me concernant sont exactes et complètes. Je suis conscient·e que des informations fausses ou incomplètes peuvent entraîner mon exclusion du concours.",
+  "Ich bestätige, dass die eingereichten Arbeiten eigenständig und unabhängig entstanden sind, weder im Rahmen einer Ausbildung noch unter Anleitung Dritter.": "Je certifie que les œuvres soumises au concours ont été créées de manière autonome et indépendante, ni dans le cadre d’une formation ni sous la direction d’un tiers.",
+  "Ich bestätige, dass der Einsatz von Künstlicher Intelligenz (KI) oder ähnlichen Systemen in meinen Kunstwerken entsprechend gekennzeichnet ist.": "Je certifie que l’utilisation de l’intelligence artificielle (IA) ou de systèmes similaires dans mes œuvres est dûment signalée.",
+  "Mit meiner Bewerbung bestätige ich, die Teilnahmebedingungen und Datenschutzerklärung akzeptiert zu haben.": "En déposant ma candidature, j’atteste accepter les conditions de participation et la politique de confidentialité.",
 
   "Name ist erforderlich": "Le nom est requis",
   "Vorname ist erforderlich": "Le prénom est requis",
@@ -90,9 +90,5 @@
   "Dauer darf maximal 255 Zeichen enthalten": "La durée peut contenir au maximum 255 caractères",
   "Technik ist erforderlich": "La technique est requise",
   "Technik darf maximal 500 Zeichen enthalten": "La technique peut contenir au maximum 500 caractères",
-  "Kommentar darf maximal 500 Zeichen enthalten": "Le commentaire peut contenir au maximum 500 caractères",
-  "Sie müssen bestätigen, dass Ihre Angaben wahrheitsgemäss sind": "Vous devez confirmer que vos informations sont véridiques",
-  "Sie müssen bestätigen, dass die Arbeiten eigenständig entstanden sind": "Vous devez confirmer que les travaux ont été réalisés de manière indépendante",
-  "Sie müssen bestätigen, dass der Einsatz von KI gekennzeichnet ist": "Vous devez confirmer que l'utilisation de l'IA est indiquée",
-  "Sie müssen die Teilnahmebedingungen und Datenschutzerklärung akzeptieren": "Vous devez accepter les conditions de participation et la déclaration de protection des données"
+  "Kommentar darf maximal 500 Zeichen enthalten": "Le commentaire peut contenir au maximum 500 caractères"
 }
