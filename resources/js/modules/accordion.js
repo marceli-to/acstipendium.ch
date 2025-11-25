@@ -60,15 +60,17 @@ export const AccordionGroup = () => ({
 
   init() {
     // Handle hash-based opening scoped to this group
+    // Defer hash check until after Alpine has fully initialized all children
     if (window.location.hash) {
-      this.checkHash();
+      this.$nextTick(() => {
+        this.checkHash();
+      });
     }
   },
 
   checkHash() {
     const hash = window.location.hash.substring(1);
     if (!hash) return;
-
     // Escape the hash to prevent selector errors
     const safeHash = CSS.escape(hash);
     
