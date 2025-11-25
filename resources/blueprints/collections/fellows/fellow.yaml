@@ -72,46 +72,6 @@ tabs:
                     display: Ausstellung
                     localizable: false
           -
-            handle: scholarship_type
-            field:
-              options:
-                -
-                  key: main_scholarship
-                  value: Hauptstipendium
-                -
-                  key: promote_scholarship
-                  value: Förderstipendium
-              default: main_scholarship
-              type: select
-              display: Stipendium
-              localizable: false
-              width: 50
-          -
-            handle: year
-            field:
-              type: text
-              display: Jahr
-              localizable: false
-              width: 50
-          -
-            handle: exhibition
-            field:
-              max_items: 1
-              create: false
-              collections:
-                - exhibitions
-              type: entries
-              display: Ausstellung
-              instructions: 'Mit Ausstellung verknüpfen'
-              localizable: false
-              instructions_position: below
-          -
-            handle: amount
-            field:
-              type: text
-              display: Betrag
-              localizable: false
-          -
             handle: year_group
             field:
               type: text
