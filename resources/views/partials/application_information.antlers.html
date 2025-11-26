@@ -5,13 +5,13 @@
   bg-primary
   card
   card-rounded
-  {{ registration:is_active ? 'relative mt-172 md:mt-160 lg:!mt-0' : '' }}">
+  {{ registration:is_active ? 'relative {{ site:short_locale == 'fr' ? 'mt-210' : 'mt-172' }} md:mt-160 lg:!mt-0' : '' }}">
 
   {{ if registration:is_active }}
     {{ partial:buttons/cta 
         url="#application-form" 
         title="{{ "Anmeldeformular" | trans }}"
-        class="rotate-[30deg] origin-bottom-left absolute -left-8 md:left-auto md:-right-190 -top-180 md:-top-140 lg:hidden" }}
+        class="rotate-[30deg] origin-bottom-left absolute -left-8 md:left-auto md:-right-190 {{ site:short_locale == 'fr' ? '-top-[13.5rem] md:text-[1.625rem] md:-top-155' : '-top-180 md:-top-140' }} lg:hidden" }}
   {{ /if }}
 
   {{ if title }}
@@ -95,7 +95,7 @@
             {{ partial:buttons/cta 
               url="#application-form"  
               title="{{ "Anmeldeformular" | trans }}"
-              class="hidden lg:flex lg:rotate-[15deg] origin-bottom-right absolute lg:-left-20 lg:-top-55" }}
+              class="hidden lg:flex lg:rotate-[15deg] origin-bottom-right absolute lg:text-[1.625rem] lg:-left-20 lg:-top-55" }}
           {{ /if }}
           
           {{ if title }}
