@@ -38,14 +38,16 @@
         <button
           @click="sortDirection = 'desc'"
           :class="sortDirection === 'desc' ? 'shadow-glow-sm-white' : ''"
-          class="w-25 h-25 md:w-30 md:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
+          class="w-25 h-25 md:w-30 md:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all"
+          aria-label="{{ "Absteigend sortieren" | trans }}">
           {{ partial:icons/arrow-down class="w-auto h-14 md:h-18" }}
         </button>
 
         <button
           @click="sortDirection = 'asc'"
           :class="sortDirection === 'asc' ? 'shadow-glow-sm-white' : ''"
-          class="w-25 h-25 md:w-30 md:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
+          class="w-25 h-25 md:w-30 md:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all"
+          aria-label="{{ "Aufsteigend sortieren" | trans }}">
           {{ partial:icons/arrow-up class="w-auto h-14 md:h-18" }}
         </button>
 

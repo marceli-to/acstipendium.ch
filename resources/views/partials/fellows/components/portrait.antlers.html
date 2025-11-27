@@ -14,7 +14,8 @@
           x-show="showCaption"
           x-transition.opacity
           @click="showCaption = false"
-          class="cursor-pointer absolute text-center text-balance text-primary text-xxs md:text-xs rounded-full py-4 md:py-4 px-16 bg-white transition-opacity duration-300">
+          class="cursor-pointer absolute text-center text-balance text-primary text-xxs md:text-xs rounded-full py-4 md:py-4 px-16 bg-white transition-opacity duration-300"
+          aria-label="{{ "Bildbeschreibung anzeigen" | trans }}">
           {{ if site:short_locale == 'de' }}
           {{ image:alt_de }}
           {{ else }}
@@ -26,7 +27,8 @@
           x-show="!showCaption"
           x-transition.opacity
           @click="showCaption = true"
-          class="absolute m-auto transition-opacity duration-300 rounded-full aspect-square bg-white text-primary flex items-center justify-center w-21 h-21">
+          class="absolute m-auto transition-opacity duration-300 rounded-full aspect-square bg-white text-primary flex items-center justify-center w-21 h-21"
+          aria-label="{{ "Bildbeschreibung anzeigen" | trans }}">
           {{ partial:icons/info class="w-auto h-10" }}
         </button>
       </div>
