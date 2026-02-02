@@ -221,7 +221,6 @@ tabs:
               localizable: false
               validate:
                 - required
-              visibility: computed
           -
             handle: slug
             field:
