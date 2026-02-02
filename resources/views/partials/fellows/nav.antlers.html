@@ -34,28 +34,32 @@
         <button
           @click="sortBy = 'name'"
           :class="sortBy === 'name' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto !px-[0.4rem] md:!px-16">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto !px-[0.4rem] md:!px-16"
+          aria-label="{{ "Sortieren nach Name" | trans }}">
           {{ "Name" | trans }}
         </button>
 
         <button
           @click="sortBy = 'scholarship'"
           :class="sortBy === 'scholarship' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !hidden md:!inline-flex !px-[0.4rem] md:!px-16">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !hidden md:!inline-flex !px-[0.4rem] md:!px-16"
+          aria-label="{{ "Sortieren nach Stipendium" | trans }}">
           {{ "Stipendium" | trans }}
         </button>
 
         <button
           @click="sortBy = 'amount'"
           :class="sortBy === 'amount' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto !hidden md:!inline-flex !px-[0.4rem] md:!px-16">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto !hidden md:!inline-flex !px-[0.4rem] md:!px-16"
+          aria-label="{{ "Sortieren anch Förderbeitrag" | trans }}">
           {{ "Förderbeitrag" | trans }}
         </button>
 
         <button
           @click="sortBy = 'year'"
           :class="sortBy === 'year' ? 'shadow-glow-sm-white' : ''"
-          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto !px-[0.4rem] md:!px-16">
+          class="pill pill-sm pill-solid-white hover:shadow-glow-sm-white transition-all !w-full md:!w-auto !px-[0.4rem] md:!px-16"
+          arial-label="{{ "Sortieren nach Jahr" }}">
           {{ "Jahr" | trans }}
         </button>
       </div>
@@ -65,14 +69,16 @@
         <button
           @click="sortDirection = 'desc'"
           :class="sortDirection === 'desc' ? 'shadow-glow-sm-white' : ''"
-          class="w-25 h-25 md:w-30 md:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
+          class="w-25 h-25 md:w-30 md:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all"
+          aria-label="{{ "Absteigend sortieren" | trans }}">
           {{ partial:icons/arrow-down class="w-auto h-14 md:h-18" }}
         </button>
 
         <button
           @click="sortDirection = 'asc'"
           :class="sortDirection === 'asc' ? 'shadow-glow-sm-white' : ''"
-          class="w-25 h-25 md:w-30 md:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all">
+          class="w-25 h-25 md:w-30 md:h-30 flex items-center justify-center rounded-full bg-white text-primary hover:shadow-glow-sm-white transition-all"
+          aria-label="{{ "Aufsteigend sortieren" | trans }}">
           {{ partial:icons/arrow-up class="w-auto h-14 md:h-18" }}
         </button>
       </div>
