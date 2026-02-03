@@ -82,13 +82,6 @@ tabs:
                       fields:
                         -
                           import: sponsors
-                    application_correction:
-                      display: 'Korrekturformular'
-                      instructions: 'Korrekturformular hinzufügen (ohne Datumsprüfung)'
-                      icon: form
-                      fields:
-                        -
-                          import: application_correction
                 special_elements:
                   display: Spezialelemente
                   icon: addon-boxes-stack
