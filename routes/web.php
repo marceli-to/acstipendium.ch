@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CorrectionController;
 use App\Http\Controllers\DownloadController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,10 @@ Route::get('/applications/{id}/download-resume', [DownloadController::class, 'do
 Route::middleware('statamic.cp.authenticated')->group(function () {
     Route::get('/applications/{id}/download-zip', [DownloadController::class, 'downloadProtectedZip'])
         ->name('applications.download-zip-protected');
+
+    // Admin correction routes
+    Route::get('/api/correction/admin/applications', [CorrectionController::class, 'listApplications']);
+    Route::get('/api/correction/admin/{id}/download/{type}', [CorrectionController::class, 'downloadFileById'])->where('type', 'zip|resume|file');
+    Route::get('/api/correction/admin/{id}', [CorrectionController::class, 'loadApplicationById']);
+    Route::post('/api/correction/admin/{id}', [CorrectionController::class, 'storeCorrectionById']);
 });
