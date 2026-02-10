@@ -17,6 +17,24 @@
       :eligibility-year="{{ eligibility_year ?? 2026 }}"
     ></correction-form>
   </div>
+{{ elseif logged_in }}
+  <div
+    id="admin-correction-form"
+    class="
+      card
+      card-rounded
+      border
+      md:border-2
+      border-white
+      mt-8
+      md:mt-0
+      !px-8
+      md:!px-12
+      col-span-full">
+    <admin-correction-form
+      :eligibility-year="{{ eligibility_year ?? 2026 }}"
+    ></admin-correction-form>
+  </div>
 {{ else }}
   <div
     id="correction-request"

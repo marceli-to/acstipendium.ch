@@ -61,7 +61,81 @@ class CorrectionController extends Controller
             return response()->json(['message' => 'Token ungültig oder abgelaufen.'], 404);
         }
 
+        return response()->json($this->buildApplicationData($entry, $token));
+    }
+
+    /**
+     * List all applications (admin).
+     */
+    public function listApplications()
+    {
+        $entries = Entry::query()
+            ->where('collection', 'applications')
+            ->orderBy('title')
+            ->get();
+
+        $applications = $entries->map(function ($entry) {
+            return [
+                'id' => $entry->id(),
+                'title' => $entry->get('title'),
+                'email' => $entry->get('email'),
+                'firstname' => $entry->get('firstname'),
+                'name' => $entry->get('name'),
+            ];
+        });
+
+        return response()->json($applications->values());
+    }
+
+    /**
+     * Load application data by ID (admin).
+     */
+    public function loadApplicationById(string $id)
+    {
+        $entry = $this->findById($id);
+
+        if (! $entry) {
+            return response()->json(['message' => 'Bewerbung nicht gefunden.'], 404);
+        }
+
+        return response()->json($this->buildApplicationData($entry, null, $id));
+    }
+
+    /**
+     * Download file by application ID (admin).
+     */
+    public function downloadFileById(Request $request, string $id, string $type)
+    {
+        $entry = $this->findById($id);
+
+        if (! $entry) {
+            abort(404, 'Bewerbung nicht gefunden.');
+        }
+
+        return $this->performDownload($request, $entry, $type);
+    }
+
+    /**
+     * Store corrected application data by ID (admin).
+     */
+    public function storeCorrectionById(Request $request, string $id)
+    {
+        $entry = $this->findById($id);
+
+        if (! $entry) {
+            return response()->json(['message' => 'Bewerbung nicht gefunden.'], 404);
+        }
+
+        return $this->performStore($request, $entry, clearToken: false, sendNotification: false);
+    }
+
+    /**
+     * Build application data JSON for an entry.
+     */
+    protected function buildApplicationData($entry, ?string $token = null, ?string $id = null): array
+    {
         $data = $entry->data()->toArray();
+        $downloadPrefix = $token ? "/api/correction/{$token}" : "/api/correction/admin/{$id}";
 
         // Reconstruct works array from individual fields
         $works = [];
@@ -100,7 +174,7 @@ class CorrectionController extends Controller
                 $fileInfo = [
                     'name' => $basename,
                     'size' => Storage::size($filePath),
-                    'download_url' => "/api/correction/{$token}/download/file?path=" . urlencode($basename),
+                    'download_url' => "{$downloadPrefix}/download/file?path=" . urlencode($basename),
                 ];
 
                 if (str_contains($basename, 'alters_verifikation')) {
@@ -120,11 +194,11 @@ class CorrectionController extends Controller
             $files['resume'] = [
                 'name' => basename($data['resume_file']),
                 'size' => Storage::size($data['resume_file']),
-                'download_url' => "/api/correction/{$token}/download/resume",
+                'download_url' => "{$downloadPrefix}/download/resume",
             ];
         }
 
-        return response()->json([
+        return [
             'name' => $data['name'] ?? '',
             'firstname' => $data['firstname'] ?? '',
             'name_artist_group' => $data['name_artist_group'] ?? '',
@@ -139,7 +213,7 @@ class CorrectionController extends Controller
             'remarks' => $data['remarks'] ?? '',
             'works' => $works,
             'files' => $files,
-        ]);
+        ];
     }
 
     /**
@@ -153,6 +227,14 @@ class CorrectionController extends Controller
             return response()->json(['message' => 'Token ungültig oder abgelaufen.'], 404);
         }
 
+        return $this->performStore($request, $entry, clearToken: true, sendNotification: true);
+    }
+
+    /**
+     * Perform the actual store/correction logic.
+     */
+    protected function performStore(Request $request, $entry, bool $clearToken = true, bool $sendNotification = true)
+    {
         $request->validate([
             'name' => 'required',
             'firstname' => 'required',
@@ -304,9 +386,11 @@ class CorrectionController extends Controller
             }
         }
 
-        // Clear token
-        $entry->set('correction_token', null);
-        $entry->set('correction_token_expires_at', null);
+        // Clear token if applicable
+        if ($clearToken) {
+            $entry->set('correction_token', null);
+            $entry->set('correction_token_expires_at', null);
+        }
         $entry->save();
 
         // Regenerate download URLs
@@ -321,18 +405,20 @@ class CorrectionController extends Controller
         \Statamic\Facades\Stache::clear();
 
         // Notify owner about the correction
-        try {
-            Notification::route('mail', env('MAIL_TO'))
-                ->notify(new \App\Notifications\Application\CorrectionSubmitted([
-                    'firstname' => $request->input('firstname'),
-                    'name' => $request->input('name'),
-                    'email' => $request->input('email'),
-                ]));
-        } catch (\Exception $e) {
-            \Log::error('Failed to send correction notification', [
-                'error' => $e->getMessage(),
-                'entry_id' => $entry->id(),
-            ]);
+        if ($sendNotification) {
+            try {
+                Notification::route('mail', env('MAIL_TO'))
+                    ->notify(new \App\Notifications\Application\CorrectionSubmitted([
+                        'firstname' => $request->input('firstname'),
+                        'name' => $request->input('name'),
+                        'email' => $request->input('email'),
+                    ]));
+            } catch (\Exception $e) {
+                \Log::error('Failed to send correction notification', [
+                    'error' => $e->getMessage(),
+                    'entry_id' => $entry->id(),
+                ]);
+            }
         }
 
         return response()->json(['message' => 'Korrektur erfolgreich gespeichert.']);
@@ -349,6 +435,14 @@ class CorrectionController extends Controller
             abort(404, 'Token ungültig oder abgelaufen.');
         }
 
+        return $this->performDownload($request, $entry, $type);
+    }
+
+    /**
+     * Perform the actual file download.
+     */
+    protected function performDownload(Request $request, $entry, string $type)
+    {
         // Direct field downloads (zip, resume)
         $fieldMap = [
             'zip' => 'zip_file',
@@ -490,6 +584,17 @@ class CorrectionController extends Controller
         }
 
         return null;
+    }
+
+    /**
+     * Find an application entry by ID.
+     */
+    protected function findById(string $id)
+    {
+        return Entry::query()
+            ->where('collection', 'applications')
+            ->where('id', $id)
+            ->first();
     }
 
     /**
