@@ -1,7 +1,7 @@
 <template>
   <div>
     <heading-1>
-      {{ trans('Bewerbung korrigieren (Admin)') }}
+      {{ trans('Bewerbung korrigieren') }}
     </heading-1>
 
     <template v-if="loadingList">
