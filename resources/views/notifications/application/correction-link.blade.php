@@ -2,9 +2,15 @@
 <div class="text-base">
 Guten Tag / Bonjour<br><br>
 Sie haben eine Korrektur Ihrer Bewerbung zum Aeschlimann Corti-Stipendium angefordert. Über den folgenden Link können Sie Ihre Daten und Unterlagen anpassen:<br><br>
-<x-mail::button :url="$url">
+<table role="presentation" cellpadding="0" cellspacing="0" style="margin: 24px 0;">
+<tr>
+<td>
+<a href="{{ $url }}" target="_blank" rel="noopener" style="display: inline-block; background-color: #b98dfb; color: #ffffff; font-size: 16px; font-weight: 600; text-decoration: none; padding: 14px 32px; border-radius: 9999px;">
 Bewerbung korrigieren / Corriger la candidature
-</x-mail::button>
+</a>
+</td>
+</tr>
+</table>
 <br>
 Dieser Link ist 48 Stunden gültig. Falls Sie keine Korrektur angefordert haben, können Sie diese E-Mail ignorieren.<br><br>
 ––––––––––––––––––––<br><br>
