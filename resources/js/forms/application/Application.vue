@@ -432,6 +432,10 @@ const props = defineProps({
   eligibilityYear: {
     type: Number,
     default: () => new Date().getFullYear() + 1
+  },
+  endpoint: {
+    type: String,
+    default: '/api/application'
   }
 });
 
@@ -604,7 +608,7 @@ async function submitForm() {
       formData.append(`works[${index}][remarks]`, work.remarks || '');
     });
 
-    const response = await axios.post('/api/application', formData, {
+    const response = await axios.post(props.endpoint, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
