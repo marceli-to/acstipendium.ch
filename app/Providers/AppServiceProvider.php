@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         // ]);
 
         // Redirect all outgoing mail to MAIL_TO on local environment
-        if ($this->app->environment('local')) {
+        if ($this->app->environment('local') && $this->app->environment('staging')) {
             Mail::alwaysTo(env('MAIL_TO'));
         }
     }
