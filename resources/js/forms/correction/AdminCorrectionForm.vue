@@ -9,13 +9,12 @@
     </template>
     <template v-else>
       <div class="mb-8 max-w-xl mx-auto">
-        <label class="block text-white text-sm md:text-md mb-4">{{ trans('Bewerbung auswählen') }}</label>
         <select
           v-model="selectedId"
           @change="loadApplication"
           class="w-full bg-transparent border-2 border-white rounded-full px-8 py-4 md:py-6 text-white focus:outline-none focus:!ring-0 appearance-none cursor-pointer"
         >
-          <option value="" disabled>{{ trans('Bitte wählen...') }}</option>
+          <option value="" disabled>{{ trans('Bewerbung auswählen') }}</option>
           <option
             v-for="app in applications"
             :key="app.id"
