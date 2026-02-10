@@ -8,7 +8,7 @@
       <p class="text-white/60">{{ trans('Bewerbungen werden geladen...') }}</p>
     </template>
     <template v-else>
-      <div class="mb-48 md:mb-96 max-w-xl mx-auto">
+      <div class="mb-32 md:mb-64 max-w-xl mx-auto">
         <select
           v-model="selectedId"
           @change="loadApplication"
