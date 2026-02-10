@@ -1,6 +1,6 @@
 <template>
   <template v-if="formSuccess && mode === 'correction'">
-    <div id="form-alerts" class="scroll-mt-100 md:scroll-mt-150 lg:scroll-mt-200">
+    <div id="form-alerts" class="scroll-mt-100 md:scroll-mt-150 lg:scroll-mt-200 text-center">
       <success-alert>
         {{ trans('Ihre Korrektur wurde erfolgreich gespeichert.') }}
       </success-alert>
