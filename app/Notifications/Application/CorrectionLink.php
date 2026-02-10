@@ -29,12 +29,8 @@ class CorrectionLink extends Notification
         return (new MailMessage)
             ->from(env('MAIL_FROM_ADDRESS'))
             ->replyTo(env('MAIL_REPLY_TO_ADDRESS'))
-            ->subject('Korrektur Ihrer Bewerbung – AC-Stipendium')
-            ->greeting('Guten Tag')
-            ->line('Klicken Sie auf den folgenden Link, um Ihre Bewerbung zu korrigieren:')
-            ->action('Bewerbung korrigieren', $url)
-            ->line('Dieser Link ist 48 Stunden gültig.')
-            ->salutation('Freundliche Grüsse, AC-Stipendium');
+            ->subject('Korrektur Ihrer Bewerbung – AC-Stipendium / Correction de votre candidature')
+            ->markdown('notifications.application.correction-link', ['url' => $url]);
     }
 
     public function toArray($notifiable)
