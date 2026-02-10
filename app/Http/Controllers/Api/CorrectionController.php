@@ -219,21 +219,49 @@ class CorrectionController extends Controller
             $website = 'https://'.$website;
         }
 
+        // Determine existing folder from current zip_file or resume_file
+        $existingFolder = null;
+        $zipFile = $entry->get('zip_file');
+        $resumeFile = $entry->get('resume_file');
+        if ($zipFile) {
+            $existingFolder = dirname($zipFile);
+        } elseif ($resumeFile) {
+            $existingFolder = dirname($resumeFile);
+        }
+
         // Generate filename prefix
         $filenamePrefix = $this->generateFilenamePrefix($request);
 
-        // Handle file uploads — only replace if new files are provided
-        $newAgeFiles = $this->uploadMultipleFiles($request, 'age_verification_files', $filenamePrefix.'alters_verifikation');
-        $newResumeFiles = $this->uploadMultipleFiles($request, 'resume_files', $filenamePrefix.'dossier');
-        $newGeoFiles = $this->uploadMultipleFiles($request, 'geographic_relation_proofs', $filenamePrefix.'bernbezug');
+        // Handle file uploads into the EXISTING folder
+        $newAgeFiles = $this->uploadFilesToFolder($request, 'age_verification_files', $filenamePrefix.'alters_verifikation', $existingFolder);
+        $newResumeFiles = $this->uploadFilesToFolder($request, 'resume_files', $filenamePrefix.'dossier', $existingFolder);
+        $newGeoFiles = $this->uploadFilesToFolder($request, 'geographic_relation_proofs', $filenamePrefix.'bernbezug', $existingFolder);
 
-        // If new files uploaded, recreate zip; otherwise keep existing
+        // If new age/geo files uploaded: delete old ones and recreate zip
+        if (! empty($newAgeFiles)) {
+            $this->deleteFilesByPattern($existingFolder, 'alters_verifikation', $newAgeFiles);
+        }
+        if (! empty($newGeoFiles)) {
+            $this->deleteFilesByPattern($existingFolder, 'bernbezug', $newGeoFiles);
+        }
+
         if (! empty($newAgeFiles) || ! empty($newGeoFiles)) {
-            $zipPath = $this->createApplicationZip($request, $newAgeFiles, $newGeoFiles);
+            // Delete old zip
+            if ($zipFile && Storage::exists($zipFile)) {
+                Storage::delete($zipFile);
+            }
+            // Collect all current age + geo files for new zip
+            $ageFiles = ! empty($newAgeFiles) ? $newAgeFiles : $this->findFilesByPattern($existingFolder, 'alters_verifikation');
+            $geoFiles = ! empty($newGeoFiles) ? $newGeoFiles : $this->findFilesByPattern($existingFolder, 'bernbezug');
+            $zipPath = $this->createZipInFolder($filenamePrefix, $existingFolder, $ageFiles, $geoFiles);
             $entry->set('zip_file', $zipPath);
         }
 
         if (! empty($newResumeFiles)) {
+            // Delete old resume
+            if ($resumeFile && Storage::exists($resumeFile)) {
+                Storage::delete($resumeFile);
+            }
             $entry->set('resume_file', $newResumeFiles[0]);
         }
 
@@ -365,6 +393,103 @@ class CorrectionController extends Controller
         }
 
         abort(404, 'Ungültiger Dateityp.');
+    }
+
+    /**
+     * Upload files into a specific existing folder.
+     */
+    protected function uploadFilesToFolder(Request $request, string $fileFieldName, string $filePrefix, ?string $folder): array
+    {
+        if (! $request->hasFile($fileFieldName) || ! $folder) {
+            return [];
+        }
+
+        $uploadedFiles = [];
+
+        foreach ($request->file($fileFieldName) as $file) {
+            $filename = sprintf(
+                '%s-%s.%s',
+                $filePrefix,
+                Str::random(8),
+                $file->getClientOriginalExtension()
+            );
+
+            $path = $file->storeAs($folder, $filename);
+            $uploadedFiles[] = $path;
+        }
+
+        return $uploadedFiles;
+    }
+
+    /**
+     * Delete old files matching a pattern, excluding newly uploaded ones.
+     */
+    protected function deleteFilesByPattern(?string $folder, string $pattern, array $excludePaths): void
+    {
+        if (! $folder || ! Storage::exists($folder)) {
+            return;
+        }
+
+        foreach (Storage::files($folder) as $filePath) {
+            if (str_contains(basename($filePath), $pattern) && ! in_array($filePath, $excludePaths)) {
+                Storage::delete($filePath);
+            }
+        }
+    }
+
+    /**
+     * Find files in a folder matching a pattern.
+     */
+    protected function findFilesByPattern(?string $folder, string $pattern): array
+    {
+        if (! $folder || ! Storage::exists($folder)) {
+            return [];
+        }
+
+        $matches = [];
+        foreach (Storage::files($folder) as $filePath) {
+            if (str_contains(basename($filePath), $pattern)) {
+                $matches[] = $filePath;
+            }
+        }
+        return $matches;
+    }
+
+    /**
+     * Create a ZIP file in the existing folder.
+     */
+    protected function createZipInFolder(string $filenamePrefix, string $folder, array $ageFiles, array $geoFiles): ?string
+    {
+        $filePaths = array_filter(array_merge($ageFiles, $geoFiles));
+
+        if (empty($filePaths)) {
+            return null;
+        }
+
+        $zipFilename = sprintf(
+            '%skorrektur-%s.zip',
+            $filenamePrefix,
+            date('Y-m-d_H-i-s')
+        );
+
+        $zipPath = $folder . '/' . $zipFilename;
+        $zipFullPath = Storage::path($zipPath);
+
+        $zip = new ZipArchive;
+
+        if ($zip->open($zipFullPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
+            foreach ($filePaths as $filePath) {
+                $fullPath = Storage::path($filePath);
+                if (file_exists($fullPath)) {
+                    $zip->addFile($fullPath, basename($filePath));
+                }
+            }
+            $zip->close();
+
+            return $zipPath;
+        }
+
+        return null;
     }
 
     /**
