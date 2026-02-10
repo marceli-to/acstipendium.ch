@@ -165,8 +165,8 @@
             :error="errors[`geographic_relation_proofs.${index}`] || (index === 0 ? errors['geographic_relation_proofs'] : '') || ''"
             accept="image/png,image/jpeg,image/jpg,application/pdf"
             :deletable="index > 0"
-            :existing-file="index === 0 && isCorrection && existingFiles.zip ? existingFiles.zip : null"
-            :hint="index === 0 && isCorrection && existingFiles.zip ? trans('Nur hochladen, falls Sie die Datei ersetzen möchten.') : ''"
+            :existing-file="isCorrection && existingFiles.geographic_relation && existingFiles.geographic_relation[index] ? existingFiles.geographic_relation[index] : null"
+            :hint="isCorrection && existingFiles.geographic_relation && existingFiles.geographic_relation[index] ? trans('Nur hochladen, falls Sie die Datei ersetzen möchten.') : ''"
             @update:error="errors[`geographic_relation_proofs.${index}`] = $event; if (index === 0) errors['geographic_relation_proofs'] = $event"
             @delete="removeGeographicRelationProofField(index)"
           />
@@ -210,8 +210,8 @@
             accept="image/png,image/jpeg,image/jpg,application/pdf"
             @update:error="errors['age_verification_files.0'] = $event; errors['age_verification_files'] = $event"
             :required="!isCorrection"
-            :existing-file="isCorrection && existingFiles.zip ? existingFiles.zip : null"
-            :hint="isCorrection && existingFiles.zip ? trans('Nur hochladen, falls Sie die Datei ersetzen möchten.') : ''"
+            :existing-file="isCorrection && existingFiles.age_verification && existingFiles.age_verification[0] ? existingFiles.age_verification[0] : null"
+            :hint="isCorrection && existingFiles.age_verification && existingFiles.age_verification[0] ? trans('Nur hochladen, falls Sie die Datei ersetzen möchten.') : ''"
           />
         </form-group>
       </card>
@@ -547,6 +547,14 @@ onMounted(() => {
 
     if (props.prefillData.files) {
       existingFiles.value = props.prefillData.files;
+
+      // Pre-populate geographic relation proof fields based on existing files
+      if (props.prefillData.files.geographic_relation && props.prefillData.files.geographic_relation.length > 1) {
+        for (let i = 1; i < props.prefillData.files.geographic_relation.length; i++) {
+          geographicRelationProofFields.value.push(i);
+          form.value.geographic_relation_proofs.push([]);
+        }
+      }
     }
   }
 });

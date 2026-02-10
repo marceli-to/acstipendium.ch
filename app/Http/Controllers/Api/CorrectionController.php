@@ -78,17 +78,44 @@ class CorrectionController extends Controller
             }
         }
 
-        // Build file info with metadata
+        // Build file info by scanning the application folder
         $files = [];
 
-        if (! empty($data['zip_file']) && Storage::exists($data['zip_file'])) {
-            $files['zip'] = [
-                'name' => basename($data['zip_file']),
-                'size' => Storage::size($data['zip_file']),
-                'download_url' => "/api/correction/{$token}/download/zip",
-            ];
+        // Derive folder from zip_file or resume_file path
+        $folder = null;
+        if (! empty($data['zip_file'])) {
+            $folder = dirname($data['zip_file']);
+        } elseif (! empty($data['resume_file'])) {
+            $folder = dirname($data['resume_file']);
         }
 
+        if ($folder && Storage::exists($folder)) {
+            $allFiles = Storage::files($folder);
+
+            $files['age_verification'] = [];
+            $files['geographic_relation'] = [];
+
+            foreach ($allFiles as $filePath) {
+                $basename = basename($filePath);
+                $fileInfo = [
+                    'name' => $basename,
+                    'size' => Storage::size($filePath),
+                    'download_url' => "/api/correction/{$token}/download/file?path=" . urlencode($basename),
+                ];
+
+                if (str_contains($basename, 'alters_verifikation')) {
+                    $files['age_verification'][] = $fileInfo;
+                } elseif (str_contains($basename, 'bernbezug')) {
+                    $files['geographic_relation'][] = $fileInfo;
+                }
+            }
+
+            // Clean up empty arrays
+            if (empty($files['age_verification'])) unset($files['age_verification']);
+            if (empty($files['geographic_relation'])) unset($files['geographic_relation']);
+        }
+
+        // Resume/dossier
         if (! empty($data['resume_file']) && Storage::exists($data['resume_file'])) {
             $files['resume'] = [
                 'name' => basename($data['resume_file']),
@@ -271,7 +298,7 @@ class CorrectionController extends Controller
     /**
      * Download an existing file by correction token.
      */
-    public function downloadFile(string $token, string $type)
+    public function downloadFile(Request $request, string $token, string $type)
     {
         $entry = $this->findByToken($token);
 
@@ -279,22 +306,50 @@ class CorrectionController extends Controller
             abort(404, 'Token ungültig oder abgelaufen.');
         }
 
+        // Direct field downloads (zip, resume)
         $fieldMap = [
             'zip' => 'zip_file',
             'resume' => 'resume_file',
         ];
 
-        if (! isset($fieldMap[$type])) {
-            abort(404, 'Ungültiger Dateityp.');
+        if (isset($fieldMap[$type])) {
+            $filePath = $entry->get($fieldMap[$type]);
+
+            if (! $filePath || ! Storage::exists($filePath)) {
+                abort(404, 'Datei nicht gefunden.');
+            }
+
+            return response()->download(Storage::path($filePath), basename($filePath));
         }
 
-        $filePath = $entry->get($fieldMap[$type]);
+        // Individual file download by basename (scans the application folder)
+        if ($type === 'file') {
+            $requestedFile = $request->query('path');
+            if (! $requestedFile) {
+                abort(404, 'Kein Dateiname angegeben.');
+            }
 
-        if (! $filePath || ! Storage::exists($filePath)) {
+            // Derive folder from zip_file or resume_file
+            $folder = null;
+            $zipFile = $entry->get('zip_file');
+            $resumeFile = $entry->get('resume_file');
+            if ($zipFile) {
+                $folder = dirname($zipFile);
+            } elseif ($resumeFile) {
+                $folder = dirname($resumeFile);
+            }
+
+            if ($folder) {
+                $filePath = $folder . '/' . basename($requestedFile);
+                if (Storage::exists($filePath)) {
+                    return response()->download(Storage::path($filePath), basename($filePath));
+                }
+            }
+
             abort(404, 'Datei nicht gefunden.');
         }
 
-        return response()->download(Storage::path($filePath), basename($filePath));
+        abort(404, 'Ungültiger Dateityp.');
     }
 
     /**
