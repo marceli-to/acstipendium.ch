@@ -1,1 +1,36 @@
-{{ partial:application_form_correction eligibility_year="2026" }}
+{{ if {get:token} }}
+  <div
+    id="correction-form"
+    class="
+      card
+      card-rounded
+      border
+      md:border-2
+      border-white
+      mt-8
+      md:mt-0
+      !px-8
+      md:!px-12
+      col-span-full">
+    <correction-form
+      token="{{ get:token }}"
+      :eligibility-year="{{ eligibility_year ?? 2026 }}"
+    ></correction-form>
+  </div>
+{{ else }}
+  <div
+    id="correction-request"
+    class="
+      card
+      card-rounded
+      border
+      md:border-2
+      border-white
+      mt-8
+      md:mt-0
+      !px-8
+      md:!px-12
+      col-span-full">
+    <correction-request></correction-request>
+  </div>
+{{ /if }}

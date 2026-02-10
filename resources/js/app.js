@@ -8,3 +8,4 @@ Alpine.start();
 
 import './bootstrap';
 import './forms/application/app.js';
+import './forms/correction/app.js';

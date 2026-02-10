@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/application', [ApplicationController::class, 'store']);
-Route::post('/correction', [CorrectionController::class, 'store']);
+Route::post('/correction/request', [CorrectionController::class, 'requestCorrection']);
+Route::get('/correction/{token}', [CorrectionController::class, 'loadCorrection']);
+Route::post('/correction/{token}', [CorrectionController::class, 'storeCorrection']);

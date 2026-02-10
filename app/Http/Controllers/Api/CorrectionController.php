@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCorrectionRequest;
-use App\Notifications\Application\OwnerInformation;
+use App\Notifications\Application\CorrectionLink;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -13,113 +13,272 @@ use ZipArchive;
 
 class CorrectionController extends Controller
 {
-    public function store(StoreCorrectionRequest $request)
+    /**
+     * Request a correction link by email.
+     */
+    public function requestCorrection(Request $request)
     {
-        $title = '[Korrektur] '.$request->input('firstname').' '.$request->input('name').', '.$request->input('email');
+        $request->validate([
+            'email' => 'required|email',
+        ], [
+            'email.required' => 'E-Mail ist erforderlich',
+            'email.email' => 'E-Mail muss gültig sein',
+        ]);
 
-        // Normalize website URL - add https:// if no protocol present
+        $entry = Entry::query()
+            ->where('collection', 'applications')
+            ->where('email', $request->input('email'))
+            ->first();
+
+        if ($entry) {
+            $token = Str::random(64);
+            $entry->set('correction_token', $token);
+            $entry->set('correction_token_expires_at', now()->addHours(48)->toIso8601String());
+            $entry->save();
+
+            try {
+                Notification::route('mail', $request->input('email'))
+                    ->notify(new CorrectionLink($token));
+            } catch (\Exception $e) {
+                \Log::error('Failed to send correction link email', [
+                    'email' => $request->input('email'),
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        }
+
+        return response()->json(['message' => 'ok']);
+    }
+
+    /**
+     * Load application data for correction by token.
+     */
+    public function loadCorrection(string $token)
+    {
+        $entry = $this->findByToken($token);
+
+        if (! $entry) {
+            return response()->json(['message' => 'Token ungültig oder abgelaufen.'], 404);
+        }
+
+        $data = $entry->data()->toArray();
+
+        // Reconstruct works array from individual fields
+        $works = [];
+        for ($i = 1; $i <= 3; $i++) {
+            if (! empty($data["work_{$i}_title"])) {
+                $works[] = [
+                    'title' => $data["work_{$i}_title"] ?? '',
+                    'year' => $data["work_{$i}_year"] ?? '',
+                    'dimensions' => $data["work_{$i}_dimensions"] ?? '',
+                    'duration' => $data["work_{$i}_duration"] ?? '',
+                    'technology' => $data["work_{$i}_technology"] ?? '',
+                    'remarks' => $data["work_{$i}_remarks"] ?? '',
+                ];
+            }
+        }
+
+        // Build file info
+        $hasAgeVerification = ! empty($data['zip_file']) && Storage::exists($data['zip_file']);
+        $hasResume = ! empty($data['resume_file']) && Storage::exists($data['resume_file']);
+
+        return response()->json([
+            'name' => $data['name'] ?? '',
+            'firstname' => $data['firstname'] ?? '',
+            'name_artist_group' => $data['name_artist_group'] ?? '',
+            'dob' => $data['dob'] ?? '',
+            'street' => $data['street'] ?? '',
+            'zip' => $data['zip'] ?? '',
+            'location' => $data['location'] ?? '',
+            'phone' => $data['phone'] ?? '',
+            'website' => $data['website'] ?? '',
+            'email' => $data['email'] ?? '',
+            'geographic_relation_text' => $data['geographic_relation_text'] ?? '',
+            'remarks' => $data['remarks'] ?? '',
+            'works' => $works,
+            'has_age_verification' => $hasAgeVerification,
+            'has_resume' => $hasResume,
+            'has_geographic_relation_proofs' => $hasAgeVerification, // stored in same zip
+        ]);
+    }
+
+    /**
+     * Store corrected application data.
+     */
+    public function storeCorrection(Request $request, string $token)
+    {
+        $entry = $this->findByToken($token);
+
+        if (! $entry) {
+            return response()->json(['message' => 'Token ungültig oder abgelaufen.'], 404);
+        }
+
+        $request->validate([
+            'name' => 'required',
+            'firstname' => 'required',
+            'name_artist_group' => 'nullable',
+            'dob' => 'required|date',
+            'street' => 'required',
+            'zip' => 'required',
+            'location' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email|regex:/^[^\s@]+@[^\s@]+\.[^\s@]+$/',
+            'geographic_relation_text' => 'required|max:500',
+            'age_verification_files' => 'nullable|array',
+            'age_verification_files.*' => 'file|mimes:png,jpg,jpeg,pdf|max:10240',
+            'geographic_relation_proofs' => 'nullable|array',
+            'geographic_relation_proofs.*' => 'file|mimes:png,jpg,jpeg,pdf|max:10240',
+            'resume_files' => 'nullable|array',
+            'resume_files.*' => 'file|mimes:pdf|max:20480',
+            'works' => 'required|array|min:1|max:3',
+            'works.*.title' => 'required|string|max:255',
+            'works.*.year' => 'required|string|max:255',
+            'works.*.dimensions' => 'nullable|string|max:255',
+            'works.*.duration' => 'nullable|string|max:255',
+            'works.*.technology' => 'required|string|max:500',
+            'works.*.remarks' => 'nullable|string|max:500',
+            'privacy_truthful' => 'accepted',
+            'privacy_original_work' => 'accepted',
+            'privacy_ai' => 'accepted',
+            'privacy_data' => 'accepted',
+        ], [
+            'name.required' => 'Name ist erforderlich',
+            'firstname.required' => 'Vorname ist erforderlich',
+            'dob.required' => 'Geburtsdatum ist erforderlich',
+            'dob.date' => 'Geburtsdatum muss ein gültiges Datum sein',
+            'street.required' => 'Adresse ist erforderlich',
+            'zip.required' => 'PLZ ist erforderlich',
+            'location.required' => 'PLZ/Ort ist erforderlich',
+            'phone.required' => 'Telefon ist erforderlich',
+            'email.required' => 'E-Mail ist erforderlich',
+            'email.email' => 'E-Mail muss gültig sein',
+            'email.regex' => 'E-Mail muss gültig sein',
+            'geographic_relation_text.required' => 'Bernbezug ist erforderlich',
+            'geographic_relation_text.max' => 'Bernbezug darf maximal 500 Zeichen enthalten',
+            'age_verification_files.*.mimes' => 'Altersnachweis muss eine PNG, JPG, JPEG oder PDF Datei sein',
+            'age_verification_files.*.max' => 'Altersnachweis darf maximal 10 MB groß sein',
+            'geographic_relation_proofs.*.mimes' => 'Beleg muss eine PNG, JPG, JPEG oder PDF Datei sein',
+            'geographic_relation_proofs.*.max' => 'Beleg darf maximal 10 MB groß sein',
+            'resume_files.*.mimes' => 'Dossier muss eine PDF Datei sein',
+            'resume_files.*.max' => 'Dossier darf maximal 20 MB groß sein',
+            'works.required' => 'Mindestens ein Werk ist erforderlich',
+            'works.min' => 'Mindestens ein Werk muss angegeben werden',
+            'works.max' => 'Maximal 3 Werke können eingereicht werden',
+            'works.*.title.required' => 'Werktitel ist erforderlich',
+            'works.*.year.required' => 'Jahr ist erforderlich',
+            'works.*.technology.required' => 'Technik ist erforderlich',
+            'privacy_truthful.accepted' => 'Sie müssen bestätigen, dass Ihre Angaben wahrheitsgemäss sind',
+            'privacy_original_work.accepted' => 'Sie müssen bestätigen, dass die Arbeiten eigenständig entstanden sind',
+            'privacy_ai.accepted' => 'Sie müssen bestätigen, dass der Einsatz von KI gekennzeichnet ist',
+            'privacy_data.accepted' => 'Sie müssen die Teilnahmebedingungen und Datenschutzerklärung akzeptieren',
+        ]);
+
+        // Normalize website URL
         $website = $request->input('website');
         if ($website && ! preg_match('/^https?:\/\//', $website)) {
             $website = 'https://'.$website;
         }
 
-        // Generate filename prefix from user data
+        // Generate filename prefix
         $filenamePrefix = $this->generateFilenamePrefix($request);
 
-        // Upload all files for ZIP archive
-        $age_verification_files = $this->uploadMultipleFiles($request, 'age_verification_files', $filenamePrefix.'alters_verifikation');
-        $resume_files = $this->uploadMultipleFiles($request, 'resume_files', $filenamePrefix.'dossier');
-        $geographic_relation_files = $this->uploadMultipleFiles($request, 'geographic_relation_proofs', $filenamePrefix.'bernbezug');
+        // Handle file uploads — only replace if new files are provided
+        $newAgeFiles = $this->uploadMultipleFiles($request, 'age_verification_files', $filenamePrefix.'alters_verifikation');
+        $newResumeFiles = $this->uploadMultipleFiles($request, 'resume_files', $filenamePrefix.'dossier');
+        $newGeoFiles = $this->uploadMultipleFiles($request, 'geographic_relation_proofs', $filenamePrefix.'bernbezug');
 
-        // Map works array to individual fields (max 3 works)
+        // If new files uploaded, recreate zip; otherwise keep existing
+        if (! empty($newAgeFiles) || ! empty($newGeoFiles)) {
+            $zipPath = $this->createApplicationZip($request, $newAgeFiles, $newGeoFiles);
+            $entry->set('zip_file', $zipPath);
+        }
+
+        if (! empty($newResumeFiles)) {
+            $entry->set('resume_file', $newResumeFiles[0]);
+        }
+
+        // Update title
+        $title = $request->input('firstname').' '.$request->input('name').', '.$request->input('email');
+        $entry->set('title', $title);
+
+        // Update text fields
+        $entry->set('name', $request->input('name'));
+        $entry->set('firstname', $request->input('firstname'));
+        $entry->set('name_artist_group', $request->input('name_artist_group'));
+        $entry->set('dob', $request->input('dob'));
+        $entry->set('street', $request->input('street'));
+        $entry->set('zip', $request->input('zip'));
+        $entry->set('location', $request->input('location'));
+        $entry->set('phone', $request->input('phone'));
+        $entry->set('website', $website);
+        $entry->set('email', $request->input('email'));
+        $entry->set('geographic_relation_text', $request->input('geographic_relation_text'));
+        $entry->set('remarks', $request->input('remarks'));
+
+        // Update works
         $works = $request->input('works', []);
-        $work_1_data = [];
-        $work_2_data = [];
-        $work_3_data = [];
-
-        if (isset($works[0])) {
-            $work_1_data = [
-                'work_1_title' => $works[0]['title'] ?? null,
-                'work_1_year' => $works[0]['year'] ?? null,
-                'work_1_dimensions' => $works[0]['dimensions'] ?? null,
-                'work_1_duration' => $works[0]['duration'] ?? null,
-                'work_1_technology' => $works[0]['technology'] ?? null,
-                'work_1_remarks' => $works[0]['remarks'] ?? null,
-            ];
+        for ($i = 1; $i <= 3; $i++) {
+            $workIndex = $i - 1;
+            if (isset($works[$workIndex])) {
+                $entry->set("work_{$i}_title", $works[$workIndex]['title'] ?? null);
+                $entry->set("work_{$i}_year", $works[$workIndex]['year'] ?? null);
+                $entry->set("work_{$i}_dimensions", $works[$workIndex]['dimensions'] ?? null);
+                $entry->set("work_{$i}_duration", $works[$workIndex]['duration'] ?? null);
+                $entry->set("work_{$i}_technology", $works[$workIndex]['technology'] ?? null);
+                $entry->set("work_{$i}_remarks", $works[$workIndex]['remarks'] ?? null);
+            } else {
+                $entry->set("work_{$i}_title", null);
+                $entry->set("work_{$i}_year", null);
+                $entry->set("work_{$i}_dimensions", null);
+                $entry->set("work_{$i}_duration", null);
+                $entry->set("work_{$i}_technology", null);
+                $entry->set("work_{$i}_remarks", null);
+            }
         }
 
-        if (isset($works[1])) {
-            $work_2_data = [
-                'work_2_title' => $works[1]['title'] ?? null,
-                'work_2_year' => $works[1]['year'] ?? null,
-                'work_2_dimensions' => $works[1]['dimensions'] ?? null,
-                'work_2_duration' => $works[1]['duration'] ?? null,
-                'work_2_technology' => $works[1]['technology'] ?? null,
-                'work_2_remarks' => $works[1]['remarks'] ?? null,
-            ];
-        }
-
-        if (isset($works[2])) {
-            $work_3_data = [
-                'work_3_title' => $works[2]['title'] ?? null,
-                'work_3_year' => $works[2]['year'] ?? null,
-                'work_3_dimensions' => $works[2]['dimensions'] ?? null,
-                'work_3_duration' => $works[2]['duration'] ?? null,
-                'work_3_technology' => $works[2]['technology'] ?? null,
-                'work_3_remarks' => $works[2]['remarks'] ?? null,
-            ];
-        }
-
-        // Create ZIP file with age verification and geographic relation files only (exclude resume)
-        $zipPath = $this->createApplicationZip($request, $age_verification_files, $geographic_relation_files);
-
-        // Build data
-        $data = array_merge([
-            'title' => $title,
-            'name' => $request->input('name'),
-            'firstname' => $request->input('firstname'),
-            'name_artist_group' => $request->input('name_artist_group') ?? null,
-            'dob' => $request->input('dob'),
-            'street' => $request->input('street'),
-            'zip' => $request->input('zip'),
-            'location' => $request->input('location'),
-            'phone' => $request->input('phone'),
-            'website' => $website,
-            'email' => $request->input('email'),
-            'geographic_relation_text' => $request->input('geographic_relation_text') ?? null,
-            'remarks' => $request->input('remarks') ?? null,
-            'zip_file' => $zipPath,
-            'resume_file' => ! empty($resume_files) ? $resume_files[0] : null,
-        ], $work_1_data, $work_2_data, $work_3_data);
-
-        $entry = Entry::make()
-            ->collection('corrections')
-            ->slug($title)
-            ->data($data);
-
+        // Clear token
+        $entry->set('correction_token', null);
+        $entry->set('correction_token_expires_at', null);
         $entry->save();
 
-        // Clear Statamic Stache to ensure the new entry is immediately available
+        // Regenerate download URLs
+        $documentUrl = route('applications.download-zip-protected', ['id' => $entry->id()]);
+        $resumeFile = $entry->get('resume_file');
+        $resumeUrl = $resumeFile ? route('applications.download-resume-public', ['id' => $entry->id()]) : null;
+
+        $entry->set('document_url', $documentUrl);
+        $entry->set('resume_url', $resumeUrl);
+        $entry->save();
+
         \Statamic\Facades\Stache::clear();
 
-        // Send owner information email
-        try {
-            Notification::route('mail', env('MAIL_TO'))
-                ->notify(new OwnerInformation($data));
-        } catch (\Exception $e) {
-            \Log::error('Failed to send owner information email for correction', [
-                'error' => $e->getMessage(),
-                'entry_id' => $entry->id(),
-            ]);
-        }
-
-        return response()->json(['message' => 'Store successful']);
+        return response()->json(['message' => 'Korrektur erfolgreich gespeichert.']);
     }
 
     /**
-     * Upload multiple files for the correction (returns all files)
+     * Find an application entry by valid (non-expired) correction token.
      */
-    protected function uploadMultipleFiles(StoreCorrectionRequest $request, string $fileFieldName, string $filePrefix): array
+    protected function findByToken(string $token)
+    {
+        $entries = Entry::query()
+            ->where('collection', 'applications')
+            ->where('correction_token', $token)
+            ->get();
+
+        foreach ($entries as $entry) {
+            $expiresAt = $entry->get('correction_token_expires_at');
+            if ($expiresAt && now()->lt($expiresAt)) {
+                return $entry;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Upload multiple files (duplicated from ApplicationController).
+     */
+    protected function uploadMultipleFiles(Request $request, string $fileFieldName, string $filePrefix): array
     {
         if (! $request->hasFile($fileFieldName)) {
             return [];
@@ -136,7 +295,7 @@ class CorrectionController extends Controller
                 $file->getClientOriginalExtension()
             );
 
-            $path = $file->storeAs('corrections/'.$folderName, $filename);
+            $path = $file->storeAs('applications/'.$folderName, $filename);
             $uploadedFiles[] = $path;
         }
 
@@ -144,9 +303,9 @@ class CorrectionController extends Controller
     }
 
     /**
-     * Generate a unique folder name for the user based on their details
+     * Generate a unique folder name for the user.
      */
-    protected function generateUserFolderName(StoreCorrectionRequest $request): string
+    protected function generateUserFolderName(Request $request): string
     {
         return sprintf(
             '%s-%s-%s',
@@ -157,9 +316,9 @@ class CorrectionController extends Controller
     }
 
     /**
-     * Generate filename prefix from user data (firstname-name-)
+     * Generate filename prefix from user data.
      */
-    protected function generateFilenamePrefix(StoreCorrectionRequest $request): string
+    protected function generateFilenamePrefix(Request $request): string
     {
         return sprintf(
             '%s-%s-',
@@ -169,9 +328,9 @@ class CorrectionController extends Controller
     }
 
     /**
-     * Create a ZIP file containing age verification and geographic relation files (excludes resume)
+     * Create a ZIP file containing age verification and geographic relation files.
      */
-    protected function createApplicationZip(StoreCorrectionRequest $request, array $age_verification_files, array $geographic_relation_files): ?string
+    protected function createApplicationZip(Request $request, array $age_verification_files, array $geographic_relation_files): ?string
     {
         $filePaths = array_filter([
             ...$age_verification_files,
@@ -191,7 +350,7 @@ class CorrectionController extends Controller
             date('Y-m-d_H-i-s')
         );
 
-        $zipPath = 'corrections/'.$folderName.'/'.$zipFilename;
+        $zipPath = 'applications/'.$folderName.'/'.$zipFilename;
         $zipFullPath = Storage::path($zipPath);
 
         $zip = new ZipArchive;

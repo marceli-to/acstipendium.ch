@@ -2,7 +2,7 @@
   <div id="form-alerts" class="scroll-mt-100 md:scroll-mt-150 lg:scroll-mt-200">
     <template v-if="formSuccess">
       <success-alert>
-        {{ trans('Vielen Dank für Ihre Anmeldung!') }}
+        {{ mode === 'correction' ? trans('Ihre Korrektur wurde erfolgreich gespeichert.') : trans('Vielen Dank für Ihre Anmeldung!') }}
       </success-alert>
     </template>
     <template v-if="formError">
@@ -436,6 +436,14 @@ const props = defineProps({
   endpoint: {
     type: String,
     default: '/api/application'
+  },
+  prefillData: {
+    type: Object,
+    default: null
+  },
+  mode: {
+    type: String,
+    default: 'application'
   }
 });
 
@@ -498,6 +506,34 @@ const errors = ref({
   privacy_original_work: '',
   privacy_ai: '',
   privacy_data: '',
+});
+
+// Prefill form data for correction mode
+onMounted(() => {
+  if (props.prefillData) {
+    form.value.name = props.prefillData.name || '';
+    form.value.firstname = props.prefillData.firstname || '';
+    form.value.name_artist_group = props.prefillData.name_artist_group || '';
+    form.value.dob = props.prefillData.dob || '';
+    form.value.street = props.prefillData.street || '';
+    form.value.zip = props.prefillData.zip || '';
+    form.value.location = props.prefillData.location || '';
+    form.value.phone = props.prefillData.phone || '';
+    form.value.website = props.prefillData.website || '';
+    form.value.email = props.prefillData.email || '';
+    form.value.geographic_relation_text = props.prefillData.geographic_relation_text || '';
+
+    if (props.prefillData.works && props.prefillData.works.length > 0) {
+      works.value = props.prefillData.works.map(w => ({
+        title: w.title || '',
+        year: w.year || '',
+        dimensions: w.dimensions || '',
+        duration: w.duration || '',
+        technology: w.technology || '',
+        remarks: w.remarks || ''
+      }));
+    }
+  }
 });
 
 function addGeographicRelationProofField() {
@@ -677,6 +713,12 @@ function handleSuccess() {
 
   isSubmitting.value = false;
   formSuccess.value = true;
+
+  if (props.mode === 'correction') {
+    // Stay on page, show success message, scroll to top
+    scrollToForm();
+    return;
+  }
 
   // Redirect to success page based on locale
   const locale = getLocale();
