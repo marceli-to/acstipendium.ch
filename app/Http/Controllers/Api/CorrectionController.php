@@ -81,19 +81,51 @@ class CorrectionController extends Controller
         // Build file info with metadata
         $files = [];
 
-        if (! empty($data['zip_file']) && Storage::exists($data['zip_file'])) {
-            $files['zip'] = [
-                'name' => basename($data['zip_file']),
-                'size' => Storage::size($data['zip_file']),
-                'download_url' => "/api/correction/{$token}/download/zip",
-            ];
+        // Individual age verification files
+        $ageFiles = $data['age_verification_file_paths'] ?? [];
+        if (! empty($ageFiles)) {
+            $files['age_verification'] = [];
+            foreach ((array) $ageFiles as $path) {
+                if (Storage::exists($path)) {
+                    $files['age_verification'][] = [
+                        'name' => basename($path),
+                        'size' => Storage::size($path),
+                        'download_url' => "/api/correction/{$token}/download/file?path=" . urlencode(basename($path)),
+                    ];
+                }
+            }
         }
 
+        // Individual geographic relation files
+        $geoFiles = $data['geographic_relation_file_paths'] ?? [];
+        if (! empty($geoFiles)) {
+            $files['geographic_relation'] = [];
+            foreach ((array) $geoFiles as $path) {
+                if (Storage::exists($path)) {
+                    $files['geographic_relation'][] = [
+                        'name' => basename($path),
+                        'size' => Storage::size($path),
+                        'download_url' => "/api/correction/{$token}/download/file?path=" . urlencode(basename($path)),
+                    ];
+                }
+            }
+        }
+
+        // Resume/dossier file
         if (! empty($data['resume_file']) && Storage::exists($data['resume_file'])) {
             $files['resume'] = [
                 'name' => basename($data['resume_file']),
                 'size' => Storage::size($data['resume_file']),
                 'download_url' => "/api/correction/{$token}/download/resume",
+            ];
+        }
+
+        // Zip file (kept for backward compat)
+        if (! empty($data['zip_file']) && Storage::exists($data['zip_file'])) {
+            $files['zip'] = [
+                'name' => basename($data['zip_file']),
+                'size' => Storage::size($data['zip_file']),
+                'download_url' => "/api/correction/{$token}/download/zip",
             ];
         }
 
@@ -200,10 +232,20 @@ class CorrectionController extends Controller
         $newResumeFiles = $this->uploadMultipleFiles($request, 'resume_files', $filenamePrefix.'dossier');
         $newGeoFiles = $this->uploadMultipleFiles($request, 'geographic_relation_proofs', $filenamePrefix.'bernbezug');
 
-        // If new files uploaded, recreate zip; otherwise keep existing
+        // If new files uploaded, recreate zip and update individual paths; otherwise keep existing
         if (! empty($newAgeFiles) || ! empty($newGeoFiles)) {
-            $zipPath = $this->createApplicationZip($request, $newAgeFiles, $newGeoFiles);
+            $ageFiles = ! empty($newAgeFiles) ? $newAgeFiles : ($entry->get('age_verification_file_paths') ?? []);
+            $geoFiles = ! empty($newGeoFiles) ? $newGeoFiles : ($entry->get('geographic_relation_file_paths') ?? []);
+            $zipPath = $this->createApplicationZip($request, (array) $ageFiles, (array) $geoFiles);
             $entry->set('zip_file', $zipPath);
+        }
+
+        if (! empty($newAgeFiles)) {
+            $entry->set('age_verification_file_paths', $newAgeFiles);
+        }
+
+        if (! empty($newGeoFiles)) {
+            $entry->set('geographic_relation_file_paths', $newGeoFiles);
         }
 
         if (! empty($newResumeFiles)) {
@@ -271,7 +313,7 @@ class CorrectionController extends Controller
     /**
      * Download an existing file by correction token.
      */
-    public function downloadFile(string $token, string $type)
+    public function downloadFile(Request $request, string $token, string $type)
     {
         $entry = $this->findByToken($token);
 
@@ -279,22 +321,45 @@ class CorrectionController extends Controller
             abort(404, 'Token ungültig oder abgelaufen.');
         }
 
+        // Direct field downloads (zip, resume)
         $fieldMap = [
             'zip' => 'zip_file',
             'resume' => 'resume_file',
         ];
 
-        if (! isset($fieldMap[$type])) {
-            abort(404, 'Ungültiger Dateityp.');
+        if (isset($fieldMap[$type])) {
+            $filePath = $entry->get($fieldMap[$type]);
+
+            if (! $filePath || ! Storage::exists($filePath)) {
+                abort(404, 'Datei nicht gefunden.');
+            }
+
+            return response()->download(Storage::path($filePath), basename($filePath));
         }
 
-        $filePath = $entry->get($fieldMap[$type]);
+        // Individual file download by basename (from file arrays)
+        if ($type === 'file') {
+            $requestedFile = $request->query('path');
+            if (! $requestedFile) {
+                abort(404, 'Kein Dateiname angegeben.');
+            }
 
-        if (! $filePath || ! Storage::exists($filePath)) {
+            // Search in all stored file path arrays
+            $fileArrayFields = ['age_verification_file_paths', 'geographic_relation_file_paths'];
+
+            foreach ($fileArrayFields as $field) {
+                $paths = $entry->get($field) ?? [];
+                foreach ((array) $paths as $path) {
+                    if (basename($path) === $requestedFile && Storage::exists($path)) {
+                        return response()->download(Storage::path($path), basename($path));
+                    }
+                }
+            }
+
             abort(404, 'Datei nicht gefunden.');
         }
 
-        return response()->download(Storage::path($filePath), basename($filePath));
+        abort(404, 'Ungültiger Dateityp.');
     }
 
     /**

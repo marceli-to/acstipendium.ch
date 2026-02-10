@@ -91,6 +91,8 @@ class ApplicationController extends Controller
             'remarks' => $request->input('remarks') ?? null,
             'zip_file' => $zipPath,
             'resume_file' => ! empty($resume_files) ? $resume_files[0] : null,
+            'age_verification_file_paths' => ! empty($age_verification_files) ? $age_verification_files : null,
+            'geographic_relation_file_paths' => ! empty($geographic_relation_files) ? $geographic_relation_files : null,
         ], $work_1_data, $work_2_data, $work_3_data);
 
         $entry = Entry::make()
