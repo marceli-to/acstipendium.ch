@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Statamic\Facades\Entry;
 
 class DownloadController extends Controller
@@ -34,11 +35,11 @@ class DownloadController extends Controller
             abort(404, 'ZIP file does not exist on server');
         }
 
-        // Get a friendly download filename
+        // Get a friendly download filename (sanitize to prevent filesystem issues with slashes etc.)
         $downloadName = sprintf(
             '%s-%s-bewerbung.zip',
-            $entry->get('firstname') ?? 'applicant',
-            $entry->get('name') ?? 'unknown'
+            Str::slug($entry->get('firstname') ?? 'applicant'),
+            Str::slug($entry->get('name') ?? 'unknown')
         );
 
         return response()->download($fullPath, $downloadName);
@@ -71,11 +72,11 @@ class DownloadController extends Controller
             abort(404, 'Resume file does not exist on server');
         }
 
-        // Get a friendly download filename
+        // Get a friendly download filename (sanitize to prevent filesystem issues with slashes etc.)
         $downloadName = sprintf(
             '%s-%s-dossier.pdf',
-            $entry->get('firstname') ?? 'applicant',
-            $entry->get('name') ?? 'unknown'
+            Str::slug($entry->get('firstname') ?? 'applicant'),
+            Str::slug($entry->get('name') ?? 'unknown')
         );
 
         return response()->download($fullPath, $downloadName);
