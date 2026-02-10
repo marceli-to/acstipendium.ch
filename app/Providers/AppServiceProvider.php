@@ -26,9 +26,15 @@ class AppServiceProvider extends ServiceProvider
         //     'resources/css/cp.css',
         // ]);
 
-        // Redirect all outgoing mail to MAIL_TO on local environment
-        if ($this->app->environment('local') || $this->app->environment('staging')) {
-            Mail::alwaysTo(env('MAIL_TO'));
+        // Redirect all outgoing mail to MAIL_TO on local/staging environments
+        if ($this->app->environment('local', 'staging')) {
+            $alwaysTo = config('mail.always_to');
+
+            if ($alwaysTo) {
+                Mail::alwaysTo($alwaysTo);
+            } else {
+                throw new \RuntimeException('MAIL_TO must be set on local/staging to prevent real emails from being sent.');
+            }
         }
     }
 }

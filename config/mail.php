@@ -104,6 +104,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | "Always To" Address
+    |--------------------------------------------------------------------------
+    |
+    | If set, all outgoing mail will be redirected to this address.
+    | Used on local and staging environments to prevent real emails.
+    |
+    */
+
+    'always_to' => env('MAIL_TO'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Markdown Mail Settings
     |--------------------------------------------------------------------------
     |
