@@ -1,4 +1,4 @@
-# Correction Form — Server Deployment
+# Correction Form v2 — Server Deployment
 
 **Date:** 2026-02-10  
 **Status:** Code pushed, content files need server deployment
@@ -7,31 +7,9 @@
 
 ## Content files to create on server
 
-These are gitignored (`content/` is in `.gitignore`) and must be created manually on the server.
+These are gitignored (`content/` is in `.gitignore`) and must be created manually.
 
-### 1. Collection config: `content/collections/corrections.yaml`
-
-```yaml
-title: Korrekturen
-sites:
-  - de
-propagate: false
-template: default
-layout: layout
-revisions: false
-sort_dir: desc
-date_behavior:
-  past: public
-  future: private
-```
-
-### 2. Empty entries directory
-
-```bash
-mkdir -p content/collections/corrections
-```
-
-### 3. DE page: `content/collections/pages/de/korrektur.md`
+### 1. DE page: `content/collections/pages/de/korrektur.md`
 
 ```yaml
 ---
@@ -46,7 +24,7 @@ has_footer: true
 ---
 ```
 
-### 4. FR page: `content/collections/pages/fr/correction.md`
+### 2. FR page: `content/collections/pages/fr/correction.md`
 
 ```yaml
 ---
@@ -61,10 +39,13 @@ has_footer: true
 ---
 ```
 
-### 5. Storage directory for uploads
+### 3. Clean up v1 leftovers (if deployed previously)
 
 ```bash
-mkdir -p storage/app/corrections
+# Remove v1 corrections collection (no longer needed)
+rm -f content/collections/corrections.yaml
+rm -rf content/collections/corrections/
+rm -rf resources/blueprints/collections/corrections/
 ```
 
 ---
@@ -74,21 +55,24 @@ mkdir -p storage/app/corrections
 - **DE:** `https://acstipendium.ch/korrektur`
 - **FR:** `https://acstipendium.ch/fr/correction`
 
-These pages are hidden (noindex, not in navigation). Share via direct link only.
+Hidden (noindex, not in nav). Share via direct link only.
 
 ---
 
-## Merge command
+## How it works
 
-After corrections come in, merge them into main applications:
+1. Artist visits `/korrektur` → enters email
+2. Always shows "E-Mail versendet – prüf deine Inbox" (no email enumeration)
+3. If email matches an application → sends email with token link (48h expiry)
+4. Artist clicks link → form pre-filled with existing data
+5. Artist submits → original application updated directly, token cleared
 
-```bash
-# Preview
-php artisan applications:merge-corrections --dry-run
+No separate collection, no merge command needed.
 
-# Merge all
-php artisan applications:merge-corrections
+---
 
-# Merge specific email
-php artisan applications:merge-corrections --email="artist@example.com"
-```
+## Verify on production
+
+- [ ] Pages created and accessible
+- [ ] Email sending works (`MAIL_*` env vars configured)
+- [ ] `APP_URL` is set correctly in `.env` (used for correction link in email)
