@@ -1,8 +1,16 @@
 <template>
+  <template v-if="formSuccess && mode === 'correction'">
+    <div id="form-alerts" class="scroll-mt-100 md:scroll-mt-150 lg:scroll-mt-200">
+      <success-alert>
+        {{ trans('Ihre Korrektur wurde erfolgreich gespeichert.') }}
+      </success-alert>
+    </div>
+  </template>
+  <template v-else>
   <div id="form-alerts" class="scroll-mt-100 md:scroll-mt-150 lg:scroll-mt-200">
     <template v-if="formSuccess">
       <success-alert>
-        {{ mode === 'correction' ? trans('Ihre Korrektur wurde erfolgreich gespeichert.') : trans('Vielen Dank für Ihre Anmeldung!') }}
+        {{ trans('Vielen Dank für Ihre Anmeldung!') }}
       </success-alert>
     </template>
     <template v-if="formError">
@@ -415,6 +423,7 @@
     </card>
     
   </form>
+  </template>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
