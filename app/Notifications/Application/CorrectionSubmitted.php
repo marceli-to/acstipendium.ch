@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Notifications\Application;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+
+class CorrectionSubmitted extends Notification
+{
+    use Queueable;
+
+    protected $data;
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    public function via($notifiable)
+    {
+        return ['mail'];
+    }
+
+    public function toMail($notifiable)
+    {
+        return (new MailMessage)
+            ->from(env('MAIL_FROM_ADDRESS'))
+            ->subject('Korrektur eingegangen: '.$this->data['firstname'].' '.$this->data['name'])
+            ->markdown('notifications.application.correction-submitted', ['data' => $this->data]);
+    }
+
+    public function toArray($notifiable)
+    {
+        return [];
+    }
+}

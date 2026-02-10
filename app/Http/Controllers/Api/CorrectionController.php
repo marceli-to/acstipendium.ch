@@ -292,6 +292,21 @@ class CorrectionController extends Controller
 
         \Statamic\Facades\Stache::clear();
 
+        // Notify owner about the correction
+        try {
+            Notification::route('mail', env('MAIL_TO'))
+                ->notify(new \App\Notifications\Application\CorrectionSubmitted([
+                    'firstname' => $request->input('firstname'),
+                    'name' => $request->input('name'),
+                    'email' => $request->input('email'),
+                ]));
+        } catch (\Exception $e) {
+            \Log::error('Failed to send correction notification', [
+                'error' => $e->getMessage(),
+                'entry_id' => $entry->id(),
+            ]);
+        }
+
         return response()->json(['message' => 'Korrektur erfolgreich gespeichert.']);
     }
 
