@@ -8,12 +8,12 @@
       <p class="text-white/60">{{ trans('Bewerbungen werden geladen...') }}</p>
     </template>
     <template v-else>
-      <div class="mb-8">
-        <label class="block text-white/80 text-sm mb-2">{{ trans('Bewerbung auswählen') }}</label>
+      <div class="mb-8 max-w-xl mx-auto">
+        <label class="block text-white text-sm md:text-md mb-4">{{ trans('Bewerbung auswählen') }}</label>
         <select
           v-model="selectedId"
           @change="loadApplication"
-          class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-white/40"
+          class="w-full bg-transparent border-2 border-white rounded-full px-8 py-4 md:py-6 text-white focus:outline-none focus:!ring-0 appearance-none cursor-pointer"
         >
           <option value="" disabled>{{ trans('Bitte wählen...') }}</option>
           <option
