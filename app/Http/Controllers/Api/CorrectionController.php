@@ -78,9 +78,24 @@ class CorrectionController extends Controller
             }
         }
 
-        // Build file info
-        $hasAgeVerification = ! empty($data['zip_file']) && Storage::exists($data['zip_file']);
-        $hasResume = ! empty($data['resume_file']) && Storage::exists($data['resume_file']);
+        // Build file info with metadata
+        $files = [];
+
+        if (! empty($data['zip_file']) && Storage::exists($data['zip_file'])) {
+            $files['zip'] = [
+                'name' => basename($data['zip_file']),
+                'size' => Storage::size($data['zip_file']),
+                'download_url' => "/api/correction/{$token}/download/zip",
+            ];
+        }
+
+        if (! empty($data['resume_file']) && Storage::exists($data['resume_file'])) {
+            $files['resume'] = [
+                'name' => basename($data['resume_file']),
+                'size' => Storage::size($data['resume_file']),
+                'download_url' => "/api/correction/{$token}/download/resume",
+            ];
+        }
 
         return response()->json([
             'name' => $data['name'] ?? '',
@@ -96,9 +111,7 @@ class CorrectionController extends Controller
             'geographic_relation_text' => $data['geographic_relation_text'] ?? '',
             'remarks' => $data['remarks'] ?? '',
             'works' => $works,
-            'has_age_verification' => $hasAgeVerification,
-            'has_resume' => $hasResume,
-            'has_geographic_relation_proofs' => $hasAgeVerification, // stored in same zip
+            'files' => $files,
         ]);
     }
 
@@ -253,6 +266,35 @@ class CorrectionController extends Controller
         \Statamic\Facades\Stache::clear();
 
         return response()->json(['message' => 'Korrektur erfolgreich gespeichert.']);
+    }
+
+    /**
+     * Download an existing file by correction token.
+     */
+    public function downloadFile(string $token, string $type)
+    {
+        $entry = $this->findByToken($token);
+
+        if (! $entry) {
+            abort(404, 'Token ungültig oder abgelaufen.');
+        }
+
+        $fieldMap = [
+            'zip' => 'zip_file',
+            'resume' => 'resume_file',
+        ];
+
+        if (! isset($fieldMap[$type])) {
+            abort(404, 'Ungültiger Dateityp.');
+        }
+
+        $filePath = $entry->get($fieldMap[$type]);
+
+        if (! $filePath || ! Storage::exists($filePath)) {
+            abort(404, 'Datei nicht gefunden.');
+        }
+
+        return response()->download(Storage::path($filePath), basename($filePath));
     }
 
     /**
