@@ -18,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::post('/application', [ApplicationController::class, 'store']);
 Route::post('/correction/request', [CorrectionController::class, 'requestCorrection']);
 Route::get('/correction/{token}', [CorrectionController::class, 'loadCorrection']);
-Route::get('/correction/{token}/download/{type}', [CorrectionController::class, 'downloadFile'])->where('type', 'zip|resume|file');
+Route::get('/correction/{token}/download/{type}', [CorrectionController::class, 'downloadFile'])->where('type', 'zip|resume');
 Route::post('/correction/{token}', [CorrectionController::class, 'storeCorrection']);
