@@ -17,7 +17,7 @@
   <p class="mb-8">
     {{ trans('Geben Sie Ihre E-Mail-Adresse ein, mit der Sie sich beworben haben. Sie erhalten einen Link, um Ihre Bewerbung zu korrigieren.') }}
   </p>
-  <form @submit.prevent="submitForm" v-if="!success">
+  <form @submit.prevent="submitForm" v-if="!success" class="max-w-2xl">
     <card>
       <form-group>
         <form-text-field
