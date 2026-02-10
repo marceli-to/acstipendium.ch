@@ -28,7 +28,12 @@
         class="hidden"
       />
       <span class="text-sm md:text-md truncate flex-1 text-primary/50">
-        {{ fileLabel }}
+        <template v-if="hasNewFiles">{{ fileLabel }}</template>
+        <template v-else-if="existingFile">
+          <a v-if="existingFile.download_url" :href="existingFile.download_url" target="_blank" class="underline">{{ existingFile.name }}</a>
+          <span v-else>{{ existingFile.name }}</span>
+        </template>
+        <template v-else>{{ fileLabel }}</template>
       </span>
       <button
         v-if="deletable"
@@ -46,6 +51,11 @@
       v-if="error"
       class="text-danger text-sm md:text-md ml-8 md:ml-12 mt-2 lg:mt-4">
       {{ error }}
+    </div>
+    <div
+      v-if="hint && !error"
+      class="text-danger text-sm md:text-md ml-8 md:ml-12 mt-2 lg:mt-4">
+      {{ hint }}
     </div>
   </div>
 </template>
@@ -89,10 +99,23 @@ const props = defineProps({
   accept: {
     type: String,
     default: 'image/png,image/jpeg,image/jpg,application/pdf'
+  },
+  existingFile: {
+    type: Object,
+    default: null
+  },
+  hint: {
+    type: String,
+    default: ''
   }
 });
 
 const emit = defineEmits(['update:modelValue', 'update:error', 'delete']);
+
+const hasNewFiles = computed(() => {
+  const files = props.modelValue || [];
+  return files.length > 0;
+});
 
 const fileLabel = computed(() => {
   const files = props.modelValue || [];

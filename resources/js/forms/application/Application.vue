@@ -153,13 +153,6 @@
             required
           />
         </form-group>
-        <div v-if="isCorrection && existingFiles.zip" class="mb-4 text-sm md:text-md">
-          <span class="text-primary/70">{{ trans('Vorhandene Datei:') }}</span>
-          <a :href="existingFiles.zip.download_url" class="underline text-primary ml-2" target="_blank">
-            {{ existingFiles.zip.name }}
-          </a>
-          <span class="text-primary/50 ml-2">({{ formatFileSize(existingFiles.zip.size) }})</span>
-        </div>
         <form-group
           v-for="(proof, index) in geographicRelationProofFields"
           :key="index"
@@ -172,6 +165,8 @@
             :error="errors[`geographic_relation_proofs.${index}`] || (index === 0 ? errors['geographic_relation_proofs'] : '') || ''"
             accept="image/png,image/jpeg,image/jpg,application/pdf"
             :deletable="index > 0"
+            :existing-file="index === 0 && isCorrection && existingFiles.zip ? existingFiles.zip : null"
+            :hint="index === 0 && isCorrection && existingFiles.zip ? trans('Nur hochladen, falls Sie die Datei ersetzen möchten.') : ''"
             @update:error="errors[`geographic_relation_proofs.${index}`] = $event; if (index === 0) errors['geographic_relation_proofs'] = $event"
             @delete="removeGeographicRelationProofField(index)"
           />
@@ -215,10 +210,9 @@
             accept="image/png,image/jpeg,image/jpg,application/pdf"
             @update:error="errors['age_verification_files.0'] = $event; errors['age_verification_files'] = $event"
             :required="!isCorrection"
+            :existing-file="isCorrection && existingFiles.zip ? existingFiles.zip : null"
+            :hint="isCorrection && existingFiles.zip ? trans('Nur hochladen, falls Sie die Datei ersetzen möchten.') : ''"
           />
-          <p v-if="isCorrection && existingFiles.zip" class="text-sm text-primary/50 mt-2 ml-8 md:ml-12">
-            {{ trans('Nur hochladen, falls Sie die Datei ersetzen möchten.') }}
-          </p>
         </form-group>
       </card>
 
@@ -339,13 +333,6 @@
         {{ trans('Maximale Dateigrösse: 20 MB') }}<br>
         {{ trans('Datei-Format: PDF') }}
       </p>
-      <div v-if="isCorrection && existingFiles.resume" class="mb-4 text-sm md:text-md">
-        <span class="text-primary/70">{{ trans('Vorhandene Datei:') }}</span>
-        <a :href="existingFiles.resume.download_url" class="underline text-primary ml-2" target="_blank">
-          {{ existingFiles.resume.name }}
-        </a>
-        <span class="text-primary/50 ml-2">({{ formatFileSize(existingFiles.resume.size) }})</span>
-      </div>
       <form-group>
         <file-upload
           v-model="form.resume_files"
@@ -355,10 +342,9 @@
           accept="application/pdf"
           @update:error="errors['resume_files.0'] = $event; errors['resume_files'] = $event"
           :required="!isCorrection"
+          :existing-file="isCorrection && existingFiles.resume ? existingFiles.resume : null"
+          :hint="isCorrection && existingFiles.resume ? trans('Nur hochladen, falls Sie die Datei ersetzen möchten.') : ''"
         />
-        <p v-if="isCorrection && existingFiles.resume" class="text-sm text-primary/50 mt-2 ml-8 md:ml-12">
-          {{ trans('Nur hochladen, falls Sie die Datei ersetzen möchten.') }}
-        </p>
       </form-group>
     </card>
 
@@ -532,12 +518,6 @@ const errors = ref({
 const existingFiles = ref({});
 
 const isCorrection = props.mode === 'correction';
-
-function formatFileSize(bytes) {
-  if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
-}
 
 // Prefill form data for correction mode
 onMounted(() => {
