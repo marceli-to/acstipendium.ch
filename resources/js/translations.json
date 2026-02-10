@@ -90,5 +90,17 @@
   "Dauer darf maximal 255 Zeichen enthalten": "La durée peut contenir au maximum 255 caractères",
   "Technik ist erforderlich": "La technique est requise",
   "Technik darf maximal 500 Zeichen enthalten": "La technique peut contenir au maximum 500 caractères",
-  "Kommentar darf maximal 500 Zeichen enthalten": "Le commentaire peut contenir au maximum 500 caractères"
+  "Kommentar darf maximal 500 Zeichen enthalten": "Le commentaire peut contenir au maximum 500 caractères",
+
+  "Bewerbung korrigieren": "Corriger la candidature",
+  "Bewerbung wird geladen...": "Chargement de la candidature...",
+  "Dieser Korrektur-Link ist ungültig oder abgelaufen. Bitte fordern Sie einen neuen Link an.": "Ce lien de correction est invalide ou expiré. Veuillez demander un nouveau lien.",
+  "E-Mail versendet": "E-mail envoyé",
+  "Falls eine Bewerbung mit dieser E-Mail-Adresse existiert, erhalten Sie einen Korrektur-Link per E-Mail. Bitte prüfen Sie Ihre Inbox.": "Si une candidature avec cette adresse e-mail existe, vous recevrez un lien de correction par e-mail. Veuillez vérifier votre boîte de réception.",
+  "Geben Sie Ihre E-Mail-Adresse ein, mit der Sie sich beworben haben. Sie erhalten einen Link, um Ihre Bewerbung zu korrigieren.": "Saisissez l'adresse e-mail avec laquelle vous avez postulé. Vous recevrez un lien pour corriger votre candidature.",
+  "Ihre Korrektur wurde erfolgreich gespeichert.": "Votre correction a été enregistrée avec succès.",
+  "Korrektur-Link anfordern": "Demander un lien de correction",
+  "Nur hochladen, falls Sie die Datei ersetzen möchten.": "Télécharger uniquement si vous souhaitez remplacer le fichier.",
+  "Bewerbung auswählen": "Sélectionner une candidature",
+  "Bewerbungen werden geladen...": "Chargement des candidatures..."
 }

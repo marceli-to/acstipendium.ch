@@ -31,5 +31,70 @@
 
   "Anmeldeformular": "Formulaire d'inscription",
   "Instagram": "Instagram",
-  "Jetzt Gesuch einreichen": "Déposer sa candidature"
+  "Jetzt Gesuch einreichen": "Déposer sa candidature",
+
+  "Formular": "Formulaire",
+  "Persönliche Angaben": "Informations personnelles",
+  "Vorname": "Prénom",
+  "Adresse": "Adresse",
+  "PLZ": "NPA",
+  "Ort": "Localité",
+  "Telefon": "Téléphone",
+  "Website": "Site web",
+  "E-Mail": "E-mail",
+  "Name Künstlergruppe": "Nom du groupe d'artistes",
+
+  "Bernbezug": "Lien avec Berne",
+  "Ein Bezug zum Kanton Bern ist Voraussetzung. Bitte lesen Sie die Teilnahmebedingungen.": "Un lien avec le canton de Berne est requis. Veuillez lire les conditions de participation.",
+  "Dein Bernbezug": "Votre lien avec Berne",
+  "Belege": "Justificatifs",
+  "Weiteren Beleg hinzufügen": "Ajouter un justificatif",
+
+  "Altersgrenze": "Limite d'âge",
+  "Das Höchstalter für die Teilnahme beträgt 40 Jahre (der 41. Geburtstag darf im Jahr der Jurierung noch nicht erreicht sein).": "L'âge maximum de participation est de 40 ans (le 41e anniversaire ne doit pas encore être atteint l'année du jury).",
+  "Geburtsdatum": "Date de naissance",
+  "ID / Ausweis": "Pièce d'identité",
+
+  "Werk": "Œuvre",
+  "Titel": "Titre",
+  "Werktitel": "Titre de l'œuvre",
+  "Grösse": "Dimensions",
+  "Dauer": "Durée",
+  "Technik": "Technique",
+  "Kommentar": "Commentaire",
+  "löschen": "supprimer",
+  "Weiteres Werk hinzufügen": "Ajouter une œuvre",
+
+  "Dossier": "Dossier",
+  "Maximale Dateigrösse: 20 MB": "Taille maximale du fichier : 20 Mo",
+  "Datei-Format: PDF": "Format de fichier : PDF",
+
+  "Abschluss": "Finalisation",
+  "Mit dem Absenden dieser Anmeldung erkläre ich mich mit den Teilnahmebedingungen des AC-Stipendiums einverstanden. Der Upload kann einige Minuten dauern. Wenn der Upload geklappt hat, erhalten Sie im Anschluss ein Bestätigungs-E-Mail. Falls Sie dieses nicht bekommen, bitte nochmals versuchen.": "En soumettant cette inscription, je déclare accepter les conditions de participation à la bourse AC. Le téléchargement peut prendre quelques minutes. Si le téléchargement a réussi, vous recevrez un e-mail de confirmation. Si vous ne le recevez pas, veuillez réessayer.",
+  "Ich bestätige, dass meine Angaben wahrheitsgemäss und vollständig sind. Mir ist bewusst, dass falsche oder unvollständige Angaben zum Ausschluss führen können.": "Je confirme que mes informations sont véridiques et complètes. Je suis conscient·e que des informations fausses ou incomplètes peuvent entraîner l'exclusion.",
+  "Ich bestätige, dass die eingereichten Arbeiten eigenständig und unabhängig entstanden sind, weder im Rahmen einer Ausbildung noch unter Anleitung Dritter.": "Je confirme que les travaux soumis ont été réalisés de manière autonome et indépendante, ni dans le cadre d'une formation ni sous la direction de tiers.",
+  "Ich bestätige, dass der Einsatz von Künstlicher Intelligenz (KI) oder ähnlichen Systemen in meinen Kunstwerken entsprechend gekennzeichnet ist.": "Je confirme que l'utilisation de l'intelligence artificielle (IA) ou de systèmes similaires dans mes œuvres est signalée en conséquence.",
+  "Mit meiner Bewerbung bestätige ich, die Teilnahmebedingungen und Datenschutzerklärung akzeptiert zu haben.": "Par ma candidature, je confirme avoir accepté les conditions de participation et la déclaration de protection des données.",
+  "Absenden": "Envoyer",
+
+  "Vielen Dank für Ihre Anmeldung!": "Merci pour votre inscription !",
+  "Bitte überprüfen Sie die eingegebenen Daten.": "Veuillez vérifier les données saisies.",
+  "Datei auswählen": "Choisir un fichier",
+  "Keine Datei ausgewählt": "Aucun fichier sélectionné",
+  "Dateien ausgewählt": "fichiers sélectionnés",
+  "Ungültiges Datum": "Date invalide",
+  "Geburtsdatum kann nicht in der Zukunft liegen": "La date de naissance ne peut pas être dans le futur",
+
+  "Bewerbung korrigieren": "Corriger la candidature",
+  "Bewerbung wird geladen...": "Chargement de la candidature...",
+  "Dieser Korrektur-Link ist ungültig oder abgelaufen. Bitte fordern Sie einen neuen Link an.": "Ce lien de correction est invalide ou expiré. Veuillez demander un nouveau lien.",
+  "E-Mail versendet": "E-mail envoyé",
+  "Falls eine Bewerbung mit dieser E-Mail-Adresse existiert, erhalten Sie einen Korrektur-Link per E-Mail. Bitte prüfen Sie Ihre Inbox.": "Si une candidature avec cette adresse e-mail existe, vous recevrez un lien de correction par e-mail. Veuillez vérifier votre boîte de réception.",
+  "Geben Sie Ihre E-Mail-Adresse ein, mit der Sie sich beworben haben. Sie erhalten einen Link, um Ihre Bewerbung zu korrigieren.": "Saisissez l'adresse e-mail avec laquelle vous avez postulé. Vous recevrez un lien pour corriger votre candidature.",
+  "Ihre Korrektur wurde erfolgreich gespeichert.": "Votre correction a été enregistrée avec succès.",
+  "Korrektur-Link anfordern": "Demander un lien de correction",
+  "Nur hochladen, falls Sie die Datei ersetzen möchten.": "Télécharger uniquement si vous souhaitez remplacer le fichier.",
+
+  "Bewerbung auswählen": "Sélectionner une candidature",
+  "Bewerbungen werden geladen...": "Chargement des candidatures..."
 }
