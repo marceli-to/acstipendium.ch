@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Mail\Events\MessageSending;
-use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\ServiceProvider;
 use Statamic\Statamic;
 
@@ -27,19 +26,9 @@ class AppServiceProvider extends ServiceProvider
         //     'resources/css/cp.css',
         // ]);
 
-        // Intercept all outgoing mail and redirect to MAIL_TO when not in production.
-        // Prevents accidentally emailing real users during development/staging.
-        if (! $this->app->environment('production')) {
-            $interceptTo = config('mail.to.address', env('MAIL_TO'));
-
-            if ($interceptTo) {
-                Event::listen(MessageSending::class, function (MessageSending $event) use ($interceptTo) {
-                    $message = $event->message;
-                    $message->to($interceptTo);
-                    $message->cc();
-                    $message->bcc();
-                });
-            }
+        // Redirect all outgoing mail to MAIL_TO on local environment
+        if ($this->app->environment('local')) {
+            Mail::alwaysTo(env('MAIL_TO'));
         }
     }
 }
