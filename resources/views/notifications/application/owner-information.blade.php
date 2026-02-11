@@ -19,7 +19,7 @@ Neue Stipendium-Bewerbung
 @endif
 @if ($data['name_artist_group'])
 <div class="text-base">
-<strong>Name Künstlergruppe</strong><br>
+<strong>Name Künstler:innengruppe</strong><br>
 {{ $data['name_artist_group'] }}
 </div>
 <br>

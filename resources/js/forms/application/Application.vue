@@ -58,9 +58,9 @@
             v-model="form.name_artist_group"
             :error="errors.name_artist_group"
             @update:error="errors.name_artist_group = $event"
-            :placeholder="errors.name_artist_group ? errors.name_artist_group : trans('Name Künstlergruppe')"
-            :label="trans('Name Künstlergruppe')"
-            :aria-label="trans('Name Künstlergruppe')"
+            :placeholder="errors.name_artist_group ? errors.name_artist_group : trans('Name Künstler:innengruppe')"
+            :label="trans('Name Künstler:innengruppe')"
+            :aria-label="trans('Name Künstler:innengruppe')"
           />
         </form-group>
         <form-group>

@@ -22,7 +22,7 @@ tabs:
             handle: name_artist_group
             field:
               type: text
-              display: 'Name Künstlergruppe'
+              display: 'Name Künstler:innengruppe'
               localizable: false
           -
             handle: street
