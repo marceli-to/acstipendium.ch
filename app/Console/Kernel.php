@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
     {
         if (app()->environment('production')) {
             $schedule->command('update:index')->everyThirtyMinutes();
+            $schedule->command('health:check')->everyFiveMinutes();
         }
     }
 
