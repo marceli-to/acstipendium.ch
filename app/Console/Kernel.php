@@ -13,8 +13,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         if (app()->environment('production')) {
-            $schedule->command('update:index')->everyThirtyMinutes();
             $schedule->command('health:check')->everyFiveMinutes();
+            $schedule->command('backup:create')->daily();
         }
     }
 

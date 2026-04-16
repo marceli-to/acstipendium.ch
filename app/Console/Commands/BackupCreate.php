@@ -46,20 +46,31 @@ class BackupCreate extends Command
             $zip->addFile($filePath, $relativePath);
         }
 
-        // Add the assets folder to the archive.
-        $assetsFolder = \base_path('public/assets');
-        $assetsFolderIterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($assetsFolder));
-        foreach ($assetsFolderIterator as $file) {
+        // Add the applications folder to the archive.
+        $applicationsFolder = storage_path('app/applications');
+        $applicationsFolderIterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($applicationsFolder));
+        foreach ($applicationsFolderIterator as $file) {
             if ($file->isDir()) {
                 continue;
             }
             $filePath = $file->getRealPath();
-            $relativePath = 'public/assets'.DIRECTORY_SEPARATOR.substr($filePath, strlen($assetsFolder) + 1);
+            $relativePath = 'storage/app/applications'.DIRECTORY_SEPARATOR.substr($filePath, strlen($applicationsFolder) + 1);
             $zip->addFile($filePath, $relativePath);
         }
 
         // Close the archive.
         $zip->close();
+
+        // Delete backups older than 14 days.
+        $backups = glob(storage_path('app/backup_*.zip'));
+        $threshold = \Carbon\Carbon::now()->subDays(14)->timestamp;
+
+        foreach ($backups as $backup) {
+            if (filemtime($backup) < $threshold) {
+                unlink($backup);
+                $this->info('Deleted old backup: '.basename($backup));
+            }
+        }
 
         $this->info('Backup finished!');
     }
