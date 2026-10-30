@@ -1,1 +1,9 @@
 locale: de
+nav:
+  daten:
+    action: '@create'
+    display: Daten
+    items:
+      'content::collections::bewerbungen':
+        action: '@move'
+        icon: collections

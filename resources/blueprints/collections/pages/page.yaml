@@ -90,12 +90,12 @@ tabs:
                       display: Ausstellungen
                       instructions: 'Ausstellungen hinzufügen'
                       icon: file-content-list
-                      fields: {  }
+                      fields: {}
                     fellows:
                       display: 'Stipendiant:innen'
                       instructions: 'Stipendiant:innen hinzufügen'
                       icon: file-content-list
-                      fields: {  }
+                      fields: {}
                     privacy:
                       display: Datenschutz
                       instructions: 'Datenschutz hinzufügen'
@@ -138,12 +138,3 @@ tabs:
               localizable: true
               validate: 'max:200'
               show_regenerate: true
-          -
-            handle: parent
-            field:
-              type: entries
-              collections:
-                - pages
-              max_items: 1
-              listable: false
-              localizable: true

@@ -228,13 +228,4 @@ tabs:
               localizable: true
               validate: 'max:200'
               visibility: computed
-          -
-            handle: parent
-            field:
-              type: entries
-              collections:
-                - applications
-              max_items: 1
-              listable: false
-              localizable: true
 title: Bewerbungen
