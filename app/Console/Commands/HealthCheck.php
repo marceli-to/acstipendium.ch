@@ -30,8 +30,8 @@ class HealthCheck extends Command
             $this->warn("Homepage returned {$response->status()} — clearing and warming caches...");
 
             $this->call('optimize:clear');
-            $this->call('stache:clear');
-            $this->call('stache:warm');
+            $this->call('statamic:stache:clear');
+            $this->call('statamic:stache:warm');
 
             Log::info('HealthCheck: caches cleared and warmed');
             $this->info('Caches cleared and warmed.');
