@@ -10,7 +10,7 @@ class HealthCheck extends Command
 {
     protected $signature = 'health:check';
 
-    protected $description = 'Check if the site is returning 404s and clear/warm caches if needed.';
+    protected $description = 'Check if the site is returning 404/5xx errors and clear/warm caches if needed.';
 
     public function handle(): int
     {
@@ -25,9 +25,9 @@ class HealthCheck extends Command
             return self::FAILURE;
         }
 
-        if ($response->status() === 404) {
-            Log::warning('HealthCheck: homepage returned 404, clearing caches');
-            $this->warn('Homepage returned 404 — clearing and warming caches...');
+        if ($response->status() === 404 || $response->serverError()) {
+            Log::warning('HealthCheck: homepage returned '.$response->status().', clearing caches');
+            $this->warn("Homepage returned {$response->status()} — clearing and warming caches...");
 
             $this->call('optimize:clear');
             $this->call('stache:clear');

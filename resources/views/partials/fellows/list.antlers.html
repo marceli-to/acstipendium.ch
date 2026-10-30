@@ -70,9 +70,9 @@
          data-slug="{slug}"
          data-fellow="1"
          data-name="{name}"
-         data-scholarship="{scholarship_type}"
-         data-amount="{amount}"
-         data-year="{year}" }}
+         :data-scholarship="scholarships:0:scholarship_type ?? scholarship_type"
+         :data-amount="scholarships:0:amount ?? amount"
+         :data-year="scholarships:0:year ?? year" }}
 
         {{ slot:title }}
           <span class="flex justify-between w-full items-center">
@@ -105,7 +105,7 @@
             <span
               class="flex items-center justify-end leading-none w-[68px] md:w-[calc(11%_-_3px)] xl:w-[calc(10%_-_3px)] px-16"
               x-show="!open">
-              {{ year }}
+              {{ scholarships:0:year ?? year }}
             </span>
           </span>
         {{ /slot:title }}
